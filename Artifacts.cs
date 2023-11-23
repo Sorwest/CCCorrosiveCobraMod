@@ -21,7 +21,7 @@ namespace CorrosiveCobra.Artifacts
             astatus1.status = Status.heat;
             astatus1.statusAmount = 1;
             astatus1.targetPlayer = true;
-            astatus1.timer = 0.0;
+            astatus1.artifactPulse = this.Key();
             combat1.QueueImmediate((CardAction)astatus1);
             if (combat.turn != 1)
                 return;
@@ -41,7 +41,6 @@ namespace CorrosiveCobra.Artifacts
             }
         };
     }
-
 
     [ArtifactMeta(owner = Deck.colorless, pools = new ArtifactPool[] { ArtifactPool.Boss }, unremovable = true)]
     public class OverdriveTanks : Artifact
@@ -89,7 +88,6 @@ namespace CorrosiveCobra.Artifacts
         };
     }
 
-
     [ArtifactMeta(pools = new ArtifactPool[] { ArtifactPool.Common })]
     public class SlimeHeart : Artifact
     {
@@ -111,7 +109,6 @@ namespace CorrosiveCobra.Artifacts
             (Tooltip) new TTGlossary(Manifest.AEvolveStatus_Glossary?.Head ?? throw new Exception("Missing AIncomingCorrode_Glossary"), 1),
         };
     }
-
 
     [ArtifactMeta(pools = new ArtifactPool[] { ArtifactPool.Common })]
     public class ToxicCaviar : Artifact
@@ -138,7 +135,6 @@ namespace CorrosiveCobra.Artifacts
             (Tooltip) new TTGlossary("status.corrode", 2),
         };
     }
-
 
     [ArtifactMeta(pools = new ArtifactPool[] { ArtifactPool.Common })]
     public class CorrodeAttack : Artifact
@@ -180,8 +176,7 @@ namespace CorrosiveCobra.Artifacts
         };
     }
 
-
-    [ArtifactMeta(pools = new ArtifactPool[] { ArtifactPool.Common })]
+    [ArtifactMeta(pools = new ArtifactPool[] { ArtifactPool.Boss })]
     public class PowerAcid : Artifact
     {
         public int otherShipCorrode = 0;
@@ -203,7 +198,6 @@ namespace CorrosiveCobra.Artifacts
         };
     }
 
-
     [ArtifactMeta(pools = new ArtifactPool[] { ArtifactPool.Boss })]
     public class Dissolvent : Artifact
     {
@@ -216,7 +210,7 @@ namespace CorrosiveCobra.Artifacts
         public override void OnTurnStart(State state, Combat combat)
         {
             if (TriggeredAlready)
-            { 
+            {
                 TriggeredAlready = false;
             }
         }
@@ -234,5 +228,4 @@ namespace CorrosiveCobra.Artifacts
             combat.QueueImmediate(ahurt1);
         }
     }
-
 }

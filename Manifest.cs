@@ -1,11 +1,9 @@
-﻿using System.Reflection;
-using CobaltCoreModding.Definitions;
+﻿using CobaltCoreModding.Definitions;
 using CobaltCoreModding.Definitions.ExternalItems;
 using CobaltCoreModding.Definitions.ModContactPoints;
 using CobaltCoreModding.Definitions.ModManifests;
 using CorrosiveCobra.Artifacts;
 using CorrosiveCobra.Cards;
-using HarmonyLib;
 using Microsoft.Extensions.Logging;
 
 // Structure using parchmentengineer's armada mod, check them out!
@@ -361,7 +359,7 @@ namespace CorrosiveCobra
                 CorrosiveCobra_CorrosionBlockStarter = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_CorrosionBlockStarter", new FileInfo(path));
                 artRegistry.RegisterArt(CorrosiveCobra_CorrosionBlockStarter);
             }
-            
+
 
             //card border
             {
@@ -490,7 +488,7 @@ namespace CorrosiveCobra
             {
                 SlimeShield = new ExternalCard("CorrosiveCobra.SlimeShield", typeof(SlimeShield), card_DefaultArt, CobraDeck);
                 registry.RegisterCard(SlimeShield);
-                SlimeShield.AddLocalisation("Slime Shield", desc: "Gain <c=keyword>2</c> <c=status>shield</c>.\nGain a <c=card>Slime Heal</c>.", descA: "Gain <c=keyword>1</c> <c=status>shield</c>.\nGain a <c=card>Slime Heal A</c>.", descB: "Gain <c=keyword>1</c> <c=status>shield</c>.\nGain a <c=card>Slime Heal B</c>.");
+                SlimeShield.AddLocalisation("Slime Shield", desc: "Gain <c=keyword>2</c> <c=status>shield</c>.\nAdd a <c=card>Slime Heal </c> to your <c=keyword>draw pile</c>.", descA: "Gain <c=keyword>1</c> <c=status>shield</c>.\nAdd a <c=card>Slime Heal A</c> to your <c=keyword>draw pile</c>.", descB: "Gain <c=keyword>1</c> <c=status>shield</c>.\nAdd a <c=card>Slime Heal B</c> to your <c=keyword>draw pile</c>.");
             }
             {
                 SlimeHeal = new ExternalCard("CorrosiveCobra.SlimeHeal", typeof(SlimeHeal), card_DefaultArt, CobraDeck);
@@ -578,7 +576,11 @@ namespace CorrosiveCobra
             {
                 OverdriveTanksArtifact = new ExternalArtifact("CorrosiveCobra.Artifacts.OverdriveTanks",
                     typeof(OverdriveTanks),
-                    OverdriveTanksSprite ?? throw new Exception("missing OverdriveTanks artifact sprite"));
+                    OverdriveTanksSprite ?? throw new Exception("missing OverdriveTanks artifact sprite"),
+                    exclusiveToShips: new string[1]
+                    {
+                        "CorrosiveCobra_StarterShip"
+                    });
 
                 OverdriveTanksArtifact.AddLocalisation("OVERDRIVE TANKS",
                     "Replaces <c=artifact>UNSTABLE FUELTANKS</c>. Gain 2 extra <c=energy>ENERGY</c> every turn. <c=hurt>Gain 2 heat each turn</c>. At the start of battle, gain a <c=card>Leaking Container</c>.");
@@ -592,7 +594,7 @@ namespace CorrosiveCobra
                     ownerDeck: CobraDeck ?? throw new Exception("missing CobraDeck."));
 
                 SlimeHeartArtifact.AddLocalisation("SLIME HEART",
-                    "At the start of battle, gain 1 <c=status>EVOLVE</c>.");
+                    "Gain 1 <c=status>EVOLVE</c> at the start of your first turn of combat.");
 
                 registry.RegisterArtifact(SlimeHeartArtifact);
             }
@@ -625,7 +627,7 @@ namespace CorrosiveCobra
                     ownerDeck: CobraDeck ?? throw new Exception("missing CobraDeck."));
 
                 PowerAcidArtifact.AddLocalisation("POWERACID",
-                    "<c=hurt>Draw 1 less card per turn</c>. The enemy triggers <c=status>CORRODE</c> an additional time.");
+                    "<c=hurt>Draw 1 less card per turn</c>. At the end of your turn, the enemy triggers <c=status>CORRODE</c>.");
 
                 registry.RegisterArtifact(PowerAcidArtifact);
             }

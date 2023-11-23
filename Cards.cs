@@ -73,7 +73,6 @@
         }
     }
 
-
     [CardMeta(deck = Deck.shard, rarity = Rarity.common, upgradesTo = new Upgrade[] { Upgrade.A, Upgrade.B })]
     public class BooksGainCrystal : Card
     {
@@ -345,16 +344,26 @@
                     aattack1.statusAmount = 1;
                     aattack1.targetPlayer = false;
                     cardActionList1.Add(aattack1);
+                    AStatus astatus1 = new AStatus();
+                    astatus1.status = Status.heat;
+                    astatus1.statusAmount = 1;
+                    astatus1.targetPlayer = true;
+                    cardActionList1.Add(astatus1);
                     result = cardActionList1;
                     break;
                 case Upgrade.A:
                     List<CardAction> cardActionList2 = new List<CardAction>();
                     AAttack aattack2 = new AAttack();
-                    aattack2.damage = GetDmg(s, 1);
+                    aattack2.damage = GetDmg(s, 0);
                     aattack2.status = Status.corrode;
                     aattack2.statusAmount = 2;
                     aattack2.targetPlayer = false;
                     cardActionList2.Add(aattack2);
+                    AStatus astatus2 = new AStatus();
+                    astatus2.status = Status.heat;
+                    astatus2.statusAmount = 1;
+                    astatus2.targetPlayer = true;
+                    cardActionList2.Add(astatus2);
                     result = cardActionList2;
                     break;
                 case Upgrade.B:
@@ -362,12 +371,12 @@
                     AAttack aattack3 = new AAttack();
                     aattack3.damage = GetDmg(s, 5);
                     cardActionList3.Add(aattack3);
-                    Actions.AStatus2 astatus1 = new Actions.AStatus2();
-                    astatus1.status = Status.corrode;
-                    astatus1.statusAmount = 1;
-                    astatus1.targetPlayer = true;
-                    astatus1.SelfInflict = true;
-                    cardActionList3.Add(astatus1);
+                    Actions.AStatus2 astatus3 = new Actions.AStatus2();
+                    astatus3.status = Status.corrode;
+                    astatus3.statusAmount = 1;
+                    astatus3.targetPlayer = true;
+                    astatus3.SelfInflict = true;
+                    cardActionList3.Add(astatus3);
                     result = cardActionList3;
                     break;
             }
@@ -465,7 +474,7 @@
         {
             return new CardData
             {
-                cost = 1,
+                cost = upgrade == Upgrade.A ? 0 : 1,
                 art = new Spr?((Spr)Manifest.CorrosiveCobra_BoxHeatSprite!.Id),
             };
         }
@@ -498,12 +507,6 @@
                     result.Add(new AStatus()
                     {
                         status = Status.heat,
-                        statusAmount = -1,
-                        targetPlayer = true
-                    });
-                    result.Add(new AStatus()
-                    {
-                        status = Status.shield,
                         statusAmount = 1,
                         targetPlayer = true
                     });
@@ -511,6 +514,11 @@
                     {
                         status = Status.evade,
                         statusAmount = 1,
+                        targetPlayer = true
+                    });
+                    result.Add(new AMove()
+                    {
+                        dir = 1,
                         targetPlayer = true
                     });
                     break;
@@ -538,7 +546,6 @@
             return result;
         }
     }
-
 
     [CardMeta(rarity = Rarity.common, upgradesTo = new Upgrade[] { Upgrade.A, Upgrade.B })]
     public class HurriedDefense : Card
@@ -602,7 +609,6 @@
             };
         }
     }
-
 
     [CardMeta(dontOffer = true, rarity = Rarity.common, upgradesTo = new Upgrade[] { Upgrade.A, Upgrade.B })]
     public class LeakingContainer : Card
@@ -749,7 +755,6 @@
         }
     }
 
-
     [CardMeta(rarity = Rarity.uncommon, upgradesTo = new Upgrade[] { Upgrade.A, Upgrade.B })]
     public class FuelEjection : Card
     {
@@ -850,7 +855,6 @@
         }
     }
 
-
     [CardMeta(rarity = Rarity.uncommon, upgradesTo = new Upgrade[] { Upgrade.A, Upgrade.B })]
     public class TankThrow : Card
     {
@@ -893,7 +897,7 @@
                     aspawn1.thing = missile1;
                     cardActionList1.Add(aspawn1);
                     AMove amove1 = new AMove();
-                    amove1.dir = -2;
+                    amove1.dir = 2;
                     amove1.targetPlayer = true;
                     cardActionList1.Add(amove1);
                     ASpawn aspawn2 = new ASpawn();
@@ -903,13 +907,13 @@
                     aspawn2.thing = missile2;
                     cardActionList1.Add(aspawn2);
                     AMove amove2 = new AMove();
-                    amove2.dir = 3;
+                    amove2.dir = -1;
                     amove2.targetPlayer = true;
                     cardActionList1.Add(amove2);
                     cardActionList1.Add(new AStatus()
                     {
                         status = Status.heat,
-                        statusAmount = -1,
+                        statusAmount = 1,
                         targetPlayer = true
                     });
                     result = cardActionList1;
@@ -963,13 +967,18 @@
                     aspawn7.thing = missile7;
                     aspawn7.thing = missile7;
                     cardActionList3.Add(aspawn7);
+                    cardActionList3.Add(new AStatus()
+                    {
+                        status = Status.heat,
+                        statusAmount = 3,
+                        targetPlayer = true
+                    });
                     result = cardActionList3;
                     break;
             };
             return result;
         }
     };
-
 
     [CardMeta(rarity = Rarity.uncommon, upgradesTo = new Upgrade[] { Upgrade.A, Upgrade.B })]
     public class SlimeShield : Card
@@ -1017,7 +1026,7 @@
                     slimeHeal1.temporaryOverride = new bool?(true);
                     slimeHeal1.singleUseOverride = new bool?(true);
                     aaddCard1.card = (Card)slimeHeal1;
-                    aaddCard1.destination = CardDestination.Hand;
+                    aaddCard1.destination = CardDestination.Deck;
                     cardActionList1.Add(aaddCard1);
                     result = cardActionList1;
                     break;
@@ -1034,7 +1043,7 @@
                     slimeHeal2.temporaryOverride = new bool?(true);
                     slimeHeal2.singleUseOverride = new bool?(true);
                     aaddCard2.card = (Card)slimeHeal2;
-                    aaddCard2.destination = CardDestination.Hand;
+                    aaddCard2.destination = CardDestination.Deck;
                     cardActionList2.Add(aaddCard2);
                     result = cardActionList2;
                     break;
@@ -1051,7 +1060,7 @@
                     slimeHeal3.temporaryOverride = new bool?(true);
                     slimeHeal3.singleUseOverride = new bool?(true);
                     aaddCard3.card = (Card)slimeHeal3;
-                    aaddCard3.destination = CardDestination.Hand;
+                    aaddCard3.destination = CardDestination.Deck;
                     cardActionList3.Add(aaddCard3);
                     result = cardActionList3;
                     break;
@@ -1059,7 +1068,6 @@
             return result;
         }
     }
-
 
     [CardMeta(dontOffer = true, rarity = Rarity.common, upgradesTo = new Upgrade[] { Upgrade.A, Upgrade.B })]
     public class SlimeHeal : Card
@@ -1104,7 +1112,7 @@
                 case Upgrade.A:
                     List<CardAction> cardActionList2 = new List<CardAction>();
                     AHeal aheal2 = new AHeal();
-                    aheal2.healAmount = 3;
+                    aheal2.healAmount = 2;
                     aheal2.targetPlayer = true;
                     cardActionList2.Add(aheal2);
                     ADrawCard adraw2 = new ADrawCard();
@@ -1127,7 +1135,6 @@
             return result;
         }
     }
-
 
     [CardMeta(rarity = Rarity.uncommon, upgradesTo = new Upgrade[] { Upgrade.A, Upgrade.B })]
     public class TinkerWithTheTanks : Card
@@ -1208,7 +1215,6 @@
         }
     }
 
-
     [CardMeta(rarity = Rarity.rare, upgradesTo = new Upgrade[] { Upgrade.A, Upgrade.B })]
     public class CorrosionIgnition﻿ : Card
     {
@@ -1244,7 +1250,7 @@
                     }
                 case Upgrade.B:
                     {
-                        result.cost = 3;
+                        result.cost = 0;
                         break;
                     }
             }
@@ -1285,6 +1291,12 @@
                     aattack2.damage = GetDmg(s, GetHeatAmt(s));
                     aattack2.xHint = new int?(1);
                     cardActionList2.Add(aattack2);
+                    AStatus astatus2 = new AStatus();
+                    astatus2.status = Status.heat;
+                    astatus2.statusAmount = 0;
+                    astatus2.mode = AStatusMode.Set;
+                    astatus2.targetPlayer = true;
+                    cardActionList2.Add(astatus2);
                     result = cardActionList2;
                     break;
                 case Upgrade.B:
@@ -1297,13 +1309,18 @@
                     aattack3.damage = GetDmg(s, 3 * GetHeatAmt(s));
                     aattack3.xHint = new int?(3);
                     cardActionList3.Add(aattack3);
+                    AStatus astatus3 = new AStatus();
+                    astatus3.status = Status.corrode;
+                    astatus3.statusAmount = 3;
+                    astatus3.mode = AStatusMode.Set;
+                    astatus3.targetPlayer = true;
+                    cardActionList3.Add(astatus3);
                     result = cardActionList3;
                     break;
             }
             return result;
         }
     }
-
 
     [CardMeta(rarity = Rarity.rare, upgradesTo = new Upgrade[] { Upgrade.A, Upgrade.B })]
     public class TimestreamLeak : Card
@@ -1371,7 +1388,6 @@
             return result;
         }
     }
-
 
     [CardMeta(rarity = Rarity.uncommon, upgradesTo = new Upgrade[] { Upgrade.A, Upgrade.B })]
     public class CorrosiveMultishot : Card
@@ -1461,7 +1477,6 @@
         }
     }
 
-
     [CardMeta(rarity = Rarity.rare, upgradesTo = new Upgrade[] { Upgrade.A, Upgrade.B })]
     public class SlimeEvolution : Card
     {
@@ -1539,7 +1554,6 @@
         }
     }
 
-
     [CardMeta(dontOffer = true, rarity = Rarity.common)]
     public class SlimeMutation : Card
     {
@@ -1568,7 +1582,6 @@
             return result;
         }
     }
-
 
     [CardMeta(dontOffer = true, rarity = Rarity.common)]
     public class SlimeBLAST : Card
@@ -1613,7 +1626,6 @@
             return result;
         }
     }
-
 
     [CardMeta(rarity = Rarity.rare, upgradesTo = new Upgrade[] { Upgrade.A, Upgrade.B })]
     public class SlimeHug : Card
@@ -1676,7 +1688,6 @@
             return result;
         }
     }
-
 
     [CardMeta(rarity = Rarity.common, upgradesTo = new Upgrade[] { Upgrade.A, Upgrade.B })]
     public class RecklessFuelshot : Card
@@ -1750,7 +1761,6 @@
         }
     }
 
-
     [CardMeta(rarity = Rarity.rare, upgradesTo = new Upgrade[] { Upgrade.A, Upgrade.B })]
     public class EnginesOnFire : Card
     {
@@ -1813,7 +1823,6 @@
             return result;
         }
     }
-
 
     [CardMeta(rarity = Rarity.rare, upgradesTo = new Upgrade[] { Upgrade.A, Upgrade.B })]
     public class HeatHoarder : Card
@@ -1899,7 +1908,6 @@
         }
     }
 
-
     [CardMeta(rarity = Rarity.common, upgradesTo = new Upgrade[] { Upgrade.A, Upgrade.B })]
     public class ShieldAlternatorA : Card
     {
@@ -1912,15 +1920,17 @@
             {
                 case Upgrade.None:
                     result.cost = 1;
+                    result.exhaust = true;
                     result.description = Loc.GetLocString(Manifest.ShieldAlternatorA?.DescLocKey ?? throw new Exception("Missing card"));
                     break;
                 case Upgrade.A:
                     result.cost = 0;
+                    result.exhaust = true;
                     result.description = Loc.GetLocString(Manifest.ShieldAlternatorA?.DescLocKey ?? throw new Exception("Missing card"));
                     break;
                 case Upgrade.B:
                     result.cost = 1;
-                    result.retain = true;
+                    result.exhaust = false;
                     result.description = Loc.GetLocString(Manifest.ShieldAlternatorA?.DescLocKey ?? throw new Exception("Missing card"));
                     break;
             }
@@ -1981,7 +1991,6 @@
         }
     }
 
-
     [CardMeta(rarity = Rarity.common)]
     public class ShieldAlternatorB : Card
     {
@@ -1990,6 +1999,7 @@
         {
             CardData result = new CardData();
             result.cost = 1;
+            result.exhaust = true;
             result.artTint = "e20fc2";
             result.description = Loc.GetLocString(Manifest.ShieldAlternatorB?.DescLocKey ?? throw new Exception("Missing card"));
             return result;
@@ -2015,7 +2025,6 @@
             return result;
         }
     }
-
 
     [CardMeta(rarity = Rarity.uncommon, upgradesTo = new Upgrade[] { Upgrade.A, Upgrade.B })]
     public class AcidicFlare : Card

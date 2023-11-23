@@ -1,7 +1,6 @@
 ﻿using CobaltCoreModding.Definitions.ExternalItems;
 using CobaltCoreModding.Definitions.ModContactPoints;
 using CobaltCoreModding.Definitions.ModManifests;
-using CorrosiveCobra.Cards;
 
 namespace CorrosiveCobra
 {
@@ -77,16 +76,16 @@ namespace CorrosiveCobra
         }
         public void LoadManifest(IShipRegistry shipRegistry)
         {
-            CorrosiveCobra_Main = new ExternalShip("CorrosiveCobra.Ship.CorrosiveCobra",
+            CorrosiveCobra_Main = new ExternalShip("CorrosiveCobra.CobraMain",
                 new Ship()
                 {
                     baseDraw = 5,
                     baseEnergy = 3,
                     heatTrigger = 3,
                     heatMin = 0,
-                    hull = 12,
-                    hullMax = 12,
-                    shieldMaxBase = 5,
+                    hull = 11,
+                    hullMax = 11,
+                    shieldMaxBase = 4,
                 },
                 new ExternalPart[] {
                     CorrosiveCobra_WingLeft ?? throw new Exception(),
@@ -106,7 +105,6 @@ namespace CorrosiveCobra
                 {
                     CorrosionBlockStarter ?? throw new Exception(),
                     CorrosionStarter ?? throw new Exception(),
-                    CorrosionStarter ?? throw new Exception(),
                 },
                 new ExternalArtifact[]{
                     UnstableTanksArtifact ?? throw new Exception("Artifact missing"),
@@ -114,10 +112,15 @@ namespace CorrosiveCobra
                 nativeStartingCards: new Type[]
                 {
                     new DodgeColorless().GetType(),
+                    new CannonColorless().GetType(),
                 },
                 nativeStartingArtifacts: new Type[]
                 {
                     new ShieldPrep().GetType()
+                },
+                exclusiveArtifacts: new ExternalArtifact[]
+                {
+                    OverdriveTanksArtifact ?? throw new Exception("Artifact missing"),
                 });
             CorrosiveCobra_StarterShip.AddLocalisation("Corrosive Cobra", "A derelict from another timeline, the Cobra specializes in corrosion attacks. Beware the fuel leaks.");
 
