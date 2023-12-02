@@ -6,6 +6,7 @@ using CorrosiveCobra.Artifacts;
 using CorrosiveCobra.Cards;
 using HarmonyLib;
 using Microsoft.Extensions.Logging;
+using Nanoray.EnumByNameSourceGenerator;
 
 // Many thanks to parchmentengineer and theirs armada mod, check them out!
 // https://github.com/parchmentEngineer/parchmentArmada/releases/
@@ -163,6 +164,8 @@ namespace CorrosiveCobra
         public static ExternalGlossary? AEvolveStatus_Glossary { get; private set; }
         public DirectoryInfo? GameRootFolder { get; set; }
 
+        [EnumByName(typeof(Spr))]
+        internal static partial class StableSpr { }
         void ISpriteManifest.LoadManifest(ISpriteRegistry artRegistry)
         {
             if (this.ModRootFolder == null)
@@ -495,7 +498,7 @@ namespace CorrosiveCobra
             {
                 CobraCardColorlessSlimeSummon = new ExternalCard("CorrosiveCobra.CobraCardColorlessSlimeSummon", typeof(CobraCardColorlessSlimeSummon), card_DefaultArt, ExternalDeck.GetRaw((int)Deck.colorless));
                 registry.RegisterCard(CobraCardColorlessSlimeSummon);
-                CobraCardColorlessSlimeSummon.AddLocalisation("Dizzy?.EXE", "Add 1 of {0} <c=cardtrait>discount, temp</c> {1} cards to your hand.");
+                CobraCardColorlessSlimeSummon.AddLocalisation("Dizzy?.EXE", "Add 1 of {0} <c=cardtrait>discount, temp</c> {1}{2} cards to your hand.");
             }
             {
                 CobraCardColorlessAbsorbArtifact = new ExternalCard("CorrosiveCobra.CobraCardColorlessAbsorbArtifact", typeof(CobraCardColorlessAbsorbArtifact), card_DefaultArt, ExternalDeck.GetRaw((int)Deck.colorless));

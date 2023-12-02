@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0" />
+    <PackageReference Include="Shockah.CobaltCoreModBuildConfig" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup>
