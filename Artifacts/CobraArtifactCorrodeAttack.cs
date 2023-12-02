@@ -18,7 +18,7 @@
           int handPosition,
           int handCount)
         {
-            if (((int)deck) == Manifest.CobraDeck!.Id!.Value)
+            if ((int)deck == Manifest.CobraDeck!.Id)
             {
                 ++this.count;
                 this.Pulse();
@@ -32,6 +32,7 @@
             aattack1.targetPlayer = false;
             combat.QueueImmediate(aattack1);
             this.count = 0;
+            this.Pulse();
         }
 
         public override List<Tooltip>? GetExtraTooltips() => new List<Tooltip>()
