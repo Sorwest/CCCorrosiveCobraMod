@@ -4,14 +4,10 @@ using CobaltCoreModding.Definitions.ModContactPoints;
 using CobaltCoreModding.Definitions.ModManifests;
 using CorrosiveCobra.Artifacts;
 using CorrosiveCobra.Cards;
+using HarmonyLib;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
 
-// Structure using parchmentengineer's armada mod, check them out!
+// Many thanks to parchmentengineer and theirs armada mod, check them out!
 // https://github.com/parchmentEngineer/parchmentArmada/releases/
 // So many thanks to EWanderer's selfless dedication to making the Cobalt Core modding community THRIVE!! Check Arin and EWanderer's collab project!
 // https://github.com/Ewanderer/CCMod.JohannaTheTrucker/releases/
@@ -36,7 +32,11 @@ namespace CorrosiveCobra
 
         public static System.Drawing.Color CorrosiveCobra_Primary_Color = System.Drawing.Color.FromArgb(107, 255, 205);
         public static string CorrosiveCobra_CharacterColH = string.Format("<c={0:X2}{1:X2}{2:X2}>", (object)CorrosiveCobra_Primary_Color.R, (object)CorrosiveCobra_Primary_Color.G, (object)CorrosiveCobra_Primary_Color.B.ToString("X2"));
-        public IEnumerable<DependencyEntry> Dependencies => Array.Empty<DependencyEntry>();
+        public IEnumerable<DependencyEntry> Dependencies => new DependencyEntry[]
+            {
+                //new DependencyEntry<IModManifest>("Shockah.Kokoro", ignoreIfMissing: false),
+                //new DependencyEntry<IModManifest>("Mezz.TwosCompany", ignoreIfMissing: false),
+            };
         public DirectoryInfo? ModRootFolder { get; set; }
         public ILogger? Logger { get; set; }
         public static ExternalShip? CorrosiveCobra_Main { get; private set; }
@@ -73,6 +73,7 @@ namespace CorrosiveCobra
         public static ExternalSprite? CorrodeAttackSprite { get; private set; }
         public static ExternalSprite? PowerAcidSprite { get; private set; }
         public static ExternalSprite? DissolventSprite { get; private set; }
+        public static ExternalSprite? DummyHeatSprite { get; private set; }
         public static ExternalSprite? IncomingCorrodeIcon { get; private set; }
         public static ExternalSprite? EvolveStatusSprite { get; private set; }
         public static ExternalSprite? HeatOutbreakStatusSprite { get; private set; }
@@ -120,6 +121,7 @@ namespace CorrosiveCobra
         public static ExternalArtifact? CobraArtifactCorrodeAttack { get; private set; }
         public static ExternalArtifact? CobraArtifactPowerAcid { get; private set; }
         public static ExternalArtifact? CobraArtifactDissolvent { get; private set; }
+        public static ExternalArtifact? CobraArtifactDummyHeat { get; private set; }
 
         //cards
         public static ExternalCard? CobraCardCorrosionStarter { get; private set; }
@@ -323,7 +325,11 @@ namespace CorrosiveCobra
                 DissolventSprite = new ExternalSprite("CorrosiveCobra.sprites.DissolventSprite", new FileInfo(path));
                 artRegistry.RegisterArt(DissolventSprite);
             }
-
+            {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Icon", Path.GetFileName("DummyHeatSprite.png"));
+                DummyHeatSprite = new ExternalSprite("CorrosiveCobra.sprites.DummyHeatSprite", new FileInfo(path));
+                artRegistry.RegisterArt(DummyHeatSprite);
+            }
 
             //card background
             {
@@ -658,7 +664,7 @@ namespace CorrosiveCobra
                     ownerDeck: CobraDeck ?? throw new Exception("missing CobraDeck."));
 
                 CobraArtifactToxicCaviar.AddLocalisation("TOXIC CAVIAR",
-                    "Lose 1 <c=status>CORRODE</c> each turn, <c=healing>and if you do</c>, the enemy gains <c=keyword>2</c>.");
+                    "Lose 1 <c=status>CORRODE</c> each turn. <c=healing>If you do</c>, the enemy gains <c=keyword>2</c>.");
 
                 registry.RegisterArtifact(CobraArtifactToxicCaviar);
             }
@@ -694,6 +700,16 @@ namespace CorrosiveCobra
                     "Gain 1 extra <c=energy>ENERGY</c> every turn. <c=hurt>The first time each turn you are dealt damage, you receive an extra 2 damage.");
 
                 registry.RegisterArtifact(CobraArtifactDissolvent);
+            }
+            {
+                CobraArtifactDummyHeat = new ExternalArtifact("CorrosiveCobra.Artifacts.CobraArtifactDummyHeat",
+                    typeof(CobraArtifactDummyHeat),
+                    DummyHeatSprite ?? throw new Exception("missing DummyHeat artifact sprite"),
+                    ownerDeck: CobraDeck ?? throw new Exception("missing CobraDeck."));
+
+                CobraArtifactDummyHeat.AddLocalisation("COBRA MISC OVERHEAT", "");
+
+                registry.RegisterArtifact(CobraArtifactDummyHeat);
             }
         }
     }

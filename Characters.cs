@@ -2,6 +2,7 @@
 using CobaltCoreModding.Definitions.ModContactPoints;
 using CobaltCoreModding.Definitions.ModManifests;
 using CorrosiveCobra.Cards;
+using CorrosiveCobra.Artifacts;
 
 namespace CorrosiveCobra
 {
@@ -20,7 +21,10 @@ namespace CorrosiveCobra
                         typeof(CobraCardHeatedEvade),
                         typeof(CobraCardHurriedDefense)
                     },
-                new Type[0],
+                new Type[]
+                    {
+                        typeof(CobraArtifactDummyHeat)
+                    },
                 CorrosiveCobra_Character_DefaultAnimation ?? throw new Exception("missing default animation"),
                 CorrosiveCobra_Character_MiniAnimation ?? throw new Exception("missing mini animation"));
                 CorrosiveCobra_Character.AddNameLocalisation(CorrosiveCobra_CharacterColH + "Dizzy?</c>", "en");

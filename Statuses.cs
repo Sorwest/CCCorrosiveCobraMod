@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using CobaltCoreModding.Definitions.ExternalItems;
 using CobaltCoreModding.Definitions.ModContactPoints;
-
+using CorrosiveCobra.Artifacts;
 using HarmonyLib;
 
 namespace CorrosiveCobra
@@ -31,7 +31,7 @@ namespace CorrosiveCobra
             }
             {
                 HeatControlStatus = new ExternalStatus("CorrosiveCobra.Status.HeatControlStatus", true, CorrosiveCobra_Primary_Color, null, HeatControlStatusSprite ?? throw new Exception("MissingSprite"), true);
-                HeatControlStatus.AddLocalisation("Heat Control", "At the end of turn, your overheat limit increases by <c=keyword>1<c/> <c=healing>permanently</c>, <c=hurt>then decrease this by 1</c>.");
+                HeatControlStatus.AddLocalisation("Heat Control", "At the end of turn, your overheat trigger increases by <c=keyword>1<c/> <c=healing>permanently</c>, <c=hurt>then decrease this by 1</c>.");
                 statusRegistry.RegisterStatus(HeatControlStatus);
             }
         }
@@ -59,7 +59,7 @@ namespace CorrosiveCobra
                 harmony.Patch(method1, prefix: new HarmonyMethod(method2));
             }
         }
-        private static void EvolveOnDraw(State s, Combat c)
+        private static void EvolveOnDraw(Card __instance, State s, Combat c)
         {
             if (Manifest.EvolveStatus?.Id == null)
                 return;
@@ -67,10 +67,7 @@ namespace CorrosiveCobra
             var amount = s.ship.Get(status);
             if (amount != 0)
             {
-                int index = c.hand.Count - 1;
-                if (index < 0)
-                    return;
-                var deck = c.hand[index].GetMeta().deck;
+                var deck = __instance.GetMeta().deck;
                 if (deck == Deck.trash || deck == Deck.corrupted)
                 {
                     s.ship.PulseStatus(status);
