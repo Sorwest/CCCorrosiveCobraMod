@@ -26,7 +26,7 @@ namespace CorrosiveCobra
             }
             {
                 HeatOutbreakStatus = new ExternalStatus("CorrosiveCobra.Status.HeatOutbreakStatus", true, CorrosiveCobra_Primary_Color, null, HeatOutbreakStatusSprite ?? throw new Exception("MissingSprite"), true);
-                HeatOutbreakStatus.AddLocalisation("Heat Outbreak", "At the end of turn, the enemy is dealt {0} damage per <c=status>heat</c> stack.");
+                HeatOutbreakStatus.AddLocalisation("Heat Outbreak", "At the end of turn, the enemy is dealt {0} damage per <c=status>heat</c> stack you both have.");
                 statusRegistry.RegisterStatus(HeatOutbreakStatus);
             }
             {
