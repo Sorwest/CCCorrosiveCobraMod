@@ -1169,7 +1169,7 @@ namespace CorrosiveCobra
                             type = NodeType.combat,
                             oncePerRun = true,
                             enemyShotJustHit = true,
-                            maxDamageDealtToPlayerThisTurn = 1,
+                            minDamageBlockedByPlayerArmorThisTurn = 1,
                             oncePerCombatTags = new HashSet<string>()
                             {
                                 "WowArmorISPrettyCoolHuh"
@@ -1197,7 +1197,7 @@ namespace CorrosiveCobra
                             type = NodeType.combat,
                             oncePerRun = true,
                             enemyShotJustHit = true,
-                            maxDamageDealtToPlayerThisTurn = 1,
+                            minDamageBlockedByPlayerArmorThisTurn = 1,
                             oncePerCombatTags = new HashSet<string>()
                             {
                                 "WowArmorISPrettyCoolHuh"
@@ -1217,6 +1217,33 @@ namespace CorrosiveCobra
                             },
                         });
                     storyRegistry.RegisterStory(SlimeBlockedAnEnemyAttackWithArmor_Multi_1);
+                }
+                {
+                    var SlimeBlockedAnEnemyAttackWithArmor_Multi_2 = new ExternalStory("CorrosiveCobra.Story.SlimeBlockedAnEnemyAttackWithArmor_Multi_2",
+                        new StoryNode()
+                        {
+                            type = NodeType.combat,
+                            enemyShotJustHit = true,
+                            minDamageBlockedByPlayerArmorThisTurn = 1,
+                            oncePerRun = true,
+                            oncePerCombatTags = new HashSet<string>()
+                            {
+                            "WowArmorISPrettyCoolHuh"
+                            },
+                            allPresent = new HashSet<string>()
+                            {
+                            SlimeWho
+                            }
+                        },
+                        new List<object>()
+                        {
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                What = "Maybe we should armor up the kitchen too.",
+                            },
+                        });
+                    storyRegistry.RegisterStory(SlimeBlockedAnEnemyAttackWithArmor_Multi_2);
                 }
             }
             //SlimeBlockedALotOfAttacksWithArmor_Multi
@@ -1248,33 +1275,6 @@ namespace CorrosiveCobra
                 storyRegistry.RegisterStory(SlimeBlockedALotOfAttacksWithArmor_Multi_0);
             }
             //SlimeBlockedAnEnemyAttackWithArmor_Multi
-            {
-                var SlimeBlockedAnEnemyAttackWithArmor_Multi_0 = new ExternalStory("CorrosiveCobra.Story.SlimeBlockedAnEnemyAttackWithArmor_Multi_0",
-                    new StoryNode()
-                    {
-                        type = NodeType.combat,
-                        enemyShotJustHit = true,
-                        minDamageBlockedByPlayerArmorThisTurn = 1,
-                        oncePerRun = true,
-                        oncePerCombatTags = new HashSet<string>()
-                        {
-                            "WowArmorISPrettyCoolHuh"
-                        },
-                        allPresent = new HashSet<string>()
-                        {
-                            SlimeWho
-                        }
-                    },
-                    new List<object>()
-                    {
-                        new ExternalStory.ExternalSay()
-                        {
-                            Who = SlimeWho,
-                            What = "Maybe we should armor up the kitchen too.",
-                        },
-                    });
-                storyRegistry.RegisterStory(SlimeBlockedAnEnemyAttackWithArmor_Multi_0);
-            }
             //SlimeThatsALotOfDamageToThem_Multi
             {
                 var SlimeThatsALotOfDamageToThem_Multi_0 = new ExternalStory("CorrosiveCobra.Story.SlimeThatsALotOfDamageToThem_Multi_0",
