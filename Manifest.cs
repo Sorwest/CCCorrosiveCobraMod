@@ -6,7 +6,6 @@ using CorrosiveCobra.Artifacts;
 using CorrosiveCobra.Cards;
 using HarmonyLib;
 using Microsoft.Extensions.Logging;
-using Nanoray.EnumByNameSourceGenerator;
 
 // Many thanks to parchmentengineer and theirs armada mod, check them out!
 // https://github.com/parchmentEngineer/parchmentArmada/releases/
@@ -35,8 +34,6 @@ namespace CorrosiveCobra
         public static string CorrosiveCobra_CharacterColH = string.Format("<c={0:X2}{1:X2}{2:X2}>", (object)CorrosiveCobra_Primary_Color.R, (object)CorrosiveCobra_Primary_Color.G, (object)CorrosiveCobra_Primary_Color.B.ToString("X2"));
         public IEnumerable<DependencyEntry> Dependencies => new DependencyEntry[]
             {
-                //new DependencyEntry<IModManifest>("Shockah.Kokoro", ignoreIfMissing: false),
-                //new DependencyEntry<IModManifest>("Mezz.TwosCompany", ignoreIfMissing: false),
             };
         public DirectoryInfo? ModRootFolder { get; set; }
         public ILogger? Logger { get; set; }
@@ -163,9 +160,6 @@ namespace CorrosiveCobra
         public static ExternalGlossary? AIncomingCorrode_Glossary { get; private set; }
         public static ExternalGlossary? AEvolveStatus_Glossary { get; private set; }
         public DirectoryInfo? GameRootFolder { get; set; }
-
-        [EnumByName(typeof(Spr))]
-        internal static partial class StableSpr { }
         void ISpriteManifest.LoadManifest(ISpriteRegistry artRegistry)
         {
             if (this.ModRootFolder == null)

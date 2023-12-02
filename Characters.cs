@@ -23,7 +23,7 @@ namespace CorrosiveCobra
                     },
                 new Type[]
                     {
-                        typeof(CobraArtifactDummyHeat)
+                        //typeof(CobraArtifactDummyHeat)
                     },
                 CorrosiveCobra_Character_DefaultAnimation ?? throw new Exception("missing default animation"),
                 CorrosiveCobra_Character_MiniAnimation ?? throw new Exception("missing mini animation"));
