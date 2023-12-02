@@ -33,6 +33,9 @@ namespace CorrosiveCobra
         IGlossaryManifest
     {
         public string Name => "Sorwest.CorrosiveCobra";
+
+        public static System.Drawing.Color CorrosiveCobra_Primary_Color = System.Drawing.Color.FromArgb(107, 255, 205);
+        public static string CorrosiveCobra_CharacterColH = string.Format("<c={0:X2}{1:X2}{2:X2}>", (object)CorrosiveCobra_Primary_Color.R, (object)CorrosiveCobra_Primary_Color.G, (object)CorrosiveCobra_Primary_Color.B.ToString("X2"));
         public IEnumerable<DependencyEntry> Dependencies => Array.Empty<DependencyEntry>();
         public DirectoryInfo? ModRootFolder { get; set; }
         public ILogger? Logger { get; set; }
@@ -140,7 +143,7 @@ namespace CorrosiveCobra
         public static ExternalCard? CobraCardSlimeBLAST { get; private set; }
         public static ExternalCard? CobraCardSlimeHug { get; private set; }
         public static ExternalCard? CobraCardRecklessFuelshot { get; private set; }
-        public static ExternalCard? CobraCardAbsorbArtifact { get; private set; }
+        public static ExternalCard? CobraCardColorlessAbsorbArtifact { get; private set; }
         public static ExternalCard? CobraCardEnginesOnFire { get; private set; }
         public static ExternalCard? CobraCardHeatHoarder { get; private set; }
         public static ExternalCard? CobraCardShieldAlternatorA { get; private set; }
@@ -489,9 +492,9 @@ namespace CorrosiveCobra
                 CobraCardColorlessSlimeSummon.AddLocalisation("Dizzy?.EXE", "Add 1 of {0} <c=cardtrait>discount, temp</c> <c={1}>{2}</c> cards to your hand.");
             }
             {
-                CobraCardAbsorbArtifact = new ExternalCard("CorrosiveCobra.CobraCardAbsorbArtifact", typeof(CobraCardAbsorbArtifact), card_DefaultArt, ExternalDeck.GetRaw((int)Deck.colorless));
-                registry.RegisterCard(CobraCardAbsorbArtifact);
-                CobraCardAbsorbArtifact.AddLocalisation("Absorb Artifact", desc: "<c=hurt>Lose a random artifact</c>. <c=healing>Heal 10</c>.");
+                CobraCardColorlessAbsorbArtifact = new ExternalCard("CorrosiveCobra.CobraCardColorlessAbsorbArtifact", typeof(CobraCardColorlessAbsorbArtifact), card_DefaultArt, ExternalDeck.GetRaw((int)Deck.colorless));
+                registry.RegisterCard(CobraCardColorlessAbsorbArtifact);
+                CobraCardColorlessAbsorbArtifact.AddLocalisation("Absorb Artifact", desc: "<c=hurt>Lose a random artifact</c>. <c=healing>Heal 10</c>.");
             }
 
             //CORROSIVE COBRA Cards

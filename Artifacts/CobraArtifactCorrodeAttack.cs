@@ -1,0 +1,42 @@
+﻿namespace CorrosiveCobra.Artifacts
+{
+    [ArtifactMeta(pools = new ArtifactPool[] { ArtifactPool.Common })]
+    public class CobraArtifactCorrodeAttack : Artifact
+    {
+        public override string Name() => "ACID ARSENAL";
+        public int count;
+        private const int TRIGGER_POINT = 7;
+
+        public override int? GetDisplayNumber(State s) => new int?(this.count);
+
+        public override void OnPlayerPlayCard(
+          int energyCost,
+          Deck deck,
+          Card card,
+          State state,
+          Combat combat,
+          int handPosition,
+          int handCount)
+        {
+            if (((int)deck) == Manifest.CobraDeck!.Id.Value)
+            {
+                ++this.count;
+                this.Pulse();
+            }
+            if (this.count < TRIGGER_POINT)
+                return;
+            AAttack aattack1 = new AAttack();
+            aattack1.damage = card.GetDmg(state, 0);
+            aattack1.status = Status.corrode;
+            aattack1.statusAmount = 1;
+            aattack1.targetPlayer = false;
+            combat.QueueImmediate(aattack1);
+            this.count = 0;
+        }
+
+        public override List<Tooltip>? GetExtraTooltips() => new List<Tooltip>()
+        {
+            (Tooltip) new TTGlossary("status.corrode", 1),
+        };
+    }
+}

@@ -1,0 +1,44 @@
+﻿using CorrosiveCobra.Cards;
+
+namespace CorrosiveCobra.Artifacts
+{
+    [ArtifactMeta(owner = Deck.colorless, pools = new ArtifactPool[] { ArtifactPool.EventOnly }, unremovable = true)]
+    public class CobraArtifactUnstableTanks : Artifact
+    {
+        public override string Name() => "UNSTABLE FUELTANKS";
+        public override void OnReceiveArtifact(State state)
+        {
+            state.ship.baseEnergy += 1;
+        }
+        public override void OnRemoveArtifact(State state)
+        {
+            state.ship.baseEnergy -= 1;
+        }
+        public override void OnTurnStart(State state, Combat combat)
+        {
+            Combat combat1 = combat;
+            AStatus astatus1 = new AStatus();
+            astatus1.status = Status.heat;
+            astatus1.statusAmount = 1;
+            astatus1.targetPlayer = true;
+            astatus1.artifactPulse = this.Key();
+            combat1.QueueImmediate((CardAction)astatus1);
+            if (combat.turn != 1)
+                return;
+            AAddCard aaddCard1 = new AAddCard();
+            CobraCardLeakingContainer leakingContainer1 = new CobraCardLeakingContainer();
+            leakingContainer1.temporaryOverride = true;
+            aaddCard1.card = (Card)leakingContainer1;
+            aaddCard1.destination = CardDestination.Hand;
+            combat.QueueImmediate((CardAction)aaddCard1);
+        }
+
+        public override List<Tooltip>? GetExtraTooltips() => new List<Tooltip>()
+        {
+            (Tooltip) new TTCard()
+            {
+                card = (Card) new Cards.CobraCardLeakingContainer()
+            }
+        };
+    }
+}

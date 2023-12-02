@@ -9,9 +9,6 @@ namespace CorrosiveCobra
         ICharacterManifest,
         IAnimationManifest
     {
-
-        private static System.Drawing.Color CorrosiveCobra_Primary_Color = System.Drawing.Color.FromArgb(107, 255, 205);
-        private static string CorrosiveCobra_CharacterColH = string.Format("<c={0:X2}{1:X2}{2:X2}>", (object)CorrosiveCobra_Primary_Color.R, (object)CorrosiveCobra_Primary_Color.G, (object)CorrosiveCobra_Primary_Color.B.ToString("X2"));
         void ICharacterManifest.LoadManifest(ICharacterRegistry registry)
         {
             {
@@ -26,7 +23,7 @@ namespace CorrosiveCobra
                 new Type[0],
                 CorrosiveCobra_Character_DefaultAnimation ?? throw new Exception("missing default animation"),
                 CorrosiveCobra_Character_MiniAnimation ?? throw new Exception("missing mini animation"));
-                CorrosiveCobra_Character.AddNameLocalisation(CorrosiveCobra_CharacterColH + "Dizzy?</c>",  "en");
+                CorrosiveCobra_Character.AddNameLocalisation(CorrosiveCobra_CharacterColH + "Dizzy?</c>", "en");
                 CorrosiveCobra_Character.AddDescLocalisation(CorrosiveCobra_CharacterColH + "DIZZY?</c>\nA friend from another timeline. His cards play with <c=keyword>heat and corrode</c>, for better, or <c=hurt>worse</c>. His jokes are still funny.", "en");
                 registry.RegisterCharacter(CorrosiveCobra_Character);
             }
