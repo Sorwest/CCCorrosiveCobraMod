@@ -80,6 +80,7 @@ namespace CorrosiveCobra
         public static ExternalSprite? PowerAcidSprite { get; private set; }
         public static ExternalSprite? DissolventSprite { get; private set; }
         public static ExternalSprite? DummyHeatSprite { get; private set; }
+        public static ExternalSprite? FuelWallsSprite { get; private set; }
         public static ExternalSprite? IncomingCorrodeIcon { get; private set; }
         public static ExternalSprite? EvolveStatusSprite { get; private set; }
         public static ExternalSprite? HeatOutbreakStatusSprite { get; private set; }
@@ -129,10 +130,12 @@ namespace CorrosiveCobra
         public static ExternalArtifact? CobraArtifactPowerAcid { get; private set; }
         public static ExternalArtifact? CobraArtifactDissolvent { get; private set; }
         public static ExternalArtifact? CobraArtifactDummyHeat { get; private set; }
+        public static ExternalArtifact? CobraArtifactFuelWalls { get; private set; }
 
         //cards
         public static ExternalCard? CobraCardCorrosionStarter { get; private set; }
         public static ExternalCard? CobraCardCorrosionBlockStarter { get; private set; }
+        public static ExternalCard? CobraCardFuelWall { get; private set; }
         public static ExternalCard? CobraCardFuelEjection { get; private set; }
         public static ExternalCard? CobraCardTankThrow { get; private set; }
         public static ExternalCard? CobraCardHeatedEvade { get; private set; }
@@ -380,6 +383,11 @@ namespace CorrosiveCobra
                     DummyHeatSprite = new ExternalSprite("CorrosiveCobra.sprites.DummyHeatSprite", new FileInfo(path));
                     artRegistry.RegisterArt(DummyHeatSprite);
                 }
+                {
+                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Icon", Path.GetFileName("FuelWallsSprite.png"));
+                    FuelWallsSprite = new ExternalSprite("CorrosiveCobra.sprites.FuelWallsSprite", new FileInfo(path));
+                    artRegistry.RegisterArt(FuelWallsSprite);
+                }
             }
             //card background
             {
@@ -572,6 +580,11 @@ namespace CorrosiveCobra
                 CobraCardCorrosionBlockStarter = new ExternalCard("CorrosiveCobra.CobraCardCorrosionBlockStarter", typeof(CobraCardCorrosionBlockStarter), card_DefaultArt, ExternalDeck.GetRaw((int)Deck.colorless));
                 registry.RegisterCard(CobraCardCorrosionBlockStarter);
                 CobraCardCorrosionBlockStarter.AddLocalisation("Basic Heat Protection");
+            }
+            {
+                CobraCardFuelWall = new ExternalCard("CorrosiveCobra.CobraCardFuelWall", typeof(CobraCardFuelWall), card_DefaultArt, ExternalDeck.GetRaw((int)Deck.colorless));
+                registry.RegisterCard(CobraCardFuelWall);
+                CobraCardFuelWall.AddLocalisation("Adv. Heat Protection");
             }
 
             // DIZZY SLIME CARDS
@@ -768,6 +781,15 @@ namespace CorrosiveCobra
                 CobraArtifactDummyHeat.AddLocalisation("MISC ARTIFACT", "<c=status>OVERHEAT TRIGGER</c>.");
 
                 registry.RegisterArtifact(CobraArtifactDummyHeat);
+            }
+            {
+                CobraArtifactFuelWalls = new ExternalArtifact("CorrosiveCobra.Artifacts.CobraArtifactFuelWalls",
+                    typeof(CobraArtifactFuelWalls),
+                    FuelWallsSprite ?? throw new Exception("missing FuelWalls artifact sprite"));
+
+                CobraArtifactFuelWalls.AddLocalisation("FUEL WALLS", "(Corrosive Cobra-excluse artifact!)\n<c=healing>Add 3 <c=card>Adv. Heat Protection</c> to your deck.</c>");
+
+                registry.RegisterArtifact(CobraArtifactFuelWalls);
             }
         }
     }

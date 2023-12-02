@@ -35,6 +35,7 @@
             var result = new List<CardAction>();
             List<CardAction> cardActionList1 = new List<CardAction>();
             AAttack aattack1 = new AAttack();
+            aattack1.dialogueSelector = ".playedSlimeBLAST";
             aattack1.damage = GetDmg(s, 2 * GetStatusAmount(s));
             aattack1.targetPlayer = false;
             cardActionList1.Add(aattack1);

@@ -10,141 +10,6 @@ namespace CorrosiveCobra
             var SlimeWho = (CobraDeck ?? throw new Exception("Missing CobraDeck")).GlobalName;
             var DaveWho = "rft.Dave.DaveDeck";
             var JohannaWho = "JohannaTheTrucker.JohannaDeck";
-            //LeakingContainerPlayedAndSlimeIsHere_Multi
-            // (TO FIX) MODDED TO DO
-            {
-                var LeakingContainerPlayedAndSlimeIsHere_Multi_0 = new ExternalStory("CorrosiveCobra.Story.LeakingContainerPlayedAndSlimeIsHere_Multi_0",
-                    new StoryNode() // Native CobaltCore class, containing numerous options regarding the shout's trigger. Listed are only the most common, but feel free to explore
-                    {
-                        type = NodeType.combat, // Mark the story as a combat shout
-                        priority = true, // Forces this story to be selected before other valid ones when the database is queried, useful for debugging.
-
-                        once = false,
-                        oncePerCombat = true,
-                        oncePerRun = false, // Self explanatory
-
-                        lookup = new HashSet<string>() // This is a list of tags that queries look for in various situations, very useful for triggering shouts in specific situations !
-                        {
-                            "leakingContainerShout" // We'll feed this string to a CardAction's dialogueSelector field in EWandererDemoCard, so that this shout triggers when we play the upgrade B of the card
-                        },
-
-                        allPresent = new HashSet<string>() // this checks for the presence of a list of characters.
-                        {
-                            SlimeWho,
-                        }
-                    },
-                    new List<object>()
-                    {
-                        new ExternalStory.ExternalSay()
-                        {
-                            Who = SlimeWho,
-                            Delay = 0,
-                            What = "Have we always had a hole in the fuel tanks?",
-                            LoopTag = "laugh" // the specific animation that should play during the shout. "neutral" is default
-                        },
-                        new SaySwitch()
-                        {
-                            lines = new List<Say> {
-                                new Say()
-                                {
-                                    who = "dizzy",
-                                    loopTag = "explains",
-                                    hash = "dizzyLeakingContainer"
-                                },
-                                new Say()
-                                {
-                                    who = "riggs",
-                                    loopTag = "nervous",
-                                    hash = "riggsLeakingContainer"
-                                },
-                                new Say()
-                                {
-                                    who = "peri",
-                                    loopTag = "panic",
-                                    hash = "periLeakingContainer"
-                                },
-                                new Say()
-                                {
-                                    who = "max",
-                                    loopTag = "smile",
-                                    hash = "maxLeakingContainer"
-                                },
-                                new Say() {
-                                    who = "eunice",
-                                    loopTag = "mad",
-                                    hash = "drakeLeakingContainer"
-                                },
-                                new Say() {
-                                    who = "books",
-                                    loopTag = "stoked",
-                                    hash = "booksLeakingContainer"
-                                },
-                                //MODDED CHARACTERS
-                                new Say() {
-                                    who = DaveWho,
-                                    hash = "daveLeakingContainer"
-                                },
-                            }
-                        }
-                        /*
-                        new ExternalStory.ExternalSaySwitch()
-                        {
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = "dizzy",
-                                LoopTag = "explains",
-                                What = "Oh. Don't let Peri go there."
-                            },
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = "riggs",
-                                LoopTag = "nervous",
-                                What = "Ah! I spilled my boba!"
-                            },
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = "peri",
-                                LoopTag = "panic",
-                                What = "WHY ARE WE BREAKING OUR SHIP?"
-                            },
-                            new ExternalStory.ExternalSay() {
-                                Who = "goat",
-                                LoopTag = "panic",
-                                What = "OH MY GOD. THE SHIP IS BREAKING!"
-                            },
-                            new ExternalStory.ExternalSay() {
-                                Who = "eunice",
-                                LoopTag = "mad",
-                                What = "What?! We're not WAITING! Let's PUNCH 'EM!"
-                            },
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = "max",
-                                LoopTag = "smile",
-                                What = "Work smarter, not harder"
-                            },
-                            new ExternalStory.ExternalSay() {
-                                Who = "books",
-                                LoopTag = "stoked",
-                                What = "Oooh!"
-                            },
-                            //MODDED CHARACTERS
-                            new ExternalStory.ExternalSay() {
-                                Who = DaveWho,
-                                What = "Is this a high roll?"
-                            },
-                        }
-                         */
-                    });
-                LeakingContainerPlayedAndSlimeIsHere_Multi_0.AddLocalisation("dizzyLeakingContainer", "Oh. Don't let Peri go there.");
-                LeakingContainerPlayedAndSlimeIsHere_Multi_0.AddLocalisation("riggsLeakingContainer", "Ah! I spilled my boba!");
-                LeakingContainerPlayedAndSlimeIsHere_Multi_0.AddLocalisation("periLeakingContainer", "WHY ARE WE BREAKING OUR SHIP?");
-                LeakingContainerPlayedAndSlimeIsHere_Multi_0.AddLocalisation("maxLeakingContainer", "Work smarter, not harder");
-                LeakingContainerPlayedAndSlimeIsHere_Multi_0.AddLocalisation("drakeLeakingContainer", "What?! We're not WAITING! Let's PUNCH 'EM!");
-                LeakingContainerPlayedAndSlimeIsHere_Multi_0.AddLocalisation("booksLeakingContainer", "Oooh!");
-                LeakingContainerPlayedAndSlimeIsHere_Multi_0.AddLocalisation("daveLeakingContainer", "Is this a high roll?");
-                storyRegistry.RegisterStory(LeakingContainerPlayedAndSlimeIsHere_Multi_0);
-            }
             //SlimeHeatIncrease_Multi
             {
                 var SlimeHeatIncrease_Multi_0 = new ExternalStory("CorrosiveCobra.Story.SlimeHeatIncrease_Multi0",
@@ -3463,10 +3328,447 @@ namespace CorrosiveCobra
                         new ExternalStory.ExternalSay()
                         {
                             Who = SlimeWho,
+                            LoopTag = "laugh",
                             What = "Everyone knows Green makes stuff Stronger.",
                         },
                     });
                 storyRegistry.RegisterStory(SlimeArtifactWarpMastery_Multi_0);
+            }
+            //SlimeArtifactArmoredBay_Multi
+            {
+                {
+                    var SlimeArtifactArmoredBay_Multi_0 = new ExternalStory("CorrosiveCobra.Story.SlimeArtifactArmoredBay_Multi_0",
+                        new StoryNode()
+                        {
+                            type = NodeType.combat,
+                            enemyShotJustHit = true,
+                            minDamageBlockedByPlayerArmorThisTurn = 1,
+                            oncePerCombatTags = new HashSet<string>()
+                            {
+                                "ArmoredBae"
+                            },
+                            hasArtifacts = new HashSet<string>()
+                            {
+                               "ArmoredBay"
+                            },
+                            allPresent = new HashSet<string>()
+                            {
+                                SlimeWho,
+                            },
+                        },
+                        new List<object>()
+                            {
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                What = "In my timeline, we armored the Artemis' cockpit. It was Easy Mode.",
+                            },
+                        });
+                    storyRegistry.RegisterStory(SlimeArtifactArmoredBay_Multi_0);
+                }
+                {
+                    var SlimeArtifactArmoredBay_Multi_1 = new ExternalStory("CorrosiveCobra.Story.SlimeArtifactArmoredBay_Multi_1",
+                        new StoryNode()
+                        {
+                            type = NodeType.combat,
+                            enemyShotJustHit = true,
+                            minDamageBlockedByPlayerArmorThisTurn = 1,
+                            oncePerCombatTags = new HashSet<string>()
+                            {
+                                "ArmoredBae"
+                            },
+                            hasArtifacts = new HashSet<string>()
+                            {
+                               "ArmoredBay"
+                            },
+                            allPresent = new HashSet<string>()
+                            {
+                                SlimeWho,
+                            },
+                        },
+                        new List<object>()
+                            {
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                What = "In my timeline, we armored the Gemini's cannons. It was Easy Mode.",
+                            },
+                        });
+                    storyRegistry.RegisterStory(SlimeArtifactArmoredBay_Multi_1);
+                }
+                {
+                    var SlimeArtifactArmoredBay_Multi_2 = new ExternalStory("CorrosiveCobra.Story.SlimeArtifactArmoredBay_Multi_2",
+                        new StoryNode()
+                        {
+                            type = NodeType.combat,
+                            enemyShotJustHit = true,
+                            minDamageBlockedByPlayerArmorThisTurn = 1,
+                            oncePerCombatTags = new HashSet<string>()
+                            {
+                                "ArmoredBae"
+                            },
+                            hasArtifacts = new HashSet<string>()
+                            {
+                               "ArmoredBay"
+                            },
+                            allPresent = new HashSet<string>()
+                            {
+                                SlimeWho,
+                            },
+                        },
+                        new List<object>()
+                            {
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                What = "In my timeline, we armored the Jupiter's comms. It was Easy Mode.",
+                            },
+                        });
+                    storyRegistry.RegisterStory(SlimeArtifactArmoredBay_Multi_2);
+                }
+                {
+                    var SlimeArtifactArmoredBay_Multi_3 = new ExternalStory("CorrosiveCobra.Story.SlimeArtifactArmoredBay_Multi_3",
+                        new StoryNode()
+                        {
+                            type = NodeType.combat,
+                            enemyShotJustHit = true,
+                            minDamageBlockedByPlayerArmorThisTurn = 1,
+                            oncePerCombatTags = new HashSet<string>()
+                            {
+                                "ArmoredBae"
+                            },
+                            hasArtifacts = new HashSet<string>()
+                            {
+                               "ArmoredBay"
+                            },
+                            allPresent = new HashSet<string>()
+                            {
+                                SlimeWho,
+                            },
+                        },
+                        new List<object>()
+                            {
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                What = "In my timeline, we didn't even armor the Ares' cannons. It was Easy Mode either way.",
+                            },
+                        });
+                    storyRegistry.RegisterStory(SlimeArtifactArmoredBay_Multi_3);
+                }
+            }
+            // CARD LOOK UPS
+            //LeakingContainerPlayedAndSlimeIsHere_Multi
+            // (TO FIX) MODDED TO DO
+            {
+                var LeakingContainerPlayedAndSlimeIsHere_Multi_0 = new ExternalStory("CorrosiveCobra.Story.LeakingContainerPlayedAndSlimeIsHere_Multi_0",
+                    new StoryNode() // Native CobaltCore class, containing numerous options regarding the shout's trigger. Listed are only the most common, but feel free to explore
+                    {
+                        type = NodeType.combat, // Mark the story as a combat shout
+                        priority = true, // Forces this story to be selected before other valid ones when the database is queried, useful for debugging.
+
+                        once = false,
+                        oncePerCombat = true,
+                        oncePerRun = false, // Self explanatory
+
+                        lookup = new HashSet<string>() // This is a list of tags that queries look for in various situations, very useful for triggering shouts in specific situations !
+                        {
+                            "leakingContainerShout" // We'll feed this string to a CardAction's dialogueSelector field in EWandererDemoCard, so that this shout triggers when we play the upgrade B of the card
+                        },
+
+                        allPresent = new HashSet<string>() // this checks for the presence of a list of characters.
+                        {
+                            SlimeWho,
+                        }
+                    },
+                    new List<object>()
+                    {
+                        new ExternalStory.ExternalSay()
+                        {
+                            Who = SlimeWho,
+                            Delay = 0,
+                            What = "Have we always had a hole in the fuel tanks?",
+                            LoopTag = "laugh" // the specific animation that should play during the shout. "neutral" is default
+                        },
+                        new SaySwitch()
+                        {
+                            lines = new List<Say> {
+                                new Say()
+                                {
+                                    who = "dizzy",
+                                    loopTag = "explains",
+                                    hash = "dizzyLeakingContainer"
+                                },
+                                new Say()
+                                {
+                                    who = "riggs",
+                                    loopTag = "nervous",
+                                    hash = "riggsLeakingContainer"
+                                },
+                                new Say()
+                                {
+                                    who = "peri",
+                                    loopTag = "panic",
+                                    hash = "periLeakingContainer"
+                                },
+                                new Say()
+                                {
+                                    who = "max",
+                                    loopTag = "smile",
+                                    hash = "maxLeakingContainer"
+                                },
+                                new Say() {
+                                    who = "eunice",
+                                    loopTag = "mad",
+                                    hash = "drakeLeakingContainer"
+                                },
+                                new Say() {
+                                    who = "books",
+                                    loopTag = "stoked",
+                                    hash = "booksLeakingContainer"
+                                },
+                                //MODDED CHARACTERS
+                                new Say() {
+                                    who = DaveWho,
+                                    hash = "daveLeakingContainer"
+                                },
+                            }
+                        }
+                        /*
+                        new ExternalStory.ExternalSaySwitch()
+                        {
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = "dizzy",
+                                LoopTag = "explains",
+                                What = "Oh. Don't let Peri go there."
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = "riggs",
+                                LoopTag = "nervous",
+                                What = "Ah! I spilled my boba!"
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = "peri",
+                                LoopTag = "panic",
+                                What = "WHY ARE WE BREAKING OUR SHIP?"
+                            },
+                            new ExternalStory.ExternalSay() {
+                                Who = "goat",
+                                LoopTag = "panic",
+                                What = "OH MY GOD. THE SHIP IS BREAKING!"
+                            },
+                            new ExternalStory.ExternalSay() {
+                                Who = "eunice",
+                                LoopTag = "mad",
+                                What = "What?! We're not WAITING! Let's PUNCH 'EM!"
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = "max",
+                                LoopTag = "smile",
+                                What = "Work smarter, not harder"
+                            },
+                            new ExternalStory.ExternalSay() {
+                                Who = "books",
+                                LoopTag = "stoked",
+                                What = "Oooh!"
+                            },
+                            //MODDED CHARACTERS
+                            new ExternalStory.ExternalSay() {
+                                Who = DaveWho,
+                                What = "Is this a high roll?"
+                            },
+                        }
+                         */
+                    });
+                LeakingContainerPlayedAndSlimeIsHere_Multi_0.AddLocalisation("dizzyLeakingContainer", "Oh. Don't let Peri go there.");
+                LeakingContainerPlayedAndSlimeIsHere_Multi_0.AddLocalisation("riggsLeakingContainer", "Ah! I spilled my boba!");
+                LeakingContainerPlayedAndSlimeIsHere_Multi_0.AddLocalisation("periLeakingContainer", "WHY ARE WE BREAKING OUR SHIP?");
+                LeakingContainerPlayedAndSlimeIsHere_Multi_0.AddLocalisation("maxLeakingContainer", "Work smarter, not harder");
+                LeakingContainerPlayedAndSlimeIsHere_Multi_0.AddLocalisation("drakeLeakingContainer", "What?! We're not WAITING! Let's PUNCH 'EM!");
+                LeakingContainerPlayedAndSlimeIsHere_Multi_0.AddLocalisation("booksLeakingContainer", "Oooh!");
+                LeakingContainerPlayedAndSlimeIsHere_Multi_0.AddLocalisation("daveLeakingContainer", "Is this a high roll?");
+                storyRegistry.RegisterStory(LeakingContainerPlayedAndSlimeIsHere_Multi_0);
+            }
+            //addedSlimeMutation_Multi
+            {
+                {
+                    var addedSlimeMutation_Multi_0 = new ExternalStory("CorrosiveCobra.Story.addedSlimeMutation_Multi_0",
+                        new StoryNode()
+                        {
+                            type = NodeType.combat,
+                            priority = true,
+                            oncePerCombat = true,
+                            oncePerRun = true,
+                            lookup = new HashSet<string>()
+                            {
+                            "addedSlimeMutation"
+                            },
+
+                            allPresent = new HashSet<string>()
+                            {
+                            SlimeWho,
+                            }
+                        },
+                        new List<object>()
+                        {
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                LoopTag = "dark",
+                                What = "KAME...",
+                            },
+                        });
+                    storyRegistry.RegisterStory(addedSlimeMutation_Multi_0);
+                }
+                {
+                    var addedSlimeMutation_Multi_1 = new ExternalStory("CorrosiveCobra.Story.addedSlimeMutation_Multi_1",
+                        new StoryNode()
+                        {
+                            type = NodeType.combat,
+                            oncePerCombat = true,
+                            lookup = new HashSet<string>()
+                            {
+                            "addedSlimeMutation"
+                            },
+
+                            allPresent = new HashSet<string>()
+                            {
+                            SlimeWho,
+                            }
+                        },
+                        new List<object>()
+                        {
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                LoopTag = "squint",
+                                What = "I'm changing...",
+                            },
+                        });
+                    storyRegistry.RegisterStory(addedSlimeMutation_Multi_1);
+                }
+            }
+            //addedSlimeBLAST
+            {
+                {
+                    var addedSlimeBLAST_Multi_0 = new ExternalStory("CorrosiveCobra.Story.addedSlimeBLAST_Multi_0",
+                        new StoryNode()
+                        {
+                            type = NodeType.combat,
+                            priority = true,
+                            oncePerCombat = true,
+                            oncePerRun = true,
+                            lookup = new HashSet<string>()
+                            {
+                            "addedSlimeBLAST"
+                            },
+
+                            allPresent = new HashSet<string>()
+                            {
+                            SlimeWho,
+                            }
+                        },
+                        new List<object>()
+                        {
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                LoopTag = "dark",
+                                What = "HAME...",
+                            },
+                        });
+                    storyRegistry.RegisterStory(addedSlimeBLAST_Multi_0);
+                }
+                {
+                    var addedSlimeBLAST_Multi_1 = new ExternalStory("CorrosiveCobra.Story.addedSlimeBLAST_Multi_1",
+                        new StoryNode()
+                        {
+                            type = NodeType.combat,
+                            oncePerCombat = true,
+                            lookup = new HashSet<string>()
+                            {
+                            "addedSlimeBLAST"
+                            },
+
+                            allPresent = new HashSet<string>()
+                            {
+                            SlimeWho,
+                            }
+                        },
+                        new List<object>()
+                        {
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                LoopTag = "squint",
+                                What = "I'm... stronger...",
+                            },
+                        });
+                    storyRegistry.RegisterStory(addedSlimeBLAST_Multi_1);
+                }
+            }
+            //playedSlimeBLAST
+            {
+                {
+                    var playedSlimeBLAST_Multi_0 = new ExternalStory("CorrosiveCobra.Story.playedSlimeBLAST_Multi_0",
+                        new StoryNode()
+                        {
+                            type = NodeType.combat,
+                            priority = true,
+                            oncePerCombat = true,
+                            oncePerRun = true,
+                            lookup = new HashSet<string>()
+                            {
+                            "playedSlimeBLAST"
+                            },
+
+                            allPresent = new HashSet<string>()
+                            {
+                            SlimeWho,
+                            }
+                        },
+                        new List<object>()
+                        {
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                LoopTag = "dark",
+                                What = "HADUKEN!!!",
+                            },
+                        });
+                    storyRegistry.RegisterStory(playedSlimeBLAST_Multi_0);
+                }
+                {
+                    var playedSlimeBLAST_Multi_1 = new ExternalStory("CorrosiveCobra.Story.playedSlimeBLAST_Multi_1",
+                        new StoryNode()
+                        {
+                            type = NodeType.combat,
+                            oncePerCombat = true,
+                            lookup = new HashSet<string>()
+                            {
+                            "playedSlimeBLAST"
+                            },
+
+                            allPresent = new HashSet<string>()
+                            {
+                            SlimeWho,
+                            }
+                        },
+                        new List<object>()
+                        {
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                LoopTag = "laugh",
+                                What = "Oh, nevermind, it was the cannon.",
+                            },
+                        });
+                    storyRegistry.RegisterStory(playedSlimeBLAST_Multi_1);
+                }
             }
         }
     }

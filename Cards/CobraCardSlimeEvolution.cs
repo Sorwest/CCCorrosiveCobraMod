@@ -33,6 +33,7 @@
                 case Upgrade.None:
                     List<CardAction> cardActionList1 = new List<CardAction>();
                     AAddCard aaddCard1 = new AAddCard();
+                    aaddCard1.dialogueSelector = ".addedSlimeMutation";
                     CobraCardSlimeMutation slimeMutation1 = new CobraCardSlimeMutation();
                     slimeMutation1.upgrade = Upgrade.None;
                     slimeMutation1.temporaryOverride = new bool?(true);
@@ -47,6 +48,7 @@
                 case Upgrade.A:
                     List<CardAction> cardActionList2 = new List<CardAction>();
                     AAddCard aaddCard2 = new AAddCard();
+                    aaddCard2.dialogueSelector = ".addedSlimeMutation";
                     CobraCardSlimeMutation slimeMutation2 = new CobraCardSlimeMutation();
                     slimeMutation2.upgrade = Upgrade.None;
                     slimeMutation2.temporaryOverride = new bool?(true);
@@ -61,6 +63,7 @@
                 case Upgrade.B:
                     List<CardAction> cardActionList3 = new List<CardAction>();
                     AAddCard aaddCard3 = new AAddCard();
+                    aaddCard3.dialogueSelector = ".addedSlimeMutation";
                     CobraCardSlimeMutation slimeMutation3 = new CobraCardSlimeMutation();
                     slimeMutation3.upgrade = Upgrade.None;
                     slimeMutation3.temporaryOverride = new bool?(true);

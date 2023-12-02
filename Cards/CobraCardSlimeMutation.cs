@@ -18,6 +18,7 @@
             var result = new List<CardAction>();
             List<CardAction> cardActionList1 = new List<CardAction>();
             AAddCard aaddCard1 = new AAddCard();
+            aaddCard1.dialogueSelector = ".addedSlimeBLAST";
             CobraCardSlimeBLAST slimeBlast = new CobraCardSlimeBLAST();
             slimeBlast.upgrade = Upgrade.None;
             slimeBlast.temporaryOverride = new bool?(true);
