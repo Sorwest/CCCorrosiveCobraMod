@@ -10,9 +10,9 @@ namespace CorrosiveCobra
             var SlimeWho = (CobraDeck ?? throw new Exception("Missing CobraDeck")).GlobalName;
             var DaveWho = "rft.Dave.DaveDeck";
             var JohannaWho = "JohannaTheTrucker.JohannaDeck";
-            var NolaWho = "Mezz.TwosCompany.Character.Nola";
-            var IsabelleWho = "Mezz.TwosCompany.Character.Isabelle";
-            var IlyaWho = "Mezz.TwosCompany.Character.Ilya";
+            var NolaWho = "Mezz.TwosCompany.NolaDeck";
+            var IsabelleWho = "Mezz.TwosCompany.IsabelleDeck";
+            var IlyaWho = "Mezz.TwosCompany.IlyaDeck";
             //SlimeHeatIncrease_Multi
             {
                 var SlimeHeatIncrease_Multi_0 = new ExternalStory("CorrosiveCobra.Story.SlimeHeatIncrease_Multi0",
