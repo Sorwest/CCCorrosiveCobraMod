@@ -704,7 +704,7 @@ namespace CorrosiveCobra
                     DummyHeatSprite ?? throw new Exception("missing DummyHeat artifact sprite"),
                     ownerDeck: CobraDeck ?? throw new Exception("missing CobraDeck."));
 
-                CobraArtifactDummyHeat.AddLocalisation("COBRA MISC OVERHEAT", "");
+                CobraArtifactDummyHeat.AddLocalisation("MISC ARTIFACT", "<c=status>OVERHEAT TRIGGER</c>.");
 
                 registry.RegisterArtifact(CobraArtifactDummyHeat);
             }
