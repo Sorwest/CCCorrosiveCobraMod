@@ -13,21 +13,21 @@
                     {
                         result.cost = 2;
                         result.exhaust = true;
-                        result.art = new Spr?((Spr)Manifest.CorrosiveCobra_CorrodeSprite!.Id);
+                        result.art = new Spr?((Spr)Manifest.CorrosiveCobra_CorrodeSprite!.Id!);
                         break;
                     }
                 case Upgrade.A:
                     {
                         result.cost = 2;
                         result.exhaust = false;
-                        result.art = new Spr?((Spr)Manifest.CorrosiveCobra_HeatSprite!.Id);
+                        result.art = new Spr?((Spr)Manifest.CorrosiveCobra_HeatSprite!.Id!);
                         break;
                     }
                 case Upgrade.B:
                     {
                         result.cost = 3;
                         result.exhaust = true;
-                        result.art = new Spr?((Spr)Manifest.CorrosiveCobra_CorrodeSprite!.Id);
+                        result.art = new Spr?((Spr)Manifest.CorrosiveCobra_CorrodeSprite!.Id!);
                         break;
                     }
             }

@@ -13,15 +13,15 @@
             {
                 case Upgrade.None:
                     result.cost = 2;
-                    result.art = new Spr?((Spr)Manifest.CorrosiveCobra_CannonCardSprite!.Id);
+                    result.art = new Spr?((Spr)Manifest.CorrosiveCobra_CannonCardSprite!.Id!);
                     break;
                 case Upgrade.A:
                     result.cost = 2;
-                    result.art = new Spr?((Spr)Manifest.CorrosiveCobra_CannonCardSprite!.Id);
+                    result.art = new Spr?((Spr)Manifest.CorrosiveCobra_CannonCardSprite!.Id!);
                     break;
                 case Upgrade.B:
                     result.cost = 1;
-                    result.art = new Spr?((Spr)Manifest.CorrosiveCobra_FumeCannonSprite!.Id);
+                    result.art = new Spr?((Spr)Manifest.CorrosiveCobra_FumeCannonSprite!.Id!);
                     break;
             }
             return result;

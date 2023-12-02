@@ -8,7 +8,7 @@
         {
             CardData result = new CardData();
             result.exhaust = true;
-            result.art = new Spr?((Spr)Manifest.CorrosiveCobra_EvolveBackgroundSprite!.Id);
+            result.art = new Spr?((Spr)Manifest.CorrosiveCobra_EvolveBackgroundSprite!.Id!);
             switch (upgrade)
             {
                 case Upgrade.None:

@@ -56,7 +56,7 @@
         public override CardData GetData(State state)
         {
             CardData result = new CardData();
-            result.art = new Spr?((Spr)Manifest.CorrosiveCobra_CorrodeSprite!.Id);
+            result.art = new Spr?((Spr)Manifest.CorrosiveCobra_CorrodeSprite!.Id!);
             switch (upgrade)
             {
                 case Upgrade.None:

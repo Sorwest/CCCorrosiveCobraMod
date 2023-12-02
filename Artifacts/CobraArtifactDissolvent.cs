@@ -16,7 +16,7 @@
                 TriggeredAlready = false;
             }
         }
-        public override void OnPlayerTakeNormalDamage(State state, Combat combat)
+        public override void OnPlayerTakeNormalDamage(State state, Combat combat, int rawAmount, Part? part)
         {
             if (TriggeredAlready)
             {

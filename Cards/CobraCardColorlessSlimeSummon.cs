@@ -40,8 +40,8 @@
             }
             result.description = string.Format(
                 Loc.GetLocString(Manifest.CobraCardColorlessSlimeSummon?.DescLocKey ?? throw new Exception("Card ColorlessSlimeSummon not found")),
-                count, 
-                Manifest.CorrosiveCobra_CharacterColH, 
+                count,
+                Manifest.CorrosiveCobra_CharacterColH,
                 "Dizzy?</c>");
             return result;
         }

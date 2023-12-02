@@ -7,7 +7,7 @@
         public override CardData GetData(State state)
         {
             CardData result = new CardData();
-            result.art = new Spr?((Spr)Manifest.CorrosiveCobra_CorrosionBlockStarter!.Id);
+            result.art = new Spr?((Spr)Manifest.CorrosiveCobra_CorrosionBlockStarter!.Id!);
             result.artTint = "45e0ab";
             switch (upgrade)
             {

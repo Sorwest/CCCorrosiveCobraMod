@@ -9,7 +9,7 @@
             return new CardData
             {
                 cost = upgrade == Upgrade.A ? 0 : 1,
-                art = new Spr?((Spr)Manifest.CorrosiveCobra_BoxHeatSprite!.Id),
+                art = new Spr?((Spr)Manifest.CorrosiveCobra_BoxHeatSprite!.Id!),
             };
         }
         public override List<CardAction> GetActions(State s, Combat c)

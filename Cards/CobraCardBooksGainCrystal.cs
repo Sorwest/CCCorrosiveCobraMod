@@ -70,7 +70,7 @@
         public override CardData GetData(State state) => new CardData()
         {
             cost = 1,
-            art = new Spr?((Spr)Manifest.CorrosiveCobra_CardBackgroud!.Id),
+            art = new Spr?((Spr)Manifest.CorrosiveCobra_CardBackgroud!.Id!),
         };
     }
 }

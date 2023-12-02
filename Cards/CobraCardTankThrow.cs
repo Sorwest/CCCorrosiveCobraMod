@@ -13,17 +13,17 @@
                 case Upgrade.None:
                     result.cost = 2;
                     result.exhaust = true;
-                    result.art = new Spr?((Spr)Manifest.CorrosiveCobra_CorrodeSprite!.Id);
+                    result.art = new Spr?((Spr)Manifest.CorrosiveCobra_CorrodeSprite!.Id!);
                     break;
                 case Upgrade.A:
                     result.cost = 2;
                     result.exhaust = false;
-                    result.art = new Spr?((Spr)Manifest.CorrosiveCobra_SeekerCobraSprite!.Id);
+                    result.art = new Spr?((Spr)Manifest.CorrosiveCobra_SeekerCobraSprite!.Id!);
                     break;
                 case Upgrade.B:
                     result.cost = 3;
                     result.exhaust = true;
-                    result.art = new Spr?((Spr)Manifest.CorrosiveCobra_GoatDroneSprite!.Id);
+                    result.art = new Spr?((Spr)Manifest.CorrosiveCobra_GoatDroneSprite!.Id!);
                     break;
             }
             return result;

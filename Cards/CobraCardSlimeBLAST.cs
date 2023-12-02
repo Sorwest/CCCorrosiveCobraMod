@@ -22,7 +22,7 @@
 
             result.cost = 3;
             result.exhaust = true;
-            result.art = new Spr?((Spr)Manifest.CorrosiveCobra_SlimeBlastSprite!.Id);
+            result.art = new Spr?((Spr)Manifest.CorrosiveCobra_SlimeBlastSprite!.Id!);
             if (!(state.route is Combat))
                 str1 = "";
             else

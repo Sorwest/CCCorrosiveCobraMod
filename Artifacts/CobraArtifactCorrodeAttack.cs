@@ -18,7 +18,7 @@
           int handPosition,
           int handCount)
         {
-            if (((int)deck) == Manifest.CobraDeck!.Id.Value)
+            if (((int)deck) == Manifest.CobraDeck!.Id!.Value)
             {
                 ++this.count;
                 this.Pulse();

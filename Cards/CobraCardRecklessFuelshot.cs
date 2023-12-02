@@ -8,7 +8,7 @@
         {
             CardData result = new CardData();
             result.cost = 1;
-            result.art = new Spr?((Spr)Manifest.CorrosiveCobra_RecklessFuelshotSprite!.Id);
+            result.art = new Spr?((Spr)Manifest.CorrosiveCobra_RecklessFuelshotSprite!.Id!);
             switch (upgrade)
             {
                 case Upgrade.None:

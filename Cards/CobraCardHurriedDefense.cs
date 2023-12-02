@@ -58,7 +58,7 @@
             return new CardData
             {
                 cost = 1,
-                art = new Spr?((Spr)Manifest.CorrosiveCobra_BlockShotSprite!.Id),
+                art = new Spr?((Spr)Manifest.CorrosiveCobra_BlockShotSprite!.Id!),
                 artTint = upgrade == Upgrade.A ? "40a4fc" : "e20fc2",
             };
         }

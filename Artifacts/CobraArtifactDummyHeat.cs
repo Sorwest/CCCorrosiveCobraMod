@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CorrosiveCobra.Artifacts
+﻿namespace CorrosiveCobra.Artifacts
 {
     [ArtifactMeta(owner = Deck.colorless, pools = new ArtifactPool[] { ArtifactPool.Unreleased }, unremovable = true)]
     public class CobraArtifactDummyHeat : Artifact

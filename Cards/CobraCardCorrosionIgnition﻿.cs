@@ -39,7 +39,7 @@
                         break;
                     }
             }
-            result.art = new Spr?((Spr)Manifest.CorrosiveCobra_CorrosionIgnition﻿Sprite!.Id);
+            result.art = new Spr?((Spr)Manifest.CorrosiveCobra_CorrosionIgnition﻿Sprite!.Id!);
             return result;
         }
         public override List<CardAction> GetActions(State s, Combat c)

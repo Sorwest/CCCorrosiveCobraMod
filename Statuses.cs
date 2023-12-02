@@ -1,7 +1,6 @@
 ﻿using System.Reflection;
 using CobaltCoreModding.Definitions.ExternalItems;
 using CobaltCoreModding.Definitions.ModContactPoints;
-using CorrosiveCobra.Artifacts;
 using HarmonyLib;
 
 namespace CorrosiveCobra

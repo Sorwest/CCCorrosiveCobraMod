@@ -9,7 +9,7 @@
             CardData result = new CardData();
 
             result.exhaust = true;
-            result.art = new Spr?((Spr)Manifest.CorrosiveCobra_RepairsSprite!.Id);
+            result.art = new Spr?((Spr)Manifest.CorrosiveCobra_RepairsSprite!.Id!);
             switch (upgrade)
             {
                 case Upgrade.None:

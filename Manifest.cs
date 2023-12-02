@@ -4,7 +4,6 @@ using CobaltCoreModding.Definitions.ModContactPoints;
 using CobaltCoreModding.Definitions.ModManifests;
 using CorrosiveCobra.Artifacts;
 using CorrosiveCobra.Cards;
-using HarmonyLib;
 using Microsoft.Extensions.Logging;
 
 // Many thanks to parchmentengineer and theirs armada mod, check them out!
@@ -26,7 +25,8 @@ namespace CorrosiveCobra
         ICardManifest,
         IDeckManifest,
         IStatusManifest,
-        IGlossaryManifest
+        IGlossaryManifest,
+        IStoryManifest
     {
         public string Name => "Sorwest.CorrosiveCobra";
 
@@ -56,12 +56,20 @@ namespace CorrosiveCobra
         public static ExternalAnimation? CorrosiveCobra_Character_GameoverAnimation { get; private set; }
         public static ExternalAnimation? CorrosiveCobra_Character_TalkLaughAnimation { get; private set; }
         public static ExternalAnimation? CorrosiveCobra_Character_TalkNeutralAnimation { get; private set; }
-        public static ExternalAnimation? CorrosiveCobra_Character_TalkSadAnimation { get; private set; }
         public static ExternalAnimation? CorrosiveCobra_Character_TalkSquintAnimation { get; private set; }
+        public static ExternalAnimation? CorrosiveCobra_Character_TalkSadAnimation { get; private set; }
+        public static ExternalAnimation? CorrosiveCobra_Character_TalkMadAnimation { get; private set; }
+        public static ExternalAnimation? CorrosiveCobra_Character_TalkDarkAnimation { get; private set; }
+        public static ExternalAnimation? CorrosiveCobra_Character_TalkPanicAnimation { get; private set; }
+        public static ExternalAnimation? CorrosiveCobra_Character_TalkNervousAnimation { get; private set; }
         public static List<ExternalSprite> TalkLaughSprites { get; private set; } = new List<ExternalSprite>();
         public static List<ExternalSprite> TalkNeutralSprites { get; private set; } = new List<ExternalSprite>();
-        public static List<ExternalSprite> TalkSadSprites { get; private set; } = new List<ExternalSprite>();
         public static List<ExternalSprite> TalkSquintSprites { get; private set; } = new List<ExternalSprite>();
+        public static List<ExternalSprite> TalkSadSprites { get; private set; } = new List<ExternalSprite>();
+        public static List<ExternalSprite> TalkMadSprites { get; private set; } = new List<ExternalSprite>();
+        public static List<ExternalSprite> TalkDarkSprites { get; private set; } = new List<ExternalSprite>();
+        public static List<ExternalSprite> TalkPanicSprites { get; private set; } = new List<ExternalSprite>();
+        public static List<ExternalSprite> TalkNervousSprites { get; private set; } = new List<ExternalSprite>();
 
         //icons sprites
         public static ExternalSprite? UnstableTanksSprite { get; private set; }
@@ -246,6 +254,16 @@ namespace CorrosiveCobra
                 }
             }
             {
+                var dir_path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", "talk_squint");
+                var files = Directory.GetFiles(dir_path).Select(e => new FileInfo(e)).ToArray();
+                for (int i = 0; i < files.Length; i++)
+                {
+                    var spr = (new ExternalSprite("CorrosiveCobra.Character.DizzySlime.TalkSquint" + i, files[i]));
+                    TalkSquintSprites.Add(spr);
+                    artRegistry.RegisterArt(spr);
+                }
+            }
+            {
                 var dir_path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", "talk_sad");
                 var files = Directory.GetFiles(dir_path).Select(e => new FileInfo(e)).ToArray();
                 for (int i = 0; i < files.Length; i++)
@@ -256,12 +274,42 @@ namespace CorrosiveCobra
                 }
             }
             {
-                var dir_path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", "talk_squint");
+                var dir_path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", "talk_mad");
                 var files = Directory.GetFiles(dir_path).Select(e => new FileInfo(e)).ToArray();
                 for (int i = 0; i < files.Length; i++)
                 {
-                    var spr = (new ExternalSprite("CorrosiveCobra.Character.DizzySlime.TalkSquint" + i, files[i]));
-                    TalkSquintSprites.Add(spr);
+                    var spr = (new ExternalSprite("CorrosiveCobra.Character.DizzySlime.TalkMad" + i, files[i]));
+                    TalkMadSprites.Add(spr);
+                    artRegistry.RegisterArt(spr);
+                }
+            }
+            {
+                var dir_path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", "talk_dark");
+                var files = Directory.GetFiles(dir_path).Select(e => new FileInfo(e)).ToArray();
+                for (int i = 0; i < files.Length; i++)
+                {
+                    var spr = (new ExternalSprite("CorrosiveCobra.Character.DizzySlime.TalkDark" + i, files[i]));
+                    TalkDarkSprites.Add(spr);
+                    artRegistry.RegisterArt(spr);
+                }
+            }
+            {
+                var dir_path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", "talk_panic");
+                var files = Directory.GetFiles(dir_path).Select(e => new FileInfo(e)).ToArray();
+                for (int i = 0; i < files.Length; i++)
+                {
+                    var spr = (new ExternalSprite("CorrosiveCobra.Character.DizzySlime.TalkPanic" + i, files[i]));
+                    TalkPanicSprites.Add(spr);
+                    artRegistry.RegisterArt(spr);
+                }
+            }
+            {
+                var dir_path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", "talk_nervous");
+                var files = Directory.GetFiles(dir_path).Select(e => new FileInfo(e)).ToArray();
+                for (int i = 0; i < files.Length; i++)
+                {
+                    var spr = (new ExternalSprite("CorrosiveCobra.Character.DizzySlime.TalkNervous" + i, files[i]));
+                    TalkNervousSprites.Add(spr);
                     artRegistry.RegisterArt(spr);
                 }
             }
