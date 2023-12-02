@@ -19,7 +19,8 @@ namespace CorrosiveCobra
                     new StoryNode()
                     {
                         type = NodeType.combat,
-                        oncePerCombat = true,
+                        oncePerRun = true,
+                        minTurnsThisCombat = 2,
                         lastTurnPlayerStatuses = new HashSet<Status>()
                         {
                             Status.heat
