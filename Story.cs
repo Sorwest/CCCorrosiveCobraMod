@@ -3534,7 +3534,7 @@ namespace CorrosiveCobra
                             oncePerRun = true,
                             lookup = new HashSet<string>()
                             {
-                            "addedSlimeMutation"
+                                "addedSlimeMutation"
                             },
 
                             allPresent = new HashSet<string>()
@@ -3559,6 +3559,7 @@ namespace CorrosiveCobra
                         {
                             type = NodeType.combat,
                             oncePerCombat = true,
+                            oncePerRun = true,
                             lookup = new HashSet<string>()
                             {
                             "addedSlimeMutation"
@@ -3624,6 +3625,7 @@ namespace CorrosiveCobra
                         {
                             type = NodeType.combat,
                             oncePerCombat = true,
+                            oncePerRun = true,
                             lookup = new HashSet<string>()
                             {
                             "addedSlimeBLAST"
@@ -3689,6 +3691,7 @@ namespace CorrosiveCobra
                         {
                             type = NodeType.combat,
                             oncePerCombat = true,
+                            oncePerRun = true,
                             lookup = new HashSet<string>()
                             {
                             "playedSlimeBLAST"
@@ -3790,7 +3793,7 @@ namespace CorrosiveCobra
                             oncePerRun = true,
                             lookup = new HashSet<string>()
                             {
-                                ".playedTankThrowNone"
+                                "playedTankThrowNone"
                             },
 
                             allPresent = new HashSet<string>()
