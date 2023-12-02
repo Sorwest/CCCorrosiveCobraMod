@@ -115,6 +115,7 @@ namespace CorrosiveCobra
         public static ExternalSprite? CorrosiveCobra_ChassisSprite { get; private set; }
 
         // card borders sprites
+        public static ExternalSprite? BorderCobraBasic { get; private set; }
         public static ExternalSprite? BorderCobraCommon { get; private set; }
         public static ExternalSprite? BorderCobraUncommon { get; private set; }
         public static ExternalSprite? BorderCobraRare { get; private set; }
@@ -175,335 +176,347 @@ namespace CorrosiveCobra
 
             //ship parts
             {
-                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "ShipPart", Path.GetFileName("CorrosiveCobra_CannonSprite.png"));
-                CorrosiveCobra_CannonSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_CannonSprite", new FileInfo(path));
-                artRegistry.RegisterArt(CorrosiveCobra_CannonSprite);
+                {
+                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "ShipPart", Path.GetFileName("CorrosiveCobra_CannonSprite.png"));
+                    CorrosiveCobra_CannonSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_CannonSprite", new FileInfo(path));
+                    artRegistry.RegisterArt(CorrosiveCobra_CannonSprite);
+                }
+                {
+                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "ShipPart", Path.GetFileName("CorrosiveCobra_WingLeftSprite.png"));
+                    CorrosiveCobra_WingLeftSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_WingLeftSprite", new FileInfo(path));
+                    artRegistry.RegisterArt(CorrosiveCobra_WingLeftSprite);
+                }
+                {
+                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "ShipPart", Path.GetFileName("CorrosiveCobra_MissileBaySprite.png"));
+                    CorrosiveCobra_MissileBaySprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_MissileBaySprite", new FileInfo(path));
+                    artRegistry.RegisterArt(CorrosiveCobra_MissileBaySprite);
+                }
+                {
+                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "ShipPart", Path.GetFileName("CorrosiveCobra_CockpitSprite.png"));
+                    CorrosiveCobra_CockpitSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_CockpitSprite", new FileInfo(path));
+                    artRegistry.RegisterArt(CorrosiveCobra_CockpitSprite);
+                }
+                {
+                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "ShipPart", Path.GetFileName("CorrosiveCobra_ScaffoldingSprite.png"));
+                    CorrosiveCobra_ScaffoldingSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_ScaffoldingSprite", new FileInfo(path));
+                    artRegistry.RegisterArt(CorrosiveCobra_ScaffoldingSprite);
+                }
+                {
+                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "ShipPart", Path.GetFileName("CorrosiveCobra_ChassisSprite.png"));
+                    CorrosiveCobra_ChassisSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_ChassisSprite", new FileInfo(path));
+                    artRegistry.RegisterArt(CorrosiveCobra_ChassisSprite);
+                }
             }
-            {
-                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "ShipPart", Path.GetFileName("CorrosiveCobra_WingLeftSprite.png"));
-                CorrosiveCobra_WingLeftSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_WingLeftSprite", new FileInfo(path));
-                artRegistry.RegisterArt(CorrosiveCobra_WingLeftSprite);
-            }
-            {
-                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "ShipPart", Path.GetFileName("CorrosiveCobra_MissileBaySprite.png"));
-                CorrosiveCobra_MissileBaySprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_MissileBaySprite", new FileInfo(path));
-                artRegistry.RegisterArt(CorrosiveCobra_MissileBaySprite);
-            }
-            {
-                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "ShipPart", Path.GetFileName("CorrosiveCobra_CockpitSprite.png"));
-                CorrosiveCobra_CockpitSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_CockpitSprite", new FileInfo(path));
-                artRegistry.RegisterArt(CorrosiveCobra_CockpitSprite);
-            }
-            {
-                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "ShipPart", Path.GetFileName("CorrosiveCobra_ScaffoldingSprite.png"));
-                CorrosiveCobra_ScaffoldingSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_ScaffoldingSprite", new FileInfo(path));
-                artRegistry.RegisterArt(CorrosiveCobra_ScaffoldingSprite);
-            }
-            {
-                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "ShipPart", Path.GetFileName("CorrosiveCobra_ChassisSprite.png"));
-                CorrosiveCobra_ChassisSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_ChassisSprite", new FileInfo(path));
-                artRegistry.RegisterArt(CorrosiveCobra_ChassisSprite);
-            }
-
             //character sprites
             {
-                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", Path.GetFileName("CorrosiveCobra_CharacterPortrait_Sprite.png"));
-                CorrosiveCobra_CharacterPortrait_Sprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_CharacterPortrait_Sprite", new FileInfo(path));
-                artRegistry.RegisterArt(CorrosiveCobra_CharacterPortrait_Sprite);
+                {
+                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", Path.GetFileName("CorrosiveCobra_CharacterPortrait_Sprite.png"));
+                    CorrosiveCobra_CharacterPortrait_Sprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_CharacterPortrait_Sprite", new FileInfo(path));
+                    artRegistry.RegisterArt(CorrosiveCobra_CharacterPortrait_Sprite);
+                }
+                {
+                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", Path.GetFileName("CorrosiveCobra_CharacterMini_Sprite.png"));
+                    CorrosiveCobra_CharacterMini_Sprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_CharacterMini_Sprite", new FileInfo(path));
+                    artRegistry.RegisterArt(CorrosiveCobra_CharacterMini_Sprite);
+                }
+                {
+                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", Path.GetFileName("CorrosiveCobra_CharacterPanelFrame_Sprite.png"));
+                    CorrosiveCobra_CharacterPanelFrame_Sprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_CharacterPanelFrame_Sprite", new FileInfo(path));
+                    artRegistry.RegisterArt(CorrosiveCobra_CharacterPanelFrame_Sprite);
+                }
+                {
+                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", Path.GetFileName("CorrosiveCobra_CharacterGameover_Sprite.png"));
+                    CorrosiveCobra_CharacterGameover_Sprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_CharacterGameover_Sprite", new FileInfo(path));
+                    artRegistry.RegisterArt(CorrosiveCobra_CharacterGameover_Sprite);
+                }
+                {
+                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", Path.GetFileName("CorrosiveCobra_CharacterSquint_Sprite.png"));
+                    CorrosiveCobra_CharacterSquint_Sprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_CharacterSquint_Sprite", new FileInfo(path));
+                    artRegistry.RegisterArt(CorrosiveCobra_CharacterSquint_Sprite);
+                }
             }
-            {
-                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", Path.GetFileName("CorrosiveCobra_CharacterMini_Sprite.png"));
-                CorrosiveCobra_CharacterMini_Sprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_CharacterMini_Sprite", new FileInfo(path));
-                artRegistry.RegisterArt(CorrosiveCobra_CharacterMini_Sprite);
-            }
-            {
-                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", Path.GetFileName("CorrosiveCobra_CharacterPanelFrame_Sprite.png"));
-                CorrosiveCobra_CharacterPanelFrame_Sprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_CharacterPanelFrame_Sprite", new FileInfo(path));
-                artRegistry.RegisterArt(CorrosiveCobra_CharacterPanelFrame_Sprite);
-            }
-            {
-                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", Path.GetFileName("CorrosiveCobra_CharacterGameover_Sprite.png"));
-                CorrosiveCobra_CharacterGameover_Sprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_CharacterGameover_Sprite", new FileInfo(path));
-                artRegistry.RegisterArt(CorrosiveCobra_CharacterGameover_Sprite);
-            }
-            {
-                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", Path.GetFileName("CorrosiveCobra_CharacterSquint_Sprite.png"));
-                CorrosiveCobra_CharacterSquint_Sprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_CharacterSquint_Sprite", new FileInfo(path));
-                artRegistry.RegisterArt(CorrosiveCobra_CharacterSquint_Sprite);
-            }
-
             //talk animations
             {
-                var dir_path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", "talk_laugh");
-                var files = Directory.GetFiles(dir_path).Select(e => new FileInfo(e)).ToArray();
-                for (int i = 0; i < files.Length; i++)
                 {
-                    var spr = new ExternalSprite("CorrosiveCobra.Character.DizzySlime.TalkLaugh" + i, files[i]);
-                    TalkLaughSprites.Add(spr);
-                    artRegistry.RegisterArt(spr);
+                    var dir_path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", "talk_laugh");
+                    var files = Directory.GetFiles(dir_path).Select(e => new FileInfo(e)).ToArray();
+                    for (int i = 0; i < files.Length; i++)
+                    {
+                        var spr = new ExternalSprite("CorrosiveCobra.Character.DizzySlime.TalkLaugh" + i, files[i]);
+                        TalkLaughSprites.Add(spr);
+                        artRegistry.RegisterArt(spr);
+                    }
+                }
+                {
+                    var dir_path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", "talk_neutral");
+                    var files = Directory.GetFiles(dir_path).Select(e => new FileInfo(e)).ToArray();
+                    for (int i = 0; i < files.Length; i++)
+                    {
+                        var spr = new ExternalSprite("CorrosiveCobra.Character.DizzySlime.TalkNeutral" + i, files[i]);
+                        TalkNeutralSprites.Add(spr);
+                        artRegistry.RegisterArt(spr);
+                    }
+                }
+                {
+                    var dir_path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", "talk_squint");
+                    var files = Directory.GetFiles(dir_path).Select(e => new FileInfo(e)).ToArray();
+                    for (int i = 0; i < files.Length; i++)
+                    {
+                        var spr = (new ExternalSprite("CorrosiveCobra.Character.DizzySlime.TalkSquint" + i, files[i]));
+                        TalkSquintSprites.Add(spr);
+                        artRegistry.RegisterArt(spr);
+                    }
+                }
+                {
+                    var dir_path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", "talk_sad");
+                    var files = Directory.GetFiles(dir_path).Select(e => new FileInfo(e)).ToArray();
+                    for (int i = 0; i < files.Length; i++)
+                    {
+                        var spr = (new ExternalSprite("CorrosiveCobra.Character.DizzySlime.TalkSad" + i, files[i]));
+                        TalkSadSprites.Add(spr);
+                        artRegistry.RegisterArt(spr);
+                    }
+                }
+                {
+                    var dir_path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", "talk_mad");
+                    var files = Directory.GetFiles(dir_path).Select(e => new FileInfo(e)).ToArray();
+                    for (int i = 0; i < files.Length; i++)
+                    {
+                        var spr = (new ExternalSprite("CorrosiveCobra.Character.DizzySlime.TalkMad" + i, files[i]));
+                        TalkMadSprites.Add(spr);
+                        artRegistry.RegisterArt(spr);
+                    }
+                }
+                {
+                    var dir_path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", "talk_dark");
+                    var files = Directory.GetFiles(dir_path).Select(e => new FileInfo(e)).ToArray();
+                    for (int i = 0; i < files.Length; i++)
+                    {
+                        var spr = (new ExternalSprite("CorrosiveCobra.Character.DizzySlime.TalkDark" + i, files[i]));
+                        TalkDarkSprites.Add(spr);
+                        artRegistry.RegisterArt(spr);
+                    }
+                }
+                {
+                    var dir_path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", "talk_phone");
+                    var files = Directory.GetFiles(dir_path).Select(e => new FileInfo(e)).ToArray();
+                    for (int i = 0; i < files.Length; i++)
+                    {
+                        var spr = (new ExternalSprite("CorrosiveCobra.Character.DizzySlime.TalkPhone" + i, files[i]));
+                        TalkPhoneSprites.Add(spr);
+                        artRegistry.RegisterArt(spr);
+                    }
+                }
+                {
+                    var dir_path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", "talk_nervous");
+                    var files = Directory.GetFiles(dir_path).Select(e => new FileInfo(e)).ToArray();
+                    for (int i = 0; i < files.Length; i++)
+                    {
+                        var spr = (new ExternalSprite("CorrosiveCobra.Character.DizzySlime.TalkNervous" + i, files[i]));
+                        TalkNervousSprites.Add(spr);
+                        artRegistry.RegisterArt(spr);
+                    }
                 }
             }
-            {
-                var dir_path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", "talk_neutral");
-                var files = Directory.GetFiles(dir_path).Select(e => new FileInfo(e)).ToArray();
-                for (int i = 0; i < files.Length; i++)
-                {
-                    var spr = new ExternalSprite("CorrosiveCobra.Character.DizzySlime.TalkNeutral" + i, files[i]);
-                    TalkNeutralSprites.Add(spr);
-                    artRegistry.RegisterArt(spr);
-                }
-            }
-            {
-                var dir_path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", "talk_squint");
-                var files = Directory.GetFiles(dir_path).Select(e => new FileInfo(e)).ToArray();
-                for (int i = 0; i < files.Length; i++)
-                {
-                    var spr = (new ExternalSprite("CorrosiveCobra.Character.DizzySlime.TalkSquint" + i, files[i]));
-                    TalkSquintSprites.Add(spr);
-                    artRegistry.RegisterArt(spr);
-                }
-            }
-            {
-                var dir_path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", "talk_sad");
-                var files = Directory.GetFiles(dir_path).Select(e => new FileInfo(e)).ToArray();
-                for (int i = 0; i < files.Length; i++)
-                {
-                    var spr = (new ExternalSprite("CorrosiveCobra.Character.DizzySlime.TalkSad" + i, files[i]));
-                    TalkSadSprites.Add(spr);
-                    artRegistry.RegisterArt(spr);
-                }
-            }
-            {
-                var dir_path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", "talk_mad");
-                var files = Directory.GetFiles(dir_path).Select(e => new FileInfo(e)).ToArray();
-                for (int i = 0; i < files.Length; i++)
-                {
-                    var spr = (new ExternalSprite("CorrosiveCobra.Character.DizzySlime.TalkMad" + i, files[i]));
-                    TalkMadSprites.Add(spr);
-                    artRegistry.RegisterArt(spr);
-                }
-            }
-            {
-                var dir_path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", "talk_dark");
-                var files = Directory.GetFiles(dir_path).Select(e => new FileInfo(e)).ToArray();
-                for (int i = 0; i < files.Length; i++)
-                {
-                    var spr = (new ExternalSprite("CorrosiveCobra.Character.DizzySlime.TalkDark" + i, files[i]));
-                    TalkDarkSprites.Add(spr);
-                    artRegistry.RegisterArt(spr);
-                }
-            }
-            {
-                var dir_path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", "talk_phone");
-                var files = Directory.GetFiles(dir_path).Select(e => new FileInfo(e)).ToArray();
-                for (int i = 0; i < files.Length; i++)
-                {
-                    var spr = (new ExternalSprite("CorrosiveCobra.Character.DizzySlime.TalkPhone" + i, files[i]));
-                    TalkPhoneSprites.Add(spr);
-                    artRegistry.RegisterArt(spr);
-                }
-            }
-            {
-                var dir_path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", "talk_nervous");
-                var files = Directory.GetFiles(dir_path).Select(e => new FileInfo(e)).ToArray();
-                for (int i = 0; i < files.Length; i++)
-                {
-                    var spr = (new ExternalSprite("CorrosiveCobra.Character.DizzySlime.TalkNervous" + i, files[i]));
-                    TalkNervousSprites.Add(spr);
-                    artRegistry.RegisterArt(spr);
-                }
-            }
-
             //icon sprites
             {
-                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Icon", Path.GetFileName("IncomingCorrodeIcon.png"));
-                IncomingCorrodeIcon = new ExternalSprite("CorrosiveCobra.sprites.IncomingCorrodeIcon", new FileInfo(path));
-                artRegistry.RegisterArt(IncomingCorrodeIcon);
+                {
+                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Icon", Path.GetFileName("IncomingCorrodeIcon.png"));
+                    IncomingCorrodeIcon = new ExternalSprite("CorrosiveCobra.sprites.IncomingCorrodeIcon", new FileInfo(path));
+                    artRegistry.RegisterArt(IncomingCorrodeIcon);
+                }
+                {
+                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Icon", Path.GetFileName("EvolveStatusSprite.png"));
+                    EvolveStatusSprite = new ExternalSprite("CorrosiveCobra.sprites.EvolveStatusSprite", new FileInfo(path));
+                    artRegistry.RegisterArt(EvolveStatusSprite);
+                }
+                {
+                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Icon", Path.GetFileName("HeatOutbreakStatusSprite.png"));
+                    HeatOutbreakStatusSprite = new ExternalSprite("CorrosiveCobra.sprites.HeatOutbreakStatusSprite", new FileInfo(path));
+                    artRegistry.RegisterArt(HeatOutbreakStatusSprite);
+                }
+                {
+                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Icon", Path.GetFileName("HeatControlStatusSprite.png"));
+                    HeatControlStatusSprite = new ExternalSprite("CorrosiveCobra.sprites.HeatControlStatusSprite", new FileInfo(path));
+                    artRegistry.RegisterArt(HeatControlStatusSprite);
+                }
+                {
+                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Icon", Path.GetFileName("UnstableTanksSprite.png"));
+                    UnstableTanksSprite = new ExternalSprite("CorrosiveCobra.sprites.UnstableTanksSprite", new FileInfo(path));
+                    artRegistry.RegisterArt(UnstableTanksSprite);
+                }
+                {
+                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Icon", Path.GetFileName("OverdriveTanksSprite.png"));
+                    OverdriveTanksSprite = new ExternalSprite("CorrosiveCobra.sprites.OverdriveTanksSprite", new FileInfo(path));
+                    artRegistry.RegisterArt(OverdriveTanksSprite);
+                }
+                {
+                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Icon", Path.GetFileName("SlimeHeartSprite.png"));
+                    SlimeHeartSprite = new ExternalSprite("CorrosiveCobra.sprites.SlimeHeartSprite", new FileInfo(path));
+                    artRegistry.RegisterArt(SlimeHeartSprite);
+                }
+                {
+                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Icon", Path.GetFileName("ToxicCaviarSprite.png"));
+                    ToxicCaviarSprite = new ExternalSprite("CorrosiveCobra.sprites.ToxicCaviarSprite", new FileInfo(path));
+                    artRegistry.RegisterArt(ToxicCaviarSprite);
+                }
+                {
+                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Icon", Path.GetFileName("CorrodeAttackSprite.png"));
+                    CorrodeAttackSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrodeAttackSprite", new FileInfo(path));
+                    artRegistry.RegisterArt(CorrodeAttackSprite);
+                }
+                {
+                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Icon", Path.GetFileName("PowerAcidSprite.png"));
+                    PowerAcidSprite = new ExternalSprite("CorrosiveCobra.sprites.PowerAcidSprite", new FileInfo(path));
+                    artRegistry.RegisterArt(PowerAcidSprite);
+                }
+                {
+                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Icon", Path.GetFileName("DissolventSprite.png"));
+                    DissolventSprite = new ExternalSprite("CorrosiveCobra.sprites.DissolventSprite", new FileInfo(path));
+                    artRegistry.RegisterArt(DissolventSprite);
+                }
+                {
+                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Icon", Path.GetFileName("DummyHeatSprite.png"));
+                    DummyHeatSprite = new ExternalSprite("CorrosiveCobra.sprites.DummyHeatSprite", new FileInfo(path));
+                    artRegistry.RegisterArt(DummyHeatSprite);
+                }
             }
-            {
-                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Icon", Path.GetFileName("EvolveStatusSprite.png"));
-                EvolveStatusSprite = new ExternalSprite("CorrosiveCobra.sprites.EvolveStatusSprite", new FileInfo(path));
-                artRegistry.RegisterArt(EvolveStatusSprite);
-            }
-            {
-                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Icon", Path.GetFileName("HeatOutbreakStatusSprite.png"));
-                HeatOutbreakStatusSprite = new ExternalSprite("CorrosiveCobra.sprites.HeatOutbreakStatusSprite", new FileInfo(path));
-                artRegistry.RegisterArt(HeatOutbreakStatusSprite);
-            }
-            {
-                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Icon", Path.GetFileName("HeatControlStatusSprite.png"));
-                HeatControlStatusSprite = new ExternalSprite("CorrosiveCobra.sprites.HeatControlStatusSprite", new FileInfo(path));
-                artRegistry.RegisterArt(HeatControlStatusSprite);
-            }
-            {
-                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Icon", Path.GetFileName("UnstableTanksSprite.png"));
-                UnstableTanksSprite = new ExternalSprite("CorrosiveCobra.sprites.UnstableTanksSprite", new FileInfo(path));
-                artRegistry.RegisterArt(UnstableTanksSprite);
-            }
-            {
-                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Icon", Path.GetFileName("OverdriveTanksSprite.png"));
-                OverdriveTanksSprite = new ExternalSprite("CorrosiveCobra.sprites.OverdriveTanksSprite", new FileInfo(path));
-                artRegistry.RegisterArt(OverdriveTanksSprite);
-            }
-            {
-                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Icon", Path.GetFileName("SlimeHeartSprite.png"));
-                SlimeHeartSprite = new ExternalSprite("CorrosiveCobra.sprites.SlimeHeartSprite", new FileInfo(path));
-                artRegistry.RegisterArt(SlimeHeartSprite);
-            }
-            {
-                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Icon", Path.GetFileName("ToxicCaviarSprite.png"));
-                ToxicCaviarSprite = new ExternalSprite("CorrosiveCobra.sprites.ToxicCaviarSprite", new FileInfo(path));
-                artRegistry.RegisterArt(ToxicCaviarSprite);
-            }
-            {
-                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Icon", Path.GetFileName("CorrodeAttackSprite.png"));
-                CorrodeAttackSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrodeAttackSprite", new FileInfo(path));
-                artRegistry.RegisterArt(CorrodeAttackSprite);
-            }
-            {
-                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Icon", Path.GetFileName("PowerAcidSprite.png"));
-                PowerAcidSprite = new ExternalSprite("CorrosiveCobra.sprites.PowerAcidSprite", new FileInfo(path));
-                artRegistry.RegisterArt(PowerAcidSprite);
-            }
-            {
-                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Icon", Path.GetFileName("DissolventSprite.png"));
-                DissolventSprite = new ExternalSprite("CorrosiveCobra.sprites.DissolventSprite", new FileInfo(path));
-                artRegistry.RegisterArt(DissolventSprite);
-            }
-            {
-                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Icon", Path.GetFileName("DummyHeatSprite.png"));
-                DummyHeatSprite = new ExternalSprite("CorrosiveCobra.sprites.DummyHeatSprite", new FileInfo(path));
-                artRegistry.RegisterArt(DummyHeatSprite);
-            }
-
             //card background
             {
-                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_CardBackgroud.png"));
-                CorrosiveCobra_CardBackgroud = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_CardBackgroud", new FileInfo(path));
-                artRegistry.RegisterArt(CorrosiveCobra_CardBackgroud);
+                {
+                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_CardBackgroud.png"));
+                    CorrosiveCobra_CardBackgroud = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_CardBackgroud", new FileInfo(path));
+                    artRegistry.RegisterArt(CorrosiveCobra_CardBackgroud);
+                }
+                {
+                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_CorrodeSprite.png"));
+                    CorrosiveCobra_CorrodeSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_CorrodeSprite", new FileInfo(path));
+                    artRegistry.RegisterArt(CorrosiveCobra_CorrodeSprite);
+                }
+                {
+                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_CorrosionIgnitionSprite.png"));
+                    CorrosiveCobra_CorrosionIgnitionSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_CorrosionIgnitionSprite", new FileInfo(path));
+                    artRegistry.RegisterArt(CorrosiveCobra_CorrosionIgnitionSprite);
+                }
+                {
+                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_SplitTopSprite.png"));
+                    CorrosiveCobra_SplitTopSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_SplitTopSprite", new FileInfo(path));
+                    artRegistry.RegisterArt(CorrosiveCobra_SplitTopSprite);
+                }
+                {
+                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_SplitBottomSprite.png"));
+                    CorrosiveCobra_SplitBottomSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_SplitBottomSprite", new FileInfo(path));
+                    artRegistry.RegisterArt(CorrosiveCobra_SplitBottomSprite);
+                }
+                {
+                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_BoxHeatSprite.png"));
+                    CorrosiveCobra_BoxHeatSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_BoxHeatSprite", new FileInfo(path));
+                    artRegistry.RegisterArt(CorrosiveCobra_BoxHeatSprite);
+                }
+                {
+                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_SeekerCobraSprite.png"));
+                    CorrosiveCobra_SeekerCobraSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_SeekerCobraSprite", new FileInfo(path));
+                    artRegistry.RegisterArt(CorrosiveCobra_SeekerCobraSprite);
+                }
+                {
+                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_FumeCannonSprite.png"));
+                    CorrosiveCobra_FumeCannonSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_FumeCannonSprite", new FileInfo(path));
+                    artRegistry.RegisterArt(CorrosiveCobra_FumeCannonSprite);
+                }
+                {
+                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_EvolveBackgroundSprite.png"));
+                    CorrosiveCobra_EvolveBackgroundSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_EvolveBackgroundSprite", new FileInfo(path));
+                    artRegistry.RegisterArt(CorrosiveCobra_EvolveBackgroundSprite);
+                }
+                {
+                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_SlimeBlastSprite.png"));
+                    CorrosiveCobra_SlimeBlastSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_SlimeBlastSprite", new FileInfo(path));
+                    artRegistry.RegisterArt(CorrosiveCobra_SlimeBlastSprite);
+                }
+                {
+                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_RecklessFuelshotSprite.png"));
+                    CorrosiveCobra_RecklessFuelshotSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_RecklessFuelshotSprite", new FileInfo(path));
+                    artRegistry.RegisterArt(CorrosiveCobra_RecklessFuelshotSprite);
+                }
+                {
+                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_CorrosiveMultishotSprite.png"));
+                    CorrosiveCobra_CorrosiveMultishotSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_CorrosiveMultishotSprite", new FileInfo(path));
+                    artRegistry.RegisterArt(CorrosiveCobra_CorrosiveMultishotSprite);
+                }
+                {
+                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_RepairsSprite.png"));
+                    CorrosiveCobra_RepairsSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_RepairsSprite", new FileInfo(path));
+                    artRegistry.RegisterArt(CorrosiveCobra_RepairsSprite);
+                }
+                {
+                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_BlockShotSprite.png"));
+                    CorrosiveCobra_BlockShotSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_BlockShotSprite", new FileInfo(path));
+                    artRegistry.RegisterArt(CorrosiveCobra_BlockShotSprite);
+                }
+                {
+                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_HeatSprite.png"));
+                    CorrosiveCobra_HeatSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_HeatSprite", new FileInfo(path));
+                    artRegistry.RegisterArt(CorrosiveCobra_HeatSprite);
+                }
+                {
+                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_GoatDroneSprite.png"));
+                    CorrosiveCobra_GoatDroneSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_GoatDroneSprite", new FileInfo(path));
+                    artRegistry.RegisterArt(CorrosiveCobra_GoatDroneSprite);
+                }
+                {
+                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_CannonCardSprite.png"));
+                    CorrosiveCobra_CannonCardSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_CannonCardSprite", new FileInfo(path));
+                    artRegistry.RegisterArt(CorrosiveCobra_CannonCardSprite);
+                }
+                {
+                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_CorrosionBlockStarter.png"));
+                    CorrosiveCobra_CorrosionBlockStarter = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_CorrosionBlockStarter", new FileInfo(path));
+                    artRegistry.RegisterArt(CorrosiveCobra_CorrosionBlockStarter);
+                }
             }
-            {
-                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_CorrodeSprite.png"));
-                CorrosiveCobra_CorrodeSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_CorrodeSprite", new FileInfo(path));
-                artRegistry.RegisterArt(CorrosiveCobra_CorrodeSprite);
-            }
-            {
-                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_CorrosionIgnitionSprite.png"));
-                CorrosiveCobra_CorrosionIgnitionSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_CorrosionIgnitionSprite", new FileInfo(path));
-                artRegistry.RegisterArt(CorrosiveCobra_CorrosionIgnitionSprite);
-            }
-            {
-                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_SplitTopSprite.png"));
-                CorrosiveCobra_SplitTopSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_SplitTopSprite", new FileInfo(path));
-                artRegistry.RegisterArt(CorrosiveCobra_SplitTopSprite);
-            }
-            {
-                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_SplitBottomSprite.png"));
-                CorrosiveCobra_SplitBottomSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_SplitBottomSprite", new FileInfo(path));
-                artRegistry.RegisterArt(CorrosiveCobra_SplitBottomSprite);
-            }
-            {
-                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_BoxHeatSprite.png"));
-                CorrosiveCobra_BoxHeatSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_BoxHeatSprite", new FileInfo(path));
-                artRegistry.RegisterArt(CorrosiveCobra_BoxHeatSprite);
-            }
-            {
-                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_SeekerCobraSprite.png"));
-                CorrosiveCobra_SeekerCobraSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_SeekerCobraSprite", new FileInfo(path));
-                artRegistry.RegisterArt(CorrosiveCobra_SeekerCobraSprite);
-            }
-            {
-                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_FumeCannonSprite.png"));
-                CorrosiveCobra_FumeCannonSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_FumeCannonSprite", new FileInfo(path));
-                artRegistry.RegisterArt(CorrosiveCobra_FumeCannonSprite);
-            }
-            {
-                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_EvolveBackgroundSprite.png"));
-                CorrosiveCobra_EvolveBackgroundSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_EvolveBackgroundSprite", new FileInfo(path));
-                artRegistry.RegisterArt(CorrosiveCobra_EvolveBackgroundSprite);
-            }
-            {
-                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_SlimeBlastSprite.png"));
-                CorrosiveCobra_SlimeBlastSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_SlimeBlastSprite", new FileInfo(path));
-                artRegistry.RegisterArt(CorrosiveCobra_SlimeBlastSprite);
-            }
-            {
-                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_RecklessFuelshotSprite.png"));
-                CorrosiveCobra_RecklessFuelshotSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_RecklessFuelshotSprite", new FileInfo(path));
-                artRegistry.RegisterArt(CorrosiveCobra_RecklessFuelshotSprite);
-            }
-            {
-                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_CorrosiveMultishotSprite.png"));
-                CorrosiveCobra_CorrosiveMultishotSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_CorrosiveMultishotSprite", new FileInfo(path));
-                artRegistry.RegisterArt(CorrosiveCobra_CorrosiveMultishotSprite);
-            }
-            {
-                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_RepairsSprite.png"));
-                CorrosiveCobra_RepairsSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_RepairsSprite", new FileInfo(path));
-                artRegistry.RegisterArt(CorrosiveCobra_RepairsSprite);
-            }
-            {
-                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_BlockShotSprite.png"));
-                CorrosiveCobra_BlockShotSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_BlockShotSprite", new FileInfo(path));
-                artRegistry.RegisterArt(CorrosiveCobra_BlockShotSprite);
-            }
-            {
-                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_HeatSprite.png"));
-                CorrosiveCobra_HeatSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_HeatSprite", new FileInfo(path));
-                artRegistry.RegisterArt(CorrosiveCobra_HeatSprite);
-            }
-            {
-                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_GoatDroneSprite.png"));
-                CorrosiveCobra_GoatDroneSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_GoatDroneSprite", new FileInfo(path));
-                artRegistry.RegisterArt(CorrosiveCobra_GoatDroneSprite);
-            }
-            {
-                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_CannonCardSprite.png"));
-                CorrosiveCobra_CannonCardSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_CannonCardSprite", new FileInfo(path));
-                artRegistry.RegisterArt(CorrosiveCobra_CannonCardSprite);
-            }
-            {
-                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_CorrosionBlockStarter.png"));
-                CorrosiveCobra_CorrosionBlockStarter = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_CorrosionBlockStarter", new FileInfo(path));
-                artRegistry.RegisterArt(CorrosiveCobra_CorrosionBlockStarter);
-            }
-
-
             //card border
             {
-                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBorder", Path.GetFileName("BorderCobraCommon.png"));
-                BorderCobraCommon = new ExternalSprite("CorrosiveCobra.sprites.BorderCobraCommon", new FileInfo(path));
-                artRegistry.RegisterArt(BorderCobraCommon);
-            }
-            {
-                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBorder", Path.GetFileName("BorderCobraUncommon.png"));
-                BorderCobraUncommon = new ExternalSprite("CorrosiveCobra.sprites.BorderCobraUncommon", new FileInfo(path));
-                artRegistry.RegisterArt(BorderCobraUncommon);
-            }
-            {
-                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBorder", Path.GetFileName("BorderCobraRare.png"));
-                BorderCobraRare = new ExternalSprite("CorrosiveCobra.sprites.BorderCobraRare", new FileInfo(path));
-                artRegistry.RegisterArt(BorderCobraRare);
+                {
+                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBorder", Path.GetFileName("BorderCobraBasic.png"));
+                    BorderCobraBasic = new ExternalSprite("CorrosiveCobra.sprites.BorderCobraBasic", new FileInfo(path));
+                    artRegistry.RegisterArt(BorderCobraBasic);
+                }
+                {
+                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBorder", Path.GetFileName("BorderCobraCommon.png"));
+                    BorderCobraCommon = new ExternalSprite("CorrosiveCobra.sprites.BorderCobraCommon", new FileInfo(path));
+                    artRegistry.RegisterArt(BorderCobraCommon);
+                }
+                {
+                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBorder", Path.GetFileName("BorderCobraUncommon.png"));
+                    BorderCobraUncommon = new ExternalSprite("CorrosiveCobra.sprites.BorderCobraUncommon", new FileInfo(path));
+                    artRegistry.RegisterArt(BorderCobraUncommon);
+                }
+                {
+                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBorder", Path.GetFileName("BorderCobraRare.png"));
+                    BorderCobraRare = new ExternalSprite("CorrosiveCobra.sprites.BorderCobraRare", new FileInfo(path));
+                    artRegistry.RegisterArt(BorderCobraRare);
+                }
             }
         }
         public void LoadManifest(IDeckRegistry registry)
         {
-            ExternalSprite cardArtDefault = ExternalSprite.GetRaw(495);
-            ExternalSprite borderSprite = BorderCobraCommon ?? throw new Exception();
+            var card_DefaultArt = CorrosiveCobra_CardBackgroud ?? throw new Exception();
+            var borderCobraDeckSprite = BorderCobraCommon ?? throw new Exception();
+            var borderCobraShipDeckSprite = BorderCobraBasic ?? throw new Exception();
             CobraDeck = new ExternalDeck(
                 "CorrosiveCobra.CobraDeck",
                 CorrosiveCobra_Primary_Color,
                 System.Drawing.Color.Black,
-                cardArtDefault,
-                borderSprite,
+                card_DefaultArt,
+                borderCobraDeckSprite,
                 null);
             registry.RegisterDeck(Manifest.CobraDeck);
             CobraShipDeck = new ExternalDeck(
                 "CorrosiveCobra.CobraShipDeck",
                 CorrosiveCobra_Primary_Color,
                 System.Drawing.Color.Black,
-                cardArtDefault,
-                borderSprite,
+                card_DefaultArt,
+                borderCobraShipDeckSprite,
                 null);
             registry.RegisterDeck(Manifest.CobraShipDeck);
         }

@@ -7,8 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="References\Sprites\Artifacts\" />
-    <Folder Include="References\Sprites\Parts\" />
+    <Compile Remove="References\Sprites\Artifacts\**" />
+    <Compile Remove="References\Sprites\Parts\**" />
+    <EmbeddedResource Remove="References\Sprites\Artifacts\**" />
+    <EmbeddedResource Remove="References\Sprites\Parts\**" />
+    <None Remove="References\Sprites\Artifacts\**" />
+    <None Remove="References\Sprites\Parts\**" />
   </ItemGroup>
 
   <ItemGroup>

@@ -86,6 +86,55 @@ namespace CorrosiveCobra
                                 },
                             }
                         }
+                        /*
+                        new ExternalStory.ExternalSaySwitch()
+                        {
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = "dizzy",
+                                LoopTag = "explains",
+                                What = "Oh. Don't let Peri go there."
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = "riggs",
+                                LoopTag = "nervous",
+                                What = "Ah! I spilled my boba!"
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = "peri",
+                                LoopTag = "panic",
+                                What = "WHY ARE WE BREAKING OUR SHIP?"
+                            },
+                            new ExternalStory.ExternalSay() {
+                                Who = "goat",
+                                LoopTag = "panic",
+                                What = "OH MY GOD. THE SHIP IS BREAKING!"
+                            },
+                            new ExternalStory.ExternalSay() {
+                                Who = "eunice",
+                                LoopTag = "mad",
+                                What = "What?! We're not WAITING! Let's PUNCH 'EM!"
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = "max",
+                                LoopTag = "smile",
+                                What = "Work smarter, not harder"
+                            },
+                            new ExternalStory.ExternalSay() {
+                                Who = "books",
+                                LoopTag = "stoked",
+                                What = "Oooh!"
+                            },
+                            //MODDED CHARACTERS
+                            new ExternalStory.ExternalSay() {
+                                Who = DaveWho,
+                                What = "Is this a high roll?"
+                            },
+                        }
+                         */
                     });
                 LeakingContainerPlayedAndSlimeIsHere_Multi_0.AddLocalisation("dizzyLeakingContainer", "Oh. Don't let Peri go there.");
                 LeakingContainerPlayedAndSlimeIsHere_Multi_0.AddLocalisation("riggsLeakingContainer", "Ah! I spilled my boba!");
@@ -1054,7 +1103,21 @@ namespace CorrosiveCobra
                     });
                 storyRegistry.RegisterStory(SlimeBanditThreats_Multi_0);
             }
+            /*{
+                var injectDialogue0 = new ExternalStoryInjector("BatboyKeepsTalking_Multi_0",
+                    ExternalStoryInjector.QuickInjection.Beggining, 1,
+                    new List<object>()
+                    {
+                        new ExternalStory.ExternalSay()
+                        {
+                            Who = SlimeWho,
+                            What = "Oh! Tasty!",
+                        },
+                    });
+                storyRegistry.RegisterStory(injectDialogue0);
+            }*/
             //SlimeBatboyKeepsTalking_Multi
+            // (TO FIX)
             {
                 var SlimeBatboyKeepsTalking_Multi_0 = new ExternalStory("CorrosiveCobra.Story.SlimeBatboyKeepsTalking_Multi_0",
                     new StoryNode()
@@ -1087,6 +1150,20 @@ namespace CorrosiveCobra
                     });
                 storyRegistry.RegisterStory(SlimeBatboyKeepsTalking_Multi_0);
             }
+            /*{
+                var injectDialogue0 = new ExternalStoryInjector("BatboyKeepsTalking_Multi_0",
+                    ExternalStoryInjector.QuickInjection.Beggining, 1,
+                    new List<object>()
+                    {
+                        new ExternalStory.ExternalSay()
+                        {
+                            Who = SlimeWho,
+                            LoopTag = "laugh",
+                            What = "Nice! I have my own Cherenkov radiation lamp!"
+                        },
+                    });
+                storyRegistry.RegisterStory(injectDialogue0);
+            }*/
             //SlimeTentacleThreats_Multi
             // (TO FIX)
             {
@@ -1156,6 +1233,64 @@ namespace CorrosiveCobra
                 SlimeTentacleThreats_Multi_0.AddLocalisation("tentacleDialogueAnswer2", "To shreds you say?");
                 storyRegistry.RegisterStory(SlimeTentacleThreats_Multi_0);
             }
+            /*{
+                var injectDialogue0 = new ExternalStoryInjector("TentacleThreats_Multi_0",
+                    ExternalStoryInjector.QuickInjection.Beggining, 1,
+                    new List<object>()
+                    {
+                        new ExternalStory.ExternalSaySwitch()
+                        {
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                LoopTag = "laugh",
+                                What = "Haha. You're funny."
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                What = "Ah... aha... Hm... I see!"
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                LoopTag = "sad",
+                                What = "To shreds you say?"
+                            },
+                        },
+                    });
+                storyRegistry.RegisterStory(injectDialogue0);
+            }*/
+            //SlimeTentacleThreatsOnShellBreak_Multi
+            // (TO FIX)
+            /*{
+                var injectDialogue0 = new ExternalStoryInjector("TentacleThreatsOnShellBreak_Multi_0",
+                    ExternalStoryInjector.QuickInjection.Beggining, 1,
+                    new List<object>()
+                    {
+                        new ExternalStory.ExternalSaySwitch()
+                        {
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                LoopTag = "laugh",
+                                What = "YES I KNOW RIGHT?!"
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                What = "No, not really."
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                LoopTag = "sad",
+                                What = "Oh wow. That's... That's so sad."
+                            },
+                        },
+                    });
+                storyRegistry.RegisterStory(injectDialogue0);
+            }*/
             //SlimeBlockedAnEnemyAttackWithArmor_Multi
             {
                 {
@@ -2083,7 +2218,7 @@ namespace CorrosiveCobra
                 }
             }
             //SlimeArtifactGeminiCore_Multi
-            // (DIRTY PRIORITY) (TO FIX)
+            // (TO FIX)
             {
                 {
                     var SlimeArtifactGeminiCore_Multi_0 = new ExternalStory("CorrosiveCobra.Story.SlimeArtifactGeminiCore_Multi_0",
@@ -2118,6 +2253,7 @@ namespace CorrosiveCobra
                         });
                     storyRegistry.RegisterStory(SlimeArtifactGeminiCore_Multi_0);
                 }
+                // (DIRTY PRIORITY) 
                 {
                     var SlimeArtifactGeminiCore_Multi_1 = new ExternalStory("CorrosiveCobra.Story.SlimeArtifactGeminiCore_Multi_1",
                         new StoryNode()
@@ -2154,6 +2290,20 @@ namespace CorrosiveCobra
                         });
                     storyRegistry.RegisterStory(SlimeArtifactGeminiCore_Multi_1);
                 }
+                /*{
+                    var injectDialogue0 = new ExternalStoryInjector("ArtifactGeminiCore_Multi_4",
+                        ExternalStoryInjector.QuickInjection.Beggining, 1,
+                        new List<object>()
+                        {
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                LoopTag = "laugh",
+                                What = "I'm a green guy.",
+                            },
+                        });
+                    storyRegistry.RegisterStory(injectDialogue0);
+                }*/
             }
             //SlimeArtifactTiderunner_Multi
             {
@@ -2377,6 +2527,19 @@ namespace CorrosiveCobra
                         });
                     storyRegistry.RegisterStory(SlimeOneHitPointThisIsFine_Multi_1);
                 }
+                /*{
+                    var injectDialogue0 = new ExternalStoryInjector("OneHitPointThisIsFine_Multi_4",
+                        ExternalStoryInjector.QuickInjection.Beggining, 1,
+                        new List<object>()
+                        {
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                What = "Not at all!",
+                            },
+                        });
+                    storyRegistry.RegisterStory(injectDialogue0);
+                }*/
             }
             //SlimeWeDidOverFiveDamage_Multi
             //MODDED TO DO
@@ -3033,7 +3196,7 @@ namespace CorrosiveCobra
                                 SlimeWho
                             },
                             nonePresent = new HashSet<string>()
-                            { 
+                            {
                                 "riggs"
                             },
                         },
@@ -3081,6 +3244,229 @@ namespace CorrosiveCobra
                         });
                     storyRegistry.RegisterStory(SlimeArtifactJetThrustersNoRiggs_Multi_1);
                 }
+            }
+            //SlimeArtifactNanofiberHull1_Multi
+            {
+                {
+                    var SlimeArtifactNanofiberHull1_Multi_0 = new ExternalStory("CorrosiveCobra.Story.SlimeArtifactNanofiberHull1_Multi_0",
+                        new StoryNode()
+                        {
+                            type = NodeType.combat,
+                            turnStart = true,
+                            minDamageDealtToPlayerThisTurn = 1,
+                            maxDamageDealtToPlayerThisTurn = 1,
+                            oncePerRunTags = new HashSet<string>()
+                            {
+                                "NanofiberHull"
+                            },
+                            hasArtifacts = new HashSet<string>()
+                            {
+                                "NanofiberHull"
+                            },
+                            allPresent = new HashSet<string>()
+                            {
+                                SlimeWho
+                            },
+                        },
+                        new List<object>()
+                        {
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                What = "That'll get nanofixed right out.",
+                            },
+                        });
+                    storyRegistry.RegisterStory(SlimeArtifactNanofiberHull1_Multi_0);
+                }
+                {
+                    var SlimeArtifactNanofiberHull1_Multi_1 = new ExternalStory("CorrosiveCobra.Story.SlimeArtifactNanofiberHull1_Multi_1",
+                        new StoryNode()
+                        {
+                            type = NodeType.combat,
+                            turnStart = true,
+                            minDamageDealtToPlayerThisTurn = 1,
+                            maxDamageDealtToPlayerThisTurn = 1,
+                            oncePerRunTags = new HashSet<string>()
+                            {
+                                "NanofiberHull"
+                            },
+                            hasArtifacts = new HashSet<string>()
+                            {
+                                "NanofiberHull"
+                            },
+                            allPresent = new HashSet<string>()
+                            {
+                                SlimeWho
+                            },
+                        },
+                        new List<object>()
+                        {
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                What = "The bots will deal with that, don't worry.",
+                            },
+                        });
+                    storyRegistry.RegisterStory(SlimeArtifactNanofiberHull1_Multi_1);
+                }
+            }
+            //SlimeArtifactNanofiberHull2_Multi
+            {
+                var SlimeArtifactNanofiberHull2_Multi_0 = new ExternalStory("CorrosiveCobra.Story.SlimeArtifactNanofiberHull2_Multi_0",
+                    new StoryNode()
+                    {
+                        type = NodeType.combat,
+                        turnStart = true,
+                        minDamageDealtToPlayerThisTurn = 2,
+                        oncePerRunTags = new HashSet<string>()
+                        {
+                            "NanofiberHull"
+                        },
+                        hasArtifacts = new HashSet<string>()
+                        {
+                            "NanofiberHull"
+                        },
+                        allPresent = new HashSet<string>()
+                        {
+                            SlimeWho
+                        },
+                    },
+                    new List<object>()
+                    {
+                        new ExternalStory.ExternalSay()
+                        {
+                            Who = SlimeWho,
+                            What = "Our nanobuddies will heal some of that, at least.",
+                        },
+                    });
+                storyRegistry.RegisterStory(SlimeArtifactNanofiberHull2_Multi_0);
+            }
+            //SlimeSpikeGetsChatty_Multi
+            // (TO FIX)
+            /*{
+                var injectDialogue0 = new ExternalStoryInjector("SpikeGetsChatty_Multi_0",
+                    ExternalStoryInjector.QuickInjection.Beggining, 1,
+                    new List<object>()
+                    {
+                        new ExternalStory.ExternalSay()
+                        {
+                            Who = SlimeWho,
+                            What = "We're ready, yeah.",
+                        },
+                    });
+                storyRegistry.RegisterStory(injectDialogue0);
+            }*/
+            //SlimeArtifactEnergyRefund_Multi
+            {
+                var SlimeArtifactEnergyRefund_Multi_0 = new ExternalStory("CorrosiveCobra.Story.SlimeArtifactEnergyRefund_Multi_0",
+                    new StoryNode()
+                    {
+                        type = NodeType.combat,
+                        oncePerRun = true,
+                        minCostOfCardJustPlayed = 3,
+                        oncePerCombatTags = new HashSet<string>()
+                        {
+                            "EnergyRefund"
+                        },
+                        hasArtifacts = new HashSet<string>()
+                        {
+                            "EnergyRefund"
+                        },
+                        allPresent = new HashSet<string>()
+                        {
+                            SlimeWho,
+                        },
+                    },
+                    new List<object>()
+                    {
+                        new ExternalStory.ExternalSay()
+                        {
+                            Who = SlimeWho,
+                            LoopTag = "phone",
+                            What = "Does an extra large have a discount too?",
+                        },
+                    });
+                storyRegistry.RegisterStory(SlimeArtifactEnergyRefund_Multi_0);
+            }
+            //SlimeArtifactOverclockedGeneratorSeenMaxMemory3_Multi
+            // (TO FIX)
+            /*{
+                var injectDialogue0 = new ExternalStoryInjector("ArtifactOverclockedGeneratorSeenMaxMemory3_Multi_0",
+                    ExternalStoryInjector.QuickInjection.Beggining, 1,
+                    new List<object>()
+                    {
+                        new ExternalStory.ExternalSay()
+                        {
+                            Who = SlimeWho,
+                            LoopTag = "laugh",
+                            What = "Don't let Peri hear it. She's still mad about the core.",
+                        },
+                    });
+                storyRegistry.RegisterStory(injectDialogue0);
+            }*/
+            //SlimeArtifactShieldPrepIsGone_Multi
+            {
+                var SlimeArtifactShieldPrepIsGone_Multi_0 = new ExternalStory("CorrosiveCobra.Story.SlimeArtifactShieldPrepIsGone_Multi_0",
+                    new StoryNode()
+                    {
+                        type = NodeType.combat,
+                        turnStart = true,
+                        maxTurnsThisCombat = 1,
+                        oncePerRunTags = new HashSet<string>()
+                        {
+                            "ShieldPrepIsGoneYouFool"
+                        },
+                        doesNotHaveArtifacts = new HashSet<string>()
+                        {
+                            "ShieldPrep",
+                            "WarpMastery"
+                        },
+                        allPresent = new HashSet<string>()
+                        {
+                            SlimeWho,
+                        },
+                    },
+                    new List<object>()
+                    {
+                        new ExternalStory.ExternalSay()
+                        {
+                            Who = SlimeWho,
+                            LoopTag = "nervous",
+                            What = "We'll be fine without warp prep, right?",
+                        },
+                    });
+                storyRegistry.RegisterStory(SlimeArtifactShieldPrepIsGone_Multi_0);
+            }
+            //SlimeArtifactWarpMastery_Multi
+            {
+                var SlimeArtifactWarpMastery_Multi_0 = new ExternalStory("CorrosiveCobra.Story.SlimeArtifactWarpMastery_Multi_0",
+                    new StoryNode()
+                    {
+                        type = NodeType.combat,
+                        turnStart = true,
+                        maxTurnsThisCombat = 1,
+                        oncePerRunTags = new HashSet<string>()
+                        {
+                            "WarpMastery"
+                        },
+                        hasArtifacts = new HashSet<string>()
+                        {
+                            "WarpMastery"
+                        },
+                        allPresent = new HashSet<string>()
+                        {
+                            SlimeWho,
+                        },
+                    },
+                    new List<object>()
+                    {
+                        new ExternalStory.ExternalSay()
+                        {
+                            Who = SlimeWho,
+                            What = "Everyone knows Green makes stuff Stronger.",
+                        },
+                    });
+                storyRegistry.RegisterStory(SlimeArtifactWarpMastery_Multi_0);
             }
         }
     }
