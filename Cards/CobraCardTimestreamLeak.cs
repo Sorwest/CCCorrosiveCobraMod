@@ -58,6 +58,7 @@
             var result = new List<CardAction>();
             List<CardAction> cardActionList1 = new List<CardAction>();
             AStatus astatus1 = new AStatus();
+            astatus1.dialogueSelector = ".playedTimestreamLeak";
             astatus1.status = Status.corrode;
             astatus1.statusAmount = this.value;
             astatus1.targetPlayer = false;

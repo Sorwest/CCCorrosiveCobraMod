@@ -586,6 +586,11 @@ namespace CorrosiveCobra
                 registry.RegisterCard(CobraCardFuelWall);
                 CobraCardFuelWall.AddLocalisation("Adv. Heat Protection");
             }
+            {
+                CobraCardLeakingContainer = new ExternalCard("CorrosiveCobra.CobraCardLeakingContainer", typeof(CobraCardLeakingContainer), card_DefaultArt, CobraShipDeck);
+                registry.RegisterCard(CobraCardLeakingContainer);
+                CobraCardLeakingContainer.AddLocalisation("Leaking Container");
+            }
 
             // DIZZY SLIME CARDS
 
@@ -608,11 +613,6 @@ namespace CorrosiveCobra
                 CobraCardHurriedDefense = new ExternalCard("CorrosiveCobra.CobraCardHurriedDefense", typeof(CobraCardHurriedDefense), card_DefaultArt, CobraDeck);
                 registry.RegisterCard(CobraCardHurriedDefense);
                 CobraCardHurriedDefense.AddLocalisation("Hurried Defense");
-            }
-            {
-                CobraCardLeakingContainer = new ExternalCard("CorrosiveCobra.CobraCardLeakingContainer", typeof(CobraCardLeakingContainer), card_DefaultArt, CobraDeck);
-                registry.RegisterCard(CobraCardLeakingContainer);
-                CobraCardLeakingContainer.AddLocalisation("Leaking Container");
             }
             {
                 CobraCardCorrosionIgnition = new ExternalCard("CorrosiveCobra.CobraCardCorrosionIgnition", typeof(CobraCardCorrosionIgnition), card_DefaultArt, CobraDeck);

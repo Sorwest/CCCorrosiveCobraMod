@@ -33,6 +33,7 @@
                 case Upgrade.None:
                     List<CardAction> cardActionList1 = new List<CardAction>();
                     AStatus astatus1 = new AStatus();
+                    astatus1.dialogueSelector = ".playedSlimeHug";
                     astatus1.status = evolve_status;
                     astatus1.statusAmount = 1;
                     astatus1.targetPlayer = true;
@@ -42,6 +43,7 @@
                 case Upgrade.A:
                     List<CardAction> cardActionList2 = new List<CardAction>();
                     AStatus astatus2 = new AStatus();
+                    astatus2.dialogueSelector = ".playedSlimeHug";
                     astatus2.status = evolve_status;
                     astatus2.statusAmount = 1;
                     astatus2.targetPlayer = true;
@@ -51,6 +53,7 @@
                 case Upgrade.B:
                     List<CardAction> cardActionList3 = new List<CardAction>();
                     AStatus astatus3 = new AStatus();
+                    astatus3.dialogueSelector = ".playedSlimeHug";
                     astatus3.status = evolve_status;
                     astatus3.statusAmount = 2;
                     astatus3.targetPlayer = true;

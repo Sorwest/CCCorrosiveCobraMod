@@ -39,6 +39,7 @@
                     Missile missile1 = new Missile();
                     missile1.yAnimation = 0.0;
                     missile1.missileType = MissileType.corrode;
+                    aspawn1.dialogueSelector = ".playedTankThrowNone";
                     aspawn1.thing = missile1;
                     cardActionList1.Add(aspawn1);
                     AMove amove1 = new AMove();
@@ -68,6 +69,7 @@
                     Missile missile3 = new Missile();
                     missile3.yAnimation = 0.0;
                     missile3.missileType = MissileType.seeker;
+                    aspawn3.dialogueSelector = ".playedTankThrowA";
                     aspawn3.thing = missile3;
                     cardActionList2.Add(aspawn3);
                     AMove amove3 = new AMove();
@@ -88,14 +90,13 @@
                     missile4.yAnimation = 0.0;
                     missile4.missileType = MissileType.corrode;
                     aspawn4.thing = missile4;
-                    aspawn4.thing = missile4;
+                    aspawn4.dialogueSelector = ".playedTankThrowB";
                     aspawn4.offset = -3;
                     cardActionList3.Add(aspawn4);
                     ASpawn aspawn5 = new ASpawn();
                     Missile missile5 = new Missile();
                     missile5.yAnimation = 0.0;
                     missile5.missileType = MissileType.corrode;
-                    aspawn5.thing = missile5;
                     aspawn5.thing = missile5;
                     aspawn5.offset = -2;
                     cardActionList3.Add(aspawn5);
@@ -104,14 +105,12 @@
                     missile6.yAnimation = 0.0;
                     missile6.missileType = MissileType.corrode;
                     aspawn6.thing = missile6;
-                    aspawn6.thing = missile6;
                     aspawn6.offset = -1;
                     cardActionList3.Add(aspawn6);
                     ASpawn aspawn7 = new ASpawn();
                     Missile missile7 = new Missile();
                     missile7.yAnimation = 0.0;
                     missile7.missileType = MissileType.corrode;
-                    aspawn7.thing = missile7;
                     aspawn7.thing = missile7;
                     cardActionList3.Add(aspawn7);
                     Actions.AStatus2 astatus3 = new Actions.AStatus2();
