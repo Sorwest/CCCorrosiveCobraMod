@@ -21,7 +21,7 @@
                     result.cost = 1;
                     break;
             }
-            result.art = new Spr?((Spr)Manifest.CorrosiveCobra_CardBackgroud!.Id);
+            result.art = new Spr?((Spr)Manifest.CorrosiveCobra_CardBackgroud!.Id!);
             result.exhaust = true;
             result.artTint = "45e0ab";
             State s = state;
@@ -52,7 +52,7 @@
                     List<CardAction> cardActionList1 = new List<CardAction>();
                     ACardOffering acardOffering1 = new ACardOffering();
                     acardOffering1.amount = 2;
-                    acardOffering1.limitDeck = new Deck?((Deck)Manifest.CobraDeck!.Id);
+                    acardOffering1.limitDeck = new Deck?((Deck)Manifest.CobraDeck!.Id!);
                     acardOffering1.makeAllCardsTemporary = true;
                     acardOffering1.overrideUpgradeChances = new bool?(false);
                     acardOffering1.canSkip = false;
@@ -66,7 +66,7 @@
                     List<CardAction> cardActionList2 = new List<CardAction>();
                     ACardOffering acardOffering2 = new ACardOffering();
                     acardOffering2.amount = 2;
-                    acardOffering2.limitDeck = new Deck?((Deck)Manifest.CobraDeck!.Id);
+                    acardOffering2.limitDeck = new Deck?((Deck)Manifest.CobraDeck!.Id!);
                     acardOffering2.makeAllCardsTemporary = true;
                     acardOffering2.overrideUpgradeChances = new bool?(false);
                     acardOffering2.canSkip = false;
@@ -80,7 +80,7 @@
                     List<CardAction> cardActionList3 = new List<CardAction>();
                     ACardOffering acardOffering3 = new ACardOffering();
                     acardOffering3.amount = 3;
-                    acardOffering3.limitDeck = new Deck?((Deck)Manifest.CobraDeck!.Id);
+                    acardOffering3.limitDeck = new Deck?((Deck)Manifest.CobraDeck!.Id!);
                     acardOffering3.makeAllCardsTemporary = true;
                     acardOffering3.overrideUpgradeChances = new bool?(false);
                     acardOffering3.canSkip = false;

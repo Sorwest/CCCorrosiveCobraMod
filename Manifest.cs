@@ -495,7 +495,7 @@ namespace CorrosiveCobra
             {
                 CobraCardColorlessSlimeSummon = new ExternalCard("CorrosiveCobra.CobraCardColorlessSlimeSummon", typeof(CobraCardColorlessSlimeSummon), card_DefaultArt, ExternalDeck.GetRaw((int)Deck.colorless));
                 registry.RegisterCard(CobraCardColorlessSlimeSummon);
-                CobraCardColorlessSlimeSummon.AddLocalisation("Dizzy?.EXE", "Add 1 of {0} <c=cardtrait>discount, temp</c> <c={1}>{2}</c> cards to your hand.");
+                CobraCardColorlessSlimeSummon.AddLocalisation("Dizzy?.EXE", "Add 1 of {0} <c=cardtrait>discount, temp</c> {1} cards to your hand.");
             }
             {
                 CobraCardColorlessAbsorbArtifact = new ExternalCard("CorrosiveCobra.CobraCardColorlessAbsorbArtifact", typeof(CobraCardColorlessAbsorbArtifact), card_DefaultArt, ExternalDeck.GetRaw((int)Deck.colorless));
