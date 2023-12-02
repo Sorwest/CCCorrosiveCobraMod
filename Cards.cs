@@ -242,7 +242,7 @@
             return result;
         }
     }
-    [CardMeta(deck = Deck.colorless, dontOffer = true, rarity = Rarity.common, upgradesTo = new Upgrade[] { Upgrade.A, Upgrade.B })]
+    [CardMeta(deck = Deck.colorless, rarity = Rarity.common, upgradesTo = new Upgrade[] { Upgrade.A, Upgrade.B })]
     public class AbsorbArtifact : Card
     {
         public override string Name() => "Absorb Artifact";
@@ -871,7 +871,7 @@
                     result.art = new Spr?((Spr)Manifest.CorrosiveCobra_CorrodeSprite!.Id);
                     break;
                 case Upgrade.A:
-                    result.cost = 1;
+                    result.cost = 2;
                     result.exhaust = false;
                     result.art = new Spr?((Spr)Manifest.CorrosiveCobra_SeekerCobraSprite!.Id);
                     break;
@@ -910,12 +910,11 @@
                     amove2.dir = -1;
                     amove2.targetPlayer = true;
                     cardActionList1.Add(amove2);
-                    cardActionList1.Add(new AStatus()
-                    {
-                        status = Status.heat,
-                        statusAmount = 1,
-                        targetPlayer = true
-                    });
+                    AStatus astatus1 = new AStatus();
+                    astatus1.status = Status.heat;
+                    astatus1.statusAmount = 1;
+                    astatus1.targetPlayer = true;
+                    cardActionList1.Add(astatus1);
                     result = cardActionList1;
                     break;
                 case Upgrade.A:
@@ -926,12 +925,15 @@
                     missile3.missileType = MissileType.seeker;
                     aspawn3.thing = missile3;
                     cardActionList2.Add(aspawn3);
-                    cardActionList2.Add(new AStatus()
-                    {
-                        status = Status.heat,
-                        statusAmount = -1,
-                        targetPlayer = true
-                    });
+                    AMove amove3 = new AMove();
+                    amove3.dir = 1;
+                    amove3.targetPlayer = true;
+                    cardActionList2.Add(amove3);
+                    AStatus astatus2 = new AStatus();
+                    astatus2.status = Status.heat;
+                    astatus2.statusAmount = -1;
+                    astatus2.targetPlayer = true;
+                    cardActionList2.Add(astatus2);
                     result = cardActionList2;
                     break;
                 case Upgrade.B:
@@ -967,12 +969,12 @@
                     aspawn7.thing = missile7;
                     aspawn7.thing = missile7;
                     cardActionList3.Add(aspawn7);
-                    cardActionList3.Add(new AStatus()
-                    {
-                        status = Status.heat,
-                        statusAmount = 3,
-                        targetPlayer = true
-                    });
+                    Actions.AStatus2 astatus3 = new Actions.AStatus2();
+                    astatus3.status = Status.corrode;
+                    astatus3.statusAmount = 1;
+                    astatus3.targetPlayer = true;
+                    astatus3.SelfInflict = true;
+                    cardActionList2.Add(astatus3);
                     result = cardActionList3;
                     break;
             };
