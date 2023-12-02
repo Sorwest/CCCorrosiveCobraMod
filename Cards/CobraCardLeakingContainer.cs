@@ -58,7 +58,7 @@
                     AHurt ahurt1 = new AHurt();
                     ahurt1.hurtAmount = 3;
                     ahurt1.targetPlayer = true;
-                    ahurt1.dialogueSelector = ".leakingContainerShout";
+                    ahurt1.dialogueSelector = ".playedLeakingContainer";
                     ahurt1.disabled = flipped;
                     cardActionList1.Add(ahurt1);
                     AStatus astatus1 = new AStatus();
@@ -91,7 +91,7 @@
                     AHurt ahurt3 = new AHurt();
                     ahurt3.hurtAmount = 3;
                     ahurt3.targetPlayer = true;
-                    ahurt3.dialogueSelector = ".leakingContainerShout";
+                    ahurt3.dialogueSelector = ".playedLeakingContainer";
                     ahurt3.disabled = flipped;
                     cardActionList2.Add(ahurt3);
                     AStatus astatus3 = new AStatus();

@@ -15,7 +15,7 @@
             combat.QueueImmediate(astatus1);
             AStatus astatus2 = new AStatus();
             astatus2.status = Status.corrode;
-            astatus2.statusAmount = 1;
+            astatus2.statusAmount = 2;
             astatus2.targetPlayer = false;
             combat.QueueImmediate(astatus2);
         }
