@@ -181,6 +181,14 @@ namespace CorrosiveCobra.Artifacts
     {
         public int otherShipCorrode = 0;
         public override string Name() => "POWERACID";
+        public override void OnReceiveArtifact(State state)
+        {
+            state.ship.baseDraw -= 1;
+        }
+        public override void OnRemoveArtifact(State state)
+        {
+            state.ship.baseDraw += 1;
+        }
         public override void OnTurnEnd(State state, Combat combat)
         {
             if (combat.otherShip.Get(Status.corrode) > 0)
