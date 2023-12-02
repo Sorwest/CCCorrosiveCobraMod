@@ -3,7 +3,7 @@
 namespace CorrosiveCobra.Artifacts
 {
     [ArtifactMeta(owner = Deck.colorless, pools = new ArtifactPool[] { ArtifactPool.EventOnly }, unremovable = true)]
-    public class UnstableTanks : Artifact
+    public class CobraArtifactUnstableTanks : Artifact
     {
         public override string Name() => "UNSTABLE FUELTANKS";
         public override void OnReceiveArtifact(State state)
@@ -43,7 +43,7 @@ namespace CorrosiveCobra.Artifacts
     }
 
     [ArtifactMeta(owner = Deck.colorless, pools = new ArtifactPool[] { ArtifactPool.Boss }, unremovable = true)]
-    public class OverdriveTanks : Artifact
+    public class CobraArtifactOverdriveTanks : Artifact
     {
         public override string Name() => "OVERDRIVETANKS";
         public override void OnReceiveArtifact(State state)
@@ -89,7 +89,7 @@ namespace CorrosiveCobra.Artifacts
     }
 
     [ArtifactMeta(pools = new ArtifactPool[] { ArtifactPool.Common })]
-    public class SlimeHeart : Artifact
+    public class CobraArtifactSlimeHeart : Artifact
     {
         public override string Name() => "SLIME HEART";
         public override void OnTurnStart(State state, Combat combat)
@@ -102,7 +102,7 @@ namespace CorrosiveCobra.Artifacts
             astatus1.status = (Status)Manifest.EvolveStatus.Id;
             astatus1.statusAmount = 1;
             astatus1.targetPlayer = true;
-            combat.QueueImmediate(astatus1);
+            combat.Queue(astatus1);
         }
         public override List<Tooltip>? GetExtraTooltips() => new List<Tooltip>()
         {
@@ -111,7 +111,7 @@ namespace CorrosiveCobra.Artifacts
     }
 
     [ArtifactMeta(pools = new ArtifactPool[] { ArtifactPool.Common })]
-    public class ToxicCaviar : Artifact
+    public class CobraArtifactToxicCaviar : Artifact
     {
         public override string Name() => "TOXIC CAVIAR";
         public override void OnTurnStart(State state, Combat combat)
@@ -137,7 +137,7 @@ namespace CorrosiveCobra.Artifacts
     }
 
     [ArtifactMeta(pools = new ArtifactPool[] { ArtifactPool.Common })]
-    public class CorrodeAttack : Artifact
+    public class CobraArtifactCorrodeAttack : Artifact
     {
         public override string Name() => "ACID ARSENAL";
         public int count;
@@ -177,7 +177,7 @@ namespace CorrosiveCobra.Artifacts
     }
 
     [ArtifactMeta(pools = new ArtifactPool[] { ArtifactPool.Boss })]
-    public class PowerAcid : Artifact
+    public class CobraArtifactPowerAcid : Artifact
     {
         public int otherShipCorrode = 0;
         public override string Name() => "POWERACID";
@@ -207,7 +207,7 @@ namespace CorrosiveCobra.Artifacts
     }
 
     [ArtifactMeta(pools = new ArtifactPool[] { ArtifactPool.Boss })]
-    public class Dissolvent : Artifact
+    public class CobraArtifactDissolvent : Artifact
     {
         public bool TriggeredAlready = false;
         public override string Name() => "DISSOLVENT";

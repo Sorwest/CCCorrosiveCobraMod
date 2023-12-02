@@ -35,7 +35,7 @@ namespace CorrosiveCobra
         {
             {
                 MethodInfo method1 = typeof(Card).GetMethod("OnDraw") ?? throw new Exception("Couldn't find Card.OnDraw method");
-                MethodInfo method2 = typeof(Manifest).GetMethod("EvolveOnDraw", System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.NonPublic) ?? throw new Exception("Couldn't find Manifest.EvolveOnDraw method");
+                MethodInfo method2 = typeof(Manifest).GetMethod("PatchedOnDraw", System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.NonPublic) ?? throw new Exception("Couldn't find Manifest.PatchedOnDraw method");
                 harmony.Patch(method1, postfix: new HarmonyMethod(method2));
             }
             {
@@ -44,28 +44,27 @@ namespace CorrosiveCobra
                 harmony.Patch(method3, postfix: new HarmonyMethod(method4));
             }
         }
-        private static void EvolveOnDraw(State s, Combat c)
+        private static void PatchedOnDraw(State s, Combat c)
         {
-            if (Manifest.EvolveStatus?.Id == null)
-                return;
-            var status = (Status)Manifest.EvolveStatus.Id;
-            var amount = s.ship.Get(status);
-            int index = c.hand.Count - 1;
-            if (index < 0)
-                return;
-            if (c.hand[index].GetMeta().deck == Deck.trash)
+            if (Manifest.EvolveStatus?.Id != null)
             {
-                ADrawCard adrawCard1 = new ADrawCard();
-                adrawCard1.count = amount;
-                c.QueueImmediate(adrawCard1);
-                return;
-            }
-            if (c.hand[index].GetMeta().deck == Deck.corrupted)
-            {
-                ADrawCard adrawCard1 = new ADrawCard();
-                adrawCard1.count = amount;
-                c.QueueImmediate(adrawCard1);
-                return;
+                var status = (Status)Manifest.EvolveStatus.Id;
+                var amount = s.ship.Get(status);
+                if (amount != 0)
+                {
+                    int index = c.hand.Count - 1;
+                    if (index < 0)
+                        return;
+                    var deck = c.hand[index].GetMeta().deck;
+                    if (deck == Deck.trash || deck == Deck.corrupted)
+                    {
+                        s.ship.PulseStatus(status);
+                        ADrawCard adrawCard1 = new ADrawCard();
+                        adrawCard1.count = amount;
+                        c.Queue(adrawCard1);
+                        return;
+                    }
+                }
             }
         }
         private static void TurnEnd(Ship __instance, State s, Combat c)
@@ -74,21 +73,24 @@ namespace CorrosiveCobra
             {
                 var status = (Status)Manifest.HeatOutbreakStatus.Id;
                 var amount = s.ship.Get(status);
-                if (__instance.Get((Status)Manifest.HeatOutbreakStatus.Id.Value) > 0 && c.otherShip.Get(Status.heat) > 0)
+                if (amount != 0)
                 {
-                    AHurt ahurt1 = new AHurt();
-                    ahurt1.hurtAmount = amount * c.otherShip.Get(Status.heat);
-                    ahurt1.targetPlayer = false;
-                    ahurt1.hurtShieldsFirst = true;
-                    c.QueueImmediate(ahurt1);
-                    s.ship.PulseStatus(status);
+                    if (c.otherShip.Get(Status.heat) > 0 || s.ship.Get(Status.heat) > 0)
+                    {
+                        AHurt ahurt1 = new AHurt();
+                        ahurt1.hurtAmount = amount * (c.otherShip.Get(Status.heat) + s.ship.Get(Status.heat));
+                        ahurt1.targetPlayer = false;
+                        ahurt1.hurtShieldsFirst = true;
+                        c.QueueImmediate(ahurt1);
+                        s.ship.PulseStatus(status);
+                    }
                 }
             }
             if (Manifest.HeatControlStatus?.Id != null)
             {
                 var status = (Status)Manifest.HeatControlStatus.Id;
                 var amount = s.ship.Get(status);
-                if (__instance.Get((Status)Manifest.HeatControlStatus.Id.Value) > 0)
+                if (amount != 0)
                 {
                     s.ship.PulseStatus(status);
                     s.ship.heatTrigger += 1;

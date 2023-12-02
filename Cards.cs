@@ -298,6 +298,7 @@
             AHeal aaheal1 = new AHeal();
             aaheal1.healAmount = 10;
             aaheal1.targetPlayer = true;
+            aaheal1.canRunAfterKill = true;
             cardActionList1.Add(aaheal1);
             result = cardActionList1;
             return result;
@@ -1105,6 +1106,7 @@
                     AHeal aheal1 = new AHeal();
                     aheal1.healAmount = 1;
                     aheal1.targetPlayer = true;
+                    aheal1.canRunAfterKill = true;
                     cardActionList1.Add(aheal1);
                     ADrawCard adraw1 = new ADrawCard();
                     adraw1.count = 1;
@@ -1116,6 +1118,7 @@
                     AHeal aheal2 = new AHeal();
                     aheal2.healAmount = 2;
                     aheal2.targetPlayer = true;
+                    aheal2.canRunAfterKill = true;
                     cardActionList2.Add(aheal2);
                     ADrawCard adraw2 = new ADrawCard();
                     adraw2.count = 1;
@@ -1127,6 +1130,7 @@
                     AHeal aheal3 = new AHeal();
                     aheal3.healAmount = 1;
                     aheal3.targetPlayer = true;
+                    aheal3.canRunAfterKill = true;
                     cardActionList3.Add(aheal3);
                     ADrawCard adraw3 = new ADrawCard();
                     adraw3.count = 4;
@@ -1173,6 +1177,7 @@
                     AHeal aheal1 = new AHeal();
                     aheal1.healAmount = 1;
                     aheal1.targetPlayer = true;
+                    aheal1.canRunAfterKill = true;
                     cardActionList1.Add(aheal1);
                     AAddCard aaddCard1 = new AAddCard();
                     CobraCardLeakingContainer leakingContainer1 = new CobraCardLeakingContainer();
@@ -1187,6 +1192,7 @@
                     AHeal aheal2 = new AHeal();
                     aheal2.healAmount = 2;
                     aheal2.targetPlayer = true;
+                    aheal2.canRunAfterKill = true;
                     cardActionList2.Add(aheal2);
                     AAddCard aaddCard2 = new AAddCard();
                     CobraCardLeakingContainer leakingContainer2 = new CobraCardLeakingContainer();
@@ -1202,6 +1208,7 @@
                     AHeal aheal3 = new AHeal();
                     aheal3.healAmount = 3;
                     aheal3.targetPlayer = true;
+                    aheal3.canRunAfterKill = true;
                     cardActionList3.Add(aheal3);
                     AAddCard aaddCard3 = new AAddCard();
                     CobraCardLeakingContainer leakingContainer3 = new CobraCardLeakingContainer();
@@ -1434,6 +1441,11 @@
                     aattack2.statusAmount = 1;
                     aattack2.targetPlayer = false;
                     cardActionList1.Add(aattack2);
+                    AStatus astatus1 = new AStatus();
+                    astatus1.status = Status.heat;
+                    astatus1.statusAmount = 1;
+                    astatus1.targetPlayer = true;
+                    cardActionList1.Add(astatus1);
                     result = cardActionList1;
                     break;
                 case Upgrade.A:
@@ -1456,12 +1468,12 @@
                     aattack5.statusAmount = 1;
                     aattack5.targetPlayer = false;
                     cardActionList2.Add(aattack5);
-                    Actions.AStatus2 astatus1 = new Actions.AStatus2();
-                    astatus1.status = Status.corrode;
-                    astatus1.statusAmount = 1;
-                    astatus1.targetPlayer = true;
-                    astatus1.SelfInflict = true;
-                    cardActionList2.Add(astatus1);
+                    Actions.AStatus2 astatus2 = new Actions.AStatus2();
+                    astatus2.status = Status.corrode;
+                    astatus2.statusAmount = 1;
+                    astatus2.targetPlayer = true;
+                    astatus2.SelfInflict = true;
+                    cardActionList2.Add(astatus2);
                     result = cardActionList2;
                     break;
                 case Upgrade.B:
@@ -1472,6 +1484,11 @@
                     aattack6.statusAmount = 1;
                     aattack6.targetPlayer = false;
                     cardActionList3.Add(aattack6);
+                    AStatus astatus3 = new AStatus();
+                    astatus3.status = Status.heat;
+                    astatus3.statusAmount = 1;
+                    astatus3.targetPlayer = true;
+                    cardActionList3.Add(astatus3);
                     result = cardActionList3;
                     break;
             }

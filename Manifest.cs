@@ -5,6 +5,11 @@ using CobaltCoreModding.Definitions.ModManifests;
 using CorrosiveCobra.Artifacts;
 using CorrosiveCobra.Cards;
 using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Reflection;
 
 // Structure using parchmentengineer's armada mod, check them out!
 // https://github.com/parchmentEngineer/parchmentArmada/releases/
@@ -31,8 +36,6 @@ namespace CorrosiveCobra
         public IEnumerable<DependencyEntry> Dependencies => Array.Empty<DependencyEntry>();
         public DirectoryInfo? ModRootFolder { get; set; }
         public ILogger? Logger { get; set; }
-
-        private static System.Drawing.Color CorrosiveCobra_Primary_Color = System.Drawing.Color.FromArgb(107, 255, 205);
         public static ExternalShip? CorrosiveCobra_Main { get; private set; }
         public static ExternalStarterShip? CorrosiveCobra_StarterShip { get; private set; }
         public static ExternalDeck? CobraDeck { get; private set; }
@@ -40,15 +43,24 @@ namespace CorrosiveCobra
 
         //character art sprites
         public static ExternalCharacter? CorrosiveCobra_Character { get; private set; }
-        public static ExternalAnimation? CorrosiveCobra_CharacterDefaultAnimation { get; private set; }
-        public static ExternalAnimation? CorrosiveCobra_CharacterMiniAnimation { get; private set; }
-        public static ExternalAnimation? CorrosiveCobra_CharacterGameoverAnimation { get; private set; }
-        public static ExternalAnimation? CorrosiveCobra_CharacterSquintAnimation { get; private set; }
         public static ExternalSprite? CorrosiveCobra_CharacterMini_Sprite { get; private set; }
         public static ExternalSprite? CorrosiveCobra_CharacterPortrait_Sprite { get; private set; }
         public static ExternalSprite? CorrosiveCobra_CharacterPanelFrame_Sprite { get; private set; }
         public static ExternalSprite? CorrosiveCobra_CharacterGameover_Sprite { get; private set; }
         public static ExternalSprite? CorrosiveCobra_CharacterSquint_Sprite { get; private set; }
+
+        //character animation sprites
+        public static ExternalAnimation? CorrosiveCobra_Character_DefaultAnimation { get; private set; }
+        public static ExternalAnimation? CorrosiveCobra_Character_MiniAnimation { get; private set; }
+        public static ExternalAnimation? CorrosiveCobra_Character_GameoverAnimation { get; private set; }
+        public static ExternalAnimation? CorrosiveCobra_Character_TalkLaughAnimation { get; private set; }
+        public static ExternalAnimation? CorrosiveCobra_Character_TalkNeutralAnimation { get; private set; }
+        public static ExternalAnimation? CorrosiveCobra_Character_TalkSadAnimation { get; private set; }
+        public static ExternalAnimation? CorrosiveCobra_Character_TalkSquintAnimation { get; private set; }
+        public static List<ExternalSprite> TalkLaughSprites { get; private set; } = new List<ExternalSprite>();
+        public static List<ExternalSprite> TalkNeutralSprites { get; private set; } = new List<ExternalSprite>();
+        public static List<ExternalSprite> TalkSadSprites { get; private set; } = new List<ExternalSprite>();
+        public static List<ExternalSprite> TalkSquintSprites { get; private set; } = new List<ExternalSprite>();
 
         //icons sprites
         public static ExternalSprite? UnstableTanksSprite { get; private set; }
@@ -208,6 +220,48 @@ namespace CorrosiveCobra
                 var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", Path.GetFileName("CorrosiveCobra_CharacterSquint_Sprite.png"));
                 CorrosiveCobra_CharacterSquint_Sprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_CharacterSquint_Sprite", new FileInfo(path));
                 artRegistry.RegisterArt(CorrosiveCobra_CharacterSquint_Sprite);
+            }
+
+            //talk animations
+            {
+                var dir_path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", "talk_laugh");
+                var files = Directory.GetFiles(dir_path).Select(e => new FileInfo(e)).ToArray();
+                for (int i = 0; i < files.Length; i++)
+                {
+                    var spr = new ExternalSprite("CorrosiveCobra.Character.DizzySlime.TalkLaugh" + i, files[i]);
+                    TalkLaughSprites.Add(spr);
+                    artRegistry.RegisterArt(spr);
+                }
+            }
+            {
+                var dir_path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", "talk_neutral");
+                var files = Directory.GetFiles(dir_path).Select(e => new FileInfo(e)).ToArray();
+                for (int i = 0; i < files.Length; i++)
+                {
+                    var spr = new ExternalSprite("CorrosiveCobra.Character.DizzySlime.TalkNeutral" + i, files[i]);
+                    TalkNeutralSprites.Add(spr);
+                    artRegistry.RegisterArt(spr);
+                }
+            }
+            {
+                var dir_path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", "talk_sad");
+                var files = Directory.GetFiles(dir_path).Select(e => new FileInfo(e)).ToArray();
+                for (int i = 0; i < files.Length; i++)
+                {
+                    var spr = (new ExternalSprite("CorrosiveCobra.Character.DizzySlime.TalkSad" + i, files[i]));
+                    TalkSadSprites.Add(spr);
+                    artRegistry.RegisterArt(spr);
+                }
+            }
+            {
+                var dir_path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", "talk_squint");
+                var files = Directory.GetFiles(dir_path).Select(e => new FileInfo(e)).ToArray();
+                for (int i = 0; i < files.Length; i++)
+                {
+                    var spr = (new ExternalSprite("CorrosiveCobra.Character.DizzySlime.TalkSquint" + i, files[i]));
+                    TalkSquintSprites.Add(spr);
+                    artRegistry.RegisterArt(spr);
+                }
             }
 
             //icon sprites
@@ -565,7 +619,7 @@ namespace CorrosiveCobra
         {
             {
                 CobraArtifactUnstableTanks = new ExternalArtifact("CorrosiveCobra.Artifacts.CobraArtifactUnstableTanks",
-                    typeof(UnstableTanks),
+                    typeof(CobraArtifactUnstableTanks),
                     UnstableTanksSprite ?? throw new Exception("missing UnstableTanks artifact sprite"));
 
                 CobraArtifactUnstableTanks.AddLocalisation("UNSTABLE TANKS",
@@ -575,7 +629,7 @@ namespace CorrosiveCobra
             }
             {
                 CobraArtifactOverdriveTanks = new ExternalArtifact("CorrosiveCobra.Artifacts.CobraArtifactOverdriveTanks",
-                    typeof(OverdriveTanks),
+                    typeof(CobraArtifactOverdriveTanks),
                     OverdriveTanksSprite ?? throw new Exception("missing OverdriveTanks artifact sprite"));
 
                 CobraArtifactOverdriveTanks.AddLocalisation("OVERDRIVE TANKS",
@@ -585,7 +639,7 @@ namespace CorrosiveCobra
             }
             {
                 CobraArtifactSlimeHeart = new ExternalArtifact("CorrosiveCobra.Artifacts.CobraArtifactSlimeHeart",
-                    typeof(SlimeHeart),
+                    typeof(CobraArtifactSlimeHeart),
                     SlimeHeartSprite ?? throw new Exception("missing SlimeHeart artifact sprite"),
                     ownerDeck: CobraDeck ?? throw new Exception("missing CobraDeck."));
 
@@ -596,7 +650,7 @@ namespace CorrosiveCobra
             }
             {
                 CobraArtifactToxicCaviar = new ExternalArtifact("CorrosiveCobra.Artifacts.CobraArtifactToxicCaviar",
-                    typeof(ToxicCaviar),
+                    typeof(CobraArtifactToxicCaviar),
                     ToxicCaviarSprite ?? throw new Exception("missing ToxicCaviar artifact sprite"),
                     ownerDeck: CobraDeck ?? throw new Exception("missing CobraDeck."));
 
@@ -607,7 +661,7 @@ namespace CorrosiveCobra
             }
             {
                 CobraArtifactCorrodeAttack = new ExternalArtifact("CorrosiveCobra.Artifacts.CobraArtifactCorrodeAttack",
-                    typeof(CorrodeAttack),
+                    typeof(CobraArtifactCorrodeAttack),
                     CorrodeAttackSprite ?? throw new Exception("missing CorrodeAttack artifact sprite"),
                     ownerDeck: CobraDeck ?? throw new Exception("missing CobraDeck."));
 
@@ -618,7 +672,7 @@ namespace CorrosiveCobra
             }
             {
                 CobraArtifactPowerAcid = new ExternalArtifact("CorrosiveCobra.Artifacts.CobraArtifactPowerAcid",
-                    typeof(PowerAcid),
+                    typeof(CobraArtifactPowerAcid),
                     PowerAcidSprite ?? throw new Exception("missing PowerAcid artifact sprite"),
                     ownerDeck: CobraDeck ?? throw new Exception("missing CobraDeck."));
 
@@ -629,7 +683,7 @@ namespace CorrosiveCobra
             }
             {
                 CobraArtifactDissolvent = new ExternalArtifact("CorrosiveCobra.Artifacts.CobraArtifactDissolvent",
-                    typeof(Dissolvent),
+                    typeof(CobraArtifactDissolvent),
                     DissolventSprite ?? throw new Exception("missing Dissolvent artifact sprite"),
                     ownerDeck: CobraDeck ?? throw new Exception("missing CobraDeck."));
 

@@ -120,6 +120,7 @@ namespace CorrosiveCobra
                 },
                 exclusiveArtifacts: new ExternalArtifact[]
                 {
+                    CobraArtifactUnstableTanks ?? throw new Exception("Artifact missing"),
                     CobraArtifactOverdriveTanks ?? throw new Exception("Artifact missing"),
                 });
             CorrosiveCobra_StarterShip.AddLocalisation("Corrosive Cobra", "A derelict from another timeline, the Cobra specializes in corrosion attacks. Beware the fuel leaks.");
