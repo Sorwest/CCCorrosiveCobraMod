@@ -256,6 +256,7 @@ namespace CorrosiveCobra
                         new ExternalStory.ExternalSay()
                         {
                             Who = SlimeWho,
+                            LoopTag = "nervous",
                             What = "Where's the auto-aim?",
                         },
                     });
@@ -286,7 +287,7 @@ namespace CorrosiveCobra
                         new ExternalStory.ExternalSay()
                         {
                             Who = SlimeWho,
-                            LoopTag = "laugh",
+                            LoopTag = "nervous",
                             What = "Let's uh... tactically retreat.",
                         },
                     });
@@ -380,7 +381,7 @@ namespace CorrosiveCobra
                         new ExternalStory.ExternalSay()
                         {
                             Who = SlimeWho,
-                            LoopTag = "sad",
+                            LoopTag = "nervous",
                             What = "We gotta deal with that Seeker somehow.",
                         },
                     });
@@ -415,14 +416,13 @@ namespace CorrosiveCobra
                             LoopTag = "sad",
                             What = "Nearly time to time loop again, huh.",
                         },
-                        new Say()
+                        new ExternalStory.ExternalSay()
                         {
-                            who = "dizzy",
-                            loopTag = "frown",
-                            hash = "dizzyAboutToDie0"
+                            Who = "dizzy",
+                            LoopTag = "frown",
+                            What = "Nearly time to ti-- Ah... Huh.",
                         },
                     });
-                    SlimeDuo_AboutToDieAndLoop_Multi_0.AddLocalisation("dizzyAboutToDie0", "Nearly time to ti-- Ah... Huh.");
                     storyRegistry.RegisterStory(SlimeDuo_AboutToDieAndLoop_Multi_0);
                 }
                 {
@@ -445,11 +445,11 @@ namespace CorrosiveCobra
                     },
                     new List<object>()
                     {
-                        new Say()
+                        new ExternalStory.ExternalSay()
                         {
-                            who = "dizzy",
-                            loopTag = "frown",
-                            hash = "dizzyAboutToDie1"
+                            Who = "slime",
+                            LoopTag = "frown",
+                            What = "Nearly time to time loop again, huh.",
                         },
                         new ExternalStory.ExternalSay()
                         {
@@ -458,7 +458,6 @@ namespace CorrosiveCobra
                             What = "Nearly time to ti-- Ah. Huh. Yeah.",
                         },
                     });
-                    SlimeDuo_AboutToDieAndLoop_Multi_1.AddLocalisation("dizzyAboutToDie1", "Nearly time to time loop again, huh.");
                     storyRegistry.RegisterStory(SlimeDuo_AboutToDieAndLoop_Multi_1);
                 }
                 {
@@ -487,13 +486,12 @@ namespace CorrosiveCobra
                             LoopTag = "nervous",
                             What = "Time loop time?",
                         },
-                        new Say()
+                        new ExternalStory.ExternalSay()
                         {
-                            who = "riggs",
-                            hash = "riggsAboutToDie0"
+                            Who = "riggs",
+                            What = "Hey, don't give up yet!"
                         },
                     });
-                    SlimeDuo_AboutToDieAndLoop_Multi_11.AddLocalisation("riggsAboutToDie0", "Hey, don't give up yet!");
                     storyRegistry.RegisterStory(SlimeDuo_AboutToDieAndLoop_Multi_11);
                 }
                 {
@@ -522,14 +520,13 @@ namespace CorrosiveCobra
                             LoopTag = "sad",
                             What = "We almost had it.",
                         },
-                        new Say()
+                        new ExternalStory.ExternalSay()
                         {
-                            who = "peri",
-                            loopTag = "panic",
-                            hash = "periAboutToDie0"
+                            Who = "peri",
+                            LoopTag = "panic",
+                            What = "Enough crying! Everyone evacuate, I'll take over!"
                         },
                     });
-                    SlimeDuo_AboutToDieAndLoop_Multi_12.AddLocalisation("periAboutToDie0", "Enough crying! Everyone evacuate, I'll take over!");
                     storyRegistry.RegisterStory(SlimeDuo_AboutToDieAndLoop_Multi_12);
                 }
                 {
@@ -552,11 +549,11 @@ namespace CorrosiveCobra
                     },
                     new List<object>()
                     {
-                        new Say()
+                        new ExternalStory.ExternalSay()
                         {
-                            who = "peri",
-                            loopTag = "shy",
-                            hash = "periAboutToDie1"
+                            Who = "peri",
+                            LoopTag = "shy",
+                            What = "This was a good try. Will you fight with us next time?"
                         },
                         new ExternalStory.ExternalSay()
                         {
@@ -564,7 +561,6 @@ namespace CorrosiveCobra
                             What = "I hope so.",
                         },
                     });
-                    SlimeDuo_AboutToDieAndLoop_Multi_13.AddLocalisation("periAboutToDie1", "This was a good try. Will you fight with us next time?");
                     storyRegistry.RegisterStory(SlimeDuo_AboutToDieAndLoop_Multi_13);
                 }
                 {
@@ -593,13 +589,12 @@ namespace CorrosiveCobra
                             LoopTag = "nervous",
                             What = "It's looking... kinda bad.",
                         },
-                        new Say()
+                        new ExternalStory.ExternalSay()
                         {
-                            who = "goat",
-                            hash = "goatAboutToDie0"
+                            Who = "goat",
+                            What ="For sure!"
                         },
                     });
-                    SlimeDuo_AboutToDieAndLoop_Multi_14.AddLocalisation("goatAboutToDie0", "For sure!");
                     storyRegistry.RegisterStory(SlimeDuo_AboutToDieAndLoop_Multi_14);
                 }
                 {
@@ -622,10 +617,10 @@ namespace CorrosiveCobra
                     },
                     new List<object>()
                     {
-                        new Say()
+                        new ExternalStory.ExternalSay()
                         {
-                            who = "goat",
-                            hash = "goatAboutToDie1"
+                            Who = "goat",
+                            What = "GG."
                         },
                         new ExternalStory.ExternalSay()
                         {
@@ -633,7 +628,6 @@ namespace CorrosiveCobra
                             What = "LMAO.",
                         },
                     });
-                    SlimeDuo_AboutToDieAndLoop_Multi_15.AddLocalisation("goatAboutToDie1", "GG.");
                     storyRegistry.RegisterStory(SlimeDuo_AboutToDieAndLoop_Multi_15);
                 }
                 {
@@ -662,13 +656,12 @@ namespace CorrosiveCobra
                             LoopTag = "sad",
                             What = "I can patch the ship. I can!",
                         },
-                        new Say()
+                        new ExternalStory.ExternalSay()
                         {
-                            who = "eunice",
-                            hash = "drakeAboutToDie0"
+                            Who = "eunice",
+                            What = "Give it up. Just enjoy the view."
                         },
                     });
-                    SlimeDuo_AboutToDieAndLoop_Multi_16.AddLocalisation("drakeAboutToDie0", "Give it up. Just enjoy the view.");
                     storyRegistry.RegisterStory(SlimeDuo_AboutToDieAndLoop_Multi_16);
                 }
                 {
@@ -691,11 +684,11 @@ namespace CorrosiveCobra
                     },
                     new List<object>()
                     {
-                        new Say()
+                        new ExternalStory.ExternalSay()
                         {
-                            who = "eunice",
-                            loopTag = "sly",
-                            hash = "drakeAboutToDie1"
+                            Who = "eunice",
+                            LoopTag = "sly",
+                            What = "We're going down."
                         },
                         new ExternalStory.ExternalSay()
                         {
@@ -704,7 +697,6 @@ namespace CorrosiveCobra
                             What = "We had fun, though!",
                         },
                     });
-                    SlimeDuo_AboutToDieAndLoop_Multi_17.AddLocalisation("drakeAboutToDie1", "We're going down.");
                     storyRegistry.RegisterStory(SlimeDuo_AboutToDieAndLoop_Multi_17);
                 }
                 {
@@ -735,15 +727,15 @@ namespace CorrosiveCobra
                         {
                             Who = SlimeWho,
                             LoopTag = "sad",
-                            What = "I had a whole new campaign planned out.",
+                            What = "I had a Whole new campaign planned out.",
                         },
-                        new Say()
+                        new ExternalStory.ExternalSay()
                         {
-                            who = "hacker",
-                            hash = "maxAboutToDie0"
+                            Who = "hacker",
+                            LoopTag = "smile",
+                            What = "Next loop we gotta run it."
                         },
                     });
-                    SlimeDuo_AboutToDieAndLoop_Multi_18.AddLocalisation("maxAboutToDie0", "Next loop we gotta run it.");
                     storyRegistry.RegisterStory(SlimeDuo_AboutToDieAndLoop_Multi_18);
                 }
                 {
@@ -772,13 +764,12 @@ namespace CorrosiveCobra
                             LoopTag = "nervous",
                             What = "Next time's the charm.",
                         },
-                        new Say()
+                        new ExternalStory.ExternalSay()
                         {
-                            who = "hacker",
-                            hash = "maxAboutToDie1"
+                            Who = "hacker",
+                            What = "Well played."
                         },
                     });
-                    SlimeDuo_AboutToDieAndLoop_Multi_19.AddLocalisation("maxAboutToDie1", "Well played.");
                     storyRegistry.RegisterStory(SlimeDuo_AboutToDieAndLoop_Multi_19);
                 }
                 {
@@ -801,10 +792,10 @@ namespace CorrosiveCobra
                     },
                     new List<object>()
                     {
-                        new Say()
+                        new ExternalStory.ExternalSay()
                         {
-                            who = "hacker",
-                            hash = "maxAboutToDie2"
+                            Who = "hacker",
+                            What = "Game over, man."
                         },
                         new ExternalStory.ExternalSay()
                         {
@@ -813,7 +804,6 @@ namespace CorrosiveCobra
                             What = "Who should I give MVP?",
                         },
                     });
-                    SlimeDuo_AboutToDieAndLoop_Multi_2.AddLocalisation("maxAboutToDie2", "Game over, man.");
                     storyRegistry.RegisterStory(SlimeDuo_AboutToDieAndLoop_Multi_2);
                 }
                 {
@@ -842,14 +832,13 @@ namespace CorrosiveCobra
                             LoopTag = "sad",
                             What = "Is this it?",
                         },
-                        new Say()
+                        new ExternalStory.ExternalSay()
                         {
-                            who = "shard",
-                            loopTag = "paws",
-                            hash = "booksAboutToDie0"
+                            Who = "shard",
+                            LoopTag = "paws",
+                            What = "We can still do this!"
                         },
                     });
-                    SlimeDuo_AboutToDieAndLoop_Multi_21.AddLocalisation("booksAboutToDie0", "We can still do this!");
                     storyRegistry.RegisterStory(SlimeDuo_AboutToDieAndLoop_Multi_21);
                 }
                 {
@@ -872,11 +861,11 @@ namespace CorrosiveCobra
                     },
                     new List<object>()
                     {
-                        new Say()
+                        new ExternalStory.ExternalSay()
                         {
-                            who = "shard",
-                            loopTag = "relaxed",
-                            hash = "booksAboutToDie1"
+                            Who = "shard",
+                            LoopTag = "relaxed",
+                            What = "Hey, what are we gonna do after this?"
                         },
                         new ExternalStory.ExternalSay()
                         {
@@ -885,7 +874,6 @@ namespace CorrosiveCobra
                             What = "Trying to focus here, Books!",
                         },
                     });
-                    SlimeDuo_AboutToDieAndLoop_Multi_22.AddLocalisation("booksAboutToDie1", "Hey, what are we gonna do after this?");
                     storyRegistry.RegisterStory(SlimeDuo_AboutToDieAndLoop_Multi_22);
                 }
                 {
@@ -914,14 +902,13 @@ namespace CorrosiveCobra
                             LoopTag = "nervous",
                             What = "Loop time?",
                         },
-                        new Say()
+                        new ExternalStory.ExternalSay()
                         {
-                            who = "comp",
-                            loopTag = "transition",
-                            hash = "catAboutToDie0"
+                            Who = "comp",
+                            LoopTag = "transition",
+                            What = "Loop time."
                         },
                     });
-                    SlimeDuo_AboutToDieAndLoop_Multi_23.AddLocalisation("catAboutToDie0", "Loop time.");
                     storyRegistry.RegisterStory(SlimeDuo_AboutToDieAndLoop_Multi_23);
                 }
                 {
@@ -944,11 +931,11 @@ namespace CorrosiveCobra
                     },
                     new List<object>()
                     {
-                        new Say()
+                        new ExternalStory.ExternalSay()
                         {
-                            who = "comp",
-                            loopTag = "grumpy",
-                            hash = "catAboutToDie1"
+                            Who = "comp",
+                            LoopTag = "grumpy",
+                            What = "Reset time."
                         },
                         new ExternalStory.ExternalSay()
                         {
@@ -957,7 +944,6 @@ namespace CorrosiveCobra
                             What = "Maybe we can still do this!",
                         },
                     });
-                    SlimeDuo_AboutToDieAndLoop_Multi_24.AddLocalisation("catAboutToDie1", "Reset time.");
                     storyRegistry.RegisterStory(SlimeDuo_AboutToDieAndLoop_Multi_24);
                 }
                 //MODDED CHARACTERS
@@ -1051,11 +1037,11 @@ namespace CorrosiveCobra
                     },
                     new List<object>()
                     {
-                        new Say()
+                        new ExternalStory.ExternalSay()
                         {
-                            who = "bandit",
-                            loopTag = "smile",
-                            hash = "banditGreeting0"
+                            Who = "bandit",
+                            LoopTag = "smile",
+                            What = "Mornin' y'all. Three servings of missiles, coming right up."
                         },
                         new ExternalStory.ExternalSay()
                         {
@@ -1063,7 +1049,6 @@ namespace CorrosiveCobra
                             What = "Oh! Tasty!",
                         },
                     });
-                SlimeBanditThreats_Multi_0.AddLocalisation("banditGreeting0", "Mornin' y'all. Three servings of missiles, coming right up.");
                 storyRegistry.RegisterStory(SlimeBanditThreats_Multi_0);
             }
             //SlimeBatboyKeepsTalking_Multi
@@ -1085,10 +1070,10 @@ namespace CorrosiveCobra
                     },
                     new List<object>()
                     {
-                        new Say()
+                        new ExternalStory.ExternalSay()
                         {
-                            who = "batboy",
-                            hash = "batboy0"
+                            Who = "batboy",
+                            What = "Do you like my custom engines? They all glow different colors."
                         },
                         new ExternalStory.ExternalSay()
                         {
@@ -1097,7 +1082,6 @@ namespace CorrosiveCobra
                             What = "Nice! I have my own Cherenkov radiation lamp!"
                         },
                     });
-                SlimeBatboyKeepsTalking_Multi_0.AddLocalisation("batboy0", "Do you like my custom engines? They all glow different colors.");
                 storyRegistry.RegisterStory(SlimeBatboyKeepsTalking_Multi_0);
             }
             //SlimeTentacleThreats_Multi
@@ -2091,11 +2075,11 @@ namespace CorrosiveCobra
                             }
                         },
                         new List<object>()
+                        {
+                            new ExternalStory.ExternalSay()
                             {
-                            new Say()
-                            {
-                                who = "dizzy",
-                                hash = "dizzyPrefersBlue0"
+                                Who = "dizzy",
+                                What = "Do you guys prefer the blue or the red side? I'm a blue guy."
                             },
                             new ExternalStory.ExternalSay()
                             {
@@ -2104,7 +2088,6 @@ namespace CorrosiveCobra
                                 What = "I'm a green guy.",
                             },
                         });
-                    SlimeArtifactGeminiCore_Multi_1.AddLocalisation("dizzyPrefersBlue0", "Do you guys prefer the blue or the red side? I'm a blue guy.");
                     storyRegistry.RegisterStory(SlimeArtifactGeminiCore_Multi_1);
                 }
             }
@@ -2207,6 +2190,69 @@ namespace CorrosiveCobra
                             },
                         });
                     storyRegistry.RegisterStory(SlimeArtifactTridimensionalCockpit_Multi_0);
+                }
+            }
+            //SlimeManyTurns_Multi
+            {
+                {
+                    var SlimeManyTurns_Multi_0 = new ExternalStory("CorrosiveCobra.Story.SlimeManyTurns_Multi_0",
+                        new StoryNode()
+                        {
+                            type = NodeType.combat,
+                            minTurnsThisCombat = 9,
+                            turnStart = true,
+                            oncePerRun = true,
+                            oncePerCombatTags = new HashSet<string>()
+                            {
+                                "manyTurns"
+                            },
+                            allPresent = new HashSet<string>()
+                            {
+                                SlimeWho
+                            },
+                        },
+                        new List<object>()
+                            {
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                LoopTag = "phone",
+                                What = "No rush. I'll order pizza then.",
+                            },
+                        });
+                    storyRegistry.RegisterStory(SlimeManyTurns_Multi_0);
+                }
+                {
+                    var SlimeManyTurns_Multi_1 = new ExternalStory("CorrosiveCobra.Story.SlimeManyTurns_Multi_1",
+                        new StoryNode()
+                        {
+                            type = NodeType.combat,
+                            minTurnsThisCombat = 9,
+                            turnStart = true,
+                            oncePerRun = true,
+                            requiredScenes = new HashSet<string>()
+                            {
+                                "Dizzy_2"
+                            },
+                            oncePerCombatTags = new HashSet<string>()
+                            {
+                                "manyTurns"
+                            },
+                            allPresent = new HashSet<string>()
+                            {
+                                SlimeWho
+                            },
+                        },
+                        new List<object>()
+                            {
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                LoopTag = "laugh",
+                                What = "Anyone up for Checkers?",
+                            },
+                        });
+                    storyRegistry.RegisterStory(SlimeManyTurns_Multi_1);
                 }
             }
         }

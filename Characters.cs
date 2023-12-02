@@ -106,19 +106,19 @@ namespace CorrosiveCobra
                 registry.RegisterAnimation(CorrosiveCobra_Character_TalkDarkAnimation);
             }
             {
-                CorrosiveCobra_Character_TalkPanicAnimation = new ExternalAnimation("CorrosiveCobra.Animation.CorrosiveCobra_Character_TalkPanicAnimation",
+                CorrosiveCobra_Character_TalkPhoneAnimation = new ExternalAnimation("CorrosiveCobra.Animation.CorrosiveCobra_Character_TalkPhoneAnimation",
                     CobraDeck,
-                    "panic",
+                    "phone",
                     false,
-                    TalkPanicSprites);
-                registry.RegisterAnimation(CorrosiveCobra_Character_TalkPanicAnimation);
+                    TalkPhoneSprites);
+                registry.RegisterAnimation(CorrosiveCobra_Character_TalkPhoneAnimation);
             }
             {
                 CorrosiveCobra_Character_TalkNervousAnimation = new ExternalAnimation("CorrosiveCobra.Animation.CorrosiveCobra_Character_TalkNervousAnimation",
                     CobraDeck,
                     "nervous",
                     false,
-                    TalkPanicSprites);
+                    TalkNervousSprites);
                 registry.RegisterAnimation(CorrosiveCobra_Character_TalkNervousAnimation);
             }
         }
