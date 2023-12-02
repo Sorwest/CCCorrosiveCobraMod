@@ -18,6 +18,8 @@
   <ItemGroup>
     <Reference Include="0Harmony">
       <HintPath>References\0Harmony.dll</HintPath>
+      <Private>False</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="CobaltCore">
       <HintPath>References\CobaltCore.dll</HintPath>

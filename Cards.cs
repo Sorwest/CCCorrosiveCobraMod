@@ -974,7 +974,7 @@
                     astatus3.statusAmount = 1;
                     astatus3.targetPlayer = true;
                     astatus3.SelfInflict = true;
-                    cardActionList2.Add(astatus3);
+                    cardActionList3.Add(astatus3);
                     result = cardActionList3;
                     break;
             };
