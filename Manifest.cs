@@ -576,11 +576,7 @@ namespace CorrosiveCobra
             {
                 OverdriveTanksArtifact = new ExternalArtifact("CorrosiveCobra.Artifacts.OverdriveTanks",
                     typeof(OverdriveTanks),
-                    OverdriveTanksSprite ?? throw new Exception("missing OverdriveTanks artifact sprite"),
-                    exclusiveToShips: new string[1]
-                    {
-                        "CorrosiveCobra_StarterShip"
-                    });
+                    OverdriveTanksSprite ?? throw new Exception("missing OverdriveTanks artifact sprite"));
 
                 OverdriveTanksArtifact.AddLocalisation("OVERDRIVE TANKS",
                     "Replaces <c=artifact>UNSTABLE FUELTANKS</c>. Gain 2 extra <c=energy>ENERGY</c> every turn. <c=hurt>Gain 2 heat each turn</c>. At the start of battle, gain a <c=card>Leaking Container</c>.");
