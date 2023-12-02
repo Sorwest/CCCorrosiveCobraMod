@@ -11,7 +11,6 @@
             {
                 list.Add(new TTGlossary(Manifest.AIncomingCorrode_Glossary?.Head ?? throw new Exception("Missing AIncomingCorrode_Glossary"), statusAmount));
             }
-            //if (status == Status.corrode && AStatusMode.Set)
             list.AddRange(StatusMeta.GetTooltips(status, statusAmount));
             return list;
         }

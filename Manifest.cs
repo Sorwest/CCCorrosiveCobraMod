@@ -98,13 +98,13 @@ namespace CorrosiveCobra
         public static ExternalSprite? BorderCobraRare { get; private set; }
 
         //artifacts
-        public static ExternalArtifact? UnstableTanksArtifact { get; private set; }
-        public static ExternalArtifact? OverdriveTanksArtifact { get; private set; }
-        public static ExternalArtifact? SlimeHeartArtifact { get; private set; }
-        public static ExternalArtifact? ToxicCaviarArtifact { get; private set; }
-        public static ExternalArtifact? CorrodeAttackArtifact { get; private set; }
-        public static ExternalArtifact? PowerAcidArtifact { get; private set; }
-        public static ExternalArtifact? DissolventArtifact { get; private set; }
+        public static ExternalArtifact? CobraArtifactUnstableTanks { get; private set; }
+        public static ExternalArtifact? CobraArtifactOverdriveTanks { get; private set; }
+        public static ExternalArtifact? CobraArtifactSlimeHeart { get; private set; }
+        public static ExternalArtifact? CobraArtifactToxicCaviar { get; private set; }
+        public static ExternalArtifact? CobraArtifactCorrodeAttack { get; private set; }
+        public static ExternalArtifact? CobraArtifactPowerAcid { get; private set; }
+        public static ExternalArtifact? CobraArtifactDissolvent { get; private set; }
 
         //cards
         public static ExternalCard? CobraCardCorrosionStarter { get; private set; }
@@ -564,79 +564,79 @@ namespace CorrosiveCobra
         public void LoadManifest(IArtifactRegistry registry)
         {
             {
-                UnstableTanksArtifact = new ExternalArtifact("CorrosiveCobra.Artifacts.UnstableTanks",
+                CobraArtifactUnstableTanks = new ExternalArtifact("CorrosiveCobra.Artifacts.CobraArtifactUnstableTanks",
                     typeof(UnstableTanks),
                     UnstableTanksSprite ?? throw new Exception("missing UnstableTanks artifact sprite"));
 
-                UnstableTanksArtifact.AddLocalisation("UNSTABLE TANKS",
+                CobraArtifactUnstableTanks.AddLocalisation("UNSTABLE TANKS",
                     "Gain 1 extra <c=energy>ENERGY</c> every turn. <c=hurt>Gain 1 heat each turn</c>. At the start of battle, gain a <c=card>Leaking Container</c>.");
 
-                registry.RegisterArtifact(UnstableTanksArtifact);
+                registry.RegisterArtifact(CobraArtifactUnstableTanks);
             }
             {
-                OverdriveTanksArtifact = new ExternalArtifact("CorrosiveCobra.Artifacts.OverdriveTanks",
+                CobraArtifactOverdriveTanks = new ExternalArtifact("CorrosiveCobra.Artifacts.CobraArtifactOverdriveTanks",
                     typeof(OverdriveTanks),
                     OverdriveTanksSprite ?? throw new Exception("missing OverdriveTanks artifact sprite"));
 
-                OverdriveTanksArtifact.AddLocalisation("OVERDRIVE TANKS",
+                CobraArtifactOverdriveTanks.AddLocalisation("OVERDRIVE TANKS",
                     "Replaces <c=artifact>UNSTABLE FUELTANKS</c>. Gain 2 extra <c=energy>ENERGY</c> every turn. <c=hurt>Gain 2 heat each turn</c>. At the start of battle, gain a <c=card>Leaking Container</c>.");
 
-                registry.RegisterArtifact(OverdriveTanksArtifact);
+                registry.RegisterArtifact(CobraArtifactOverdriveTanks);
             }
             {
-                SlimeHeartArtifact = new ExternalArtifact("CorrosiveCobra.Artifacts.SlimeHeart",
+                CobraArtifactSlimeHeart = new ExternalArtifact("CorrosiveCobra.Artifacts.CobraArtifactSlimeHeart",
                     typeof(SlimeHeart),
                     SlimeHeartSprite ?? throw new Exception("missing SlimeHeart artifact sprite"),
                     ownerDeck: CobraDeck ?? throw new Exception("missing CobraDeck."));
 
-                SlimeHeartArtifact.AddLocalisation("SLIME HEART",
+                CobraArtifactSlimeHeart.AddLocalisation("SLIME HEART",
                     "Gain 1 <c=status>EVOLVE</c> at the start of your first turn of combat.");
 
-                registry.RegisterArtifact(SlimeHeartArtifact);
+                registry.RegisterArtifact(CobraArtifactSlimeHeart);
             }
             {
-                ToxicCaviarArtifact = new ExternalArtifact("CorrosiveCobra.Artifacts.ToxicCaviar",
+                CobraArtifactToxicCaviar = new ExternalArtifact("CorrosiveCobra.Artifacts.CobraArtifactToxicCaviar",
                     typeof(ToxicCaviar),
                     ToxicCaviarSprite ?? throw new Exception("missing ToxicCaviar artifact sprite"),
                     ownerDeck: CobraDeck ?? throw new Exception("missing CobraDeck."));
 
-                ToxicCaviarArtifact.AddLocalisation("TOXIC CAVIAR",
+                CobraArtifactToxicCaviar.AddLocalisation("TOXIC CAVIAR",
                     "Lose 1 <c=status>CORRODE</c> each turn, <c=healing>and if you do</c>, the enemy gains <c=keyword>2</c>.");
 
-                registry.RegisterArtifact(ToxicCaviarArtifact);
+                registry.RegisterArtifact(CobraArtifactToxicCaviar);
             }
             {
-                CorrodeAttackArtifact = new ExternalArtifact("CorrosiveCobra.Artifacts.CorrodeAttack",
+                CobraArtifactCorrodeAttack = new ExternalArtifact("CorrosiveCobra.Artifacts.CobraArtifactCorrodeAttack",
                     typeof(CorrodeAttack),
                     CorrodeAttackSprite ?? throw new Exception("missing CorrodeAttack artifact sprite"),
                     ownerDeck: CobraDeck ?? throw new Exception("missing CobraDeck."));
 
-                CorrodeAttackArtifact.AddLocalisation("ACID ARSENAL",
+                CobraArtifactCorrodeAttack.AddLocalisation("ACID ARSENAL",
                     "Every 7 <c=goat>Dizzy?</c> cards played, fire for 1 <c=status>CORRODE</c>.");
 
-                registry.RegisterArtifact(CorrodeAttackArtifact);
+                registry.RegisterArtifact(CobraArtifactCorrodeAttack);
             }
             {
-                PowerAcidArtifact = new ExternalArtifact("CorrosiveCobra.Artifacts.PowerAcid",
+                CobraArtifactPowerAcid = new ExternalArtifact("CorrosiveCobra.Artifacts.CobraArtifactPowerAcid",
                     typeof(PowerAcid),
                     PowerAcidSprite ?? throw new Exception("missing PowerAcid artifact sprite"),
                     ownerDeck: CobraDeck ?? throw new Exception("missing CobraDeck."));
 
-                PowerAcidArtifact.AddLocalisation("POWERACID",
+                CobraArtifactPowerAcid.AddLocalisation("POWERACID",
                     "<c=hurt>Draw 1 less card per turn</c>. At the end of your turn, the enemy triggers <c=status>CORRODE</c>.");
 
-                registry.RegisterArtifact(PowerAcidArtifact);
+                registry.RegisterArtifact(CobraArtifactPowerAcid);
             }
             {
-                DissolventArtifact = new ExternalArtifact("CorrosiveCobra.Artifacts.Dissolvent",
+                CobraArtifactDissolvent = new ExternalArtifact("CorrosiveCobra.Artifacts.CobraArtifactDissolvent",
                     typeof(Dissolvent),
                     DissolventSprite ?? throw new Exception("missing Dissolvent artifact sprite"),
                     ownerDeck: CobraDeck ?? throw new Exception("missing CobraDeck."));
 
-                DissolventArtifact.AddLocalisation("DISSOLVENT",
+                CobraArtifactDissolvent.AddLocalisation("DISSOLVENT",
                     "Gain 1 extra <c=energy>ENERGY</c> every turn. <c=hurt>The first time each turn you are dealt damage, you receive an extra 2 damage.");
 
-                registry.RegisterArtifact(DissolventArtifact);
+                registry.RegisterArtifact(CobraArtifactDissolvent);
             }
         }
     }
