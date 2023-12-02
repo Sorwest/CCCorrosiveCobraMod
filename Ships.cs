@@ -103,8 +103,8 @@ namespace CorrosiveCobra
                 CorrosiveCobra_Main ?? throw new Exception(),
                 new ExternalCard[]
                 {
-                    CorrosionBlockStarter ?? throw new Exception(),
-                    CorrosionStarter ?? throw new Exception(),
+                    CobraCardCorrosionBlockStarter ?? throw new Exception(),
+                    CobraCardCorrosionStarter ?? throw new Exception(),
                 },
                 new ExternalArtifact[]{
                     UnstableTanksArtifact ?? throw new Exception("Artifact missing"),

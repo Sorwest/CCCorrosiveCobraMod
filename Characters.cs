@@ -17,8 +17,8 @@ namespace CorrosiveCobra
                 CorrosiveCobra_CharacterPanelFrame_Sprite ?? throw new Exception("Missing Portrait"),
                 new Type[]
                     {
-                        typeof(HeatedEvade),
-                        typeof(HurriedDefense)
+                        typeof(CobraCardHeatedEvade),
+                        typeof(CobraCardHurriedDefense)
                     },
                 new Type[0],
                 CorrosiveCobra_CharacterDefaultAnimation ?? throw new Exception("missing default animation"),

@@ -26,7 +26,7 @@ namespace CorrosiveCobra.Artifacts
             if (combat.turn != 1)
                 return;
             AAddCard aaddCard1 = new AAddCard();
-            LeakingContainer leakingContainer1 = new LeakingContainer();
+            CobraCardLeakingContainer leakingContainer1 = new CobraCardLeakingContainer();
             leakingContainer1.temporaryOverride = true;
             aaddCard1.card = (Card)leakingContainer1;
             aaddCard1.destination = CardDestination.Hand;
@@ -37,7 +37,7 @@ namespace CorrosiveCobra.Artifacts
         {
             (Tooltip) new TTCard()
             {
-                card = (Card) new Cards.LeakingContainer()
+                card = (Card) new Cards.CobraCardLeakingContainer()
             }
         };
     }
@@ -72,7 +72,7 @@ namespace CorrosiveCobra.Artifacts
             if (combat.turn != 1)
                 return;
             AAddCard aaddCard1 = new AAddCard();
-            LeakingContainer leakingContainer1 = new LeakingContainer();
+            CobraCardLeakingContainer leakingContainer1 = new CobraCardLeakingContainer();
             leakingContainer1.temporaryOverride = true;
             aaddCard1.card = (Card)leakingContainer1;
             aaddCard1.destination = CardDestination.Hand;
@@ -83,7 +83,7 @@ namespace CorrosiveCobra.Artifacts
         {
             (Tooltip) new TTCard()
             {
-                card = (Card) new Cards.LeakingContainer()
+                card = (Card) new Cards.CobraCardLeakingContainer()
             }
         };
     }

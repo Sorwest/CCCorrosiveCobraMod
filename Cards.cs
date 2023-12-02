@@ -2,7 +2,7 @@
 {
     // BOOKS CARDS
     [CardMeta(deck = Deck.shard, rarity = Rarity.common, upgradesTo = new Upgrade[] { Upgrade.A, Upgrade.B })]
-    public class BooksCorrosiveCrystal : Card
+    public class CobraCardBooksCorrosiveCrystal : Card
     {
         public override string Name() => "Corrosive Crystal";
         public override List<CardAction> GetActions(State s, Combat c)
@@ -74,7 +74,7 @@
     }
 
     [CardMeta(deck = Deck.shard, rarity = Rarity.common, upgradesTo = new Upgrade[] { Upgrade.A, Upgrade.B })]
-    public class BooksGainCrystal : Card
+    public class CobraCardBooksGainCrystal : Card
     {
         public override string Name() => "Fuel Freezing";
         public override List<CardAction> GetActions(State s, Combat c)
@@ -149,7 +149,7 @@
 
     // CAT CARDS
     [CardMeta(deck = Deck.colorless, rarity = Rarity.common, upgradesTo = new Upgrade[] { Upgrade.A, Upgrade.B })]
-    public class ColorlessSlimeSummon : Card
+    public class CobraCardColorlessSlimeSummon : Card
     {
         public override string Name() => "Dizzy?.EXE";
 
@@ -186,7 +186,7 @@
                     count = 3;
                     break;
             }
-            result.description = string.Format(Loc.GetLocString(Manifest.ColorlessSlimeSummon?.DescLocKey ?? throw new Exception("Card ColorlessSlimeSummon not found")), count, Manifest.CobraDeck!.DeckDefReference, "Dizzy?");
+            result.description = string.Format(Loc.GetLocString(Manifest.CobraCardColorlessSlimeSummon?.DescLocKey ?? throw new Exception("Card ColorlessSlimeSummon not found")), count, Manifest.CobraDeck!.DeckDefReference, "Dizzy?");
             return result;
         }
 
@@ -243,7 +243,7 @@
         }
     }
     [CardMeta(deck = Deck.colorless, rarity = Rarity.common, upgradesTo = new Upgrade[] { Upgrade.A, Upgrade.B })]
-    public class AbsorbArtifact : Card
+    public class CobraCardAbsorbArtifact : Card
     {
         public override string Name() => "Absorb Artifact";
 
@@ -270,7 +270,7 @@
         public override CardData GetData(State state)
         {
             CardData result = new CardData();
-            result.description = Loc.GetLocString(Manifest.AbsorbArtifact?.DescLocKey ?? throw new Exception("Missing card"));
+            result.description = Loc.GetLocString(Manifest.CobraCardAbsorbArtifact?.DescLocKey ?? throw new Exception("Missing card"));
             switch (upgrade)
             {
                 case Upgrade.None:
@@ -306,7 +306,7 @@
 
     // CORROSIVE COBRA CARDS
     [CardMeta(dontOffer = true, rarity = Rarity.common, upgradesTo = new Upgrade[] { Upgrade.A, Upgrade.B })]
-    public class CorrosionStarter : Card
+    public class CobraCardCorrosionStarter : Card
     {
         public override string Name() => "Corrosive Fuelshot";
         public override CardData GetData(State state)
@@ -385,7 +385,7 @@
 
     };
     [CardMeta(dontOffer = true, rarity = Rarity.common, upgradesTo = new Upgrade[] { Upgrade.A, Upgrade.B })]
-    public class CorrosionBlockStarter : Card
+    public class CobraCardCorrosionBlockStarter : Card
     {
         public override string Name() => "Basic Heat Protection";
         public override CardData GetData(State state)
@@ -467,7 +467,7 @@
 
     // DIZZY SLIME CARDS
     [CardMeta(rarity = Rarity.common, upgradesTo = new Upgrade[] { Upgrade.A, Upgrade.B })]
-    public class HeatedEvade : Card
+    public class CobraCardHeatedEvade : Card
     {
         public override string Name() => "Heated Evade";
         public override CardData GetData(State state)
@@ -548,7 +548,7 @@
     }
 
     [CardMeta(rarity = Rarity.common, upgradesTo = new Upgrade[] { Upgrade.A, Upgrade.B })]
-    public class HurriedDefense : Card
+    public class CobraCardHurriedDefense : Card
     {
         public override string Name() => "Hurried Defense";
         public override List<CardAction> GetActions(State s, Combat c)
@@ -611,7 +611,7 @@
     }
 
     [CardMeta(dontOffer = true, rarity = Rarity.common, upgradesTo = new Upgrade[] { Upgrade.A, Upgrade.B })]
-    public class LeakingContainer : Card
+    public class CobraCardLeakingContainer : Card
     {
         public override string Name() => "Leaking Container";
         private int GetHandTotal(State s)
@@ -756,7 +756,7 @@
     }
 
     [CardMeta(rarity = Rarity.uncommon, upgradesTo = new Upgrade[] { Upgrade.A, Upgrade.B })]
-    public class FuelEjection : Card
+    public class CobraCardFuelEjection : Card
     {
         public override string Name() => "Fuel Ejection";
         public override CardData GetData(State state)
@@ -856,7 +856,7 @@
     }
 
     [CardMeta(rarity = Rarity.uncommon, upgradesTo = new Upgrade[] { Upgrade.A, Upgrade.B })]
-    public class TankThrow : Card
+    public class CobraCardTankThrow : Card
     {
         public override string Name() => "Tank Throw";
         public override CardData GetData(State state)
@@ -983,7 +983,7 @@
     };
 
     [CardMeta(rarity = Rarity.uncommon, upgradesTo = new Upgrade[] { Upgrade.A, Upgrade.B })]
-    public class SlimeShield : Card
+    public class CobraCardSlimeShield : Card
     {
         public override string Name() => "Slime Shield";
         public override CardData GetData(State state)
@@ -996,15 +996,15 @@
             switch (upgrade)
             {
                 case Upgrade.None:
-                    result.description = Loc.GetLocString(Manifest.SlimeShield?.DescLocKey ?? throw new Exception("Missing card"));
+                    result.description = Loc.GetLocString(Manifest.CobraCardSlimeShield?.DescLocKey ?? throw new Exception("Missing card"));
 
                     break;
                 case Upgrade.A:
-                    result.description = Loc.GetLocString(Manifest.SlimeShield?.DescALocKey ?? throw new Exception("Missing card"));
+                    result.description = Loc.GetLocString(Manifest.CobraCardSlimeShield?.DescALocKey ?? throw new Exception("Missing card"));
 
                     break;
                 case Upgrade.B:
-                    result.description = Loc.GetLocString(Manifest.SlimeShield?.DescBLocKey ?? throw new Exception("Missing card"));
+                    result.description = Loc.GetLocString(Manifest.CobraCardSlimeShield?.DescBLocKey ?? throw new Exception("Missing card"));
 
                     break;
             }
@@ -1023,7 +1023,7 @@
                     astatus1.targetPlayer = true;
                     cardActionList1.Add(astatus1);
                     AAddCard aaddCard1 = new AAddCard();
-                    SlimeHeal slimeHeal1 = new SlimeHeal();
+                    CobraCardSlimeHeal slimeHeal1 = new CobraCardSlimeHeal();
                     slimeHeal1.upgrade = Upgrade.None;
                     slimeHeal1.temporaryOverride = new bool?(true);
                     slimeHeal1.singleUseOverride = new bool?(true);
@@ -1040,7 +1040,7 @@
                     astatus2.targetPlayer = true;
                     cardActionList2.Add(astatus2);
                     AAddCard aaddCard2 = new AAddCard();
-                    SlimeHeal slimeHeal2 = new SlimeHeal();
+                    CobraCardSlimeHeal slimeHeal2 = new CobraCardSlimeHeal();
                     slimeHeal2.upgrade = Upgrade.A;
                     slimeHeal2.temporaryOverride = new bool?(true);
                     slimeHeal2.singleUseOverride = new bool?(true);
@@ -1057,7 +1057,7 @@
                     astatus3.targetPlayer = true;
                     cardActionList3.Add(astatus3);
                     AAddCard aaddCard3 = new AAddCard();
-                    SlimeHeal slimeHeal3 = new SlimeHeal();
+                    CobraCardSlimeHeal slimeHeal3 = new CobraCardSlimeHeal();
                     slimeHeal3.upgrade = Upgrade.B;
                     slimeHeal3.temporaryOverride = new bool?(true);
                     slimeHeal3.singleUseOverride = new bool?(true);
@@ -1072,7 +1072,7 @@
     }
 
     [CardMeta(dontOffer = true, rarity = Rarity.common, upgradesTo = new Upgrade[] { Upgrade.A, Upgrade.B })]
-    public class SlimeHeal : Card
+    public class CobraCardSlimeHeal : Card
     {
         public override string Name() => "Slime Heal";
         public override CardData GetData(State state)
@@ -1139,7 +1139,7 @@
     }
 
     [CardMeta(rarity = Rarity.uncommon, upgradesTo = new Upgrade[] { Upgrade.A, Upgrade.B })]
-    public class TinkerWithTheTanks : Card
+    public class CobraCardTinkerWithTheTanks : Card
     {
         public override string Name() => "Tinker With The Tanks";
         public override CardData GetData(State state)
@@ -1152,13 +1152,13 @@
             switch (upgrade)
             {
                 case Upgrade.None:
-                    result.description = Loc.GetLocString(Manifest.TinkerWithTheTanks?.DescLocKey ?? throw new Exception("Missing card"));
+                    result.description = Loc.GetLocString(Manifest.CobraCardTinkerWithTheTanks?.DescLocKey ?? throw new Exception("Missing card"));
                     break;
                 case Upgrade.A:
-                    result.description = Loc.GetLocString(Manifest.TinkerWithTheTanks?.DescALocKey ?? throw new Exception("Missing card"));
+                    result.description = Loc.GetLocString(Manifest.CobraCardTinkerWithTheTanks?.DescALocKey ?? throw new Exception("Missing card"));
                     break;
                 case Upgrade.B:
-                    result.description = Loc.GetLocString(Manifest.TinkerWithTheTanks?.DescBLocKey ?? throw new Exception("Missing card"));
+                    result.description = Loc.GetLocString(Manifest.CobraCardTinkerWithTheTanks?.DescBLocKey ?? throw new Exception("Missing card"));
                     break;
             }
             return result;
@@ -1175,7 +1175,7 @@
                     aheal1.targetPlayer = true;
                     cardActionList1.Add(aheal1);
                     AAddCard aaddCard1 = new AAddCard();
-                    LeakingContainer leakingContainer1 = new LeakingContainer();
+                    CobraCardLeakingContainer leakingContainer1 = new CobraCardLeakingContainer();
                     leakingContainer1.temporaryOverride = true;
                     aaddCard1.card = (Card)leakingContainer1;
                     aaddCard1.destination = CardDestination.Hand;
@@ -1189,7 +1189,7 @@
                     aheal2.targetPlayer = true;
                     cardActionList2.Add(aheal2);
                     AAddCard aaddCard2 = new AAddCard();
-                    LeakingContainer leakingContainer2 = new LeakingContainer();
+                    CobraCardLeakingContainer leakingContainer2 = new CobraCardLeakingContainer();
                     leakingContainer2.temporaryOverride = true;
                     leakingContainer2.upgrade = Upgrade.A;
                     aaddCard2.card = (Card)leakingContainer2;
@@ -1204,7 +1204,7 @@
                     aheal3.targetPlayer = true;
                     cardActionList3.Add(aheal3);
                     AAddCard aaddCard3 = new AAddCard();
-                    LeakingContainer leakingContainer3 = new LeakingContainer();
+                    CobraCardLeakingContainer leakingContainer3 = new CobraCardLeakingContainer();
                     leakingContainer3.temporaryOverride = true;
                     leakingContainer3.upgrade = Upgrade.B;
                     aaddCard3.card = (Card)leakingContainer3;
@@ -1218,7 +1218,7 @@
     }
 
     [CardMeta(rarity = Rarity.rare, upgradesTo = new Upgrade[] { Upgrade.A, Upgrade.B })]
-    public class CorrosionIgnition﻿ : Card
+    public class CobraCardCorrosionIgnition﻿ : Card
     {
         public override string Name() => "Corrosion Ignition﻿";
         private int GetHeatAmt(State s)
@@ -1325,7 +1325,7 @@
     }
 
     [CardMeta(rarity = Rarity.rare, upgradesTo = new Upgrade[] { Upgrade.A, Upgrade.B })]
-    public class TimestreamLeak : Card
+    public class CobraCardTimestreamLeak : Card
     {
         public int value = 1;
         public int playedtwo = 0;
@@ -1364,15 +1364,15 @@
             {
                 case Upgrade.None:
                     result.cost = 4;
-                    result.description = string.Format(Loc.GetLocString(Manifest.TimestreamLeak?.DescLocKey ?? throw new Exception("Missing card")), this.value, this.goal);
+                    result.description = string.Format(Loc.GetLocString(Manifest.CobraCardTimestreamLeak?.DescLocKey ?? throw new Exception("Missing card")), this.value, this.goal);
                     break;
                 case Upgrade.A:
                     result.cost = 3;
-                    result.description = string.Format(Loc.GetLocString(Manifest.TimestreamLeak?.DescLocKey ?? throw new Exception("Missing card")), this.value, this.goal);
+                    result.description = string.Format(Loc.GetLocString(Manifest.CobraCardTimestreamLeak?.DescLocKey ?? throw new Exception("Missing card")), this.value, this.goal);
                     break;
                 case Upgrade.B:
                     result.cost = 1;
-                    result.description = string.Format(Loc.GetLocString(Manifest.TimestreamLeak?.DescBLocKey ?? throw new Exception("Missing card")), this.value);
+                    result.description = string.Format(Loc.GetLocString(Manifest.CobraCardTimestreamLeak?.DescBLocKey ?? throw new Exception("Missing card")), this.value);
                     break;
             }
             return result;
@@ -1392,7 +1392,7 @@
     }
 
     [CardMeta(rarity = Rarity.uncommon, upgradesTo = new Upgrade[] { Upgrade.A, Upgrade.B })]
-    public class CorrosiveMultishot : Card
+    public class CobraCardCorrosiveMultishot : Card
     {
         public override string Name() => "Corrosive Multishot﻿";
         public override CardData GetData(State state)
@@ -1480,7 +1480,7 @@
     }
 
     [CardMeta(rarity = Rarity.rare, upgradesTo = new Upgrade[] { Upgrade.A, Upgrade.B })]
-    public class SlimeEvolution : Card
+    public class CobraCardSlimeEvolution : Card
     {
         public override string Name() => "Slime Evolution";
         public override CardData GetData(State state)
@@ -1492,14 +1492,14 @@
             switch (upgrade)
             {
                 case Upgrade.None:
-                    result.description = Loc.GetLocString(Manifest.SlimeEvolution?.DescLocKey ?? throw new Exception("Missing card"));
+                    result.description = Loc.GetLocString(Manifest.CobraCardSlimeEvolution?.DescLocKey ?? throw new Exception("Missing card"));
                     break;
                 case Upgrade.A:
-                    result.description = Loc.GetLocString(Manifest.SlimeEvolution?.DescLocKey ?? throw new Exception("Missing card"));
+                    result.description = Loc.GetLocString(Manifest.CobraCardSlimeEvolution?.DescLocKey ?? throw new Exception("Missing card"));
                     result.buoyant = true;
                     break;
                 case Upgrade.B:
-                    result.description = Loc.GetLocString(Manifest.SlimeEvolution?.DescBLocKey ?? throw new Exception("Missing card"));
+                    result.description = Loc.GetLocString(Manifest.CobraCardSlimeEvolution?.DescBLocKey ?? throw new Exception("Missing card"));
                     break;
             }
             return result;
@@ -1512,7 +1512,7 @@
                 case Upgrade.None:
                     List<CardAction> cardActionList1 = new List<CardAction>();
                     AAddCard aaddCard1 = new AAddCard();
-                    SlimeMutation slimeMutation1 = new SlimeMutation();
+                    CobraCardSlimeMutation slimeMutation1 = new CobraCardSlimeMutation();
                     slimeMutation1.upgrade = Upgrade.None;
                     slimeMutation1.temporaryOverride = new bool?(true);
                     aaddCard1.card = (Card)slimeMutation1;
@@ -1526,7 +1526,7 @@
                 case Upgrade.A:
                     List<CardAction> cardActionList2 = new List<CardAction>();
                     AAddCard aaddCard2 = new AAddCard();
-                    SlimeMutation slimeMutation2 = new SlimeMutation();
+                    CobraCardSlimeMutation slimeMutation2 = new CobraCardSlimeMutation();
                     slimeMutation2.upgrade = Upgrade.None;
                     slimeMutation2.temporaryOverride = new bool?(true);
                     aaddCard2.card = (Card)slimeMutation2;
@@ -1540,7 +1540,7 @@
                 case Upgrade.B:
                     List<CardAction> cardActionList3 = new List<CardAction>();
                     AAddCard aaddCard3 = new AAddCard();
-                    SlimeMutation slimeMutation3 = new SlimeMutation();
+                    CobraCardSlimeMutation slimeMutation3 = new CobraCardSlimeMutation();
                     slimeMutation3.upgrade = Upgrade.None;
                     slimeMutation3.temporaryOverride = new bool?(true);
                     aaddCard3.card = (Card)slimeMutation3;
@@ -1557,7 +1557,7 @@
     }
 
     [CardMeta(dontOffer = true, rarity = Rarity.common)]
-    public class SlimeMutation : Card
+    public class CobraCardSlimeMutation : Card
     {
         public override string Name() => "Slime Mutation";
         public override CardData GetData(State state)
@@ -1566,7 +1566,7 @@
 
             result.cost = 2;
             result.exhaust = true;
-            result.description = Loc.GetLocString(Manifest.SlimeMutation?.DescLocKey ?? throw new Exception("Missing card"));
+            result.description = Loc.GetLocString(Manifest.CobraCardSlimeMutation?.DescLocKey ?? throw new Exception("Missing card"));
             return result;
         }
         public override List<CardAction> GetActions(State s, Combat c)
@@ -1574,7 +1574,7 @@
             var result = new List<CardAction>();
             List<CardAction> cardActionList1 = new List<CardAction>();
             AAddCard aaddCard1 = new AAddCard();
-            SlimeBLAST slimeBlast = new SlimeBLAST();
+            CobraCardSlimeBLAST slimeBlast = new CobraCardSlimeBLAST();
             slimeBlast.upgrade = Upgrade.None;
             slimeBlast.temporaryOverride = new bool?(true);
             aaddCard1.card = (Card)slimeBlast;
@@ -1586,7 +1586,7 @@
     }
 
     [CardMeta(dontOffer = true, rarity = Rarity.common)]
-    public class SlimeBLAST : Card
+    public class CobraCardSlimeBLAST : Card
     {
         public override string Name() => "SLIME BLAST!!";
         private int GetStatusAmount(State state)
@@ -1612,7 +1612,7 @@
                 str1 = "";
             else
                 str1 = string.Format("{0}{1}{2}", " (<c=keyword>", this.GetDmg(state, 2 * GetStatusAmount(state)), "</c>)");
-            result.description = string.Format(Loc.GetLocString(Manifest.SlimeBLAST?.DescLocKey ?? throw new Exception("Missing card")), str1);
+            result.description = string.Format(Loc.GetLocString(Manifest.CobraCardSlimeBLAST?.DescLocKey ?? throw new Exception("Missing card")), str1);
             return result;
         }
         public override List<CardAction> GetActions(State s, Combat c)
@@ -1630,7 +1630,7 @@
     }
 
     [CardMeta(rarity = Rarity.rare, upgradesTo = new Upgrade[] { Upgrade.A, Upgrade.B })]
-    public class SlimeHug : Card
+    public class CobraCardSlimeHug : Card
     {
         public override string Name() => "Slime Hug";
         public override CardData GetData(State state)
@@ -1692,7 +1692,7 @@
     }
 
     [CardMeta(rarity = Rarity.common, upgradesTo = new Upgrade[] { Upgrade.A, Upgrade.B })]
-    public class RecklessFuelshot : Card
+    public class CobraCardRecklessFuelshot : Card
     {
         public override string Name() => "Reckless Fuelshot";
         public override CardData GetData(State state)
@@ -1703,13 +1703,13 @@
             switch (upgrade)
             {
                 case Upgrade.None:
-                    result.description = string.Format(Loc.GetLocString(Manifest.RecklessFuelshot?.DescLocKey ?? throw new Exception("Missing card")), this.GetDmg(state, 3), 1);
+                    result.description = string.Format(Loc.GetLocString(Manifest.CobraCardRecklessFuelshot?.DescLocKey ?? throw new Exception("Missing card")), this.GetDmg(state, 3), 1);
                     break;
                 case Upgrade.A:
-                    result.description = string.Format(Loc.GetLocString(Manifest.RecklessFuelshot?.DescALocKey ?? throw new Exception("Missing card")), this.GetDmg(state, 3), 1);
+                    result.description = string.Format(Loc.GetLocString(Manifest.CobraCardRecklessFuelshot?.DescALocKey ?? throw new Exception("Missing card")), this.GetDmg(state, 3), 1);
                     break;
                 case Upgrade.B:
-                    result.description = string.Format(Loc.GetLocString(Manifest.RecklessFuelshot?.DescLocKey ?? throw new Exception("Missing card")), this.GetDmg(state, 6), 2);
+                    result.description = string.Format(Loc.GetLocString(Manifest.CobraCardRecklessFuelshot?.DescLocKey ?? throw new Exception("Missing card")), this.GetDmg(state, 6), 2);
                     break;
             }
             return result;
@@ -1764,7 +1764,7 @@
     }
 
     [CardMeta(rarity = Rarity.rare, upgradesTo = new Upgrade[] { Upgrade.A, Upgrade.B })]
-    public class EnginesOnFire : Card
+    public class CobraCardEnginesOnFire : Card
     {
         public override string Name() => "Engines! On Fire!";
         public override CardData GetData(State state)
@@ -1827,7 +1827,7 @@
     }
 
     [CardMeta(rarity = Rarity.rare, upgradesTo = new Upgrade[] { Upgrade.A, Upgrade.B })]
-    public class HeatHoarder : Card
+    public class CobraCardHeatHoarder : Card
     {
         public override string Name() => "Heat Hoarder";
         public override CardData GetData(State state)
@@ -1838,15 +1838,15 @@
             {
                 case Upgrade.None:
                     result.cost = 3;
-                    result.description = string.Format(Loc.GetLocString(Manifest.HeatHoarder?.DescLocKey ?? throw new Exception("Missing card")), 1, 2);
+                    result.description = string.Format(Loc.GetLocString(Manifest.CobraCardHeatHoarder?.DescLocKey ?? throw new Exception("Missing card")), 1, 2);
                     break;
                 case Upgrade.A:
                     result.cost = 1;
-                    result.description = string.Format(Loc.GetLocString(Manifest.HeatHoarder?.DescLocKey ?? throw new Exception("Missing card")), 1, 2);
+                    result.description = string.Format(Loc.GetLocString(Manifest.CobraCardHeatHoarder?.DescLocKey ?? throw new Exception("Missing card")), 1, 2);
                     break;
                 case Upgrade.B:
                     result.cost = 3;
-                    result.description = string.Format(Loc.GetLocString(Manifest.HeatHoarder?.DescLocKey ?? throw new Exception("Missing card")), 3, 3);
+                    result.description = string.Format(Loc.GetLocString(Manifest.CobraCardHeatHoarder?.DescLocKey ?? throw new Exception("Missing card")), 3, 3);
                     break;
             }
             return result;
@@ -1911,7 +1911,7 @@
     }
 
     [CardMeta(rarity = Rarity.common, upgradesTo = new Upgrade[] { Upgrade.A, Upgrade.B })]
-    public class ShieldAlternatorA : Card
+    public class CobraCardShieldAlternatorA : Card
     {
         public override string Name() => "Shield Replica";
         public override CardData GetData(State state)
@@ -1923,17 +1923,17 @@
                 case Upgrade.None:
                     result.cost = 1;
                     result.exhaust = true;
-                    result.description = Loc.GetLocString(Manifest.ShieldAlternatorA?.DescLocKey ?? throw new Exception("Missing card"));
+                    result.description = Loc.GetLocString(Manifest.CobraCardShieldAlternatorA?.DescLocKey ?? throw new Exception("Missing card"));
                     break;
                 case Upgrade.A:
                     result.cost = 0;
                     result.exhaust = true;
-                    result.description = Loc.GetLocString(Manifest.ShieldAlternatorA?.DescLocKey ?? throw new Exception("Missing card"));
+                    result.description = Loc.GetLocString(Manifest.CobraCardShieldAlternatorA?.DescLocKey ?? throw new Exception("Missing card"));
                     break;
                 case Upgrade.B:
                     result.cost = 1;
                     result.exhaust = false;
-                    result.description = Loc.GetLocString(Manifest.ShieldAlternatorA?.DescLocKey ?? throw new Exception("Missing card"));
+                    result.description = Loc.GetLocString(Manifest.CobraCardShieldAlternatorA?.DescLocKey ?? throw new Exception("Missing card"));
                     break;
             }
             return result;
@@ -1951,7 +1951,7 @@
                     astatus1.targetPlayer = true;
                     cardActionList1.Add(astatus1);
                     AAddCard aaddCard1 = new AAddCard();
-                    ShieldAlternatorB shieldAlternatorB1 = new ShieldAlternatorB();
+                    CobraCardShieldAlternatorB shieldAlternatorB1 = new CobraCardShieldAlternatorB();
                     shieldAlternatorB1.temporaryOverride = new bool?(true);
                     aaddCard1.card = (Card)shieldAlternatorB1;
                     aaddCard1.destination = CardDestination.Deck;
@@ -1966,7 +1966,7 @@
                     astatus2.targetPlayer = true;
                     cardActionList2.Add(astatus2);
                     AAddCard aaddCard2 = new AAddCard();
-                    ShieldAlternatorB shieldAlternatorB2 = new ShieldAlternatorB();
+                    CobraCardShieldAlternatorB shieldAlternatorB2 = new CobraCardShieldAlternatorB();
                     shieldAlternatorB2.temporaryOverride = new bool?(true);
                     aaddCard2.card = (Card)shieldAlternatorB2;
                     aaddCard2.destination = CardDestination.Deck;
@@ -1981,7 +1981,7 @@
                     astatus3.targetPlayer = true;
                     cardActionList3.Add(astatus3);
                     AAddCard aaddCard3 = new AAddCard();
-                    ShieldAlternatorB shieldAlternatorB3 = new ShieldAlternatorB();
+                    CobraCardShieldAlternatorB shieldAlternatorB3 = new CobraCardShieldAlternatorB();
                     shieldAlternatorB3.temporaryOverride = new bool?(true);
                     aaddCard3.card = (Card)shieldAlternatorB3;
                     aaddCard3.destination = CardDestination.Hand;
@@ -1994,7 +1994,7 @@
     }
 
     [CardMeta(rarity = Rarity.common)]
-    public class ShieldAlternatorB : Card
+    public class CobraCardShieldAlternatorB : Card
     {
         public override string Name() => "Temp Shield Replica";
         public override CardData GetData(State state)
@@ -2003,7 +2003,7 @@
             result.cost = 1;
             result.exhaust = true;
             result.artTint = "e20fc2";
-            result.description = Loc.GetLocString(Manifest.ShieldAlternatorB?.DescLocKey ?? throw new Exception("Missing card"));
+            result.description = Loc.GetLocString(Manifest.CobraCardShieldAlternatorB?.DescLocKey ?? throw new Exception("Missing card"));
             return result;
         }
         public override List<CardAction> GetActions(State s, Combat c)
@@ -2016,7 +2016,7 @@
             astatus1.targetPlayer = true;
             cardActionList1.Add(astatus1);
             AAddCard aaddCard1 = new AAddCard();
-            ShieldAlternatorA shieldAlternatorA1 = new ShieldAlternatorA();
+            CobraCardShieldAlternatorA shieldAlternatorA1 = new CobraCardShieldAlternatorA();
             shieldAlternatorA1.upgrade = Upgrade.None;
             shieldAlternatorA1.temporaryOverride = new bool?(true);
             shieldAlternatorA1.singleUseOverride = new bool?(true);
@@ -2029,7 +2029,7 @@
     }
 
     [CardMeta(rarity = Rarity.uncommon, upgradesTo = new Upgrade[] { Upgrade.A, Upgrade.B })]
-    public class AcidicFlare : Card
+    public class CobraCardAcidicFlare : Card
     {
         public override string Name() => "Acidic Flare﻿";
         public override CardData GetData(State state)
@@ -2040,13 +2040,13 @@
             switch (upgrade)
             {
                 case Upgrade.None:
-                    result.description = Loc.GetLocString(Manifest.AcidicFlare?.DescLocKey ?? throw new Exception("Missing card"));
+                    result.description = Loc.GetLocString(Manifest.CobraCardAcidicFlare?.DescLocKey ?? throw new Exception("Missing card"));
                     break;
                 case Upgrade.A:
-                    result.description = Loc.GetLocString(Manifest.AcidicFlare?.DescALocKey ?? throw new Exception("Missing card"));
+                    result.description = Loc.GetLocString(Manifest.CobraCardAcidicFlare?.DescALocKey ?? throw new Exception("Missing card"));
                     break;
                 case Upgrade.B:
-                    result.description = Loc.GetLocString(Manifest.AcidicFlare?.DescBLocKey ?? throw new Exception("Missing card"));
+                    result.description = Loc.GetLocString(Manifest.CobraCardAcidicFlare?.DescBLocKey ?? throw new Exception("Missing card"));
                     break;
             }
             return result;
@@ -2121,7 +2121,7 @@
                     astatus8.omitFromTooltips = true;
                     cardActionList2.Add(astatus8);
                     AAddCard aaddCard1 = new AAddCard();
-                    CorrosionIgnition corrosionIgnition1 = new CorrosionIgnition();
+                    CobraCardCorrosionIgnition corrosionIgnition1 = new CobraCardCorrosionIgnition();
                     corrosionIgnition1.upgrade = Upgrade.A;
                     corrosionIgnition1.temporaryOverride = true;
                     aaddCard1.card = corrosionIgnition1;
@@ -2160,7 +2160,7 @@
                     astatus12.omitFromTooltips = true;
                     cardActionList3.Add(astatus12);
                     AAddCard aaddCard2 = new AAddCard();
-                    CorrosionIgnition corrosionIgnition2 = new CorrosionIgnition();
+                    CobraCardCorrosionIgnition corrosionIgnition2 = new CobraCardCorrosionIgnition();
                     corrosionIgnition2.upgrade = Upgrade.B;
                     corrosionIgnition2.temporaryOverride = true;
                     aaddCard2.card = corrosionIgnition2;

@@ -107,33 +107,33 @@ namespace CorrosiveCobra
         public static ExternalArtifact? DissolventArtifact { get; private set; }
 
         //cards
-        public static ExternalCard? CorrosionStarter { get; private set; }
-        public static ExternalCard? CorrosionBlockStarter { get; private set; }
-        public static ExternalCard? FuelEjection { get; private set; }
-        public static ExternalCard? TankThrow { get; private set; }
-        public static ExternalCard? HeatedEvade { get; private set; }
-        public static ExternalCard? HurriedDefense { get; private set; }
-        public static ExternalCard? LeakingContainer { get; private set; }
-        public static ExternalCard? BooksCorrosiveCrystal { get; private set; }
-        public static ExternalCard? BooksGainCrystal { get; private set; }
-        public static ExternalCard? ColorlessSlimeSummon { get; private set; }
-        public static ExternalCard? CorrosionIgnition { get; private set; }
-        public static ExternalCard? SlimeShield { get; private set; }
-        public static ExternalCard? SlimeHeal { get; private set; }
-        public static ExternalCard? TinkerWithTheTanks { get; private set; }
-        public static ExternalCard? TimestreamLeak { get; private set; }
-        public static ExternalCard? CorrosiveMultishot { get; private set; }
-        public static ExternalCard? SlimeEvolution { get; private set; }
-        public static ExternalCard? SlimeMutation { get; private set; }
-        public static ExternalCard? SlimeBLAST { get; private set; }
-        public static ExternalCard? SlimeHug { get; private set; }
-        public static ExternalCard? RecklessFuelshot { get; private set; }
-        public static ExternalCard? AbsorbArtifact { get; private set; }
-        public static ExternalCard? EnginesOnFire { get; private set; }
-        public static ExternalCard? HeatHoarder { get; private set; }
-        public static ExternalCard? ShieldAlternatorA { get; private set; }
-        public static ExternalCard? ShieldAlternatorB { get; private set; }
-        public static ExternalCard? AcidicFlare { get; private set; }
+        public static ExternalCard? CobraCardCorrosionStarter { get; private set; }
+        public static ExternalCard? CobraCardCorrosionBlockStarter { get; private set; }
+        public static ExternalCard? CobraCardFuelEjection { get; private set; }
+        public static ExternalCard? CobraCardTankThrow { get; private set; }
+        public static ExternalCard? CobraCardHeatedEvade { get; private set; }
+        public static ExternalCard? CobraCardHurriedDefense { get; private set; }
+        public static ExternalCard? CobraCardLeakingContainer { get; private set; }
+        public static ExternalCard? CobraCardBooksCorrosiveCrystal { get; private set; }
+        public static ExternalCard? CobraCardBooksGainCrystal { get; private set; }
+        public static ExternalCard? CobraCardColorlessSlimeSummon { get; private set; }
+        public static ExternalCard? CobraCardCorrosionIgnition { get; private set; }
+        public static ExternalCard? CobraCardSlimeShield { get; private set; }
+        public static ExternalCard? CobraCardSlimeHeal { get; private set; }
+        public static ExternalCard? CobraCardTinkerWithTheTanks { get; private set; }
+        public static ExternalCard? CobraCardTimestreamLeak { get; private set; }
+        public static ExternalCard? CobraCardCorrosiveMultishot { get; private set; }
+        public static ExternalCard? CobraCardSlimeEvolution { get; private set; }
+        public static ExternalCard? CobraCardSlimeMutation { get; private set; }
+        public static ExternalCard? CobraCardSlimeBLAST { get; private set; }
+        public static ExternalCard? CobraCardSlimeHug { get; private set; }
+        public static ExternalCard? CobraCardRecklessFuelshot { get; private set; }
+        public static ExternalCard? CobraCardAbsorbArtifact { get; private set; }
+        public static ExternalCard? CobraCardEnginesOnFire { get; private set; }
+        public static ExternalCard? CobraCardHeatHoarder { get; private set; }
+        public static ExternalCard? CobraCardShieldAlternatorA { get; private set; }
+        public static ExternalCard? CobraCardShieldAlternatorB { get; private set; }
+        public static ExternalCard? CobraCardAcidicFlare { get; private set; }
 
         //ship parts
         public static ExternalPart? CorrosiveCobra_Cannon { get; private set; }
@@ -417,148 +417,148 @@ namespace CorrosiveCobra
             // BOOKS Cards
 
             {
-                BooksCorrosiveCrystal = new ExternalCard("CorrosiveCobra.BooksCorrosiveCrystal", typeof(BooksCorrosiveCrystal), card_DefaultArt ?? throw new Exception("missing card_DefaultArt"), ExternalDeck.GetRaw((int)Deck.shard));
-                registry.RegisterCard(BooksCorrosiveCrystal);
-                BooksCorrosiveCrystal.AddLocalisation("Corrosive Crystal");
+                CobraCardBooksCorrosiveCrystal = new ExternalCard("CorrosiveCobra.CobraCardCorrosiveCrystal", typeof(CobraCardBooksCorrosiveCrystal), card_DefaultArt ?? throw new Exception("missing card_DefaultArt"), ExternalDeck.GetRaw((int)Deck.shard));
+                registry.RegisterCard(CobraCardBooksCorrosiveCrystal);
+                CobraCardBooksCorrosiveCrystal.AddLocalisation("Corrosive Crystal");
             }
             {
-                BooksGainCrystal = new ExternalCard("CorrosiveCobra.FuelFreezing", typeof(BooksGainCrystal), card_DefaultArt, ExternalDeck.GetRaw((int)Deck.shard));
-                registry.RegisterCard(BooksGainCrystal);
-                BooksGainCrystal.AddLocalisation("Fuel Freezing");
+                CobraCardBooksGainCrystal = new ExternalCard("CorrosiveCobra.CobraCardFuelFreezing", typeof(CobraCardBooksGainCrystal), card_DefaultArt, ExternalDeck.GetRaw((int)Deck.shard));
+                registry.RegisterCard(CobraCardBooksGainCrystal);
+                CobraCardBooksGainCrystal.AddLocalisation("Fuel Freezing");
             }
 
             // CAT Cards
 
             {
-                ColorlessSlimeSummon = new ExternalCard("CorrosiveCobra.ColorlessSlimeSummon", typeof(ColorlessSlimeSummon), card_DefaultArt, ExternalDeck.GetRaw((int)Deck.colorless));
-                registry.RegisterCard(ColorlessSlimeSummon);
-                ColorlessSlimeSummon.AddLocalisation("Dizzy?.EXE", "Add 1 of {0} <c=cardtrait>discount, temp</c> <c={1}>{2}</c> cards to your hand.");
+                CobraCardColorlessSlimeSummon = new ExternalCard("CorrosiveCobra.CobraCardColorlessSlimeSummon", typeof(CobraCardColorlessSlimeSummon), card_DefaultArt, ExternalDeck.GetRaw((int)Deck.colorless));
+                registry.RegisterCard(CobraCardColorlessSlimeSummon);
+                CobraCardColorlessSlimeSummon.AddLocalisation("Dizzy?.EXE", "Add 1 of {0} <c=cardtrait>discount, temp</c> <c={1}>{2}</c> cards to your hand.");
             }
             {
-                AbsorbArtifact = new ExternalCard("CorrosiveCobra.AbsorbArtifact", typeof(AbsorbArtifact), card_DefaultArt, ExternalDeck.GetRaw((int)Deck.colorless));
-                registry.RegisterCard(AbsorbArtifact);
-                AbsorbArtifact.AddLocalisation("Absorb Artifact", desc: "<c=hurt>Lose a random artifact</c>. <c=healing>Heal 10</c>.");
+                CobraCardAbsorbArtifact = new ExternalCard("CorrosiveCobra.CobraCardAbsorbArtifact", typeof(CobraCardAbsorbArtifact), card_DefaultArt, ExternalDeck.GetRaw((int)Deck.colorless));
+                registry.RegisterCard(CobraCardAbsorbArtifact);
+                CobraCardAbsorbArtifact.AddLocalisation("Absorb Artifact", desc: "<c=hurt>Lose a random artifact</c>. <c=healing>Heal 10</c>.");
             }
 
             //CORROSIVE COBRA Cards
 
             {
-                CorrosionStarter = new ExternalCard("CorrosiveCobra.CorrosionStarter", typeof(CorrosionStarter), card_DefaultArt, ExternalDeck.GetRaw((int)Deck.colorless));
-                registry.RegisterCard(CorrosionStarter);
-                CorrosionStarter.AddLocalisation("Corrosive Fuelshot");
+                CobraCardCorrosionStarter = new ExternalCard("CorrosiveCobra.CobraCardCorrosionStarter", typeof(CobraCardCorrosionStarter), card_DefaultArt, ExternalDeck.GetRaw((int)Deck.colorless));
+                registry.RegisterCard(CobraCardCorrosionStarter);
+                CobraCardCorrosionStarter.AddLocalisation("Corrosive Fuelshot");
             }
             {
-                CorrosionBlockStarter = new ExternalCard("CorrosiveCobra.CorrosionBlockStarter", typeof(CorrosionBlockStarter), card_DefaultArt, ExternalDeck.GetRaw((int)Deck.colorless));
-                registry.RegisterCard(CorrosionBlockStarter);
-                CorrosionBlockStarter.AddLocalisation("Basic Heat Protection");
+                CobraCardCorrosionBlockStarter = new ExternalCard("CorrosiveCobra.CobraCardCorrosionBlockStarter", typeof(CobraCardCorrosionBlockStarter), card_DefaultArt, ExternalDeck.GetRaw((int)Deck.colorless));
+                registry.RegisterCard(CobraCardCorrosionBlockStarter);
+                CobraCardCorrosionBlockStarter.AddLocalisation("Basic Heat Protection");
             }
 
             // DIZZY SLIME CARDS
 
             {
-                FuelEjection = new ExternalCard("CorrosiveCobra.FuelEjection", typeof(FuelEjection), card_DefaultArt, CobraDeck);
-                registry.RegisterCard(FuelEjection);
-                FuelEjection.AddLocalisation("Fuel Ejection");
+                CobraCardFuelEjection = new ExternalCard("CorrosiveCobra.CobraCardFuelEjection", typeof(CobraCardFuelEjection), card_DefaultArt, CobraDeck);
+                registry.RegisterCard(CobraCardFuelEjection);
+                CobraCardFuelEjection.AddLocalisation("Fuel Ejection");
             }
             {
-                TankThrow = new ExternalCard("CorrosiveCobra.TankThrow", typeof(TankThrow), card_DefaultArt, CobraDeck);
-                registry.RegisterCard(TankThrow);
-                TankThrow.AddLocalisation("Tank Throw");
+                CobraCardTankThrow = new ExternalCard("CorrosiveCobra.CobraCardTankThrow", typeof(CobraCardTankThrow), card_DefaultArt, CobraDeck);
+                registry.RegisterCard(CobraCardTankThrow);
+                CobraCardTankThrow.AddLocalisation("Tank Throw");
             }
             {
-                HeatedEvade = new ExternalCard("CorrosiveCobra.HeatedEvade", typeof(HeatedEvade), card_DefaultArt, CobraDeck);
-                registry.RegisterCard(HeatedEvade);
-                HeatedEvade.AddLocalisation("Heated Evade");
+                CobraCardHeatedEvade = new ExternalCard("CorrosiveCobra.CobraCardHeatedEvade", typeof(CobraCardHeatedEvade), card_DefaultArt, CobraDeck);
+                registry.RegisterCard(CobraCardHeatedEvade);
+                CobraCardHeatedEvade.AddLocalisation("Heated Evade");
             }
             {
-                HurriedDefense = new ExternalCard("CorrosiveCobra.HurriedDefense", typeof(HurriedDefense), card_DefaultArt, CobraDeck);
-                registry.RegisterCard(HurriedDefense);
-                HurriedDefense.AddLocalisation("Hurried Defense");
+                CobraCardHurriedDefense = new ExternalCard("CorrosiveCobra.CobraCardHurriedDefense", typeof(CobraCardHurriedDefense), card_DefaultArt, CobraDeck);
+                registry.RegisterCard(CobraCardHurriedDefense);
+                CobraCardHurriedDefense.AddLocalisation("Hurried Defense");
             }
             {
-                LeakingContainer = new ExternalCard("CorrosiveCobra.LeakingContainer", typeof(LeakingContainer), card_DefaultArt, CobraDeck);
-                registry.RegisterCard(LeakingContainer);
-                LeakingContainer.AddLocalisation("Leaking Container");
+                CobraCardLeakingContainer = new ExternalCard("CorrosiveCobra.CobraCardLeakingContainer", typeof(CobraCardLeakingContainer), card_DefaultArt, CobraDeck);
+                registry.RegisterCard(CobraCardLeakingContainer);
+                CobraCardLeakingContainer.AddLocalisation("Leaking Container");
             }
             {
-                CorrosionIgnition = new ExternalCard("CorrosiveCobra.CorrosionIgnition", typeof(CorrosionIgnition), card_DefaultArt, CobraDeck);
-                registry.RegisterCard(CorrosionIgnition);
-                CorrosionIgnition.AddLocalisation("Corrosion Ignition");
+                CobraCardCorrosionIgnition = new ExternalCard("CorrosiveCobra.CobraCardCorrosionIgnition", typeof(CobraCardCorrosionIgnition), card_DefaultArt, CobraDeck);
+                registry.RegisterCard(CobraCardCorrosionIgnition);
+                CobraCardCorrosionIgnition.AddLocalisation("Corrosion Ignition");
             }
             {
-                SlimeShield = new ExternalCard("CorrosiveCobra.SlimeShield", typeof(SlimeShield), card_DefaultArt, CobraDeck);
-                registry.RegisterCard(SlimeShield);
-                SlimeShield.AddLocalisation("Slime Shield", desc: "Gain <c=keyword>2</c> <c=status>shield</c>.\nAdd a <c=card>Slime Heal </c> to your <c=keyword>draw pile</c>.", descA: "Gain <c=keyword>1</c> <c=status>shield</c>.\nAdd a <c=card>Slime Heal A</c> to your <c=keyword>draw pile</c>.", descB: "Gain <c=keyword>1</c> <c=status>shield</c>.\nAdd a <c=card>Slime Heal B</c> to your <c=keyword>draw pile</c>.");
+                CobraCardSlimeShield = new ExternalCard("CorrosiveCobra.CobraCardSlimeShield", typeof(CobraCardSlimeShield), card_DefaultArt, CobraDeck);
+                registry.RegisterCard(CobraCardSlimeShield);
+                CobraCardSlimeShield.AddLocalisation("Slime Shield", desc: "Gain <c=keyword>2</c> <c=status>shield</c>.\nAdd a <c=card>Slime Heal </c> to your <c=keyword>draw pile</c>.", descA: "Gain <c=keyword>1</c> <c=status>shield</c>.\nAdd a <c=card>Slime Heal A</c> to your <c=keyword>draw pile</c>.", descB: "Gain <c=keyword>1</c> <c=status>shield</c>.\nAdd a <c=card>Slime Heal B</c> to your <c=keyword>draw pile</c>.");
             }
             {
-                SlimeHeal = new ExternalCard("CorrosiveCobra.SlimeHeal", typeof(SlimeHeal), card_DefaultArt, CobraDeck);
-                registry.RegisterCard(SlimeHeal);
-                SlimeHeal.AddLocalisation("Slime Heal");
+                CobraCardSlimeHeal = new ExternalCard("CorrosiveCobra.CobraCardSlimeHeal", typeof(CobraCardSlimeHeal), card_DefaultArt, CobraDeck);
+                registry.RegisterCard(CobraCardSlimeHeal);
+                CobraCardSlimeHeal.AddLocalisation("Slime Heal");
             }
             {
-                TinkerWithTheTanks = new ExternalCard("CorrosiveCobra.TinkerWithTheTanks", typeof(TinkerWithTheTanks), card_DefaultArt, CobraDeck);
-                registry.RegisterCard(TinkerWithTheTanks);
-                TinkerWithTheTanks.AddLocalisation("Tinker With The Tanks", desc: "<c=healing>Heal 1</c>.\nGain a <c=card>Leaking Container</c>.", descA: "<c=healing>Heal 1</c>.\nGain a <c=card>Leaking Container A</c>.", descB: "<c=healing>Heal 1</c>.\nGain a <c=card>Leaking Container B</c>.");
+                CobraCardTinkerWithTheTanks = new ExternalCard("CorrosiveCobra.CobraCardTinkerWithTheTanks", typeof(CobraCardTinkerWithTheTanks), card_DefaultArt, CobraDeck);
+                registry.RegisterCard(CobraCardTinkerWithTheTanks);
+                CobraCardTinkerWithTheTanks.AddLocalisation("Tinker With The Tanks", desc: "<c=healing>Heal 1</c>.\nGain a <c=card>Leaking Container</c>.", descA: "<c=healing>Heal 1</c>.\nGain a <c=card>Leaking Container A</c>.", descB: "<c=healing>Heal 1</c>.\nGain a <c=card>Leaking Container B</c>.");
             }
             {
-                TimestreamLeak = new ExternalCard("CorrosiveCobra.TimestreamLeak", typeof(TimestreamLeak), card_DefaultArt, CobraDeck);
-                registry.RegisterCard(TimestreamLeak);
-                TimestreamLeak.AddLocalisation("Timestream Leak", desc: "Enemy gains <c=keyword>{0}</c> <c=status>corrode</c>. +1 for every second time ever played. {1}", descB: "Enemy gains <c=keyword>{0}</c> <c=status>corrode</c>.");
+                CobraCardTimestreamLeak = new ExternalCard("CorrosiveCobra.CobraCardTimestreamLeak", typeof(CobraCardTimestreamLeak), card_DefaultArt, CobraDeck);
+                registry.RegisterCard(CobraCardTimestreamLeak);
+                CobraCardTimestreamLeak.AddLocalisation("Timestream Leak", desc: "Enemy gains <c=keyword>{0}</c> <c=status>corrode</c>. +1 for every second time ever played. {1}", descB: "Enemy gains <c=keyword>{0}</c> <c=status>corrode</c>.");
             }
             {
-                CorrosiveMultishot = new ExternalCard("CorrosiveCobra.CorrosiveMultishot", typeof(CorrosiveMultishot), card_DefaultArt, CobraDeck);
-                registry.RegisterCard(CorrosiveMultishot);
-                CorrosiveMultishot.AddLocalisation("Corrosive Multishot");
+                CobraCardCorrosiveMultishot = new ExternalCard("CorrosiveCobra.CobraCardCorrosiveMultishot", typeof(CobraCardCorrosiveMultishot), card_DefaultArt, CobraDeck);
+                registry.RegisterCard(CobraCardCorrosiveMultishot);
+                CobraCardCorrosiveMultishot.AddLocalisation("Corrosive Multishot");
             }
             {
-                SlimeEvolution = new ExternalCard("CorrosiveCobra.SlimeEvolution", typeof(SlimeEvolution), card_DefaultArt, CobraDeck);
-                registry.RegisterCard(SlimeEvolution);
-                SlimeEvolution.AddLocalisation("Slime Evolution", desc: "Put a <c=card>Slime Mutation</c> in your <c=keyword>discard pile</c>. Draw <c=keyword>1</c>.", descB: "Put a <c=card>Slime Mutation</c> in your <c=keyword>draw pile</c>. Draw <c=keyword>1</c>.");
+                CobraCardSlimeEvolution = new ExternalCard("CorrosiveCobra.CobraCardSlimeEvolution", typeof(CobraCardSlimeEvolution), card_DefaultArt, CobraDeck);
+                registry.RegisterCard(CobraCardSlimeEvolution);
+                CobraCardSlimeEvolution.AddLocalisation("Slime Evolution", desc: "Put a <c=card>Slime Mutation</c> in your <c=keyword>discard pile</c>. Draw <c=keyword>1</c>.", descB: "Put a <c=card>Slime Mutation</c> in your <c=keyword>draw pile</c>. Draw <c=keyword>1</c>.");
             }
             {
-                SlimeMutation = new ExternalCard("CorrosiveCobra.SlimeMutation", typeof(SlimeMutation), card_DefaultArt, CobraDeck);
-                registry.RegisterCard(SlimeMutation);
-                SlimeMutation.AddLocalisation("Slime Mutation", desc: "Put a <c=card>SLIME BLAST!!</c> in your <c=keyword>discard pile</c>.");
+                CobraCardSlimeMutation = new ExternalCard("CorrosiveCobra.CobraCardSlimeMutation", typeof(CobraCardSlimeMutation), card_DefaultArt, CobraDeck);
+                registry.RegisterCard(CobraCardSlimeMutation);
+                CobraCardSlimeMutation.AddLocalisation("Slime Mutation", desc: "Put a <c=card>SLIME BLAST!!</c> in your <c=keyword>discard pile</c>.");
             }
             {
-                SlimeBLAST = new ExternalCard("CorrosiveCobra.SlimeBLAST", typeof(SlimeBLAST), card_DefaultArt, CobraDeck);
-                registry.RegisterCard(SlimeBLAST);
-                SlimeBLAST.AddLocalisation("SLIME BLAST!!", desc: "Attack.\nDmg = Double of all your statuses.{0}");
+                CobraCardSlimeBLAST = new ExternalCard("CorrosiveCobra.CobraCardSlimeBLAST", typeof(CobraCardSlimeBLAST), card_DefaultArt, CobraDeck);
+                registry.RegisterCard(CobraCardSlimeBLAST);
+                CobraCardSlimeBLAST.AddLocalisation("SLIME BLAST!!", desc: "Attack.\nDmg = Double of all your statuses.{0}");
             }
             {
-                SlimeHug = new ExternalCard("CorrosiveCobra.SlimeHug", typeof(SlimeHug), card_DefaultArt, CobraDeck);
-                registry.RegisterCard(SlimeHug);
-                SlimeHug.AddLocalisation("Slime Hug");
+                CobraCardSlimeHug = new ExternalCard("CorrosiveCobra.CobraCardSlimeHug", typeof(CobraCardSlimeHug), card_DefaultArt, CobraDeck);
+                registry.RegisterCard(CobraCardSlimeHug);
+                CobraCardSlimeHug.AddLocalisation("Slime Hug");
             }
             {
-                RecklessFuelshot = new ExternalCard("CorrosiveCobra.RecklessFuelshot", typeof(RecklessFuelshot), card_DefaultArt, CobraDeck);
-                registry.RegisterCard(RecklessFuelshot);
-                RecklessFuelshot.AddLocalisation("Reckless Fuelshot", desc: "Attack for <c=redd>{0}</c> damage. Add {1} <c=card>Toxic</c> to your <c=keyword>draw pile</c>.", descA: "Attack for <c=redd>{0}</c> damage. Add {1} <c=card>Toxic</c> to your <c=keyword>discard pile</c>.");
+                CobraCardRecklessFuelshot = new ExternalCard("CorrosiveCobra.CobraCardRecklessFuelshot", typeof(CobraCardRecklessFuelshot), card_DefaultArt, CobraDeck);
+                registry.RegisterCard(CobraCardRecklessFuelshot);
+                CobraCardRecklessFuelshot.AddLocalisation("Reckless Fuelshot", desc: "Attack for <c=redd>{0}</c> damage. Add {1} <c=card>Toxic</c> to your <c=keyword>draw pile</c>.", descA: "Attack for <c=redd>{0}</c> damage. Add {1} <c=card>Toxic</c> to your <c=keyword>discard pile</c>.");
             }
             {
-                EnginesOnFire = new ExternalCard("CorrosiveCobra.EnginesOnFire", typeof(EnginesOnFire), card_DefaultArt, CobraDeck);
-                registry.RegisterCard(EnginesOnFire);
-                EnginesOnFire.AddLocalisation("Engines! On Fire!");
+                CobraCardEnginesOnFire = new ExternalCard("CorrosiveCobra.CobraCardEnginesOnFire", typeof(CobraCardEnginesOnFire), card_DefaultArt, CobraDeck);
+                registry.RegisterCard(CobraCardEnginesOnFire);
+                CobraCardEnginesOnFire.AddLocalisation("Engines! On Fire!");
             }
             {
-                HeatHoarder = new ExternalCard("CorrosiveCobra.HeatHoarder", typeof(HeatHoarder), card_DefaultArt, CobraDeck);
-                registry.RegisterCard(HeatHoarder);
-                HeatHoarder.AddLocalisation("Heat Hoarder", desc: "Gain <c=keyword>{0}</c> <c=status>Heat Control</c>. Add {1} non-temp <c=card>Miasma</c> to your <c=keyword>draw pile</c>.");
+                CobraCardHeatHoarder = new ExternalCard("CorrosiveCobra.CobraCardHeatHoarder", typeof(CobraCardHeatHoarder), card_DefaultArt, CobraDeck);
+                registry.RegisterCard(CobraCardHeatHoarder);
+                CobraCardHeatHoarder.AddLocalisation("Heat Hoarder", desc: "Gain <c=keyword>{0}</c> <c=status>Heat Control</c>. Add {1} non-temp <c=card>Miasma</c> to your <c=keyword>draw pile</c>.");
             }
             {
-                ShieldAlternatorA = new ExternalCard("CorrosiveCobra.ShieldAlternatorA", typeof(ShieldAlternatorA), card_DefaultArt, CobraDeck);
-                registry.RegisterCard(ShieldAlternatorA);
-                ShieldAlternatorA.AddLocalisation("Shield Replica", desc: "Gain <c=keyword>1</c> <c=status>shield</c>.\nAdd a <c=card>Temp Shield Replica</c> to your <c=keyword>draw pile</c>.", descB: "Gain <c=keyword>1</c> <c=status>shield</c>.\nAdd a <c=card>Temp Shield Replica</c> to your hand.");
+                CobraCardShieldAlternatorA = new ExternalCard("CorrosiveCobra.CobraCardShieldAlternatorA", typeof(CobraCardShieldAlternatorA), card_DefaultArt, CobraDeck);
+                registry.RegisterCard(CobraCardShieldAlternatorA);
+                CobraCardShieldAlternatorA.AddLocalisation("Shield Replica", desc: "Gain <c=keyword>1</c> <c=status>shield</c>.\nAdd a <c=card>Temp Shield Replica</c> to your <c=keyword>draw pile</c>.", descB: "Gain <c=keyword>1</c> <c=status>shield</c>.\nAdd a <c=card>Temp Shield Replica</c> to your hand.");
             }
             {
-                ShieldAlternatorB = new ExternalCard("CorrosiveCobra.ShieldAlternatorB", typeof(ShieldAlternatorB), card_DefaultArt, CobraDeck);
-                registry.RegisterCard(ShieldAlternatorB);
-                ShieldAlternatorB.AddLocalisation("Temp Shield Replica", desc: "Gain <c=keyword>2</c> <c=status>temp shield</c>.\nAdd a <c=card>Shield Replica</c> to your hand.");
+                CobraCardShieldAlternatorB = new ExternalCard("CorrosiveCobra.CobraCardShieldAlternatorB", typeof(CobraCardShieldAlternatorB), card_DefaultArt, CobraDeck);
+                registry.RegisterCard(CobraCardShieldAlternatorB);
+                CobraCardShieldAlternatorB.AddLocalisation("Temp Shield Replica", desc: "Gain <c=keyword>2</c> <c=status>temp shield</c>.\nAdd a <c=card>Shield Replica</c> to your hand.");
             }
             {
-                AcidicFlare = new ExternalCard("CorrosiveCobra.AcidicFlare", typeof(AcidicFlare), card_DefaultArt, CobraDeck);
-                registry.RegisterCard(AcidicFlare);
-                AcidicFlare.AddLocalisation("Acidic Flare", desc: "Turn <c=redd>ALL</c> <c=status>heat</c> into <c=status>corrode</c>.", descA: "Turn <c=redd>ALL</c> <c=status>corrode</c> into <c=status>heat</c>. Gain a <c=card>Corrosion Ignition A</c>.", descB: "Turn <c=redd>ALL</c> <c=status>heat</c> into <c=status>corrode</c>. Gain a <c=card>Corrosion Ignition B</c>.");
+                CobraCardAcidicFlare = new ExternalCard("CorrosiveCobra.CobraCardAcidicFlare", typeof(CobraCardAcidicFlare), card_DefaultArt, CobraDeck);
+                registry.RegisterCard(CobraCardAcidicFlare);
+                CobraCardAcidicFlare.AddLocalisation("Acidic Flare", desc: "Turn <c=redd>ALL</c> <c=status>heat</c> into <c=status>corrode</c>.", descA: "Turn <c=redd>ALL</c> <c=status>corrode</c> into <c=status>heat</c>. Gain a <c=card>Corrosion Ignition A</c>.", descB: "Turn <c=redd>ALL</c> <c=status>heat</c> into <c=status>corrode</c>. Gain a <c=card>Corrosion Ignition B</c>.");
             }
         }
         public void LoadManifest(IArtifactRegistry registry)
