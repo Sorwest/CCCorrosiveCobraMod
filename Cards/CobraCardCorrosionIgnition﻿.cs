@@ -91,7 +91,7 @@
                         status = Status.corrode,
                     });
                     AAttack aattack3 = new AAttack();
-                    aattack3.damage = GetDmg(s, 3 * GetHeatAmt(s));
+                    aattack3.damage = GetDmg(s, 3 * GetCorrodeAmt(s));
                     aattack3.xHint = new int?(3);
                     cardActionList3.Add(aattack3);
                     AStatus astatus3 = new AStatus();
