@@ -9,7 +9,7 @@
 New playable crew member! Dizzy? comes from another timeline, all jelly! His cards are unsuitable for commonfolk lifeforms, be mindful of the mess!
 
 ## NEW SHIP : Corrosive Cobra
-
+![CorrosiveCobraFullShip](https://github.com/Sorwest/CCCorrosiveCobraMod/assets/151322116/89ec6115-664d-4856-8076-042316f73f60)
 
 New playable spaceship! The Corrosive Cobra comes from another timeline, specializing in heat-inducing corrode attacks, melting hull, its own included.
 
