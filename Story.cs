@@ -7,7 +7,7 @@ namespace CorrosiveCobra
     {
         public void LoadManifest(IStoryRegistry storyRegistry)
         {
-            var SlimeWho = (CobraDeck ?? throw new Exception("Missing CobraDeck")).GlobalName;
+            var SlimeWho = "Sorwest.CorrosiveCobra.CobraDeck";
             var DaveWho = "rft.Dave.DaveDeck";
             var JohannaWho = "JohannaTheTrucker.JohannaDeck";
             var NolaWho = "Mezz.TwosCompany.NolaDeck";
@@ -371,7 +371,7 @@ namespace CorrosiveCobra
                         {
                             new ExternalStory.ExternalSay()
                             {
-                                Who = "slime",
+                                Who = SlimeWho,
                                 LoopTag = "frown",
                                 What = "Nearly time to time loop again, huh.",
                             },
@@ -941,79 +941,25 @@ namespace CorrosiveCobra
                     }
                 }
                 //SlimeBanditThreats_Multi
-                // (TO FIX)
                 {
-                    var SlimeBanditThreats_Multi_0 = new ExternalStory("CorrosiveCobra.Story.SlimeBanditThreats_Multi_0",
-                        new StoryNode()
-                        {
-                            type = NodeType.combat,
-                            priority = true,
-                            turnStart = true,
-                            maxTurnsThisCombat = 1,
-                            oncePerCombatTags = new HashSet<string>()
-                            {
-                                "BanditThreats"
-                            },
-                            allPresent = new HashSet<string>()
-                            {
-                                SlimeWho,
-                                "bandit"
-                            }
-                        },
+                    var injectDialogue0 = new ExternalStoryInjector("BanditThreats_Multi_0",
+                        ExternalStoryInjector.QuickInjection.Beginning, 1,
                         new List<object>()
                         {
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = "bandit",
-                                LoopTag = "smile",
-                                What = "Mornin' y'all. Three servings of missiles, coming right up."
-                            },
                             new ExternalStory.ExternalSay()
                             {
                                 Who = SlimeWho,
                                 What = "Oh! Tasty!",
                             },
                         });
-                    storyRegistry.RegisterStory(SlimeBanditThreats_Multi_0);
+                    storyRegistry.RegisterInjector(injectDialogue0);
                 }
-                /*{
-					var injectDialogue0 = new ExternalStoryInjector("BatboyKeepsTalking_Multi_0",
-						ExternalStoryInjector.QuickInjection.Beggining, 1,
-						new List<object>()
-						{
-							new ExternalStory.ExternalSay()
-							{
-								Who = SlimeWho,
-								What = "Oh! Tasty!",
-							},
-						});
-					storyRegistry.RegisterStory(injectDialogue0);
-				}*/
                 //SlimeBatboyKeepsTalking_Multi
-                // (TO FIX)
                 {
-                    var SlimeBatboyKeepsTalking_Multi_0 = new ExternalStory("CorrosiveCobra.Story.SlimeBatboyKeepsTalking_Multi_0",
-                        new StoryNode()
-                        {
-                            type = NodeType.combat,
-                            turnStart = true,
-                            oncePerCombatTags = new HashSet<string>()
-                            {
-                                "batboyshutupyouBigNERD"
-                            },
-                            allPresent = new HashSet<string>()
-                            {
-                                SlimeWho,
-                                "batboy"
-                            }
-                        },
+                    var injectDialogue0 = new ExternalStoryInjector("BatboyKeepsTalking_Multi_0",
+                        ExternalStoryInjector.QuickInjection.Beginning, 1,
                         new List<object>()
                         {
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = "batboy",
-                                What = "Do you like my custom engines? They all glow different colors."
-                            },
                             new ExternalStory.ExternalSay()
                             {
                                 Who = SlimeWho,
@@ -1021,149 +967,66 @@ namespace CorrosiveCobra
                                 What = "Nice! I have my own Cherenkov radiation lamp!"
                             },
                         });
-                    storyRegistry.RegisterStory(SlimeBatboyKeepsTalking_Multi_0);
+                    storyRegistry.RegisterInjector(injectDialogue0);
                 }
-                /*{
-					var injectDialogue0 = new ExternalStoryInjector("BatboyKeepsTalking_Multi_0",
-						ExternalStoryInjector.QuickInjection.Beggining, 1,
-						new List<object>()
-						{
-							new ExternalStory.ExternalSay()
-							{
-								Who = SlimeWho,
-								LoopTag = "laugh",
-								What = "Nice! I have my own Cherenkov radiation lamp!"
-							},
-						});
-					storyRegistry.RegisterStory(injectDialogue0);
-				}*/
                 //SlimeTentacleThreats_Multi
-                // (TO FIX)
                 {
-                    var SlimeTentacleThreats_Multi_0 = new ExternalStory("CorrosiveCobra.Story.SlimeTentacleThreats_Multi_0",
-                        new StoryNode()
-                        {
-                            type = NodeType.combat,
-                            priority = true,
-                            turnStart = true,
-                            maxTurnsThisCombat = 3,
-                            allPresent = new HashSet<string>()
-                            {
-                                SlimeWho,
-                                "tentacle"
-                            }
-                        },
+                    var injectDialogue0 = new ExternalStoryInjector("TentacleThreats_Multi_0",
+                        ExternalStoryInjector.QuickInjection.Beginning, 1,
                         new List<object>()
                         {
-                            new SaySwitch()
+                            new ExternalStory.ExternalSaySwitch(new List<ExternalStory.ExternalSay>
                             {
-                                lines = new List<Say> {
-                                    new Say()
-                                    {
-                                        who = "tentacle",
-                                        hash = "tentacleDialogue0"
-                                    },
-                                    new Say()
-                                    {
-                                        who = "tentacle",
-                                        hash = "tentacleDialogue1"
-                                    },
-                                    new Say()
-                                    {
-                                        who = "tentacle",
-                                        hash = "tentacleDialogue2"
-                                    },
-                                }
-                            },
-                            new SaySwitch()
-                            {
-                                lines = new List<Say> {
-                                    new Say()
-                                    {
-                                        who = SlimeWho,
-                                        loopTag = "laugh",
-                                        hash = "tentacleDialogueAnswer0"
-                                    },
-                                    new Say()
-                                    {
-                                        who = SlimeWho,
-                                        hash = "tentacleDialogueAnswer1"
-                                    },
-                                    new Say()
-                                    {
-                                        who = SlimeWho,
-                                        loopTag = "sad",
-                                        hash = "tentacleDialogueAnswer2"
-                                    },
-                                }
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    LoopTag = "laugh",
+                                    What = "Haha. You're funny."
+                                },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    What = "Ah... aha... Hm... I see!"
+                                },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    LoopTag = "sad",
+                                    What = "To shreds you say?"
+                                },
+                            }),
                         });
-                    SlimeTentacleThreats_Multi_0.AddLocalisation("tentacleDialogue0", "GLARP");
-                    SlimeTentacleThreats_Multi_0.AddLocalisation("tentacleDialogue1", "GLARP");
-                    SlimeTentacleThreats_Multi_0.AddLocalisation("tentacleDialogue2", "GLARP");
-                    SlimeTentacleThreats_Multi_0.AddLocalisation("tentacleDialogueAnswer0", "Haha. You're funny.");
-                    SlimeTentacleThreats_Multi_0.AddLocalisation("tentacleDialogueAnswer1", "Ah... aha... Hm... I see!");
-                    SlimeTentacleThreats_Multi_0.AddLocalisation("tentacleDialogueAnswer2", "To shreds you say?");
-                    storyRegistry.RegisterStory(SlimeTentacleThreats_Multi_0);
+                    storyRegistry.RegisterInjector(injectDialogue0);
                 }
-                /*{
-					var injectDialogue0 = new ExternalStoryInjector("TentacleThreats_Multi_0",
-						ExternalStoryInjector.QuickInjection.Beggining, 1,
-						new List<object>()
-						{
-							new ExternalStory.ExternalSaySwitch()
-							{
-								new ExternalStory.ExternalSay()
-								{
-									Who = SlimeWho,
-									LoopTag = "laugh",
-									What = "Haha. You're funny."
-								},
-								new ExternalStory.ExternalSay()
-								{
-									Who = SlimeWho,
-									What = "Ah... aha... Hm... I see!"
-								},
-								new ExternalStory.ExternalSay()
-								{
-									Who = SlimeWho,
-									LoopTag = "sad",
-									What = "To shreds you say?"
-								},
-							},
-						});
-					storyRegistry.RegisterStory(injectDialogue0);
-				}*/
                 //SlimeTentacleThreatsOnShellBreak_Multi
-                // (TO FIX)
-                /*{
-					var injectDialogue0 = new ExternalStoryInjector("TentacleThreatsOnShellBreak_Multi_0",
-						ExternalStoryInjector.QuickInjection.Beggining, 1,
-						new List<object>()
-						{
-							new ExternalStory.ExternalSaySwitch()
-							{
-								new ExternalStory.ExternalSay()
-								{
-									Who = SlimeWho,
-									LoopTag = "laugh",
-									What = "YES I KNOW RIGHT?!"
-								},
-								new ExternalStory.ExternalSay()
-								{
-									Who = SlimeWho,
-									What = "No, not really."
-								},
-								new ExternalStory.ExternalSay()
-								{
-									Who = SlimeWho,
-									LoopTag = "sad",
-									What = "Oh wow. That's... That's so sad."
-								},
-							},
-						});
-					storyRegistry.RegisterStory(injectDialogue0);
-				}*/
+                {
+                    var injectDialogue0 = new ExternalStoryInjector("TentacleThreatsOnShellBreak_Multi_0",
+                        ExternalStoryInjector.QuickInjection.Beginning, 1,
+                        new List<object>()
+                        {
+                            new ExternalStory.ExternalSaySwitch(new List<ExternalStory.ExternalSay>
+                            {
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    LoopTag = "laugh",
+                                    What = "YES I KNOW RIGHT?!"
+                                },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    What = "No, not really."
+                                },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    LoopTag = "sad",
+                                    What = "Oh wow. That's... That's so sad."
+                                },
+                            }),
+                        });
+                    storyRegistry.RegisterInjector(injectDialogue0);
+                }
                 //SlimeBlockedAnEnemyAttackWithArmor_Multi
                 {
                     {
@@ -1278,7 +1141,6 @@ namespace CorrosiveCobra
                         });
                     storyRegistry.RegisterStory(SlimeBlockedALotOfAttacksWithArmor_Multi_0);
                 }
-                //SlimeBlockedAnEnemyAttackWithArmor_Multi
                 //SlimeThatsALotOfDamageToThem_Multi
                 {
                     var SlimeThatsALotOfDamageToThem_Multi_0 = new ExternalStory("CorrosiveCobra.Story.SlimeThatsALotOfDamageToThem_Multi_0",
@@ -2091,7 +1953,6 @@ namespace CorrosiveCobra
                     }
                 }
                 //SlimeArtifactGeminiCore_Multi
-                // (TO FIX)
                 {
                     {
                         var SlimeArtifactGeminiCore_Multi_0 = new ExternalStory("CorrosiveCobra.Story.SlimeArtifactGeminiCore_Multi_0",
@@ -2126,34 +1987,11 @@ namespace CorrosiveCobra
                             });
                         storyRegistry.RegisterStory(SlimeArtifactGeminiCore_Multi_0);
                     }
-                    // (DIRTY PRIORITY) 
                     {
-                        var SlimeArtifactGeminiCore_Multi_1 = new ExternalStory("CorrosiveCobra.Story.SlimeArtifactGeminiCore_Multi_1",
-                            new StoryNode()
-                            {
-                                priority = true,
-                                type = NodeType.combat,
-                                hasArtifacts = new HashSet<string>()
-                                {
-                                    "GeminiCore"
-                                },
-                                oncePerRunTags = new HashSet<string>()
-                                {
-                                    "GeminiCore"
-                                },
-                                allPresent = new HashSet<string>()
-                                {
-                                    SlimeWho,
-                                    "dizzy"
-                                }
-                            },
+                        var injectDialogue0 = new ExternalStoryInjector("ArtifactGeminiCore_Multi_4",
+                            ExternalStoryInjector.QuickInjection.Beginning, 1,
                             new List<object>()
                             {
-                                new ExternalStory.ExternalSay()
-                                {
-                                    Who = "dizzy",
-                                    What = "Do you guys prefer the blue or the red side? I'm a blue guy."
-                                },
                                 new ExternalStory.ExternalSay()
                                 {
                                     Who = SlimeWho,
@@ -2161,22 +1999,8 @@ namespace CorrosiveCobra
                                     What = "I'm a green guy.",
                                 },
                             });
-                        storyRegistry.RegisterStory(SlimeArtifactGeminiCore_Multi_1);
+                        storyRegistry.RegisterInjector(injectDialogue0);
                     }
-                    /*{
-						var injectDialogue0 = new ExternalStoryInjector("ArtifactGeminiCore_Multi_4",
-							ExternalStoryInjector.QuickInjection.Beggining, 1,
-							new List<object>()
-							{
-								new ExternalStory.ExternalSay()
-								{
-									Who = SlimeWho,
-									LoopTag = "laugh",
-									What = "I'm a green guy.",
-								},
-							});
-						storyRegistry.RegisterStory(injectDialogue0);
-					}*/
                 }
                 //SlimeArtifactTiderunner_Multi
                 {
@@ -2343,7 +2167,6 @@ namespace CorrosiveCobra
                     }
                 }
                 //SlimeOneHitPointThisIsFine_Multi
-                // (TO FIX)
                 {
                     {
                         var SlimeOneHitPointThisIsFine_Multi_0 = new ExternalStory("CorrosiveCobra.Story.SlimeOneHitPointThisIsFine_Multi_0",
@@ -2400,19 +2223,19 @@ namespace CorrosiveCobra
                             });
                         storyRegistry.RegisterStory(SlimeOneHitPointThisIsFine_Multi_1);
                     }
-                    /*{
-						var injectDialogue0 = new ExternalStoryInjector("OneHitPointThisIsFine_Multi_4",
-							ExternalStoryInjector.QuickInjection.Beggining, 1,
-							new List<object>()
-							{
-								new ExternalStory.ExternalSay()
-								{
-									Who = SlimeWho,
-									What = "Not at all!",
-								},
-							});
-						storyRegistry.RegisterStory(injectDialogue0);
-					}*/
+                    {
+                        var injectDialogue0 = new ExternalStoryInjector("OneHitPointThisIsFine_Multi_4",
+                            ExternalStoryInjector.QuickInjection.Beginning, 1,
+                            new List<object>()
+                            {
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    What = "Not at all!",
+                                },
+                            });
+                        storyRegistry.RegisterInjector(injectDialogue0);
+                    }
                 }
                 //SlimeWeDidOverFiveDamage_Multi
                 //MODDED
@@ -3273,20 +3096,19 @@ namespace CorrosiveCobra
                     storyRegistry.RegisterStory(SlimeArtifactNanofiberHull2_Multi_0);
                 }
                 //SlimeSpikeGetsChatty_Multi
-                // (TO FIX)
-                /*{
-					var injectDialogue0 = new ExternalStoryInjector("SpikeGetsChatty_Multi_0",
-						ExternalStoryInjector.QuickInjection.Beggining, 1,
-						new List<object>()
-						{
-							new ExternalStory.ExternalSay()
-							{
-								Who = SlimeWho,
-								What = "We're ready, yeah.",
-							},
-						});
-					storyRegistry.RegisterStory(injectDialogue0);
-				}*/
+                {
+                    var injectDialogue0 = new ExternalStoryInjector("SpikeGetsChatty_Multi_0",
+                        ExternalStoryInjector.QuickInjection.Beginning, 1,
+                        new List<object>()
+                        {
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                What = "We're ready, yeah.",
+                            },
+                        });
+                    storyRegistry.RegisterInjector(injectDialogue0);
+                }
                 //SlimeArtifactEnergyRefund_Multi
                 {
                     var SlimeArtifactEnergyRefund_Multi_0 = new ExternalStory("CorrosiveCobra.Story.SlimeArtifactEnergyRefund_Multi_0",
@@ -3320,21 +3142,20 @@ namespace CorrosiveCobra
                     storyRegistry.RegisterStory(SlimeArtifactEnergyRefund_Multi_0);
                 }
                 //SlimeArtifactOverclockedGeneratorSeenMaxMemory3_Multi
-                // (TO FIX)
-                /*{
-					var injectDialogue0 = new ExternalStoryInjector("ArtifactOverclockedGeneratorSeenMaxMemory3_Multi_0",
-						ExternalStoryInjector.QuickInjection.Beggining, 1,
-						new List<object>()
-						{
-							new ExternalStory.ExternalSay()
-							{
-								Who = SlimeWho,
-								LoopTag = "laugh",
-								What = "Don't let Peri hear it. She's still mad about the core.",
-							},
-						});
-					storyRegistry.RegisterStory(injectDialogue0);
-				}*/
+                {
+                    var injectDialogue0 = new ExternalStoryInjector("ArtifactOverclockedGeneratorSeenMaxMemory3_Multi_0",
+                        ExternalStoryInjector.QuickInjection.Beginning, 1,
+                        new List<object>()
+                        {
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                LoopTag = "laugh",
+                                What = "Don't let Peri hear it. She's still mad about the core.",
+                            },
+                        });
+                    storyRegistry.RegisterInjector(injectDialogue0);
+                }
                 //SlimeArtifactShieldPrepIsGone_Multi
                 {
                     var SlimeArtifactShieldPrepIsGone_Multi_0 = new ExternalStory("CorrosiveCobra.Story.SlimeArtifactShieldPrepIsGone_Multi_0",
@@ -4267,69 +4088,66 @@ namespace CorrosiveCobra
                                 LoopTag = "nervous",
                                 What = "Anyone else see that rupture in spacetime right behind the enemy?",
                             },
-                            new ExternalStory.ExternalSay()
+                            new ExternalStory.ExternalSaySwitch(new List<ExternalStory.ExternalSay>
                             {
-                                Who = "comp",
-                                LoopTag = "feral",
-                                What = "I'll make sure we reach the Cobalt.",
-                            },
-							/*
-							new ExternalStory.ExternalSaySwitch()
-							{
-								new ExternalStory.ExternalSay()
-								{
-									Who = "dizzy",
-									LoopTag = "explains",
-									What = "Yeah. What else is new?",
-								},
-								new ExternalStory.ExternalSay()
-								{
-									Who = "riggs",
-									LoopTag = "nervous",
-									What = "That sounds scary.",
-								},
-								new ExternalStory.ExternalSay()
-								{
-									Who = "peri",
-									What = "It looks like it attacked the enemy. Beware.",
-								},
-								new ExternalStory.ExternalSay()
-								{
-									Who = "goat",
-									LoopTag = "panic",
-									What = "That is not good.",
-								},
-								new ExternalStory.ExternalSay()
-								{
-									Who = "eunice",
-									What = "Yeah, and?",
-								},
-								new ExternalStory.ExternalSay()
-								{
-									Who = "hacker",
-									LoopTag = "gloves",
-									What = "Are we in the Matrix?",
-								},
-								new ExternalStory.ExternalSay()
-								{
-									Who = "shard",
-									LoopTag = "excited",
-									What = "Wow!",
-								},
-								new ExternalStory.ExternalSay()
-								{
-									Who = "comp",
-									LoopTag = "feral",
-									What = "I'll make sure we reach the Cobalt.",
-								},
-								new ExternalStory.ExternalSay()
-								{
-									Who = DaveWho,
-									What = "The timer is on.",
-								},
-							}
-							*/
-						});
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = "dizzy",
+                                    LoopTag = "explains",
+                                    What = "Yeah. What else is new?",
+                                },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = "riggs",
+                                    LoopTag = "nervous",
+                                    What = "That sounds scary.",
+                                },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = "peri",
+                                    What = "It looks like it attacked the enemy. Beware.",
+                                },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = "goat",
+                                    LoopTag = "panic",
+                                    What = "That is not good.",
+                                },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = "eunice",
+                                    What = "Yeah, and?",
+                                },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = "hacker",
+                                    LoopTag = "gloves",
+                                    What = "Are we in the Matrix?",
+                                },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = "shard",
+                                    LoopTag = "excited",
+                                    What = "Wow!",
+                                },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = "comp",
+                                    LoopTag = "feral",
+                                    What = "I'll make sure we reach the Cobalt.",
+                                },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = DaveWho,
+                                    What = "The timer is on.",
+                                },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = JohannaWho,
+                                    What = "...",
+                                }
+                            })
+                        });
                     storyRegistry.RegisterStory(playedTimestreamLeak_Multi_0);
                 }
             }
@@ -4555,6 +4373,7 @@ namespace CorrosiveCobra
             // NEW EVENTS
             // ================
             {
+                //SlimeEvent_WhoAreYou
                 {
                     var SlimeEvent_WhoAreYou_1 = new ExternalStory("CorrosiveCobra.Story.SlimeEvent_WhoAreYou_1",
                         new StoryNode()
@@ -4609,51 +4428,51 @@ namespace CorrosiveCobra
                                 LoopTag = "laugh",
                                 What = "Hm? I'm Dizzy?",
                             },
-							/*new ExternalStory.ExternalSaySwitch()
-							{
-								new ExternalStory.ExternalSay()
-								{
-									Who = "dizzy",
-									LoopTag = "explains",
-									What = "That makes total sense. You're Dizzy."
-								},
-								new ExternalStory.ExternalSay()
-								{
-									Who = "riggs",
-									LoopTag = "banana",
-									What = "You're not Dizzy, I know Dizzy and he would never wear a spacesuit."
-								},
-								new ExternalStory.ExternalSay()
-								{
-									Who = "peri",
-									LoopTag = "squint",
-									What = "What is going on. Who is this?"
-								},
-								new ExternalStory.ExternalSay()
-								{
-									Who = "goat",
-									LoopTag = "squint",
-									What = "Have you always looked like that?"
-								},
-								new ExternalStory.ExternalSay()
-								{
-									Who = "eunice",
-									LoopTag = "squint",
-									What = "Uh-huh. Now tell us the truth."
-								},
-								new ExternalStory.ExternalSay()
-								{
-									Who = "hacker",
-									LoopTag = "squint",
-									What = "Is that a rare skin?"
-								},
-								new ExternalStory.ExternalSay()
-								{
-									Who = "shard",
-									What = "Hi!"
-								},
-							},*/
-							new ExternalStory.ExternalSay()
+                            new ExternalStory.ExternalSaySwitch(new List<ExternalStory.ExternalSay>
+                            {
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = "dizzy",
+                                    LoopTag = "explains",
+                                    What = "That makes total sense. You're Dizzy."
+                                },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = "riggs",
+                                    LoopTag = "banana",
+                                    What = "You're not Dizzy, I know Dizzy and he would never wear a spacesuit."
+                                },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = "peri",
+                                    LoopTag = "squint",
+                                    What = "What is going on. Who is this?"
+                                },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = "goat",
+                                    LoopTag = "squint",
+                                    What = "Have you always looked like that?"
+                                },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = "eunice",
+                                    LoopTag = "squint",
+                                    What = "Uh-huh. Now tell us the truth."
+                                },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = "hacker",
+                                    LoopTag = "squint",
+                                    What = "Is that a rare skin?"
+                                },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = "shard",
+                                    What = "Hi!"
+                                }
+                            }),
+                            new ExternalStory.ExternalSay()
                             {
                                 Who = SlimeWho,
                                 Flipped = true,
@@ -4857,6 +4676,7 @@ namespace CorrosiveCobra
                         });
                     storyRegistry.RegisterStory(SlimeEvent_WhoAreYou_3);
                 }
+                //SlimeEvent_Dizzy
                 {
                     var SlimeEvent_Dizzy_1 = new ExternalStory("CorrosiveCobra.Story.SlimeEvent_Dizzy_1",
                         new StoryNode()
