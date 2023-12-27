@@ -161,6 +161,7 @@ namespace CorrosiveCobra
         public static ExternalCard? CobraCardShieldAlternatorA { get; private set; }
         public static ExternalCard? CobraCardShieldAlternatorB { get; private set; }
         public static ExternalCard? CobraCardAcidicFlare { get; private set; }
+        public static ExternalCard? CobraCardFlameBlast { get; private set; }
 
         //ship parts
         public static ExternalPart? CorrosiveCobra_Cannon { get; private set; }
@@ -693,6 +694,11 @@ namespace CorrosiveCobra
                 CobraCardAcidicFlare = new ExternalCard("CorrosiveCobra.CobraCardAcidicFlare", typeof(CobraCardAcidicFlare), card_DefaultArt, CobraDeck);
                 registry.RegisterCard(CobraCardAcidicFlare);
                 CobraCardAcidicFlare.AddLocalisation("Acidic Flare", desc: "Turn <c=redd>ALL</c> <c=status>heat</c> into <c=status>corrode</c>.", descA: "Turn <c=redd>ALL</c> <c=status>corrode</c> into <c=status>heat</c>. Gain a <c=card>Corrosion Ignition A</c>.", descB: "Turn <c=redd>ALL</c> <c=status>heat</c> into <c=status>corrode</c>. Gain a <c=card>Corrosion Ignition B</c>.");
+            }
+            {
+                CobraCardFlameBlast = new ExternalCard("CorrosiveCobra.CobraCardFlameBlast", typeof(CobraCardFlameBlast), card_DefaultArt, CobraDeck);
+                registry.RegisterCard(CobraCardFlameBlast);
+                CobraCardFlameBlast.AddLocalisation("Flame Blast", desc: "Attack for <c=redd>{0}</c> damage. Add {1} <c=card>Miasma</c> to your <c=keyword>draw pile</c>.");
             }
         }
         public void LoadManifest(IArtifactRegistry registry)

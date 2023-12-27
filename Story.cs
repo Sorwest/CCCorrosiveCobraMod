@@ -27,21 +27,21 @@ namespace CorrosiveCobra
                             minTurnsThisCombat = 2,
                             lastTurnPlayerStatuses = new HashSet<Status>()
                             {
-                            Status.heat
+                                Status.heat
                             },
                             allPresent = new HashSet<string>()
                             {
-                            SlimeWho
+                                SlimeWho
                             }
                         },
                         new List<object>()
                         {
-                        new ExternalStory.ExternalSay()
-                        {
-                            Who = SlimeWho,
-                            What = "Oh, my suit is melting. Cool.",
-                            LoopTag = "laugh"
-                        },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                What = "Oh, my suit is melting. Cool.",
+                                LoopTag = "laugh"
+                            },
                         });
                     storyRegistry.RegisterStory(SlimeHeatIncrease_Multi_0);
                 }
@@ -56,21 +56,21 @@ namespace CorrosiveCobra
                             oncePerCombat = true,
                             doesNotHaveArtifacts = new HashSet<string>()
                             {
-                            "Recalibrator",
-                            "GrazerBeam",
+                                "Recalibrator",
+                                "GrazerBeam",
                             },
                             allPresent = new HashSet<string>()
                             {
-                            SlimeWho,
+                                SlimeWho,
                             }
                         },
                         new List<object>()
                         {
-                        new ExternalStory.ExternalSay()
-                        {
-                            Who = SlimeWho,
-                            What = "Was that calculated?",
-                        },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                What = "Was that calculated?",
+                            },
                         });
                         storyRegistry.RegisterStory(SlimeWeMissedOopsie_Multi_0);
                     }
@@ -83,22 +83,22 @@ namespace CorrosiveCobra
                             oncePerCombat = true,
                             doesNotHaveArtifacts = new HashSet<string>()
                             {
-                            "Recalibrator",
-                            "GrazerBeam",
+                                "Recalibrator",
+                                "GrazerBeam",
                             },
                             allPresent = new HashSet<string>()
                             {
-                            SlimeWho,
+                                SlimeWho,
                             }
                         },
                         new List<object>()
                         {
-                        new ExternalStory.ExternalSay()
-                        {
-                            Who = SlimeWho,
-                            LoopTag = "nervous",
-                            What = "Uhh...",
-                        },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                LoopTag = "nervous",
+                                What = "Uhh...",
+                            },
                         });
                         storyRegistry.RegisterStory(SlimeWeMissedOopsie_Multi_1);
                     }
@@ -111,21 +111,21 @@ namespace CorrosiveCobra
                             oncePerCombat = true,
                             doesNotHaveArtifacts = new HashSet<string>()
                             {
-                            "Recalibrator",
-                            "GrazerBeam",
+                                "Recalibrator",
+                                "GrazerBeam",
                             },
                             allPresent = new HashSet<string>()
                             {
-                            SlimeWho,
+                                SlimeWho,
                             }
                         },
                         new List<object>()
                         {
-                        new ExternalStory.ExternalSay()
-                        {
-                            Who = SlimeWho,
-                            What = "I hate to say it, but we missed.",
-                        },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                What = "I hate to say it, but we missed.",
+                            },
                         });
                         storyRegistry.RegisterStory(SlimeWeMissedOopsie_Multi_2);
                     }
@@ -138,22 +138,22 @@ namespace CorrosiveCobra
                             oncePerCombat = true,
                             doesNotHaveArtifacts = new HashSet<string>()
                             {
-                            "Recalibrator",
-                            "GrazerBeam",
+                                "Recalibrator",
+                                "GrazerBeam",
                             },
                             allPresent = new HashSet<string>()
                             {
-                            SlimeWho,
+                                SlimeWho,
                             }
                         },
                         new List<object>()
                         {
-                        new ExternalStory.ExternalSay()
-                        {
-                            Who = SlimeWho,
-                            LoopTag = "nervous",
-                            What = "Hm... Let me get the manual.",
-                        },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                LoopTag = "nervous",
+                                What = "Hm... Let me get the manual.",
+                            },
                         });
                         storyRegistry.RegisterStory(SlimeWeMissedOopsie_Multi_3);
                     }
@@ -166,22 +166,22 @@ namespace CorrosiveCobra
                             oncePerCombat = true,
                             doesNotHaveArtifacts = new HashSet<string>()
                             {
-                            "Recalibrator",
-                            "GrazerBeam",
+                                "Recalibrator",
+                                "GrazerBeam",
                             },
                             allPresent = new HashSet<string>()
                             {
-                            SlimeWho,
+                                SlimeWho,
                             }
                         },
                         new List<object>()
                         {
-                        new ExternalStory.ExternalSay()
-                        {
-                            Who = SlimeWho,
-                            LoopTag = "nervous",
-                            What = "Where's the auto-aim?",
-                        },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                LoopTag = "nervous",
+                                What = "Where's the auto-aim?",
+                            },
                         });
                         storyRegistry.RegisterStory(SlimeWeMissedOopsie_Multi_4);
                     }
@@ -197,22 +197,22 @@ namespace CorrosiveCobra
                             shipsDontOverlapAtAll = true,
                             nonePresent = new HashSet<string>()
                             {
-                            "crab",
-                            "scrap"
+                                "crab",
+                                "scrap"
                             },
                             allPresent = new HashSet<string>()
                             {
-                            SlimeWho,
+                                SlimeWho,
                             }
                         },
                         new List<object>()
                         {
-                        new ExternalStory.ExternalSay()
-                        {
-                            Who = SlimeWho,
-                            LoopTag = "nervous",
-                            What = "Let's uh... tactically retreat.",
-                        },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                LoopTag = "nervous",
+                                What = "Let's uh... tactically retreat.",
+                            },
                         });
                         storyRegistry.RegisterStory(SlimeWeDontOverlapWithEnemyAtAll_Multi_0);
                     }
@@ -225,22 +225,22 @@ namespace CorrosiveCobra
                             shipsDontOverlapAtAll = true,
                             nonePresent = new HashSet<string>()
                             {
-                            "crab",
-                            "scrap"
+                                "crab",
+                                "scrap"
                             },
                             allPresent = new HashSet<string>()
                             {
-                            SlimeWho,
+                                SlimeWho,
                             }
                         },
                         new List<object>()
                         {
-                        new ExternalStory.ExternalSay()
-                        {
-                            Who = SlimeWho,
-                            LoopTag = "laugh",
-                            What = "What's over here?",
-                        },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                LoopTag = "laugh",
+                                What = "What's over here?",
+                            },
                         });
                         storyRegistry.RegisterStory(SlimeWeDontOverlapWithEnemyAtAll_Multi_1);
                     }
@@ -253,22 +253,22 @@ namespace CorrosiveCobra
                             shipsDontOverlapAtAll = true,
                             nonePresent = new HashSet<string>()
                             {
-                            "crab",
-                            "scrap"
+                                "crab",
+                                "scrap"
                             },
                             allPresent = new HashSet<string>()
                             {
-                            SlimeWho,
+                                SlimeWho,
                             }
                         },
                         new List<object>()
                         {
-                        new ExternalStory.ExternalSay()
-                        {
-                            Who = SlimeWho,
-                            LoopTag = "laugh",
-                            What = "Farewell.",
-                        },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                LoopTag = "laugh",
+                                What = "Farewell.",
+                            },
                         });
                         storyRegistry.RegisterStory(SlimeWeDontOverlapWithEnemyAtAll_Multi_2);
                     }
@@ -284,29 +284,29 @@ namespace CorrosiveCobra
                             shipsDontOverlapAtAll = true,
                             oncePerCombatTags = new HashSet<string>()
                             {
-                            "NoOverlapBetweenShipsSeeker"
+                                "NoOverlapBetweenShipsSeeker"
                             },
                             anyDronesHostile = new HashSet<string>()
                             {
-                            "missile_seeker"
+                                "missile_seeker"
                             },
                             nonePresent = new HashSet<string>()
                             {
-                            "crab"
+                                "crab"
                             },
                             allPresent = new HashSet<string>()
                             {
-                            SlimeWho,
+                                SlimeWho,
                             }
                         },
                         new List<object>()
                         {
-                        new ExternalStory.ExternalSay()
-                        {
-                            Who = SlimeWho,
-                            LoopTag = "nervous",
-                            What = "We gotta deal with that Seeker somehow.",
-                        },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                LoopTag = "nervous",
+                                What = "We gotta deal with that Seeker somehow.",
+                            },
                         });
                         storyRegistry.RegisterStory(SlimeWeDontOverlapWithEnemyAtAllButWeDoHaveASeekerToDealWith_Multi_0);
                     }
@@ -324,28 +324,28 @@ namespace CorrosiveCobra
                             maxHull = 2,
                             oncePerCombatTags = new HashSet<string>()
                             {
-                            "aboutToDie"
+                                "aboutToDie"
                             },
                             allPresent = new HashSet<string>()
                             {
-                            SlimeWho,
-                            "dizzy"
+                                SlimeWho,
+                                "dizzy"
                             }
                         },
                         new List<object>()
                         {
-                        new ExternalStory.ExternalSay()
-                        {
-                            Who = SlimeWho,
-                            LoopTag = "sad",
-                            What = "Nearly time to time loop again, huh.",
-                        },
-                        new ExternalStory.ExternalSay()
-                        {
-                            Who = "dizzy",
-                            LoopTag = "frown",
-                            What = "Nearly time to ti-- Ah... Huh.",
-                        },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                LoopTag = "sad",
+                                What = "Nearly time to time loop again, huh.",
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = "dizzy",
+                                LoopTag = "frown",
+                                What = "Nearly time to ti-- Ah... Huh.",
+                            },
                         });
                         storyRegistry.RegisterStory(SlimeDuo_AboutToDieAndLoop_Multi_0);
                     }
@@ -359,28 +359,28 @@ namespace CorrosiveCobra
                             maxHull = 2,
                             oncePerCombatTags = new HashSet<string>()
                             {
-                            "aboutToDie"
+                                "aboutToDie"
                             },
                             allPresent = new HashSet<string>()
                             {
-                            SlimeWho,
-                            "dizzy"
+                                SlimeWho,
+                                "dizzy"
                             }
                         },
                         new List<object>()
                         {
-                        new ExternalStory.ExternalSay()
-                        {
-                            Who = "slime",
-                            LoopTag = "frown",
-                            What = "Nearly time to time loop again, huh.",
-                        },
-                        new ExternalStory.ExternalSay()
-                        {
-                            Who = SlimeWho,
-                            LoopTag = "sad",
-                            What = "Nearly time to ti-- Ah. Huh. Yeah.",
-                        },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = "slime",
+                                LoopTag = "frown",
+                                What = "Nearly time to time loop again, huh.",
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                LoopTag = "sad",
+                                What = "Nearly time to ti-- Ah. Huh. Yeah.",
+                            },
                         });
                         storyRegistry.RegisterStory(SlimeDuo_AboutToDieAndLoop_Multi_1);
                     }
@@ -394,27 +394,27 @@ namespace CorrosiveCobra
                             maxHull = 2,
                             oncePerCombatTags = new HashSet<string>()
                             {
-                            "aboutToDie"
+                                "aboutToDie"
                             },
                             allPresent = new HashSet<string>()
                             {
-                            SlimeWho,
-                            "riggs"
+                                SlimeWho,
+                                "riggs"
                             }
                         },
                         new List<object>()
                         {
-                        new ExternalStory.ExternalSay()
-                        {
-                            Who = SlimeWho,
-                            LoopTag = "nervous",
-                            What = "Time loop time?",
-                        },
-                        new ExternalStory.ExternalSay()
-                        {
-                            Who = "riggs",
-                            What = "Hey, don't give up yet!"
-                        },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                LoopTag = "nervous",
+                                What = "Time loop time?",
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = "riggs",
+                                What = "Hey, don't give up yet!"
+                            },
                         });
                         storyRegistry.RegisterStory(SlimeDuo_AboutToDieAndLoop_Multi_11);
                     }
@@ -428,28 +428,28 @@ namespace CorrosiveCobra
                             maxHull = 2,
                             oncePerCombatTags = new HashSet<string>()
                             {
-                            "aboutToDie"
+                                "aboutToDie"
                             },
                             allPresent = new HashSet<string>()
                             {
-                            SlimeWho,
-                            "peri"
+                                SlimeWho,
+                                "peri"
                             }
                         },
                         new List<object>()
                         {
-                        new ExternalStory.ExternalSay()
-                        {
-                            Who = SlimeWho,
-                            LoopTag = "sad",
-                            What = "We almost had it.",
-                        },
-                        new ExternalStory.ExternalSay()
-                        {
-                            Who = "peri",
-                            LoopTag = "panic",
-                            What = "Enough crying! Everyone evacuate, I'll take over!"
-                        },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                LoopTag = "sad",
+                                What = "We almost had it.",
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = "peri",
+                                LoopTag = "panic",
+                                What = "Enough crying! Everyone evacuate, I'll take over!"
+                            },
                         });
                         storyRegistry.RegisterStory(SlimeDuo_AboutToDieAndLoop_Multi_12);
                     }
@@ -463,27 +463,27 @@ namespace CorrosiveCobra
                             maxHull = 2,
                             oncePerCombatTags = new HashSet<string>()
                             {
-                            "aboutToDie"
+                                "aboutToDie"
                             },
                             allPresent = new HashSet<string>()
                             {
-                            SlimeWho,
-                            "peri"
+                                SlimeWho,
+                                "peri"
                             }
                         },
                         new List<object>()
                         {
-                        new ExternalStory.ExternalSay()
-                        {
-                            Who = "peri",
-                            LoopTag = "shy",
-                            What = "This was a good try. Will you fight with us next time?"
-                        },
-                        new ExternalStory.ExternalSay()
-                        {
-                            Who = SlimeWho,
-                            What = "I hope so.",
-                        },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = "peri",
+                                LoopTag = "shy",
+                                What = "This was a good try. Will you fight with us next time?"
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                What = "I hope so.",
+                            },
                         });
                         storyRegistry.RegisterStory(SlimeDuo_AboutToDieAndLoop_Multi_13);
                     }
@@ -497,27 +497,27 @@ namespace CorrosiveCobra
                             maxHull = 2,
                             oncePerCombatTags = new HashSet<string>()
                             {
-                            "aboutToDie"
+                                "aboutToDie"
                             },
                             allPresent = new HashSet<string>()
                             {
-                            SlimeWho,
-                            "goat"
+                                SlimeWho,
+                                "goat"
                             }
                         },
                         new List<object>()
                         {
-                        new ExternalStory.ExternalSay()
-                        {
-                            Who = SlimeWho,
-                            LoopTag = "nervous",
-                            What = "It's looking... kinda bad.",
-                        },
-                        new ExternalStory.ExternalSay()
-                        {
-                            Who = "goat",
-                            What ="For sure!"
-                        },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                LoopTag = "nervous",
+                                What = "It's looking... kinda bad.",
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = "goat",
+                                What ="For sure!"
+                            },
                         });
                         storyRegistry.RegisterStory(SlimeDuo_AboutToDieAndLoop_Multi_14);
                     }
@@ -531,26 +531,26 @@ namespace CorrosiveCobra
                             maxHull = 2,
                             oncePerCombatTags = new HashSet<string>()
                             {
-                            "aboutToDie"
+                                "aboutToDie"
                             },
                             allPresent = new HashSet<string>()
                             {
-                            SlimeWho,
-                            "goat"
+                                SlimeWho,
+                                "goat"
                             }
                         },
                         new List<object>()
                         {
-                        new ExternalStory.ExternalSay()
-                        {
-                            Who = "goat",
-                            What = "GG."
-                        },
-                        new ExternalStory.ExternalSay()
-                        {
-                            Who = SlimeWho,
-                            What = "LMAO.",
-                        },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = "goat",
+                                What = "GG."
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                What = "LMAO.",
+                            },
                         });
                         storyRegistry.RegisterStory(SlimeDuo_AboutToDieAndLoop_Multi_15);
                     }
@@ -564,27 +564,27 @@ namespace CorrosiveCobra
                             maxHull = 2,
                             oncePerCombatTags = new HashSet<string>()
                             {
-                            "aboutToDie"
+                                "aboutToDie"
                             },
                             allPresent = new HashSet<string>()
                             {
-                            SlimeWho,
-                            "eunice"
+                                SlimeWho,
+                                "eunice"
                             }
                         },
                         new List<object>()
                         {
-                        new ExternalStory.ExternalSay()
-                        {
-                            Who = SlimeWho,
-                            LoopTag = "sad",
-                            What = "I can patch the ship. I can!",
-                        },
-                        new ExternalStory.ExternalSay()
-                        {
-                            Who = "eunice",
-                            What = "Give it up. Just enjoy the view."
-                        },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                LoopTag = "sad",
+                                What = "I can patch the ship. I can!",
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = "eunice",
+                                What = "Give it up. Just enjoy the view."
+                            },
                         });
                         storyRegistry.RegisterStory(SlimeDuo_AboutToDieAndLoop_Multi_16);
                     }
@@ -598,28 +598,28 @@ namespace CorrosiveCobra
                             maxHull = 2,
                             oncePerCombatTags = new HashSet<string>()
                             {
-                            "aboutToDie"
+                                "aboutToDie"
                             },
                             allPresent = new HashSet<string>()
                             {
-                            SlimeWho,
-                            "eunice"
+                                SlimeWho,
+                                "eunice"
                             }
                         },
                         new List<object>()
                         {
-                        new ExternalStory.ExternalSay()
-                        {
-                            Who = "eunice",
-                            LoopTag = "sly",
-                            What = "We're going down."
-                        },
-                        new ExternalStory.ExternalSay()
-                        {
-                            Who = SlimeWho,
-                            LoopTag = "laugh",
-                            What = "We had fun, though!",
-                        },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = "eunice",
+                                LoopTag = "sly",
+                                What = "We're going down."
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                LoopTag = "laugh",
+                                What = "We had fun, though!",
+                            },
                         });
                         storyRegistry.RegisterStory(SlimeDuo_AboutToDieAndLoop_Multi_17);
                     }
@@ -633,32 +633,32 @@ namespace CorrosiveCobra
                             maxHull = 2,
                             requiredScenes = new HashSet<string>()
                             {
-                            "Dizzy_2",
+                                "Dizzy_Memory_2",
                             },
                             oncePerCombatTags = new HashSet<string>()
                             {
-                            "aboutToDie"
+                                "aboutToDie"
                             },
                             allPresent = new HashSet<string>()
                             {
-                            SlimeWho,
-                            "hacker"
+                                SlimeWho,
+                                "hacker"
                             }
                         },
                         new List<object>()
                         {
-                        new ExternalStory.ExternalSay()
-                        {
-                            Who = SlimeWho,
-                            LoopTag = "sad",
-                            What = "I had a Whole new campaign planned out.",
-                        },
-                        new ExternalStory.ExternalSay()
-                        {
-                            Who = "hacker",
-                            LoopTag = "smile",
-                            What = "Next loop we gotta run it."
-                        },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                LoopTag = "sad",
+                                What = "I had a whole new campaign planned out.",
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = "hacker",
+                                LoopTag = "smile",
+                                What = "Next loop we gotta run it."
+                            },
                         });
                         storyRegistry.RegisterStory(SlimeDuo_AboutToDieAndLoop_Multi_18);
                     }
@@ -672,27 +672,27 @@ namespace CorrosiveCobra
                             maxHull = 2,
                             oncePerCombatTags = new HashSet<string>()
                             {
-                            "aboutToDie"
+                                "aboutToDie"
                             },
                             allPresent = new HashSet<string>()
                             {
-                            SlimeWho,
-                            "hacker"
+                                SlimeWho,
+                                "hacker"
                             }
                         },
                         new List<object>()
                         {
-                        new ExternalStory.ExternalSay()
-                        {
-                            Who = SlimeWho,
-                            LoopTag = "nervous",
-                            What = "Next time's the charm.",
-                        },
-                        new ExternalStory.ExternalSay()
-                        {
-                            Who = "hacker",
-                            What = "Well played."
-                        },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                LoopTag = "nervous",
+                                What = "Next time's the charm.",
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = "hacker",
+                                What = "Well played."
+                            },
                         });
                         storyRegistry.RegisterStory(SlimeDuo_AboutToDieAndLoop_Multi_19);
                     }
@@ -706,27 +706,27 @@ namespace CorrosiveCobra
                             maxHull = 2,
                             oncePerCombatTags = new HashSet<string>()
                             {
-                            "aboutToDie"
+                                "aboutToDie"
                             },
                             allPresent = new HashSet<string>()
                             {
-                            SlimeWho,
-                            "hacker"
+                                SlimeWho,
+                                "hacker"
                             }
                         },
                         new List<object>()
                         {
-                        new ExternalStory.ExternalSay()
-                        {
-                            Who = "hacker",
-                            What = "Game over, man."
-                        },
-                        new ExternalStory.ExternalSay()
-                        {
-                            Who = SlimeWho,
-                            LoopTag = "laugh",
-                            What = "Who should I give MVP?",
-                        },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = "hacker",
+                                What = "Game over, man."
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                LoopTag = "laugh",
+                                What = "Who should I give MVP?",
+                            },
                         });
                         storyRegistry.RegisterStory(SlimeDuo_AboutToDieAndLoop_Multi_2);
                     }
@@ -740,28 +740,28 @@ namespace CorrosiveCobra
                             maxHull = 2,
                             oncePerCombatTags = new HashSet<string>()
                             {
-                            "aboutToDie"
+                                "aboutToDie"
                             },
                             allPresent = new HashSet<string>()
                             {
-                            SlimeWho,
-                            "shard"
+                                SlimeWho,
+                                "shard"
                             }
                         },
                         new List<object>()
                         {
-                        new ExternalStory.ExternalSay()
-                        {
-                            Who = SlimeWho,
-                            LoopTag = "sad",
-                            What = "Is this it?",
-                        },
-                        new ExternalStory.ExternalSay()
-                        {
-                            Who = "shard",
-                            LoopTag = "paws",
-                            What = "We can still do this!"
-                        },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                LoopTag = "sad",
+                                What = "Is this it?",
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = "shard",
+                                LoopTag = "paws",
+                                What = "We can still do this!"
+                            },
                         });
                         storyRegistry.RegisterStory(SlimeDuo_AboutToDieAndLoop_Multi_21);
                     }
@@ -775,28 +775,28 @@ namespace CorrosiveCobra
                             maxHull = 2,
                             oncePerCombatTags = new HashSet<string>()
                             {
-                            "aboutToDie"
+                                "aboutToDie"
                             },
                             allPresent = new HashSet<string>()
                             {
-                            SlimeWho,
-                            "shard"
+                                SlimeWho,
+                                "shard"
                             }
                         },
                         new List<object>()
                         {
-                        new ExternalStory.ExternalSay()
-                        {
-                            Who = "shard",
-                            LoopTag = "relaxed",
-                            What = "Hey, what are we gonna do after this?"
-                        },
-                        new ExternalStory.ExternalSay()
-                        {
-                            Who = SlimeWho,
-                            LoopTag = "nervous",
-                            What = "Trying to focus here, Books!",
-                        },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = "shard",
+                                LoopTag = "relaxed",
+                                What = "Hey, what are we gonna do after this?"
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                LoopTag = "nervous",
+                                What = "Trying to focus here, Books!",
+                            },
                         });
                         storyRegistry.RegisterStory(SlimeDuo_AboutToDieAndLoop_Multi_22);
                     }
@@ -810,28 +810,28 @@ namespace CorrosiveCobra
                             maxHull = 2,
                             oncePerCombatTags = new HashSet<string>()
                             {
-                            "aboutToDie"
+                                "aboutToDie"
                             },
                             allPresent = new HashSet<string>()
                             {
-                            SlimeWho,
-                            "comp"
+                                SlimeWho,
+                                "comp"
                             }
                         },
                         new List<object>()
                         {
-                        new ExternalStory.ExternalSay()
-                        {
-                            Who = SlimeWho,
-                            LoopTag = "nervous",
-                            What = "Loop time?",
-                        },
-                        new ExternalStory.ExternalSay()
-                        {
-                            Who = "comp",
-                            LoopTag = "transition",
-                            What = "Loop time."
-                        },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                LoopTag = "nervous",
+                                What = "Loop time?",
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = "comp",
+                                LoopTag = "transition",
+                                What = "Loop time."
+                            },
                         });
                         storyRegistry.RegisterStory(SlimeDuo_AboutToDieAndLoop_Multi_23);
                     }
@@ -845,28 +845,28 @@ namespace CorrosiveCobra
                             maxHull = 2,
                             oncePerCombatTags = new HashSet<string>()
                             {
-                            "aboutToDie"
+                                "aboutToDie"
                             },
                             allPresent = new HashSet<string>()
                             {
-                            SlimeWho,
-                            "comp"
+                                SlimeWho,
+                                "comp"
                             }
                         },
                         new List<object>()
                         {
-                        new ExternalStory.ExternalSay()
-                        {
-                            Who = "comp",
-                            LoopTag = "grumpy",
-                            What = "Reset time."
-                        },
-                        new ExternalStory.ExternalSay()
-                        {
-                            Who = SlimeWho,
-                            LoopTag = "mad",
-                            What = "Maybe we can still do this!",
-                        },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = "comp",
+                                LoopTag = "grumpy",
+                                What = "Reset time."
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                LoopTag = "mad",
+                                What = "Maybe we can still do this!",
+                            },
                         });
                         storyRegistry.RegisterStory(SlimeDuo_AboutToDieAndLoop_Multi_24);
                     }
@@ -881,27 +881,27 @@ namespace CorrosiveCobra
                             maxHull = 2,
                             oncePerCombatTags = new HashSet<string>()
                             {
-                            "aboutToDie"
+                             "aboutToDie"
                             },
                             allPresent = new HashSet<string>()
                             {
-                            SlimeWho,
-                            DaveWho,
+                                SlimeWho,
+                                DaveWho,
                             }
                         },
                         new List<object>()
                         {
-                        new ExternalStory.ExternalSay()
-                        {
-                            Who = SlimeWho,
-                            LoopTag = "sad",
-                            What = "I don't see a way out.",
-                        },
-                        new ExternalStory.ExternalSay()
-                        {
-                            Who = DaveWho,
-                            What = "The house of cards comes tumbling down.",
-                        },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                LoopTag = "sad",
+                                What = "I don't see a way out.",
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = DaveWho,
+                                What = "The house of cards comes tumbling down.",
+                            },
                         });
                         storyRegistry.RegisterStory(SlimeDuo_AboutToDieAndLoop_Multi_25);
                     }
@@ -915,27 +915,27 @@ namespace CorrosiveCobra
                             maxHull = 2,
                             oncePerCombatTags = new HashSet<string>()
                             {
-                            "aboutToDie"
+                                "aboutToDie"
                             },
                             allPresent = new HashSet<string>()
                             {
-                            SlimeWho,
-                            DaveWho,
+                                SlimeWho,
+                                DaveWho,
                             }
                         },
                         new List<object>()
                         {
-                        new ExternalStory.ExternalSay()
-                        {
-                            Who = DaveWho,
-                            What = "We need to find a backdoor soon or we're done for.",
-                        },
-                        new ExternalStory.ExternalSay()
-                        {
-                            Who = SlimeWho,
-                            LoopTag = "nervous",
-                            What = "We can do something, surely?",
-                        },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = DaveWho,
+                                What = "We need to find a backdoor soon or we're done for.",
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                LoopTag = "nervous",
+                                What = "We can do something, surely?",
+                            },
                         });
                         storyRegistry.RegisterStory(SlimeDuo_AboutToDieAndLoop_Multi_26);
                     }
@@ -952,43 +952,43 @@ namespace CorrosiveCobra
                             maxTurnsThisCombat = 1,
                             oncePerCombatTags = new HashSet<string>()
                             {
-                            "BanditThreats"
+                                "BanditThreats"
                             },
                             allPresent = new HashSet<string>()
                             {
-                            SlimeWho,
-                            "bandit"
+                                SlimeWho,
+                                "bandit"
                             }
                         },
                         new List<object>()
                         {
-                        new ExternalStory.ExternalSay()
-                        {
-                            Who = "bandit",
-                            LoopTag = "smile",
-                            What = "Mornin' y'all. Three servings of missiles, coming right up."
-                        },
-                        new ExternalStory.ExternalSay()
-                        {
-                            Who = SlimeWho,
-                            What = "Oh! Tasty!",
-                        },
-                        });
-                    storyRegistry.RegisterStory(SlimeBanditThreats_Multi_0);
-                }
-                /*{
-                    var injectDialogue0 = new ExternalStoryInjector("BatboyKeepsTalking_Multi_0",
-                        ExternalStoryInjector.QuickInjection.Beggining, 1,
-                        new List<object>()
-                        {
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = "bandit",
+                                LoopTag = "smile",
+                                What = "Mornin' y'all. Three servings of missiles, coming right up."
+                            },
                             new ExternalStory.ExternalSay()
                             {
                                 Who = SlimeWho,
                                 What = "Oh! Tasty!",
                             },
                         });
-                    storyRegistry.RegisterStory(injectDialogue0);
-                }*/
+                    storyRegistry.RegisterStory(SlimeBanditThreats_Multi_0);
+                }
+                /*{
+					var injectDialogue0 = new ExternalStoryInjector("BatboyKeepsTalking_Multi_0",
+						ExternalStoryInjector.QuickInjection.Beggining, 1,
+						new List<object>()
+						{
+							new ExternalStory.ExternalSay()
+							{
+								Who = SlimeWho,
+								What = "Oh! Tasty!",
+							},
+						});
+					storyRegistry.RegisterStory(injectDialogue0);
+				}*/
                 //SlimeBatboyKeepsTalking_Multi
                 // (TO FIX)
                 {
@@ -999,35 +999,21 @@ namespace CorrosiveCobra
                             turnStart = true,
                             oncePerCombatTags = new HashSet<string>()
                             {
-                            "batboyshutupyouBigNERD"
+                                "batboyshutupyouBigNERD"
                             },
                             allPresent = new HashSet<string>()
                             {
-                            SlimeWho,
-                            "batboy"
+                                SlimeWho,
+                                "batboy"
                             }
                         },
                         new List<object>()
                         {
-                        new ExternalStory.ExternalSay()
-                        {
-                            Who = "batboy",
-                            What = "Do you like my custom engines? They all glow different colors."
-                        },
-                        new ExternalStory.ExternalSay()
-                        {
-                            Who = SlimeWho,
-                            LoopTag = "laugh",
-                            What = "Nice! I have my own Cherenkov radiation lamp!"
-                        },
-                        });
-                    storyRegistry.RegisterStory(SlimeBatboyKeepsTalking_Multi_0);
-                }
-                /*{
-                    var injectDialogue0 = new ExternalStoryInjector("BatboyKeepsTalking_Multi_0",
-                        ExternalStoryInjector.QuickInjection.Beggining, 1,
-                        new List<object>()
-                        {
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = "batboy",
+                                What = "Do you like my custom engines? They all glow different colors."
+                            },
                             new ExternalStory.ExternalSay()
                             {
                                 Who = SlimeWho,
@@ -1035,8 +1021,22 @@ namespace CorrosiveCobra
                                 What = "Nice! I have my own Cherenkov radiation lamp!"
                             },
                         });
-                    storyRegistry.RegisterStory(injectDialogue0);
-                }*/
+                    storyRegistry.RegisterStory(SlimeBatboyKeepsTalking_Multi_0);
+                }
+                /*{
+					var injectDialogue0 = new ExternalStoryInjector("BatboyKeepsTalking_Multi_0",
+						ExternalStoryInjector.QuickInjection.Beggining, 1,
+						new List<object>()
+						{
+							new ExternalStory.ExternalSay()
+							{
+								Who = SlimeWho,
+								LoopTag = "laugh",
+								What = "Nice! I have my own Cherenkov radiation lamp!"
+							},
+						});
+					storyRegistry.RegisterStory(injectDialogue0);
+				}*/
                 //SlimeTentacleThreats_Multi
                 // (TO FIX)
                 {
@@ -1049,54 +1049,54 @@ namespace CorrosiveCobra
                             maxTurnsThisCombat = 3,
                             allPresent = new HashSet<string>()
                             {
-                            SlimeWho,
-                            "tentacle"
+                                SlimeWho,
+                                "tentacle"
                             }
                         },
                         new List<object>()
                         {
-                        new SaySwitch()
-                        {
-                            lines = new List<Say> {
-                                new Say()
-                                {
-                                    who = "tentacle",
-                                    hash = "tentacleDialogue0"
-                                },
-                                new Say()
-                                {
-                                    who = "tentacle",
-                                    hash = "tentacleDialogue1"
-                                },
-                                new Say()
-                                {
-                                    who = "tentacle",
-                                    hash = "tentacleDialogue2"
-                                },
-                            }
-                        },
-                        new SaySwitch()
-                        {
-                            lines = new List<Say> {
-                                new Say()
-                                {
-                                    who = SlimeWho,
-                                    loopTag = "laugh",
-                                    hash = "tentacleDialogueAnswer0"
-                                },
-                                new Say()
-                                {
-                                    who = SlimeWho,
-                                    hash = "tentacleDialogueAnswer1"
-                                },
-                                new Say()
-                                {
-                                    who = SlimeWho,
-                                    loopTag = "sad",
-                                    hash = "tentacleDialogueAnswer2"
-                                },
-                            }
-                        },
+                            new SaySwitch()
+                            {
+                                lines = new List<Say> {
+                                    new Say()
+                                    {
+                                        who = "tentacle",
+                                        hash = "tentacleDialogue0"
+                                    },
+                                    new Say()
+                                    {
+                                        who = "tentacle",
+                                        hash = "tentacleDialogue1"
+                                    },
+                                    new Say()
+                                    {
+                                        who = "tentacle",
+                                        hash = "tentacleDialogue2"
+                                    },
+                                }
+                            },
+                            new SaySwitch()
+                            {
+                                lines = new List<Say> {
+                                    new Say()
+                                    {
+                                        who = SlimeWho,
+                                        loopTag = "laugh",
+                                        hash = "tentacleDialogueAnswer0"
+                                    },
+                                    new Say()
+                                    {
+                                        who = SlimeWho,
+                                        hash = "tentacleDialogueAnswer1"
+                                    },
+                                    new Say()
+                                    {
+                                        who = SlimeWho,
+                                        loopTag = "sad",
+                                        hash = "tentacleDialogueAnswer2"
+                                    },
+                                }
+                            },
                         });
                     SlimeTentacleThreats_Multi_0.AddLocalisation("tentacleDialogue0", "GLARP");
                     SlimeTentacleThreats_Multi_0.AddLocalisation("tentacleDialogue1", "GLARP");
@@ -1107,63 +1107,63 @@ namespace CorrosiveCobra
                     storyRegistry.RegisterStory(SlimeTentacleThreats_Multi_0);
                 }
                 /*{
-                    var injectDialogue0 = new ExternalStoryInjector("TentacleThreats_Multi_0",
-                        ExternalStoryInjector.QuickInjection.Beggining, 1,
-                        new List<object>()
-                        {
-                            new ExternalStory.ExternalSaySwitch()
-                            {
-                                new ExternalStory.ExternalSay()
-                                {
-                                    Who = SlimeWho,
-                                    LoopTag = "laugh",
-                                    What = "Haha. You're funny."
-                                },
-                                new ExternalStory.ExternalSay()
-                                {
-                                    Who = SlimeWho,
-                                    What = "Ah... aha... Hm... I see!"
-                                },
-                                new ExternalStory.ExternalSay()
-                                {
-                                    Who = SlimeWho,
-                                    LoopTag = "sad",
-                                    What = "To shreds you say?"
-                                },
-                            },
-                        });
-                    storyRegistry.RegisterStory(injectDialogue0);
-                }*/
+					var injectDialogue0 = new ExternalStoryInjector("TentacleThreats_Multi_0",
+						ExternalStoryInjector.QuickInjection.Beggining, 1,
+						new List<object>()
+						{
+							new ExternalStory.ExternalSaySwitch()
+							{
+								new ExternalStory.ExternalSay()
+								{
+									Who = SlimeWho,
+									LoopTag = "laugh",
+									What = "Haha. You're funny."
+								},
+								new ExternalStory.ExternalSay()
+								{
+									Who = SlimeWho,
+									What = "Ah... aha... Hm... I see!"
+								},
+								new ExternalStory.ExternalSay()
+								{
+									Who = SlimeWho,
+									LoopTag = "sad",
+									What = "To shreds you say?"
+								},
+							},
+						});
+					storyRegistry.RegisterStory(injectDialogue0);
+				}*/
                 //SlimeTentacleThreatsOnShellBreak_Multi
                 // (TO FIX)
                 /*{
-                    var injectDialogue0 = new ExternalStoryInjector("TentacleThreatsOnShellBreak_Multi_0",
-                        ExternalStoryInjector.QuickInjection.Beggining, 1,
-                        new List<object>()
-                        {
-                            new ExternalStory.ExternalSaySwitch()
-                            {
-                                new ExternalStory.ExternalSay()
-                                {
-                                    Who = SlimeWho,
-                                    LoopTag = "laugh",
-                                    What = "YES I KNOW RIGHT?!"
-                                },
-                                new ExternalStory.ExternalSay()
-                                {
-                                    Who = SlimeWho,
-                                    What = "No, not really."
-                                },
-                                new ExternalStory.ExternalSay()
-                                {
-                                    Who = SlimeWho,
-                                    LoopTag = "sad",
-                                    What = "Oh wow. That's... That's so sad."
-                                },
-                            },
-                        });
-                    storyRegistry.RegisterStory(injectDialogue0);
-                }*/
+					var injectDialogue0 = new ExternalStoryInjector("TentacleThreatsOnShellBreak_Multi_0",
+						ExternalStoryInjector.QuickInjection.Beggining, 1,
+						new List<object>()
+						{
+							new ExternalStory.ExternalSaySwitch()
+							{
+								new ExternalStory.ExternalSay()
+								{
+									Who = SlimeWho,
+									LoopTag = "laugh",
+									What = "YES I KNOW RIGHT?!"
+								},
+								new ExternalStory.ExternalSay()
+								{
+									Who = SlimeWho,
+									What = "No, not really."
+								},
+								new ExternalStory.ExternalSay()
+								{
+									Who = SlimeWho,
+									LoopTag = "sad",
+									What = "Oh wow. That's... That's so sad."
+								},
+							},
+						});
+					storyRegistry.RegisterStory(injectDialogue0);
+				}*/
                 //SlimeBlockedAnEnemyAttackWithArmor_Multi
                 {
                     {
@@ -1176,21 +1176,21 @@ namespace CorrosiveCobra
                                 minDamageBlockedByPlayerArmorThisTurn = 1,
                                 oncePerCombatTags = new HashSet<string>()
                                 {
-                                "WowArmorISPrettyCoolHuh"
+                                    "WowArmorISPrettyCoolHuh"
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho
+                                    SlimeWho
                                 }
                             },
-                            new List<object>()
-                            {
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = SlimeWho,
-                                LoopTag = "laugh",
-                                What = "Huh, this armor is great!",
-                            },
+                                new List<object>()
+                                {
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    LoopTag = "laugh",
+                                    What = "Huh, this armor is great!",
+                                },
                             });
                         storyRegistry.RegisterStory(SlimeBlockedAnEnemyAttackWithArmor_Multi_0);
                     }
@@ -1204,7 +1204,7 @@ namespace CorrosiveCobra
                                 minDamageBlockedByPlayerArmorThisTurn = 1,
                                 oncePerCombatTags = new HashSet<string>()
                                 {
-                                "WowArmorISPrettyCoolHuh"
+                                    "WowArmorISPrettyCoolHuh"
                                 },
                                 allPresent = new HashSet<string>()
                                 {
@@ -1213,12 +1213,12 @@ namespace CorrosiveCobra
                             },
                             new List<object>()
                             {
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = SlimeWho,
-                                LoopTag = "laugh",
-                                What = "Nice try, buddy. That was armored!",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    LoopTag = "laugh",
+                                    What = "Nice try, buddy. That was armored!",
+                                },
                             });
                         storyRegistry.RegisterStory(SlimeBlockedAnEnemyAttackWithArmor_Multi_1);
                     }
@@ -1232,20 +1232,20 @@ namespace CorrosiveCobra
                                 oncePerRun = true,
                                 oncePerCombatTags = new HashSet<string>()
                                 {
-                            "WowArmorISPrettyCoolHuh"
+                                    "WowArmorISPrettyCoolHuh"
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                            SlimeWho
+                                    SlimeWho
                                 }
                             },
                             new List<object>()
                             {
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = SlimeWho,
-                                What = "Maybe we should armor up the kitchen too.",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    What = "Maybe we should armor up the kitchen too.",
+                                },
                             });
                         storyRegistry.RegisterStory(SlimeBlockedAnEnemyAttackWithArmor_Multi_2);
                     }
@@ -1261,20 +1261,20 @@ namespace CorrosiveCobra
                             oncePerRun = true,
                             oncePerCombatTags = new HashSet<string>()
                             {
-                            "YowzaThatWasALOTofArmorBlock"
+                                "YowzaThatWasALOTofArmorBlock"
                             },
                             allPresent = new HashSet<string>()
                             {
-                            SlimeWho
+                                SlimeWho
                             }
                         },
                         new List<object>()
                         {
-                        new ExternalStory.ExternalSay()
-                        {
-                            Who = SlimeWho,
-                            What = "Wait, you targeted the armor? Why?",
-                        },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                What = "Wait, you targeted the armor? Why?",
+                            },
                         });
                     storyRegistry.RegisterStory(SlimeBlockedALotOfAttacksWithArmor_Multi_0);
                 }
@@ -1289,17 +1289,17 @@ namespace CorrosiveCobra
                             minDamageDealtToEnemyThisTurn = 10,
                             allPresent = new HashSet<string>()
                             {
-                            SlimeWho
+                                SlimeWho
                             }
                         },
                         new List<object>()
                         {
-                        new ExternalStory.ExternalSay()
-                        {
-                            Who = SlimeWho,
-                            What = "We are just CRUSHING them now!",
-                            LoopTag = "laugh"
-                        },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                What = "We are just CRUSHING them now!",
+                                LoopTag = "laugh"
+                            },
                         });
                     storyRegistry.RegisterStory(SlimeThatsALotOfDamageToThem_Multi_0);
                 }
@@ -1313,17 +1313,17 @@ namespace CorrosiveCobra
                             minDamageDealtToPlayerThisTurn = 3,
                             allPresent = new HashSet<string>()
                             {
-                            SlimeWho
+                                SlimeWho
                             }
                         },
                         new List<object>()
                         {
-                        new ExternalStory.ExternalSay()
-                        {
-                            Who = SlimeWho,
-                            LoopTag = "sad",
-                            What = "Ah! Did that hit my room?",
-                        },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                LoopTag = "sad",
+                                What = "Ah! Did that hit my room?",
+                            },
                         });
                     storyRegistry.RegisterStory(SlimeThatsALotOfDamageToUs_Multi_0);
                 }
@@ -1338,25 +1338,25 @@ namespace CorrosiveCobra
                                 oncePerRun = true,
                                 lastTurnPlayerStatuses = new HashSet<Status>()
                                 {
-                            Status.missingDizzy,
+                                    Status.missingDizzy,
                                 },
                                 oncePerCombatTags = new HashSet<string>()
                                 {
-                            "dizzyWentMissing"
+                                    "dizzyWentMissing"
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                            SlimeWho
+                                    SlimeWho
                                 }
                             },
                             new List<object>()
                             {
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = SlimeWho,
-                                LoopTag = "squint",
-                                What = "Huh? Where did I go? I mean, where did the other I go?",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    LoopTag = "squint",
+                                    What = "Huh? Where did I go? I mean, where did the other I go?",
+                                },
                             });
                         storyRegistry.RegisterStory(SlimeCrewWentMissing_Multi_0);
                     }
@@ -1369,25 +1369,25 @@ namespace CorrosiveCobra
                                 oncePerRun = true,
                                 lastTurnPlayerStatuses = new HashSet<Status>()
                                 {
-                            Status.missingPeri,
+                                    Status.missingPeri,
                                 },
                                 oncePerCombatTags = new HashSet<string>()
                                 {
-                            "periWentMissing"
+                                    "periWentMissing"
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                            SlimeWho
+                                    SlimeWho
                                 }
                             },
                             new List<object>()
                             {
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = SlimeWho,
-                                LoopTag = "sad",
-                                What = "Huh? Huh? Peri? PERI?!",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    LoopTag = "sad",
+                                    What = "Huh? Huh? Peri? PERI?!",
+                                },
                             });
                         storyRegistry.RegisterStory(SlimeCrewWentMissing_Multi_1);
                     }
@@ -1400,25 +1400,25 @@ namespace CorrosiveCobra
                                 oncePerRun = true,
                                 lastTurnPlayerStatuses = new HashSet<Status>()
                                 {
-                            Status.missingRiggs,
+                                    Status.missingRiggs,
                                 },
                                 oncePerCombatTags = new HashSet<string>()
                                 {
-                            "riggsWentMissing"
+                                    "riggsWentMissing"
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                            SlimeWho
+                                    SlimeWho
                                 }
                             },
                             new List<object>()
                             {
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = SlimeWho,
-                                LoopTag = "mad",
-                                What = "Did you take Riggs?! Give her back!",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    LoopTag = "mad",
+                                    What = "Did you take Riggs?! Give her back!",
+                                },
                             });
                         storyRegistry.RegisterStory(SlimeCrewWentMissing_Multi_2);
                     }
@@ -1431,25 +1431,25 @@ namespace CorrosiveCobra
                                 oncePerRun = true,
                                 lastTurnPlayerStatuses = new HashSet<Status>()
                                 {
-                            Status.missingIsaac,
+                                    Status.missingIsaac,
                                 },
                                 oncePerCombatTags = new HashSet<string>()
                                 {
-                            "isaacWentMissing"
+                                    "isaacWentMissing"
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                            SlimeWho
+                                    SlimeWho
                                 }
                             },
                             new List<object>()
                             {
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = SlimeWho,
-                                LoopTag = "mad",
-                                What = "ISAAC!",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    LoopTag = "mad",
+                                    What = "ISAAC!",
+                                },
                             });
                         storyRegistry.RegisterStory(SlimeCrewWentMissing_Multi_3);
                     }
@@ -1462,25 +1462,25 @@ namespace CorrosiveCobra
                                 oncePerRun = true,
                                 lastTurnPlayerStatuses = new HashSet<Status>()
                                 {
-                            Status.missingDrake,
+                                    Status.missingDrake,
                                 },
                                 oncePerCombatTags = new HashSet<string>()
                                 {
-                            "drakeWentMissing"
+                                    "drakeWentMissing"
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                            SlimeWho
+                                    SlimeWho
                                 }
                             },
                             new List<object>()
                             {
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = SlimeWho,
-                                LoopTag = "mad",
-                                What = "Drake?! What did you do to Drake?!",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    LoopTag = "mad",
+                                    What = "Drake?! What did you do to Drake?!",
+                                },
                             });
                         storyRegistry.RegisterStory(SlimeCrewWentMissing_Multi_4);
                     }
@@ -1493,25 +1493,25 @@ namespace CorrosiveCobra
                                 oncePerRun = true,
                                 lastTurnPlayerStatuses = new HashSet<Status>()
                                 {
-                            Status.missingMax,
+                                    Status.missingMax,
                                 },
                                 oncePerCombatTags = new HashSet<string>()
                                 {
-                            "maxWentMissing"
+                                    "maxWentMissing"
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                            SlimeWho
+                                    SlimeWho
                                 }
                             },
                             new List<object>()
                             {
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = SlimeWho,
-                                LoopTag = "sad",
-                                What = "Max!",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    LoopTag = "sad",
+                                    What = "Max!",
+                                },
                             });
                         storyRegistry.RegisterStory(SlimeCrewWentMissing_Multi_5);
                     }
@@ -1524,25 +1524,25 @@ namespace CorrosiveCobra
                                 oncePerRun = true,
                                 lastTurnPlayerStatuses = new HashSet<Status>()
                                 {
-                            Status.missingBooks,
+                                    Status.missingBooks,
                                 },
                                 oncePerCombatTags = new HashSet<string>()
                                 {
-                            "booksWentMissing"
+                                    "booksWentMissing"
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                            SlimeWho
+                                    SlimeWho
                                 }
                             },
                             new List<object>()
                             {
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = SlimeWho,
-                                LoopTag = "dark",
-                                What = "GIVE BOOKS BACK.",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    LoopTag = "dark",
+                                    What = "GIVE BOOKS BACK.",
+                                },
                             });
                         storyRegistry.RegisterStory(SlimeCrewWentMissing_Multi_6);
                     }
@@ -1555,25 +1555,25 @@ namespace CorrosiveCobra
                                 oncePerRun = true,
                                 lastTurnPlayerStatuses = new HashSet<Status>()
                                 {
-                            Status.missingCat,
+                                    Status.missingCat,
                                 },
                                 oncePerCombatTags = new HashSet<string>()
                                 {
-                            "CatWentMissing"
+                                    "CatWentMissing"
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                            SlimeWho
+                                    SlimeWho
                                 }
                             },
                             new List<object>()
                             {
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = SlimeWho,
-                                LoopTag = "sad",
-                                What = "Cat! Oh no?!",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    LoopTag = "sad",
+                                    What = "Cat! Oh no?!",
+                                },
                             });
                         storyRegistry.RegisterStory(SlimeCrewWentMissing_Multi_7);
                     }
@@ -1589,7 +1589,7 @@ namespace CorrosiveCobra
                                 minEnergy = 1,
                                 allPresent = new HashSet<string>()
                                     {
-                                SlimeWho
+                                        SlimeWho
                                     }
                             },
                                 new List<object>()
@@ -1611,18 +1611,18 @@ namespace CorrosiveCobra
                                 handEmpty = true,
                                 minEnergy = 1,
                                 allPresent = new HashSet<string>()
-                                    {
-                                SlimeWho
-                                    }
-                            },
-                                new List<object>()
                                 {
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = SlimeWho,
-                                LoopTag = "nervous",
-                                What = "All done a bit early, huh?",
+                                    SlimeWho
+                                }
                             },
+                            new List<object>()
+                            {
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    LoopTag = "nervous",
+                                    What = "All done a bit early, huh?",
+                                },
                             });
                         storyRegistry.RegisterStory(SlimeEmptyHandWithEnergy_Multi_1);
                     }
@@ -1636,15 +1636,15 @@ namespace CorrosiveCobra
                             enemyHasBrittlePart = true,
                             oncePerCombatTags = new HashSet<string>()
                             {
-                            "yelledAboutBrittle"
+                                "yelledAboutBrittle"
                             },
                             allPresent = new HashSet<string>()
                             {
-                            SlimeWho
+                                SlimeWho
                             }
                         },
-                            new List<object>()
-                            {
+                        new List<object>()
+                        {
                             new ExternalStory.ExternalSay()
                             {
                                 Who = SlimeWho,
@@ -1663,15 +1663,15 @@ namespace CorrosiveCobra
                             enemyHasWeakPart = true,
                             oncePerCombatTags = new HashSet<string>()
                             {
-                            "yelledAboutWeakness"
+                                "yelledAboutWeakness"
                             },
                             allPresent = new HashSet<string>()
                             {
-                            SlimeWho
+                                SlimeWho
                             }
                         },
-                            new List<object>()
-                            {
+                        new List<object>()
+                        {
                             new ExternalStory.ExternalSay()
                             {
                                 Who = SlimeWho,
@@ -1691,12 +1691,12 @@ namespace CorrosiveCobra
                                 playerShotJustHit = true,
                                 minDamageDealtToEnemyThisAction = 1,
                                 allPresent = new HashSet<string>()
-                                    {
-                                SlimeWho
-                                    }
-                            },
-                                new List<object>()
                                 {
+                                    SlimeWho
+                                }
+                            },
+                            new List<object>()
+                            {
                             new ExternalStory.ExternalSay()
                             {
                                 Who = SlimeWho,
@@ -1713,17 +1713,17 @@ namespace CorrosiveCobra
                                 playerShotJustHit = true,
                                 minDamageDealtToEnemyThisAction = 1,
                                 allPresent = new HashSet<string>()
-                                    {
-                                SlimeWho
-                                    }
-                            },
-                                new List<object>()
                                 {
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = SlimeWho,
-                                What = "On target.",
+                                    SlimeWho
+                                }
                             },
+                            new List<object>()
+                            {
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    What = "On target.",
+                                },
                             });
                         storyRegistry.RegisterStory(SlimeJustHitGeneric_Multi_1);
                     }
@@ -1735,17 +1735,17 @@ namespace CorrosiveCobra
                                 playerShotJustHit = true,
                                 minDamageDealtToEnemyThisAction = 1,
                                 allPresent = new HashSet<string>()
-                                    {
-                                SlimeWho
-                                    }
+                                {
+                                    SlimeWho
+                                }
                             },
                             new List<object>()
                             {
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = SlimeWho,
-                                What = "Nicely done.",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    What = "Nicely done.",
+                                },
                             });
                         storyRegistry.RegisterStory(SlimeJustHitGeneric_Multi_2);
                     }
@@ -1757,17 +1757,17 @@ namespace CorrosiveCobra
                                 playerShotJustHit = true,
                                 minDamageDealtToEnemyThisAction = 1,
                                 allPresent = new HashSet<string>()
-                                    {
-                                SlimeWho
-                                    }
+                                {
+                                    SlimeWho
+                                }
                             },
                             new List<object>()
-                                {
-                            new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
-                                What = "Got them.",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    What = "Got them.",
+                                },
                             });
                         storyRegistry.RegisterStory(SlimeJustHitGeneric_Multi_3);
                     }
@@ -1782,11 +1782,11 @@ namespace CorrosiveCobra
                             oncePerRun = true,
                             allPresent = new HashSet<string>()
                             {
-                            SlimeWho
+                                SlimeWho
                             }
                         },
-                            new List<object>()
-                            {
+                        new List<object>()
+                        {
                             new ExternalStory.ExternalSay()
                             {
                                 Who = SlimeWho,
@@ -1806,23 +1806,23 @@ namespace CorrosiveCobra
                             oncePerRun = true,
                             oncePerRunTags = new HashSet<string>()
                             {
-                            "goodMissileAdvice"
+                                "goodMissileAdvice"
                             },
                             anyDronesHostile = new HashSet<string>()
                             {
-                            "missile_normal",
-                            "missile_heavy",
-                            "missile_corrode",
-                            "missile_seeker",
-                            "missile_breacher"
+                                "missile_normal",
+                                "missile_heavy",
+                                "missile_corrode",
+                                "missile_seeker",
+                                "missile_breacher"
                             },
                             allPresent = new HashSet<string>()
                             {
-                            SlimeWho
+                                SlimeWho
                             }
                         },
-                            new List<object>()
-                            {
+                        new List<object>()
+                        {
                             new ExternalStory.ExternalSay()
                             {
                                 Who = SlimeWho,
@@ -1840,40 +1840,40 @@ namespace CorrosiveCobra
                             type = NodeType.combat,
                             oncePerRunTags = new HashSet<string>()
                             {
-                            "OverheatDrakeFix"
+                                "OverheatDrakeFix"
                             },
                             whoDidThat = Deck.eunice,
                             allPresent = new HashSet<string>()
                             {
-                            SlimeWho,
-                            "eunice"
+                                SlimeWho,
+                                "eunice"
                             }
                         },
                         new List<object>()
-                            {
-                        new SaySwitch()
                         {
-                            lines = new List<Say>
+                            new SaySwitch()
                             {
-                                new Say()
+                                lines = new List<Say>
                                 {
-                                    who = SlimeWho,
-                                    loopTag = "laugh",
-                                    hash = "slimeOverheatFix0"
-                                },
-                                new Say()
-                                {
-                                    who = SlimeWho,
-                                    hash = "slimeOverheatFix1"
-                                },
-                                new Say()
-                                {
-                                    who = SlimeWho,
-                                    loopTag = "sad",
-                                    hash = "slimeOverheatFix2"
-                                },
+                                    new Say()
+                                    {
+                                        who = SlimeWho,
+                                        loopTag = "laugh",
+                                        hash = "slimeOverheatFix0"
+                                    },
+                                    new Say()
+                                    {
+                                        who = SlimeWho,
+                                        hash = "slimeOverheatFix1"
+                                    },
+                                    new Say()
+                                    {
+                                        who = SlimeWho,
+                                        loopTag = "sad",
+                                        hash = "slimeOverheatFix2"
+                                    },
+                                }
                             }
-                        }
                         });
                     SlimeOverheatDrakeFix_Multi_0.AddLocalisation("slimeOverheatFix0", "Did you turn on the AC?");
                     SlimeOverheatDrakeFix_Multi_0.AddLocalisation("slimeOverheatFix1", "Oh. Nice save, Drake.");
@@ -1890,34 +1890,34 @@ namespace CorrosiveCobra
                             priority = true,
                             oncePerRunTags = new HashSet<string>()
                             {
-                            "ShopkeepAboutToDestroyYou"
+                                "ShopkeepAboutToDestroyYou"
                             },
                             enemyIntent = "shopkeepAttack",
                             allPresent = new HashSet<string>()
                             {
-                            "nerd"
+                                "nerd"
                             }
                         },
                         new List<object>()
-                            {
-                        new SaySwitch()
                         {
-                            lines = new List<Say>
+                            new SaySwitch()
                             {
-                                new Say()
+                                lines = new List<Say>
                                 {
-                                    who = SlimeWho,
-                                    loopTag = "sad",
-                                    hash = "slimeShopAboutToDie0"
-                                },
-                                new Say()
-                                {
-                                    who = SlimeWho,
-                                    loopTag = "dark",
-                                    hash = "slimeShopAboutToDie1"
-                                },
+                                    new Say()
+                                    {
+                                        who = SlimeWho,
+                                        loopTag = "sad",
+                                        hash = "slimeShopAboutToDie0"
+                                    },
+                                    new Say()
+                                    {
+                                        who = SlimeWho,
+                                        loopTag = "dark",
+                                        hash = "slimeShopAboutToDie1"
+                                    },
+                                }
                             }
-                        }
                         });
                     SlimeShopKeepBattleInsult_0.AddLocalisation("slimeShopAboutToDie0", "I see...");
                     SlimeShopKeepBattleInsult_0.AddLocalisation("slimeShopAboutToDie1", "Loop time, then.");
@@ -1935,21 +1935,21 @@ namespace CorrosiveCobra
                                 oncePerRun = true,
                                 oncePerCombatTags = new HashSet<string>()
                                 {
-                                "veryManyTurns"
+                                    "veryManyTurns"
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho
+                                    SlimeWho
                                 }
                             },
                             new List<object>()
-                                {
-                            new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
-                                LoopTag = "mad",
-                                What = "Why are we still here?",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    LoopTag = "mad",
+                                    What = "Why are we still here?",
+                                },
                             });
                         storyRegistry.RegisterStory(SlimeVeryManyTurns_Multi_0);
                     }
@@ -1963,21 +1963,21 @@ namespace CorrosiveCobra
                                 oncePerRun = true,
                                 oncePerCombatTags = new HashSet<string>()
                                 {
-                                "veryManyTurns"
+                                    "veryManyTurns"
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                            SlimeWho
+                                    SlimeWho
                                 }
                             },
                             new List<object>()
-                                {
-                            new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
-                                LoopTag = "sad",
-                                What = "We're really doing 18 hour shifts, huh.",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    LoopTag = "sad",
+                                    What = "We're really doing 18 hour shifts, huh.",
+                                },
                             });
                         storyRegistry.RegisterStory(SlimeVeryManyTurns_Multi_1);
                     }
@@ -1991,20 +1991,20 @@ namespace CorrosiveCobra
                                 oncePerRun = true,
                                 oncePerCombatTags = new HashSet<string>()
                                 {
-                                "veryManyTurns"
+                                    "veryManyTurns"
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                            SlimeWho
+                                    SlimeWho
                                 }
                             },
                             new List<object>()
-                                {
-                            new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
-                                What = "Dinner's ready. Pause the loop, son.",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    What = "Dinner's ready. Pause the loop, son.",
+                                },
                             });
                         storyRegistry.RegisterStory(SlimeVeryManyTurns_Multi_2);
                     }
@@ -2019,21 +2019,21 @@ namespace CorrosiveCobra
                                 oncePerRun = true,
                                 lastTurnPlayerStatuses = new HashSet<Status>()
                                 {
-                                Status.corrode
+                                    Status.corrode
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho
+                                    SlimeWho
                                 }
                             },
                             new List<object>()
-                                {
-                            new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
-                                LoopTag = "laugh",
-                                What = "Oh? We're corroded! Nice.",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    LoopTag = "laugh",
+                                    What = "Oh? We're corroded! Nice.",
+                                },
                             });
                         storyRegistry.RegisterStory(SlimeWeAreCorroded_Multi_0);
                     }
@@ -2045,21 +2045,21 @@ namespace CorrosiveCobra
                                 oncePerRun = true,
                                 lastTurnPlayerStatuses = new HashSet<Status>()
                                 {
-                                Status.corrode
+                                    Status.corrode
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho
+                                    SlimeWho
                                 }
                             },
                             new List<object>()
-                                {
-                            new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
-                                LoopTag = "laugh",
-                                What = "I love poison, but the ship not so much.",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    LoopTag = "laugh",
+                                    What = "I love poison, but the ship not so much.",
+                                },
                             });
                         storyRegistry.RegisterStory(SlimeWeAreCorroded_Multi_1);
                     }
@@ -2071,21 +2071,21 @@ namespace CorrosiveCobra
                                 oncePerRun = true,
                                 lastTurnPlayerStatuses = new HashSet<Status>()
                                 {
-                                Status.corrode
+                                    Status.corrode
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho
+                                    SlimeWho
                                 }
                             },
                             new List<object>()
-                                {
-                            new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
-                                LoopTag = "laugh",
-                                What = "Oooh! The controls are flashing green, so techy!",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    LoopTag = "laugh",
+                                    What = "Oooh! The controls are flashing green, so techy!",
+                                },
                             });
                         storyRegistry.RegisterStory(SlimeWeAreCorroded_Multi_2);
                     }
@@ -2100,29 +2100,29 @@ namespace CorrosiveCobra
                                 type = NodeType.combat,
                                 hasArtifacts = new HashSet<string>()
                                 {
-                                "GeminiCore"
+                                    "GeminiCore"
                                 },
                                 oncePerRunTags = new HashSet<string>()
                                 {
-                                "GeminiCore"
+                                    "GeminiCore"
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho
+                                    SlimeWho
                                 },
                                 nonePresent = new HashSet<string>()
                                 {
-                                "dizzy"
+                                    "dizzy"
                                 },
                             },
                             new List<object>()
-                                {
-                            new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
-                                LoopTag = "laugh",
-                                What = "Oooh! Nice colors. Where's the green side?",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    LoopTag = "laugh",
+                                    What = "Oooh! Nice colors. Where's the green side?",
+                                },
                             });
                         storyRegistry.RegisterStory(SlimeArtifactGeminiCore_Multi_0);
                     }
@@ -2135,39 +2135,25 @@ namespace CorrosiveCobra
                                 type = NodeType.combat,
                                 hasArtifacts = new HashSet<string>()
                                 {
-                                "GeminiCore"
+                                    "GeminiCore"
                                 },
                                 oncePerRunTags = new HashSet<string>()
                                 {
-                                "GeminiCore"
+                                    "GeminiCore"
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho,
-                                "dizzy"
+                                    SlimeWho,
+                                    "dizzy"
                                 }
                             },
                             new List<object>()
                             {
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = "dizzy",
-                                What = "Do you guys prefer the blue or the red side? I'm a blue guy."
-                            },
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = SlimeWho,
-                                LoopTag = "laugh",
-                                What = "I'm a green guy.",
-                            },
-                            });
-                        storyRegistry.RegisterStory(SlimeArtifactGeminiCore_Multi_1);
-                    }
-                    /*{
-                        var injectDialogue0 = new ExternalStoryInjector("ArtifactGeminiCore_Multi_4",
-                            ExternalStoryInjector.QuickInjection.Beggining, 1,
-                            new List<object>()
-                            {
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = "dizzy",
+                                    What = "Do you guys prefer the blue or the red side? I'm a blue guy."
+                                },
                                 new ExternalStory.ExternalSay()
                                 {
                                     Who = SlimeWho,
@@ -2175,8 +2161,22 @@ namespace CorrosiveCobra
                                     What = "I'm a green guy.",
                                 },
                             });
-                        storyRegistry.RegisterStory(injectDialogue0);
-                    }*/
+                        storyRegistry.RegisterStory(SlimeArtifactGeminiCore_Multi_1);
+                    }
+                    /*{
+						var injectDialogue0 = new ExternalStoryInjector("ArtifactGeminiCore_Multi_4",
+							ExternalStoryInjector.QuickInjection.Beggining, 1,
+							new List<object>()
+							{
+								new ExternalStory.ExternalSay()
+								{
+									Who = SlimeWho,
+									LoopTag = "laugh",
+									What = "I'm a green guy.",
+								},
+							});
+						storyRegistry.RegisterStory(injectDialogue0);
+					}*/
                 }
                 //SlimeArtifactTiderunner_Multi
                 {
@@ -2190,24 +2190,24 @@ namespace CorrosiveCobra
                                 maxTurnsThisCombat = 1,
                                 hasArtifacts = new HashSet<string>()
                                 {
-                                "TideRunner"
+                                    "TideRunner"
                                 },
                                 oncePerRunTags = new HashSet<string>()
                                 {
-                                "TideRunner"
+                                    "TideRunner"
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho
+                                    SlimeWho
                                 },
                             },
                             new List<object>()
-                                {
-                            new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
-                                What = "The wood grain in the dorms is a really nice touch. What is this, birch?",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    What = "The wood grain in the dorms is a really nice touch. What is this, birch?",
+                                },
                             });
                         storyRegistry.RegisterStory(SlimeArtifactTiderunner_Multi_0);
                     }
@@ -2221,25 +2221,25 @@ namespace CorrosiveCobra
                                 maxTurnsThisCombat = 1,
                                 hasArtifacts = new HashSet<string>()
                                 {
-                                "TideRunner"
+                                    "TideRunner"
                                 },
                                 oncePerRunTags = new HashSet<string>()
                                 {
-                                "TideRunner"
+                                    "TideRunner"
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho
+                                    SlimeWho
                                 },
                             },
                             new List<object>()
-                                {
-                            new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
-                                LoopTag = "laugh",
-                                What = "Oh, I love this ship. It bounces around like me!",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    LoopTag = "laugh",
+                                    What = "Oh, I love this ship. It bounces around like me!",
+                                },
                             });
                         storyRegistry.RegisterStory(SlimeArtifactTiderunner_Multi_1);
                     }
@@ -2256,25 +2256,25 @@ namespace CorrosiveCobra
                                 maxTurnsThisCombat = 1,
                                 hasArtifacts = new HashSet<string>()
                                 {
-                                "TridimensionalCockpit"
+                                    "TridimensionalCockpit"
                                 },
                                 oncePerRunTags = new HashSet<string>()
                                 {
-                                "TridimensionalCockpit"
+                                 "TridimensionalCockpit"
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho
+                                    SlimeWho
                                 },
                             },
                             new List<object>()
-                                {
-                            new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
-                                LoopTag = "squint",
-                                What = "So like, what would a tetradimensional Cockpit even LOOK like?",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    LoopTag = "squint",
+                                    What = "So like, what would a tetradimensional Cockpit even LOOK like?",
+                                },
                             });
                         storyRegistry.RegisterStory(SlimeArtifactTridimensionalCockpit_Multi_0);
                     }
@@ -2291,21 +2291,21 @@ namespace CorrosiveCobra
                                 oncePerRun = true,
                                 oncePerCombatTags = new HashSet<string>()
                                 {
-                                "manyTurns"
+                                    "manyTurns"
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho
+                                    SlimeWho
                                 },
                             },
                             new List<object>()
-                                {
-                            new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
-                                LoopTag = "phone",
-                                What = "No rush. I'll order pizza then.",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    LoopTag = "phone",
+                                    What = "No rush. I'll order pizza then.",
+                                },
                             });
                         storyRegistry.RegisterStory(SlimeManyTurns_Multi_0);
                     }
@@ -2319,25 +2319,25 @@ namespace CorrosiveCobra
                                 oncePerRun = true,
                                 requiredScenes = new HashSet<string>()
                                 {
-                                "Dizzy_2"
+                                    "Dizzy_Memory_2"
                                 },
                                 oncePerCombatTags = new HashSet<string>()
                                 {
-                                "manyTurns"
+                                    "manyTurns"
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho
+                                    SlimeWho
                                 },
                             },
                             new List<object>()
-                                {
-                            new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
-                                LoopTag = "laugh",
-                                What = "Anyone up for Checkers?",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    LoopTag = "laugh",
+                                    What = "Anyone up for Checkers?",
+                                },
                             });
                         storyRegistry.RegisterStory(SlimeManyTurns_Multi_1);
                     }
@@ -2355,21 +2355,21 @@ namespace CorrosiveCobra
                                 maxHull = 1,
                                 oncePerCombatTags = new HashSet<string>()
                                 {
-                                "aboutToDie"
+                                    "aboutToDie"
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho
+                                    SlimeWho
                                 },
                             },
                             new List<object>()
-                                {
-                            new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
-                                LoopTag = "phone",
-                                What = "Hi, yes... Yes... Extra pepperoni, yes.",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    LoopTag = "phone",
+                                    What = "Hi, yes... Yes... Extra pepperoni, yes.",
+                                },
                             });
                         storyRegistry.RegisterStory(SlimeOneHitPointThisIsFine_Multi_0);
                     }
@@ -2383,36 +2383,36 @@ namespace CorrosiveCobra
                                 maxHull = 1,
                                 oncePerCombatTags = new HashSet<string>()
                                 {
-                                "aboutToDie"
+                                    "aboutToDie"
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho
+                                    SlimeWho
                                 },
                             },
-                            new List<object>()
-                                {
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = SlimeWho,
-                                What = "This is fine.",
-                            },
-                            });
-                        storyRegistry.RegisterStory(SlimeOneHitPointThisIsFine_Multi_1);
-                    }
-                    /*{
-                        var injectDialogue0 = new ExternalStoryInjector("OneHitPointThisIsFine_Multi_4",
-                            ExternalStoryInjector.QuickInjection.Beggining, 1,
                             new List<object>()
                             {
                                 new ExternalStory.ExternalSay()
                                 {
                                     Who = SlimeWho,
-                                    What = "Not at all!",
+                                    What = "This is fine.",
                                 },
                             });
-                        storyRegistry.RegisterStory(injectDialogue0);
-                    }*/
+                        storyRegistry.RegisterStory(SlimeOneHitPointThisIsFine_Multi_1);
+                    }
+                    /*{
+						var injectDialogue0 = new ExternalStoryInjector("OneHitPointThisIsFine_Multi_4",
+							ExternalStoryInjector.QuickInjection.Beggining, 1,
+							new List<object>()
+							{
+								new ExternalStory.ExternalSay()
+								{
+									Who = SlimeWho,
+									What = "Not at all!",
+								},
+							});
+						storyRegistry.RegisterStory(injectDialogue0);
+					}*/
                 }
                 //SlimeWeDidOverFiveDamage_Multi
                 //MODDED
@@ -2427,17 +2427,17 @@ namespace CorrosiveCobra
                                 minDamageDealtToEnemyThisAction = 6,
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho
+                                    SlimeWho
                                 },
                             },
                             new List<object>()
                             {
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = SlimeWho,
-                                LoopTag = "dark",
-                                What = "Weak.",
-                        },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    LoopTag = "dark",
+                                    What = "Weak.",
+                                },
                             });
                         storyRegistry.RegisterStory(SlimeWeDidOverFiveDamage_Multi_0);
                     }
@@ -2451,22 +2451,22 @@ namespace CorrosiveCobra
                                 minDamageDealtToEnemyThisAction = 6,
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho,
-                                "riggs"
+                                    SlimeWho,
+                                    "riggs"
                                 },
                             },
                             new List<object>()
                             {
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = SlimeWho,
-                                What = "Wow! That was insane!",
-                            },
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = "riggs",
-                                What = "Do it again!",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    What = "Wow! That was insane!",
+                                },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = "riggs",
+                                    What = "Do it again!",
+                                },
                             });
                         storyRegistry.RegisterStory(SlimeWeDidOverFiveDamage_Multi_1);
                     }
@@ -2480,29 +2480,29 @@ namespace CorrosiveCobra
                                 minDamageDealtToEnemyThisAction = 6,
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho,
-                                "riggs",
-                                "peri"
+                                    SlimeWho,
+                                    "riggs",
+                                    "peri"
                                 },
                             },
                             new List<object>()
                             {
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = SlimeWho,
-                                What = "Didn't know our cannons could handle that.",
-                            },
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = "peri",
-                                LoopTag = "shy",
-                                What = "...",
-                            },
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = "riggs",
-                                What = "YEAH! Take that, loser!",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    What = "Didn't know our cannons could handle that.",
+                                },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = "peri",
+                                    LoopTag = "shy",
+                                    What = "...",
+                                },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = "riggs",
+                                    What = "YEAH! Take that, loser!",
+                                },
                             });
                         storyRegistry.RegisterStory(SlimeWeDidOverFiveDamage_Multi_2);
                     }
@@ -2516,22 +2516,22 @@ namespace CorrosiveCobra
                                 minDamageDealtToEnemyThisAction = 6,
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho,
-                                "goat"
+                                    SlimeWho,
+                                    "goat"
                                 },
                             },
                             new List<object>()
                             {
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = "goat",
-                                What = "Nice shot!",
-                            },
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = SlimeWho,
-                                What = "Yeah!",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = "goat",
+                                    What = "Nice shot!",
+                                },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    What = "Yeah!",
+                                },
                             });
                         storyRegistry.RegisterStory(SlimeWeDidOverFiveDamage_Multi_3);
                     }
@@ -2545,22 +2545,22 @@ namespace CorrosiveCobra
                                 minDamageDealtToEnemyThisAction = 6,
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho,
-                                "eunice"
+                                    SlimeWho,
+                                    "eunice"
                                 },
                             },
                             new List<object>()
                             {
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = "eunice",
-                                What = "THAT's the spirit! Keep it up!",
-                            },
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = SlimeWho,
-                                What = "Wow.",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = "eunice",
+                                    What = "THAT's the spirit! Keep it up!",
+                                },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    What = "Wow.",
+                                },
                             });
                         storyRegistry.RegisterStory(SlimeWeDidOverFiveDamage_Multi_4);
                     }
@@ -2574,22 +2574,22 @@ namespace CorrosiveCobra
                                 minDamageDealtToEnemyThisAction = 6,
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho,
-                                "hacker"
+                                    SlimeWho,
+                                    "hacker"
                                 },
                             },
                             new List<object>()
                             {
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = SlimeWho,
-                                What = "Good job, everyone.",
-                            },
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = "hacker",
-                                What = "Rolled a 19.",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    What = "Good job, everyone.",
+                                },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = "hacker",
+                                    What = "Rolled a 19.",
+                                },
                             });
                         storyRegistry.RegisterStory(SlimeWeDidOverFiveDamage_Multi_5);
                     }
@@ -2603,24 +2603,24 @@ namespace CorrosiveCobra
                                 minDamageDealtToEnemyThisAction = 6,
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho,
-                                "shard"
+                                    SlimeWho,
+                                    "shard"
                                 },
                             },
                             new List<object>()
                             {
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = SlimeWho,
-                                LoopTag = "phone",
-                                What = "A serving of humble pie, coming right up!",
-                            },
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = "shard",
-                                LoopTag = "paws",
-                                What = "Oh, oh! Can you get me a pretzel?!",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    LoopTag = "phone",
+                                    What = "A serving of humble pie, coming right up!",
+                                },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = "shard",
+                                    LoopTag = "paws",
+                                    What = "Oh, oh! Can you get me a pretzel?!",
+                                },
                             });
                         storyRegistry.RegisterStory(SlimeWeDidOverFiveDamage_Multi_6);
                     }
@@ -2634,23 +2634,23 @@ namespace CorrosiveCobra
                                 minDamageDealtToEnemyThisAction = 6,
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho,
-                                "comp"
+                                    SlimeWho,
+                                    "comp"
                                 },
                             },
                             new List<object>()
                             {
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = "comp",
-                                LoopTag = "transition",
-                                What = "Successful attack. Enemy will be finished soon.",
-                            },
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = SlimeWho,
-                                What = "That was huge.",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = "comp",
+                                    LoopTag = "transition",
+                                    What = "Successful attack. Enemy will be finished soon.",
+                                },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    What = "That was huge.",
+                                },
                             });
                         storyRegistry.RegisterStory(SlimeWeDidOverFiveDamage_Multi_7);
                     }
@@ -2665,22 +2665,22 @@ namespace CorrosiveCobra
                                 minDamageDealtToEnemyThisAction = 6,
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho,
-                                DaveWho
+                                    SlimeWho,
+                                    DaveWho
                                 },
                             },
                             new List<object>()
                             {
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = DaveWho,
-                                What = "Lady Luck is on our side today!",
-                            },
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = SlimeWho,
-                                What = "Great job.",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = DaveWho,
+                                    What = "Lady Luck is on our side today!",
+                                },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    What = "Great job.",
+                                },
                             });
                         storyRegistry.RegisterStory(SlimeWeDidOverFiveDamage_Multi_8);
                     }
@@ -2694,22 +2694,22 @@ namespace CorrosiveCobra
                                 minDamageDealtToEnemyThisAction = 6,
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho,
-                                JohannaWho
+                                    SlimeWho,
+                                    JohannaWho
                                 },
                             },
                             new List<object>()
                             {
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = JohannaWho,
-                                What = "That's some big damage!",
-                            },
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = SlimeWho,
-                                What = "Wow.",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = JohannaWho,
+                                    What = "That's some big damage!",
+                                },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    What = "Wow.",
+                                },
                             });
                         storyRegistry.RegisterStory(SlimeWeDidOverFiveDamage_Multi_9);
                     }
@@ -2724,20 +2724,20 @@ namespace CorrosiveCobra
                                 playerShotJustMissed = true,
                                 hasArtifacts = new HashSet<string>()
                                 {
-                                "Recalibrator"
+                                    "Recalibrator"
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho
+                                    SlimeWho
                                 },
                             },
                             new List<object>()
-                                {
-                            new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
-                                What = "Ha! Joke's on you, this was the plan all along!",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    What = "Ha! Joke's on you, this was the plan all along!",
+                                },
                             });
                         storyRegistry.RegisterStory(SlimeArtifactRecalibrator_Multi_0);
                     }
@@ -2749,20 +2749,20 @@ namespace CorrosiveCobra
                                 playerShotJustMissed = true,
                                 hasArtifacts = new HashSet<string>()
                                 {
-                                "Recalibrator"
+                                    "Recalibrator"
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho
+                                    SlimeWho
                                 },
                             },
                             new List<object>()
-                                {
-                            new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
-                                What = "Missed. Recalibrating.",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    What = "Missed. Recalibrating.",
+                                },
                             });
                         storyRegistry.RegisterStory(SlimeArtifactRecalibrator_Multi_1);
                     }
@@ -2778,20 +2778,20 @@ namespace CorrosiveCobra
                                 oncePerRun = true,
                                 oncePerCombatTags = new HashSet<string>()
                                 {
-                                "handOnlyHasTrashCards"
+                                    "handOnlyHasTrashCards"
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho
+                                    SlimeWho
                                 },
                             },
                             new List<object>()
-                                {
-                            new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
-                                What = "Okay, maybe it was a bad idea to turn off the roomba.",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    What = "Okay, maybe it was a bad idea to turn off the roomba.",
+                                },
                             });
                         storyRegistry.RegisterStory(SlimeHandOnlyHasTrashCards_Multi_0);
                     }
@@ -2804,21 +2804,21 @@ namespace CorrosiveCobra
                                 oncePerRun = true,
                                 oncePerCombatTags = new HashSet<string>()
                                 {
-                                "handOnlyHasTrashCards"
+                                    "handOnlyHasTrashCards"
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho
+                                    SlimeWho
                                 },
                             },
                             new List<object>()
                             {
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = SlimeWho,
-                                LoopTag = "phone",
-                                What = "Hi. Room service?",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    LoopTag = "phone",
+                                    What = "Hi. Room service?",
+                                },
                             });
                         storyRegistry.RegisterStory(SlimeHandOnlyHasTrashCards_Multi_1);
                     }
@@ -2833,21 +2833,21 @@ namespace CorrosiveCobra
                                 goingToOverheat = true,
                                 oncePerCombatTags = new HashSet<string>()
                                 {
-                                "OverheatGeneric"
+                                    "OverheatGeneric"
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho
+                                    SlimeWho
                                 },
                             },
                             new List<object>()
-                                {
-                            new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
-                                LoopTag = "nervous",
-                                What = "Oh, this might be too toasty.",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    LoopTag = "nervous",
+                                    What = "Oh, this might be too toasty.",
+                                },
                             });
                         storyRegistry.RegisterStory(SlimeOverheatGeneric_Multi_0);
                     }
@@ -2859,21 +2859,21 @@ namespace CorrosiveCobra
                                 goingToOverheat = true,
                                 oncePerCombatTags = new HashSet<string>()
                                 {
-                                "OverheatGeneric"
+                                    "OverheatGeneric"
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho
+                                    SlimeWho
                                 },
                             },
                             new List<object>()
-                                {
-                            new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
-                                LoopTag = "phone",
-                                What = "Yes, two cold packs. No, just two.",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    LoopTag = "phone",
+                                    What = "Yes, two cold packs. No, just two.",
+                                },
                             });
                         storyRegistry.RegisterStory(SlimeOverheatGeneric_Multi_1);
                     }
@@ -2888,25 +2888,25 @@ namespace CorrosiveCobra
                                 oncePerRun = true,
                                 lastTurnEnemyStatuses = new HashSet<Status>()
                                 {
-                                Status.autododgeLeft
+                                    Status.autododgeLeft
                                 },
                                 oncePerCombatTags = new HashSet<string>()
                                 {
-                                "aboutAutododge"
+                                    "aboutAutododge"
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho
+                                    SlimeWho
                                 },
                             },
                             new List<object>()
-                                {
-                            new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
-                                LoopTag = "nervous",
-                                What = "Ah. The enemy is primed to dodge.",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    LoopTag = "nervous",
+                                    What = "Ah. The enemy is primed to dodge.",
+                                },
                             });
                         storyRegistry.RegisterStory(SlimeTheyHaveAutoDodgeLeft_Multi_0);
                     }
@@ -2918,25 +2918,25 @@ namespace CorrosiveCobra
                                 oncePerRun = true,
                                 lastTurnEnemyStatuses = new HashSet<Status>()
                                 {
-                                Status.autododgeRight
+                                    Status.autododgeRight
                                 },
                                 oncePerCombatTags = new HashSet<string>()
                                 {
-                                "aboutAutododge"
+                                    "aboutAutododge"
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho
+                                    SlimeWho
                                 },
                             },
                             new List<object>()
-                                {
-                            new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
-                                LoopTag = "nervous",
-                                What = "Ah. The enemy is primed to dodge.",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    LoopTag = "nervous",
+                                    What = "Ah. The enemy is primed to dodge.",
+                                },
                             });
                         storyRegistry.RegisterStory(SlimeTheyHaveAutoDodgeRight_Multi_0);
                     }
@@ -2953,17 +2953,17 @@ namespace CorrosiveCobra
                                 maxDamageDealtToPlayerThisTurn = 1,
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho
+                                    SlimeWho
                                 }
                             },
                             new List<object>()
                             {
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = SlimeWho,
-                                LoopTag = "laugh",
-                                What = "That tickled my funny bone.",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    LoopTag = "laugh",
+                                    What = "That tickled my funny bone.",
+                                },
                             });
                         storyRegistry.RegisterStory(SlimeWeGotHurtButNotTooBad_Multi_0);
                     }
@@ -2977,16 +2977,16 @@ namespace CorrosiveCobra
                                 maxDamageDealtToPlayerThisTurn = 1,
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho
+                                    SlimeWho
                                 }
                             },
                             new List<object>()
                             {
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = SlimeWho,
-                                What = "Nothing a band-aid can't fix.",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    What = "Nothing a band-aid can't fix.",
+                                },
                             });
                         storyRegistry.RegisterStory(SlimeWeGotHurtButNotTooBad_Multi_1);
                     }
@@ -3002,17 +3002,17 @@ namespace CorrosiveCobra
                                 maxDamageDealtToPlayerThisTurn = 0,
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho
+                                    SlimeWho
                                 }
                             },
                             new List<object>()
                             {
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = SlimeWho,
-                                LoopTag = "laugh",
-                                What = "Nothing to report. Hah!",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    LoopTag = "laugh",
+                                    What = "Nothing to report. Hah!",
+                                },
                             });
                         storyRegistry.RegisterStory(SlimeWeGotShotButTookNoDamage_Multi_0);
                     }
@@ -3025,17 +3025,17 @@ namespace CorrosiveCobra
                                 maxDamageDealtToPlayerThisTurn = 0,
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho
+                                    SlimeWho
                                 }
                             },
                             new List<object>()
                             {
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = SlimeWho,
-                                LoopTag = "laugh",
-                                What = "Ship shows no damage from that attack.",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    LoopTag = "laugh",
+                                    What = "Ship shows no damage from that attack.",
+                                },
                             });
                         storyRegistry.RegisterStory(SlimeWeGotShotButTookNoDamage_Multi_1);
                     }
@@ -3053,20 +3053,20 @@ namespace CorrosiveCobra
                                 enemyHasPart = "cockpit",
                                 hasArtifacts = new HashSet<string>()
                                 {
-                                "CockpitTarget"
+                                    "CockpitTarget"
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho
+                                    SlimeWho
                                 },
                             },
                             new List<object>()
                             {
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = SlimeWho,
-                                What = "Cockpit targetting systems, online.",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    What = "Cockpit targetting systems, online.",
+                                },
                             });
                         storyRegistry.RegisterStory(SlimeArtifactCockpitTargetIsRelevant_Multi_0);
                     }
@@ -3081,26 +3081,26 @@ namespace CorrosiveCobra
                                 enemyHasPart = "cockpit",
                                 hasArtifacts = new HashSet<string>()
                                 {
-                                "CockpitTarget"
+                                    "CockpitTarget"
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho,
-                                "peri"
+                                    SlimeWho,
+                                    "peri"
                                 },
                             },
                             new List<object>()
                             {
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = "peri",
-                                What = "Focus their piloting.",
-                            },
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = SlimeWho,
-                                What = "Roger.",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = "peri",
+                                    What = "Focus their piloting.",
+                                },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    What = "Roger.",
+                                },
                             });
                         storyRegistry.RegisterStory(SlimeArtifactCockpitTargetIsRelevant_Multi_1);
                     }
@@ -3116,28 +3116,28 @@ namespace CorrosiveCobra
                                 maxTurnsThisCombat = 1,
                                 oncePerRunTags = new HashSet<string>()
                                 {
-                                "OncePerRunThrusterJokesAboutRiggsICanMakeTheseTagsStupidlyLongIfIWant"
+                                    "OncePerRunThrusterJokesAboutRiggsICanMakeTheseTagsStupidlyLongIfIWant"
                                 },
                                 hasArtifacts = new HashSet<string>()
                                 {
-                                "JetThrusters"
+                                    "JetThrusters"
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho
+                                    SlimeWho
                                 },
                                 nonePresent = new HashSet<string>()
                                 {
-                                "riggs"
+                                    "riggs"
                                 },
                             },
                             new List<object>()
                             {
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = SlimeWho,
-                                What = "These thrusters make me wonder what Riggs is doing right now.",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    What = "These thrusters make me wonder what Riggs is doing right now.",
+                                },
                             });
                         storyRegistry.RegisterStory(SlimeArtifactJetThrustersNoRiggs_Multi_0);
                     }
@@ -3150,28 +3150,28 @@ namespace CorrosiveCobra
                                 maxTurnsThisCombat = 1,
                                 oncePerRunTags = new HashSet<string>()
                                 {
-                                "OncePerRunThrusterJokesAboutRiggsICanMakeTheseTagsStupidlyLongIfIWant"
+                                    "OncePerRunThrusterJokesAboutRiggsICanMakeTheseTagsStupidlyLongIfIWant"
                                 },
                                 hasArtifacts = new HashSet<string>()
                                 {
-                                "JetThrusters"
+                                    "JetThrusters"
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho
+                                    SlimeWho
                                 },
                                 nonePresent = new HashSet<string>()
                                 {
-                                "riggs"
+                                    "riggs"
                                 },
                             },
                             new List<object>()
                             {
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = SlimeWho,
-                                What = "These thrusters make me miss Riggs. I wonder where she is.",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    What = "These thrusters make me miss Riggs. I wonder where she is.",
+                                },
                             });
                         storyRegistry.RegisterStory(SlimeArtifactJetThrustersNoRiggs_Multi_1);
                     }
@@ -3188,24 +3188,24 @@ namespace CorrosiveCobra
                                 maxDamageDealtToPlayerThisTurn = 1,
                                 oncePerRunTags = new HashSet<string>()
                                 {
-                                "NanofiberHull"
+                                    "NanofiberHull"
                                 },
                                 hasArtifacts = new HashSet<string>()
                                 {
-                                "NanofiberHull"
+                                    "NanofiberHull"
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho
+                                    SlimeWho
                                 },
                             },
                             new List<object>()
                             {
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = SlimeWho,
-                                What = "That'll get nanofixed right out.",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    What = "That'll get nanofixed right out.",
+                                },
                             });
                         storyRegistry.RegisterStory(SlimeArtifactNanofiberHull1_Multi_0);
                     }
@@ -3219,24 +3219,24 @@ namespace CorrosiveCobra
                                 maxDamageDealtToPlayerThisTurn = 1,
                                 oncePerRunTags = new HashSet<string>()
                                 {
-                                "NanofiberHull"
+                                    "NanofiberHull"
                                 },
                                 hasArtifacts = new HashSet<string>()
                                 {
-                                "NanofiberHull"
+                                    "NanofiberHull"
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho
+                                    SlimeWho
                                 },
                             },
                             new List<object>()
                             {
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = SlimeWho,
-                                What = "The bots will deal with that, don't worry.",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    What = "The bots will deal with that, don't worry.",
+                                },
                             });
                         storyRegistry.RegisterStory(SlimeArtifactNanofiberHull1_Multi_1);
                     }
@@ -3251,42 +3251,42 @@ namespace CorrosiveCobra
                             minDamageDealtToPlayerThisTurn = 2,
                             oncePerRunTags = new HashSet<string>()
                             {
-                            "NanofiberHull"
+                                "NanofiberHull"
                             },
                             hasArtifacts = new HashSet<string>()
                             {
-                            "NanofiberHull"
+                                "NanofiberHull"
                             },
                             allPresent = new HashSet<string>()
                             {
-                            SlimeWho
+                                SlimeWho
                             },
                         },
                         new List<object>()
                         {
-                        new ExternalStory.ExternalSay()
-                        {
-                            Who = SlimeWho,
-                            What = "Our nanobuddies will heal some of that, at least.",
-                        },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                What = "Our nanobuddies will heal some of that, at least.",
+                            },
                         });
                     storyRegistry.RegisterStory(SlimeArtifactNanofiberHull2_Multi_0);
                 }
                 //SlimeSpikeGetsChatty_Multi
                 // (TO FIX)
                 /*{
-                    var injectDialogue0 = new ExternalStoryInjector("SpikeGetsChatty_Multi_0",
-                        ExternalStoryInjector.QuickInjection.Beggining, 1,
-                        new List<object>()
-                        {
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = SlimeWho,
-                                What = "We're ready, yeah.",
-                            },
-                        });
-                    storyRegistry.RegisterStory(injectDialogue0);
-                }*/
+					var injectDialogue0 = new ExternalStoryInjector("SpikeGetsChatty_Multi_0",
+						ExternalStoryInjector.QuickInjection.Beggining, 1,
+						new List<object>()
+						{
+							new ExternalStory.ExternalSay()
+							{
+								Who = SlimeWho,
+								What = "We're ready, yeah.",
+							},
+						});
+					storyRegistry.RegisterStory(injectDialogue0);
+				}*/
                 //SlimeArtifactEnergyRefund_Multi
                 {
                     var SlimeArtifactEnergyRefund_Multi_0 = new ExternalStory("CorrosiveCobra.Story.SlimeArtifactEnergyRefund_Multi_0",
@@ -3297,44 +3297,44 @@ namespace CorrosiveCobra
                             minCostOfCardJustPlayed = 3,
                             oncePerCombatTags = new HashSet<string>()
                             {
-                            "EnergyRefund"
+                                "EnergyRefund"
                             },
                             hasArtifacts = new HashSet<string>()
                             {
-                            "EnergyRefund"
+                                "EnergyRefund"
                             },
                             allPresent = new HashSet<string>()
                             {
-                            SlimeWho,
+                                SlimeWho,
                             },
                         },
                         new List<object>()
                         {
-                        new ExternalStory.ExternalSay()
-                        {
-                            Who = SlimeWho,
-                            LoopTag = "phone",
-                            What = "Does an extra large have a discount too?",
-                        },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                LoopTag = "phone",
+                                What = "Does an extra large have a discount too?",
+                            },
                         });
                     storyRegistry.RegisterStory(SlimeArtifactEnergyRefund_Multi_0);
                 }
                 //SlimeArtifactOverclockedGeneratorSeenMaxMemory3_Multi
                 // (TO FIX)
                 /*{
-                    var injectDialogue0 = new ExternalStoryInjector("ArtifactOverclockedGeneratorSeenMaxMemory3_Multi_0",
-                        ExternalStoryInjector.QuickInjection.Beggining, 1,
-                        new List<object>()
-                        {
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = SlimeWho,
-                                LoopTag = "laugh",
-                                What = "Don't let Peri hear it. She's still mad about the core.",
-                            },
-                        });
-                    storyRegistry.RegisterStory(injectDialogue0);
-                }*/
+					var injectDialogue0 = new ExternalStoryInjector("ArtifactOverclockedGeneratorSeenMaxMemory3_Multi_0",
+						ExternalStoryInjector.QuickInjection.Beggining, 1,
+						new List<object>()
+						{
+							new ExternalStory.ExternalSay()
+							{
+								Who = SlimeWho,
+								LoopTag = "laugh",
+								What = "Don't let Peri hear it. She's still mad about the core.",
+							},
+						});
+					storyRegistry.RegisterStory(injectDialogue0);
+				}*/
                 //SlimeArtifactShieldPrepIsGone_Multi
                 {
                     var SlimeArtifactShieldPrepIsGone_Multi_0 = new ExternalStory("CorrosiveCobra.Story.SlimeArtifactShieldPrepIsGone_Multi_0",
@@ -3345,26 +3345,26 @@ namespace CorrosiveCobra
                             maxTurnsThisCombat = 1,
                             oncePerRunTags = new HashSet<string>()
                             {
-                            "ShieldPrepIsGoneYouFool"
+                                "ShieldPrepIsGoneYouFool"
                             },
                             doesNotHaveArtifacts = new HashSet<string>()
                             {
-                            "ShieldPrep",
-                            "WarpMastery"
+                                "ShieldPrep",
+                                "WarpMastery"
                             },
                             allPresent = new HashSet<string>()
                             {
-                            SlimeWho,
+                                SlimeWho,
                             },
                         },
                         new List<object>()
                         {
-                        new ExternalStory.ExternalSay()
-                        {
-                            Who = SlimeWho,
-                            LoopTag = "nervous",
-                            What = "We'll be fine without warp prep, right?",
-                        },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                LoopTag = "nervous",
+                                What = "We'll be fine without warp prep, right?",
+                            },
                         });
                     storyRegistry.RegisterStory(SlimeArtifactShieldPrepIsGone_Multi_0);
                 }
@@ -3378,25 +3378,25 @@ namespace CorrosiveCobra
                             maxTurnsThisCombat = 1,
                             oncePerRunTags = new HashSet<string>()
                             {
-                            "WarpMastery"
+                                "WarpMastery"
                             },
                             hasArtifacts = new HashSet<string>()
                             {
-                            "WarpMastery"
+                                "WarpMastery"
                             },
                             allPresent = new HashSet<string>()
                             {
-                            SlimeWho,
+                                SlimeWho,
                             },
                         },
                         new List<object>()
                         {
-                        new ExternalStory.ExternalSay()
-                        {
-                            Who = SlimeWho,
-                            LoopTag = "laugh",
-                            What = "Everyone knows Green makes stuff Stronger.",
-                        },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                LoopTag = "laugh",
+                                What = "Everyone knows Green makes stuff Stronger.",
+                            },
                         });
                     storyRegistry.RegisterStory(SlimeArtifactWarpMastery_Multi_0);
                 }
@@ -3411,24 +3411,24 @@ namespace CorrosiveCobra
                                 minDamageBlockedByPlayerArmorThisTurn = 1,
                                 oncePerCombatTags = new HashSet<string>()
                                 {
-                                "ArmoredBae"
+                                    "ArmoredBae"
                                 },
                                 hasArtifacts = new HashSet<string>()
                                 {
-                               "ArmoredBay"
+                                    "ArmoredBay"
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho,
+                                    SlimeWho,
                                 },
                             },
                             new List<object>()
-                                {
-                            new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
-                                What = "In my timeline, we armored the Artemis' cockpit. It was Easy Mode.",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    What = "In my timeline, we armored the Artemis' cockpit. It was Easy Mode.",
+                                },
                             });
                         storyRegistry.RegisterStory(SlimeArtifactArmoredBay_Multi_0);
                     }
@@ -3441,24 +3441,24 @@ namespace CorrosiveCobra
                                 minDamageBlockedByPlayerArmorThisTurn = 1,
                                 oncePerCombatTags = new HashSet<string>()
                                 {
-                                "ArmoredBae"
+                                    "ArmoredBae"
                                 },
                                 hasArtifacts = new HashSet<string>()
                                 {
-                               "ArmoredBay"
+                                    "ArmoredBay"
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho,
+                                    SlimeWho,
                                 },
                             },
                             new List<object>()
-                                {
-                            new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
-                                What = "In my timeline, we armored the Gemini's cannons. It was Easy Mode.",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    What = "In my timeline, we armored the Gemini's cannons. It was Easy Mode.",
+                                },
                             });
                         storyRegistry.RegisterStory(SlimeArtifactArmoredBay_Multi_1);
                     }
@@ -3471,24 +3471,24 @@ namespace CorrosiveCobra
                                 minDamageBlockedByPlayerArmorThisTurn = 1,
                                 oncePerCombatTags = new HashSet<string>()
                                 {
-                                "ArmoredBae"
+                                    "ArmoredBae"
                                 },
                                 hasArtifacts = new HashSet<string>()
                                 {
-                               "ArmoredBay"
+                                    "ArmoredBay"
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho,
+                                    SlimeWho,
                                 },
                             },
                             new List<object>()
-                                {
-                            new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
-                                What = "In my timeline, we armored the Jupiter's comms. It was Easy Mode.",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    What = "In my timeline, we armored the Jupiter's comms. It was Easy Mode.",
+                                },
                             });
                         storyRegistry.RegisterStory(SlimeArtifactArmoredBay_Multi_2);
                     }
@@ -3501,24 +3501,24 @@ namespace CorrosiveCobra
                                 minDamageBlockedByPlayerArmorThisTurn = 1,
                                 oncePerCombatTags = new HashSet<string>()
                                 {
-                                "ArmoredBae"
+                                    "ArmoredBae"
                                 },
                                 hasArtifacts = new HashSet<string>()
                                 {
-                               "ArmoredBay"
+                                    "ArmoredBay"
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho,
+                                    SlimeWho,
                                 },
                             },
                             new List<object>()
-                                {
-                            new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
-                                What = "In my timeline, we didn't even armor the Ares' cannons. It was Easy Mode either way.",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    What = "In my timeline, we didn't even armor the Ares' cannons. It was Easy Mode either way.",
+                                },
                             });
                         storyRegistry.RegisterStory(SlimeArtifactArmoredBay_Multi_3);
                     }
@@ -3540,22 +3540,22 @@ namespace CorrosiveCobra
                                 oncePerRun = true,
                                 lookup = new HashSet<string>()
                                 {
-                                "addedSlimeMutation"
+                                    "addedSlimeMutation"
                                 },
 
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho,
+                                    SlimeWho,
                                 }
                             },
                             new List<object>()
                             {
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = SlimeWho,
-                                LoopTag = "dark",
-                                What = "KAME...",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    LoopTag = "dark",
+                                    What = "KAME...",
+                                },
                             });
                         storyRegistry.RegisterStory(addedSlimeMutation_Multi_0);
                     }
@@ -3568,22 +3568,22 @@ namespace CorrosiveCobra
                                 oncePerRun = true,
                                 lookup = new HashSet<string>()
                                 {
-                            "addedSlimeMutation"
+                                    "addedSlimeMutation"
                                 },
 
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho,
+                                    SlimeWho,
                                 }
                             },
                             new List<object>()
                             {
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = SlimeWho,
-                                LoopTag = "squint",
-                                What = "I'm changing...",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    LoopTag = "squint",
+                                    What = "I'm changing...",
+                                },
                             });
                         storyRegistry.RegisterStory(addedSlimeMutation_Multi_1);
                     }
@@ -3600,28 +3600,28 @@ namespace CorrosiveCobra
                                 oncePerRun = true,
                                 lookup = new HashSet<string>()
                                 {
-                            "addedSlimeBLAST"
+                                    "addedSlimeBLAST"
                                 },
 
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho,
+                                    SlimeWho,
                                 }
                             },
                             new List<object>()
                             {
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = SlimeWho,
-                                LoopTag = "dark",
-                                What = "HAME...",
-                            },
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = "eunice",
-                                LoopTag = "sly",
-                                What = "Ah, I see.",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    LoopTag = "dark",
+                                    What = "HAME...",
+                                },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = "eunice",
+                                    LoopTag = "sly",
+                                    What = "Ah, I see.",
+                                },
                             });
                         storyRegistry.RegisterStory(addedSlimeBLAST_Multi_0);
                     }
@@ -3634,22 +3634,22 @@ namespace CorrosiveCobra
                                 oncePerRun = true,
                                 lookup = new HashSet<string>()
                                 {
-                            "addedSlimeBLAST"
+                                    "addedSlimeBLAST"
                                 },
 
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho,
+                                    SlimeWho,
                                 }
                             },
                             new List<object>()
                             {
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = SlimeWho,
-                                LoopTag = "squint",
-                                What = "I'm... stronger...",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    LoopTag = "squint",
+                                    What = "I'm... stronger...",
+                                },
                             });
                         storyRegistry.RegisterStory(addedSlimeBLAST_Multi_1);
                     }
@@ -3666,28 +3666,28 @@ namespace CorrosiveCobra
                                 oncePerRun = true,
                                 lookup = new HashSet<string>()
                                 {
-                            "playedSlimeBLAST"
+                                    "playedSlimeBLAST"
                                 },
 
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho,
+                                    SlimeWho,
                                 }
                             },
                             new List<object>()
                             {
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = SlimeWho,
-                                LoopTag = "dark",
-                                What = "HADOUKEN!!!",
-                            },
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = "eunice",
-                                LoopTag = "sly",
-                                What = "Wow! Now we'll get sued by two IPs simultaneously.",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    LoopTag = "dark",
+                                    What = "HADOUKEN!!!",
+                                },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = "eunice",
+                                    LoopTag = "sly",
+                                    What = "Wow! Now we'll get sued by two IPs simultaneously.",
+                                },
                             });
                         storyRegistry.RegisterStory(playedSlimeBLAST_Multi_0);
                     }
@@ -3700,22 +3700,22 @@ namespace CorrosiveCobra
                                 oncePerRun = true,
                                 lookup = new HashSet<string>()
                                 {
-                            "playedSlimeBLAST"
+                                    "playedSlimeBLAST"
                                 },
 
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho,
+                                    SlimeWho,
                                 }
                             },
                             new List<object>()
                             {
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = SlimeWho,
-                                LoopTag = "laugh",
-                                What = "Oh, nevermind, it was the cannon.",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    LoopTag = "laugh",
+                                    What = "Oh, nevermind, it was the cannon.",
+                                },
                             });
                         storyRegistry.RegisterStory(playedSlimeBLAST_Multi_1);
                     }
@@ -3732,28 +3732,28 @@ namespace CorrosiveCobra
                                 oncePerRun = true,
                                 lookup = new HashSet<string>()
                                 {
-                                "playedSlimeHug"
+                                    "playedSlimeHug"
                                 },
 
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho,
+                                    SlimeWho,
                                 }
                             },
                             new List<object>()
                             {
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = SlimeWho,
-                                LoopTag = "laugh",
-                                What = "I'll take care of the trash now.",
-                            },
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = "shard",
-                                LoopTag = "excited",
-                                What = "Oh, oh! If you find treasure please tell me!",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    LoopTag = "laugh",
+                                    What = "I'll take care of the trash now.",
+                                },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = "shard",
+                                    LoopTag = "excited",
+                                    What = "Oh, oh! If you find treasure please tell me!",
+                                },
                             });
                         storyRegistry.RegisterStory(playedSlimeHug_Multi_0);
                     }
@@ -3765,26 +3765,26 @@ namespace CorrosiveCobra
                                 oncePerCombat = true,
                                 lookup = new HashSet<string>()
                                 {
-                                "playedSlimeBLAST"
+                                    "playedSlimeBLAST"
                                 },
 
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho,
+                                    SlimeWho,
                                 }
                             },
                             new List<object>()
                             {
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = SlimeWho,
-                                What = "The trash should be easier to manage now.",
-                            },
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = "peri",
-                                What = "Aprreciated.",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    What = "The trash should be easier to manage now.",
+                                },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = "peri",
+                                    What = "Aprreciated.",
+                                },
                             });
                         storyRegistry.RegisterStory(playedSlimeHug_Multi_1);
                     }
@@ -3799,28 +3799,28 @@ namespace CorrosiveCobra
                                 oncePerRun = true,
                                 lookup = new HashSet<string>()
                                 {
-                                "playedTankThrowNone"
+                                    "playedTankThrowNone"
                                 },
 
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho,
+                                    SlimeWho,
                                 }
                             },
                             new List<object>()
                             {
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = SlimeWho,
-                                LoopTag = "laugh",
-                                What = "Jumpy!",
-                            },
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = "riggs",
-                                LoopTag = "nervous",
-                                What = "W-wo-wo-woah.",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    LoopTag = "laugh",
+                                    What = "Jumpy!",
+                                },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = "riggs",
+                                    LoopTag = "nervous",
+                                    What = "W-wo-wo-woah.",
+                                },
                             });
                         storyRegistry.RegisterStory(playedTankThrow_Multi_0);
                     }
@@ -3832,28 +3832,28 @@ namespace CorrosiveCobra
                                 oncePerRun = true,
                                 lookup = new HashSet<string>()
                                 {
-                                "playedTankThrowA"
+                                    "playedTankThrowA"
                                 },
 
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho,
+                                    SlimeWho,
                                 }
                             },
                             new List<object>()
                             {
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = SlimeWho,
-                                LoopTag = "laugh",
-                                What = "We won't be needing these, anyway.",
-                            },
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = "hacker",
-                                LoopTag = "smile",
-                                What = "Infinite tanks glitch. Genius.",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    LoopTag = "laugh",
+                                    What = "We won't be needing these, anyway.",
+                                },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = "hacker",
+                                    LoopTag = "smile",
+                                    What = "Infinite tanks glitch. Genius.",
+                                },
                             });
                         storyRegistry.RegisterStory(playedTankThrow_Multi_1);
                     }
@@ -3865,28 +3865,28 @@ namespace CorrosiveCobra
                                 oncePerRun = true,
                                 lookup = new HashSet<string>()
                                 {
-                                "playedTankThrowB"
+                                    "playedTankThrowB"
                                 },
 
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho,
+                                    SlimeWho,
                                 }
                             },
                             new List<object>()
                             {
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = SlimeWho,
-                                LoopTag = "dark",
-                                What = "The best defense is a barrage of poison.",
-                            },
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = "comp",
-                                LoopTag = "feral",
-                                What = "Agreed.",
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    LoopTag = "dark",
+                                    What = "The best defense is a barrage of poison.",
+                                },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = "comp",
+                                    LoopTag = "feral",
+                                    What = "Agreed.",
+                                },
                             });
                         storyRegistry.RegisterStory(playedTankThrow_Multi_2);
                     }
@@ -3902,35 +3902,35 @@ namespace CorrosiveCobra
                                 oncePerRun = true,
                                 lookup = new HashSet<string>()
                                 {
-                                "playedLeakingContainer"
+                                    "playedLeakingContainer"
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho,
-                                "dizzy",
-                                "peri"
+                                    SlimeWho,
+                                    "dizzy",
+                                    "peri"
                                 }
                             },
                             new List<object>()
                             {
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = "peri",
-                                LoopTag = "nap",
-                                What = "Zzz..."
-                            },
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = SlimeWho,
-                                What = "Have we always had a hole in the fuel tanks?",
-                                LoopTag = "laugh"
-                            },
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = "dizzy",
-                                LoopTag = "explains",
-                                What = "Oh. Don't let Peri go there."
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = "peri",
+                                    LoopTag = "nap",
+                                    What = "Zzz..."
+                                },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    What = "Have we always had a hole in the fuel tanks?",
+                                    LoopTag = "laugh"
+                                },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = "dizzy",
+                                    LoopTag = "explains",
+                                    What = "Oh. Don't let Peri go there."
+                                },
                             });
                         storyRegistry.RegisterStory(playedLeakingContainer_Multi_0);
                     }
@@ -3942,35 +3942,35 @@ namespace CorrosiveCobra
                                 oncePerRun = true,
                                 lookup = new HashSet<string>()
                                 {
-                                "playedLeakingContainer"
+                                    "playedLeakingContainer"
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho,
-                                "riggs",
-                                "peri"
+                                    SlimeWho,
+                                    "riggs",
+                                    "peri"
                                 }
                             },
                             new List<object>()
                             {
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = SlimeWho,
-                                What = "Have we always had a hole in the fuel tanks?",
-                                LoopTag = "laugh"
-                            },
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = "riggs",
-                                LoopTag = "nervous",
-                                What = "Ah! I spilled my boba!"
-                            },
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = "peri",
-                                LoopTag = "mad",
-                                What = "Everyone, focus!"
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    What = "Have we always had a hole in the fuel tanks?",
+                                    LoopTag = "laugh"
+                                },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = "riggs",
+                                    LoopTag = "nervous",
+                                    What = "Ah! I spilled my boba!"
+                                },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = "peri",
+                                    LoopTag = "mad",
+                                    What = "Everyone, focus!"
+                                },
                             });
                         storyRegistry.RegisterStory(playedLeakingContainer_Multi_1);
                     }
@@ -3982,28 +3982,28 @@ namespace CorrosiveCobra
                                 oncePerRun = true,
                                 lookup = new HashSet<string>()
                                 {
-                                "playedLeakingContainer"
+                                    "playedLeakingContainer"
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho,
-                                "peri"
+                                    SlimeWho,
+                                    "peri"
                                 }
                             },
                             new List<object>()
                             {
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = SlimeWho,
-                                What = "Have we always had a hole in the fuel tanks?",
-                                LoopTag = "laugh"
-                            },
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = "peri",
-                                LoopTag = "panic",
-                                What = "WHY ARE WE BREAKING OUR SHIP?"
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    What = "Have we always had a hole in the fuel tanks?",
+                                    LoopTag = "laugh"
+                                },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = "peri",
+                                    LoopTag = "panic",
+                                    What = "WHY ARE WE BREAKING OUR SHIP?"
+                                },
                             });
                         storyRegistry.RegisterStory(playedLeakingContainer_Multi_2);
                     }
@@ -4015,28 +4015,28 @@ namespace CorrosiveCobra
                                 oncePerRun = true,
                                 lookup = new HashSet<string>()
                                 {
-                                "playedLeakingContainer"
+                                    "playedLeakingContainer"
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho,
-                                "goat"
+                                    SlimeWho,
+                                    "goat"
                                 }
                             },
                             new List<object>()
                             {
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = SlimeWho,
-                                What = "Have we always had a hole in the fuel tanks?",
-                                LoopTag = "laugh"
-                            },
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = "goat",
-                                LoopTag = "panic",
-                                What = "OH MY GOD. THE SHIP IS BREAKING!"
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    What = "Have we always had a hole in the fuel tanks?",
+                                    LoopTag = "laugh"
+                                },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = "goat",
+                                    LoopTag = "panic",
+                                    What = "OH MY GOD. THE SHIP IS BREAKING!"
+                                },
                             });
                         storyRegistry.RegisterStory(playedLeakingContainer_Multi_3);
                     }
@@ -4048,28 +4048,28 @@ namespace CorrosiveCobra
                                 oncePerRun = true,
                                 lookup = new HashSet<string>()
                                 {
-                                "playedLeakingContainer"
+                                    "playedLeakingContainer"
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho,
-                                "eunice"
+                                    SlimeWho,
+                                    "eunice"
                                 }
                             },
                             new List<object>()
                             {
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = SlimeWho,
-                                What = "Now we relax and wait!",
-                                LoopTag = "laugh"
-                            },
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = "eunice",
-                                LoopTag = "mad",
-                                What = "What?! We're not WAITING! Let's PUNCH 'EM!"
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    What = "Now we relax and wait!",
+                                    LoopTag = "laugh"
+                                },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = "eunice",
+                                    LoopTag = "mad",
+                                    What = "What?! We're not WAITING! Let's PUNCH 'EM!"
+                                },
                             });
                         storyRegistry.RegisterStory(playedLeakingContainer_Multi_4);
                     }
@@ -4081,28 +4081,28 @@ namespace CorrosiveCobra
                                 oncePerRun = true,
                                 lookup = new HashSet<string>()
                                 {
-                                "playedLeakingContainer"
+                                    "playedLeakingContainer"
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho,
-                                "hacker"
+                                    SlimeWho,
+                                    "hacker"
                                 }
                             },
                             new List<object>()
                             {
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = SlimeWho,
-                                What = "Have we always had a hole in the fuel tanks?",
-                                LoopTag = "laugh"
-                            },
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = "hacker",
-                                LoopTag = "smile",
-                                What = "Work smarter, not harder"
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    What = "Have we always had a hole in the fuel tanks?",
+                                    LoopTag = "laugh"
+                                },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = "hacker",
+                                    LoopTag = "smile",
+                                    What = "Work smarter, not harder"
+                                },
                             });
                         storyRegistry.RegisterStory(playedLeakingContainer_Multi_5);
                     }
@@ -4114,28 +4114,28 @@ namespace CorrosiveCobra
                                 oncePerRun = true,
                                 lookup = new HashSet<string>()
                                 {
-                                "playedLeakingContainer"
+                                    "playedLeakingContainer"
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho,
-                                "shard"
+                                    SlimeWho,
+                                    "shard"
                                 }
                             },
                             new List<object>()
                             {
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = SlimeWho,
-                                What = "Have we always had a hole in the fuel tanks?",
-                                LoopTag = "laugh"
-                            },
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = "shard",
-                                LoopTag = "stoked",
-                                What = "Oooh!"
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    What = "Have we always had a hole in the fuel tanks?",
+                                    LoopTag = "laugh"
+                                },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = "shard",
+                                    LoopTag = "stoked",
+                                    What = "Oooh!"
+                                },
                             });
                         storyRegistry.RegisterStory(playedLeakingContainer_Multi_6);
                     }
@@ -4147,29 +4147,28 @@ namespace CorrosiveCobra
                                 oncePerRun = true,
                                 lookup = new HashSet<string>()
                                 {
-                                "playedLeakingContainer"
+                                    "playedLeakingContainer"
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho,
-                                "comp"
+                                    SlimeWho,
+                                    "comp"
                                 }
                             },
                             new List<object>()
                             {
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = SlimeWho,
-                                Delay = 0,
-                                What = "Have we always had a hole in the fuel tanks?",
-                                LoopTag = "laugh"
-                            },
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = "comp",
-                                LoopTag = "grumpy",
-                                What = "Please stop breaking the ship."
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    What = "Have we always had a hole in the fuel tanks?",
+                                    LoopTag = "laugh"
+                                },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = "comp",
+                                    LoopTag = "grumpy",
+                                    What = "Please stop breaking the ship."
+                                },
                             });
                         storyRegistry.RegisterStory(playedLeakingContainer_Multi_7);
                     }
@@ -4182,27 +4181,27 @@ namespace CorrosiveCobra
                                 oncePerRun = true,
                                 lookup = new HashSet<string>()
                                 {
-                                "playedLeakingContainer"
+                                    "playedLeakingContainer"
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho,
-                                DaveWho
+                                    SlimeWho,
+                                    DaveWho
                                 }
                             },
                             new List<object>()
                             {
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = SlimeWho,
-                                What = "Have we always had a hole in the fuel tanks?",
-                                LoopTag = "laugh"
-                            },
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = DaveWho,
-                                What = "Is this a low roll?"
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    What = "Have we always had a hole in the fuel tanks?",
+                                    LoopTag = "laugh"
+                                },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = DaveWho,
+                                    What = "Is this a low roll?"
+                                },
                             });
                         storyRegistry.RegisterStory(playedLeakingContainer_Multi_8);
                     }
@@ -4214,28 +4213,28 @@ namespace CorrosiveCobra
                                 oncePerRun = true,
                                 lookup = new HashSet<string>()
                                 {
-                                "playedLeakingContainer"
+                                    "playedLeakingContainer"
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho,
-                                JohannaWho
+                                    SlimeWho,
+                                    JohannaWho
                                 }
                             },
                             new List<object>()
                             {
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = SlimeWho,
-                                What = "Have we always had a hole in the fuel tanks?",
-                                LoopTag = "laugh"
-                            },
-                            new ExternalStory.ExternalSay()
-                            {
-                                Who = JohannaWho,
-                                LoopTag = "squint",
-                                What = "Careful with the ship, Slime. We've only got one."
-                            },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = SlimeWho,
+                                    What = "Have we always had a hole in the fuel tanks?",
+                                    LoopTag = "laugh"
+                                },
+                                new ExternalStory.ExternalSay()
+                                {
+                                    Who = JohannaWho,
+                                    LoopTag = "squint",
+                                    What = "Careful with the ship, Slime. We've only got one."
+                                },
                             });
                         storyRegistry.RegisterStory(playedLeakingContainer_Multi_9);
                     }
@@ -4252,89 +4251,90 @@ namespace CorrosiveCobra
                             oncePerRun = true,
                             lookup = new HashSet<string>()
                             {
-                            "playedTimestreamLeak"
+                                "playedTimestreamLeak"
                             },
 
                             allPresent = new HashSet<string>()
                             {
-                            SlimeWho,
+                                SlimeWho,
                             }
                         },
                         new List<object>()
                         {
-                        new ExternalStory.ExternalSay()
-                        {
-                            Who = SlimeWho,
-                            LoopTag = "nervous",
-                            What = "Anyone else see that rupture in spacetime right behind the enemy?",
-                        },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                LoopTag = "nervous",
+                                What = "Anyone else see that rupture in spacetime right behind the enemy?",
+                            },
                             new ExternalStory.ExternalSay()
                             {
                                 Who = "comp",
                                 LoopTag = "feral",
                                 What = "I'll make sure we reach the Cobalt.",
                             },
-                            /*
-                            new ExternalStory.ExternalSaySwitch()
-                            {
-                                new ExternalStory.ExternalSay()
-                                {
-                                    Who = "dizzy",
-                                    LoopTag = "explains",
-                                    What = "Yeah. What else is new?",
-                                },
-                                new ExternalStory.ExternalSay()
-                                {
-                                    Who = "riggs",
-                                    LoopTag = "nervous",
-                                    What = "That sounds scary.",
-                                },
-                                new ExternalStory.ExternalSay()
-                                {
-                                    Who = "peri",
-                                    What = "It looks like it attacked the enemy. Beware.",
-                                },
-                                new ExternalStory.ExternalSay()
-                                {
-                                    Who = "goat",
-                                    LoopTag = "panic",
-                                    What = "That is not good.",
-                                },
-                                new ExternalStory.ExternalSay()
-                                {
-                                    Who = "eunice",
-                                    What = "Yeah, and?",
-                                },
-                                new ExternalStory.ExternalSay()
-                                {
-                                    Who = "hacker",
-                                    LoopTag = "gloves",
-                                    What = "Are we in the Matrix?",
-                                },
-                                new ExternalStory.ExternalSay()
-                                {
-                                    Who = "shard",
-                                    LoopTag = "excited",
-                                    What = "Wow!",
-                                },
-                                new ExternalStory.ExternalSay()
-                                {
-                                    Who = "comp",
-                                    LoopTag = "feral",
-                                    What = "I'll make sure we reach the Cobalt.",
-                                },
-                                new ExternalStory.ExternalSay()
-                                {
-                                    Who = DaveWho,
-                                    What = "The timer is on.",
-                                },
-                            */
-                        });
+							/*
+							new ExternalStory.ExternalSaySwitch()
+							{
+								new ExternalStory.ExternalSay()
+								{
+									Who = "dizzy",
+									LoopTag = "explains",
+									What = "Yeah. What else is new?",
+								},
+								new ExternalStory.ExternalSay()
+								{
+									Who = "riggs",
+									LoopTag = "nervous",
+									What = "That sounds scary.",
+								},
+								new ExternalStory.ExternalSay()
+								{
+									Who = "peri",
+									What = "It looks like it attacked the enemy. Beware.",
+								},
+								new ExternalStory.ExternalSay()
+								{
+									Who = "goat",
+									LoopTag = "panic",
+									What = "That is not good.",
+								},
+								new ExternalStory.ExternalSay()
+								{
+									Who = "eunice",
+									What = "Yeah, and?",
+								},
+								new ExternalStory.ExternalSay()
+								{
+									Who = "hacker",
+									LoopTag = "gloves",
+									What = "Are we in the Matrix?",
+								},
+								new ExternalStory.ExternalSay()
+								{
+									Who = "shard",
+									LoopTag = "excited",
+									What = "Wow!",
+								},
+								new ExternalStory.ExternalSay()
+								{
+									Who = "comp",
+									LoopTag = "feral",
+									What = "I'll make sure we reach the Cobalt.",
+								},
+								new ExternalStory.ExternalSay()
+								{
+									Who = DaveWho,
+									What = "The timer is on.",
+								},
+							}
+							*/
+						});
                     storyRegistry.RegisterStory(playedTimestreamLeak_Multi_0);
                 }
             }
             // ================ 
-            // ARTIFACT REACTIONS
+            // CUSTOM ARTIFACT REACTIONS
             // ================
             {
                 //hasArtifactCorrodeAttack_Multi
@@ -4352,16 +4352,16 @@ namespace CorrosiveCobra
                             },
                             allPresent = new HashSet<string>()
                             {
-                            SlimeWho,
+                                SlimeWho,
                             },
                         },
                         new List<object>()
-                            {
-                        new ExternalStory.ExternalSay()
                         {
-                            Who = SlimeWho,
-                            What = "Let the corrode stacking begin!",
-                        },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                What = "Let the corrode stacking begin!",
+                            },
                         });
                     storyRegistry.RegisterStory(hasArtifactCorrodeAttack_Multi_0);
                 }
@@ -4384,12 +4384,12 @@ namespace CorrosiveCobra
                             },
                         },
                         new List<object>()
-                            {
-                        new ExternalStory.ExternalSay()
                         {
-                            Who = SlimeWho,
-                            What = "Woah! I'm 10% more liquid than a minute ago. Cool!",
-                        },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                What = "Woah! I'm 10% more liquid than a minute ago. Cool!",
+                            },
                         });
                     storyRegistry.RegisterStory(hasArtifactDissolvent_Multi_0);
                 }
@@ -4404,16 +4404,16 @@ namespace CorrosiveCobra
                             maxTurnsThisCombat = 1,
                             hasArtifacts = new HashSet<string>()
                             {
-                            "CobraArtifactFuelWalls"
+                                "CobraArtifactFuelWalls"
                             },
                         },
                         new List<object>()
                         {
-                        new ExternalStory.ExternalSay()
-                        {
-                            Who = "crew",
-                            What = "Dealing with the heat should be easier now.",
-                        },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = "crew",
+                                What = "Dealing with the heat should be easier now.",
+                            },
                         });
                     storyRegistry.RegisterStory(hasArtifactFuelWalls_Multi_0);
                 }
@@ -4428,16 +4428,16 @@ namespace CorrosiveCobra
                             maxTurnsThisCombat = 1,
                             hasArtifacts = new HashSet<string>()
                             {
-                            "CobraArtifactOverdriveTanks"
+                                "CobraArtifactOverdriveTanks"
                             },
                         },
                         new List<object>()
                         {
-                        new ExternalStory.ExternalSay()
-                        {
-                            Who = "crew",
-                            What = "Oh man. Maybe we should've bought the Megaship Air Cooler 5000. I'm melting here.",
-                        },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = "crew",
+                                What = "Oh man. Maybe we should've bought the Megaship Air Cooler 5000. I'm melting here.",
+                            },
                         });
                     storyRegistry.RegisterStory(hasArtifactOverdriveTanks_Multi_0);
                 }
@@ -4452,16 +4452,16 @@ namespace CorrosiveCobra
                             maxTurnsThisCombat = 1,
                             hasArtifacts = new HashSet<string>()
                             {
-                            "CobraArtifactUnstableTanks"
+                                "CobraArtifactUnstableTanks"
                             },
                         },
                         new List<object>()
                         {
-                        new ExternalStory.ExternalSay()
-                        {
-                            Who = "crew",
-                            What = "Siri, turn on the AC to 0 K, thanks.",
-                        },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = "crew",
+                                What = "Siri, turn on the AC to 0 K, thanks.",
+                            },
                         });
                     storyRegistry.RegisterStory(hasArtifactUnstableTanks_Multi_0);
                 }
@@ -4476,16 +4476,20 @@ namespace CorrosiveCobra
                             maxTurnsThisCombat = 1,
                             hasArtifacts = new HashSet<string>()
                             {
-                            "CobraArtifactPowerAcid"
+                                "CobraArtifactPowerAcid"
+                            },
+                            allPresent = new HashSet<string>()
+                            {
+                                SlimeWho,
                             },
                         },
                         new List<object>()
                         {
-                        new ExternalStory.ExternalSay()
-                        {
-                            Who = SlimeWho,
-                            What = "Now all we need to do is give the enemy some Corrode.",
-                        },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                What = "Now all we need to do is give the enemy some Corrode.",
+                            },
                         });
                     storyRegistry.RegisterStory(hasArtifactPowerAcid_Multi_0);
                 }
@@ -4502,14 +4506,18 @@ namespace CorrosiveCobra
                             {
                             "CobraArtifactSlimeHeart"
                             },
+                            allPresent = new HashSet<string>()
+                            {
+                                SlimeWho,
+                            },
                         },
                         new List<object>()
                         {
-                        new ExternalStory.ExternalSay()
-                        {
-                            Who = SlimeWho,
-                            What = "Now there's two of me! The roomba me, and me!",
-                        },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                What = "Now there's two of me! The roomba me, and me!",
+                            },
                         });
                     storyRegistry.RegisterStory(hasArtifactSlimeHeart_Multi_0);
                 }
@@ -4524,17 +4532,21 @@ namespace CorrosiveCobra
                             maxTurnsThisCombat = 1,
                             hasArtifacts = new HashSet<string>()
                             {
-                            "CobraArtifactToxicCaviar"
+                                "CobraArtifactToxicCaviar"
+                            },
+                            allPresent = new HashSet<string>()
+                            {
+                                SlimeWho,
                             },
                         },
                         new List<object>()
                         {
-                        new ExternalStory.ExternalSay()
-                        {
-                            Who = SlimeWho,
-                            LoopTag = "laugh",
-                            What = "Oh, my favorite dish!",
-                        },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                LoopTag = "laugh",
+                                What = "Oh, my favorite dish!",
+                            },
                         });
                     storyRegistry.RegisterStory(hasArtifactToxicCaviar_Multi_0);
                 }
@@ -4542,6 +4554,444 @@ namespace CorrosiveCobra
             // ================ 
             // NEW EVENTS
             // ================
+            {
+                {
+                    var SlimeEvent_WhoAreYou_1 = new ExternalStory("CorrosiveCobra.Story.SlimeEvent_WhoAreYou_1",
+                        new StoryNode()
+                        {
+                            type = NodeType.@event,
+                            priority = true,
+                            once = true,
+                            bg = "BGRunStart",
+                            lookup = new HashSet<string>()
+                            {
+                                "zone_first"
+                            },
+                            allPresent = new HashSet<string>()
+                            {
+                                SlimeWho,
+                            },
+                        },
+                        new List<object>()
+                        {
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = "comp",
+                                LoopTag = "squint",
+                                What = "Yawn...",
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = "comp",
+                                What = "Alright everyone, new loop, new -",
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                Flipped = true,
+                                What = "Hi CAT.",
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = "comp",
+                                What = "Hi.",
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = "comp",
+                                LoopTag = "intense",
+                                What = "WAIT! WHO EVEN ARE YOU!",
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                Flipped = true,
+                                LoopTag = "laugh",
+                                What = "Hm? I'm Dizzy?",
+                            },
+							/*new ExternalStory.ExternalSaySwitch()
+							{
+								new ExternalStory.ExternalSay()
+								{
+									Who = "dizzy",
+									LoopTag = "explains",
+									What = "That makes total sense. You're Dizzy."
+								},
+								new ExternalStory.ExternalSay()
+								{
+									Who = "riggs",
+									LoopTag = "banana",
+									What = "You're not Dizzy, I know Dizzy and he would never wear a spacesuit."
+								},
+								new ExternalStory.ExternalSay()
+								{
+									Who = "peri",
+									LoopTag = "squint",
+									What = "What is going on. Who is this?"
+								},
+								new ExternalStory.ExternalSay()
+								{
+									Who = "goat",
+									LoopTag = "squint",
+									What = "Have you always looked like that?"
+								},
+								new ExternalStory.ExternalSay()
+								{
+									Who = "eunice",
+									LoopTag = "squint",
+									What = "Uh-huh. Now tell us the truth."
+								},
+								new ExternalStory.ExternalSay()
+								{
+									Who = "hacker",
+									LoopTag = "squint",
+									What = "Is that a rare skin?"
+								},
+								new ExternalStory.ExternalSay()
+								{
+									Who = "shard",
+									What = "Hi!"
+								},
+							},*/
+							new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                Flipped = true,
+                                What = "...",
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = "comp",
+                                LoopTag = "intense",
+                                What = "...",
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = "comp",
+                                LoopTag = "worried",
+                                What = "Oh... This isn't good.",
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                Flipped = true,
+                                What = "Where am I? Where's Peri and Riggs and Isaac and Max and...",
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                Flipped = true,
+                                What = "...",
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                Flipped = true,
+                                LoopTag = "sad",
+                                What = "...",
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                Flipped = true,
+                                LoopTag = "sad",
+                                What = "What happened?",
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = "comp",
+                                LoopTag = "worried",
+                                What = "This is bad. The timestream must be collapsing. We're running out of time. You're from another timeline, Dizzy.",
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                Flipped = true,
+                                What = "Oh, okay.",
+                            },
+                        });
+                    storyRegistry.RegisterStory(SlimeEvent_WhoAreYou_1);
+                }
+                {
+                    var SlimeEvent_WhoAreYou_2 = new ExternalStory("CorrosiveCobra.Story.SlimeEvent_WhoAreYou_2",
+                        new StoryNode()
+                        {
+                            type = NodeType.@event,
+                            priority = true,
+                            once = true,
+                            bg = "BGRunStart",
+                            lookup = new HashSet<string>()
+                            {
+                                "zone_first"
+                            },
+                            allPresent = new HashSet<string>()
+                            {
+                                SlimeWho,
+                            },
+                            requiredScenes = new HashSet<string>()
+                            {
+                                "CorrosiveCobra.Story.SlimeEvent_WhoAreYou_1",
+                            },
+                        },
+                        new List<object>()
+                        {
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = "comp",
+                                What = "Hi second Dizzy.",
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                Flipped = true,
+                                What = "Hi!",
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = "comp",
+                                What = "I wonder why the timestream brought you here.",
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = "comp",
+                                LoopTag = "intense",
+                                What = "Maybe you're an evil Dizzy from an evil timeline that has come to destroy our universe.",
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                Flipped = true,
+                                LoopTag = "laugh",
+                                What = "Haha, you're funny.",
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                Flipped = true,
+                                LoopTag = "laugh",
+                                What = "...",
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = "comp",
+                                LoopTag = "intense",
+                                What = "...",
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                Flipped = true,
+                                What = "...",
+                            },
+                        });
+                    storyRegistry.RegisterStory(SlimeEvent_WhoAreYou_2);
+                }
+                {
+                    var SlimeEvent_WhoAreYou_3 = new ExternalStory("CorrosiveCobra.Story.SlimeEvent_WhoAreYou_3",
+                        new StoryNode()
+                        {
+                            type = NodeType.@event,
+                            priority = true,
+                            once = true,
+                            bg = "BGRunStart",
+                            lookup = new HashSet<string>()
+                            {
+                                "zone_first"
+                            },
+                            allPresent = new HashSet<string>()
+                            {
+                                SlimeWho,
+                            },
+                            requiredScenes = new HashSet<string>()
+                            {
+                                "CorrosiveCobra.Story.SlimeEvent_WhoAreYou_2",
+                            },
+                        },
+                        new List<object>()
+                        {
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = "comp",
+                                What = "Is the CAT from your timeline, like, cooler?",
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                Flipped = true,
+                                What = "Yeah.",
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = "comp",
+                                LoopTag = "worried",
+                                What = "Oh.",
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = "comp",
+                                What = "But I'm great in my own way, right?",
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                Flipped = true,
+                                LoopTag = "laugh",
+                                What = "Sure.",
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = "comp",
+                                LoopTag = "intense",
+                                What = "...",
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = "comp",
+                                What = "...",
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = "comp",
+                                What = "Thanks.",
+                            },
+                        });
+                    storyRegistry.RegisterStory(SlimeEvent_WhoAreYou_3);
+                }
+                {
+                    var SlimeEvent_Dizzy_1 = new ExternalStory("CorrosiveCobra.Story.SlimeEvent_Dizzy_1",
+                        new StoryNode()
+                        {
+                            type = NodeType.@event,
+                            once = true,
+                            bg = "BGRunStart",
+                            lookup = new HashSet<string>()
+                            {
+                                "zone_first"
+                            },
+                            allPresent = new HashSet<string>()
+                            {
+                                SlimeWho,
+                                "dizzy"
+                            },
+                        },
+                        new List<object>()
+                        {
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = "dizzy",
+                                LoopTag = "squint",
+                                What = "If you're here, what's happening over in your timeline?",
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                Flipped = true,
+                                LoopTag = "sad",
+                                What = "I don't know.",
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = "dizzy",
+                                LoopTag = "explains",
+                                What = "Maybe this is all a dream and when we wake up we'll be back to before all this crazy stuff happened? Me in my timeline and you in yours?",
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = "comp",
+                                Flipped = true,
+                                What = "Negative. We are stuck in this time loop.",
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = "dizzy",
+                                LoopTag = "frown",
+                                What = "Ah.",
+                            },
+                        });
+                    storyRegistry.RegisterStory(SlimeEvent_Dizzy_1);
+                }
+                {
+                    var SlimeEvent_Dizzy_2 = new ExternalStory("CorrosiveCobra.Story.SlimeEvent_Dizzy_2",
+                        new StoryNode()
+                        {
+                            type = NodeType.@event,
+                            once = true,
+                            bg = "BGRunStart",
+                            lookup = new HashSet<string>()
+                            {
+                                "zone_first"
+                            },
+                            allPresent = new HashSet<string>()
+                            {
+                                SlimeWho,
+                                "dizzy"
+                            },
+                            requiredScenes = new HashSet<string>()
+                            {
+                                "CorrosiveCobra.Story.SlimeEvent_Dizzy_1",
+                            },
+                        },
+                        new List<object>()
+                        {
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                Flipped = true,
+                                What = "Hey, Dizzy.",
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = "dizzy",
+                                What = "Hey.",
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                Flipped = true,
+                                What = "Is everyone in this timeline meat-based lifeforms?",
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = "dizzy",
+                                LoopTag = "explains",
+                                What = "Most of us, yes.",
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                Flipped = true,
+                                LoopTag = "laugh",
+                                What = "Cool, cool.",
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                Flipped = true,
+                                LoopTag = "laugh",
+                                What = "...",
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = "dizzy",
+                                What = "...",
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                Flipped = true,
+                                LoopTag = "laugh",
+                                What = "Why, though?",
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = "dizzy",
+                                LoopTag = "shrug",
+                                What = "...",
+                            },
+                        });
+                    storyRegistry.RegisterStory(SlimeEvent_Dizzy_2);
+                }
+            }
         }
     }
 }

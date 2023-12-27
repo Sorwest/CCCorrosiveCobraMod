@@ -59,39 +59,39 @@ namespace CorrosiveCobra
             }
             {
                 CorrosiveCobra_Character_TalkSquintAnimation = new ExternalAnimation("CorrosiveCobra.Animation.CorrosiveCobra_Character_TalkSquintAnimation",
-                    CobraDeck, 
-                    "squint", 
-                    false, 
+                    CobraDeck,
+                    "squint",
+                    false,
                     TalkSquintSprites);
                 registry.RegisterAnimation(CorrosiveCobra_Character_TalkSquintAnimation);
             }
             {
-                CorrosiveCobra_Character_TalkLaughAnimation = new ExternalAnimation("CorrosiveCobra.Animation.CorrosiveCobra_Character_TalkTalkLaughAnimation", 
-                    CobraDeck, 
-                    "laugh", 
-                    false, 
+                CorrosiveCobra_Character_TalkLaughAnimation = new ExternalAnimation("CorrosiveCobra.Animation.CorrosiveCobra_Character_TalkTalkLaughAnimation",
+                    CobraDeck,
+                    "laugh",
+                    false,
                     TalkLaughSprites);
                 registry.RegisterAnimation(CorrosiveCobra_Character_TalkLaughAnimation);
             }
             {
-                CorrosiveCobra_Character_TalkNeutralAnimation = new ExternalAnimation("CorrosiveCobra.Animation.CorrosiveCobra_Character_TalkNeutralAnimation", 
-                    CobraDeck, 
-                    "neutral", 
-                    false, 
+                CorrosiveCobra_Character_TalkNeutralAnimation = new ExternalAnimation("CorrosiveCobra.Animation.CorrosiveCobra_Character_TalkNeutralAnimation",
+                    CobraDeck,
+                    "neutral",
+                    false,
                     TalkNeutralSprites);
                 registry.RegisterAnimation(CorrosiveCobra_Character_TalkNeutralAnimation);
             }
             {
                 CorrosiveCobra_Character_TalkSadAnimation = new ExternalAnimation("CorrosiveCobra.Animation.CorrosiveCobra_Character_TalkSadAnimation",
                     CobraDeck,
-                    "sad", 
-                    false, 
+                    "sad",
+                    false,
                     TalkSadSprites);
                 registry.RegisterAnimation(CorrosiveCobra_Character_TalkSadAnimation);
             }
             {
-                CorrosiveCobra_Character_TalkMadAnimation = new ExternalAnimation("CorrosiveCobra.Animation.CorrosiveCobra_Character_TalkMadAnimation", 
-                    CobraDeck, 
+                CorrosiveCobra_Character_TalkMadAnimation = new ExternalAnimation("CorrosiveCobra.Animation.CorrosiveCobra_Character_TalkMadAnimation",
+                    CobraDeck,
                     "mad",
                     false,
                     TalkMadSprites);
