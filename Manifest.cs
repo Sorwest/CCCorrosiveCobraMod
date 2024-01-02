@@ -513,7 +513,7 @@ namespace CorrosiveCobra
             var borderCobraDeckSprite = BorderCobraCommon ?? throw new Exception();
             var borderCobraShipDeckSprite = BorderCobraBasic ?? throw new Exception();
             CobraDeck = new ExternalDeck(
-                "CorrosiveCobra.CobraDeck",
+                "Sorwest.CorrosiveCobra.CobraDeck",
                 CorrosiveCobra_Primary_Color,
                 System.Drawing.Color.Black,
                 card_DefaultArt,
@@ -521,7 +521,7 @@ namespace CorrosiveCobra
                 null);
             registry.RegisterDeck(Manifest.CobraDeck);
             CobraShipDeck = new ExternalDeck(
-                "CorrosiveCobra.CobraShipDeck",
+                "Sorwest.CorrosiveCobra.CobraShipDeck",
                 CorrosiveCobra_Primary_Color,
                 System.Drawing.Color.Black,
                 card_DefaultArt,

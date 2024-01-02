@@ -5,14 +5,17 @@ namespace CorrosiveCobra
 {
     public partial class Manifest
     {
+        public static Dictionary<string, string> ModdedChr = new Dictionary<string, string>
+        {
+            { "slime", "Sorwest.CorrosiveCobra.CobraDeck" },
+            { "dave", "rft.Dave.DaveDeck" },
+            { "johanna", "JohannaTheTricker.JohanaDeck" },
+            { "nola", "Mezz.TwosCompany.NolaDeck" },
+            { "isabelle", "Mezz.TwosCompany.IsabelleDeck" },
+            { "ilya", "Mezz.TwosCompany.IlyaDeck" },
+        };
         public void LoadManifest(IStoryRegistry storyRegistry)
         {
-            var SlimeWho = (CobraDeck ?? throw new Exception("Missing CobraDeck")).GlobalName;
-            var DaveWho = "rft.Dave.DaveDeck";
-            var JohannaWho = "JohannaTheTrucker.JohannaDeck";
-            var NolaWho = "Mezz.TwosCompany.NolaDeck";
-            var IsabelleWho = "Mezz.TwosCompany.IsabelleDeck";
-            var IlyaWho = "Mezz.TwosCompany.IlyaDeck";
             // ================ 
             // MID COMBAT SHOUTS
             // ================
@@ -31,14 +34,14 @@ namespace CorrosiveCobra
                             },
                             allPresent = new HashSet<string>()
                             {
-                                SlimeWho
+                                "slime"
                             }
                         },
                         new List<object>()
                         {
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 What = "Oh, my suit is melting. Cool.",
                                 LoopTag = "laugh"
                             },
@@ -61,14 +64,14 @@ namespace CorrosiveCobra
                             },
                             allPresent = new HashSet<string>()
                             {
-                                SlimeWho,
+                                "slime",
                             }
                         },
                         new List<object>()
                         {
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 What = "Was that calculated?",
                             },
                         });
@@ -88,14 +91,14 @@ namespace CorrosiveCobra
                             },
                             allPresent = new HashSet<string>()
                             {
-                                SlimeWho,
+                                "slime",
                             }
                         },
                         new List<object>()
                         {
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 LoopTag = "nervous",
                                 What = "Uhh...",
                             },
@@ -116,14 +119,14 @@ namespace CorrosiveCobra
                             },
                             allPresent = new HashSet<string>()
                             {
-                                SlimeWho,
+                                "slime",
                             }
                         },
                         new List<object>()
                         {
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 What = "I hate to say it, but we missed.",
                             },
                         });
@@ -143,14 +146,14 @@ namespace CorrosiveCobra
                             },
                             allPresent = new HashSet<string>()
                             {
-                                SlimeWho,
+                                "slime",
                             }
                         },
                         new List<object>()
                         {
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 LoopTag = "nervous",
                                 What = "Hm... Let me get the manual.",
                             },
@@ -171,14 +174,14 @@ namespace CorrosiveCobra
                             },
                             allPresent = new HashSet<string>()
                             {
-                                SlimeWho,
+                                "slime",
                             }
                         },
                         new List<object>()
                         {
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 LoopTag = "nervous",
                                 What = "Where's the auto-aim?",
                             },
@@ -202,14 +205,14 @@ namespace CorrosiveCobra
                             },
                             allPresent = new HashSet<string>()
                             {
-                                SlimeWho,
+                                "slime",
                             }
                         },
                         new List<object>()
                         {
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 LoopTag = "nervous",
                                 What = "Let's uh... tactically retreat.",
                             },
@@ -230,14 +233,14 @@ namespace CorrosiveCobra
                             },
                             allPresent = new HashSet<string>()
                             {
-                                SlimeWho,
+                                "slime",
                             }
                         },
                         new List<object>()
                         {
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 LoopTag = "laugh",
                                 What = "What's over here?",
                             },
@@ -258,14 +261,14 @@ namespace CorrosiveCobra
                             },
                             allPresent = new HashSet<string>()
                             {
-                                SlimeWho,
+                                "slime",
                             }
                         },
                         new List<object>()
                         {
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 LoopTag = "laugh",
                                 What = "Farewell.",
                             },
@@ -296,14 +299,14 @@ namespace CorrosiveCobra
                             },
                             allPresent = new HashSet<string>()
                             {
-                                SlimeWho,
+                                "slime",
                             }
                         },
                         new List<object>()
                         {
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 LoopTag = "nervous",
                                 What = "We gotta deal with that Seeker somehow.",
                             },
@@ -328,7 +331,7 @@ namespace CorrosiveCobra
                             },
                             allPresent = new HashSet<string>()
                             {
-                                SlimeWho,
+                                "slime",
                                 "dizzy"
                             }
                         },
@@ -336,7 +339,7 @@ namespace CorrosiveCobra
                         {
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 LoopTag = "sad",
                                 What = "Nearly time to time loop again, huh.",
                             },
@@ -363,7 +366,7 @@ namespace CorrosiveCobra
                             },
                             allPresent = new HashSet<string>()
                             {
-                                SlimeWho,
+                                "slime",
                                 "dizzy"
                             }
                         },
@@ -377,7 +380,7 @@ namespace CorrosiveCobra
                             },
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 LoopTag = "sad",
                                 What = "Nearly time to ti-- Ah. Huh. Yeah.",
                             },
@@ -398,7 +401,7 @@ namespace CorrosiveCobra
                             },
                             allPresent = new HashSet<string>()
                             {
-                                SlimeWho,
+                                "slime",
                                 "riggs"
                             }
                         },
@@ -406,7 +409,7 @@ namespace CorrosiveCobra
                         {
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 LoopTag = "nervous",
                                 What = "Time loop time?",
                             },
@@ -432,7 +435,7 @@ namespace CorrosiveCobra
                             },
                             allPresent = new HashSet<string>()
                             {
-                                SlimeWho,
+                                "slime",
                                 "peri"
                             }
                         },
@@ -440,7 +443,7 @@ namespace CorrosiveCobra
                         {
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 LoopTag = "sad",
                                 What = "We almost had it.",
                             },
@@ -467,7 +470,7 @@ namespace CorrosiveCobra
                             },
                             allPresent = new HashSet<string>()
                             {
-                                SlimeWho,
+                                "slime",
                                 "peri"
                             }
                         },
@@ -481,7 +484,7 @@ namespace CorrosiveCobra
                             },
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 What = "I hope so.",
                             },
                         });
@@ -501,7 +504,7 @@ namespace CorrosiveCobra
                             },
                             allPresent = new HashSet<string>()
                             {
-                                SlimeWho,
+                                "slime",
                                 "goat"
                             }
                         },
@@ -509,7 +512,7 @@ namespace CorrosiveCobra
                         {
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 LoopTag = "nervous",
                                 What = "It's looking... kinda bad.",
                             },
@@ -535,7 +538,7 @@ namespace CorrosiveCobra
                             },
                             allPresent = new HashSet<string>()
                             {
-                                SlimeWho,
+                                "slime",
                                 "goat"
                             }
                         },
@@ -548,7 +551,7 @@ namespace CorrosiveCobra
                             },
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 What = "LMAO.",
                             },
                         });
@@ -568,7 +571,7 @@ namespace CorrosiveCobra
                             },
                             allPresent = new HashSet<string>()
                             {
-                                SlimeWho,
+                                "slime",
                                 "eunice"
                             }
                         },
@@ -576,7 +579,7 @@ namespace CorrosiveCobra
                         {
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 LoopTag = "sad",
                                 What = "I can patch the ship. I can!",
                             },
@@ -602,7 +605,7 @@ namespace CorrosiveCobra
                             },
                             allPresent = new HashSet<string>()
                             {
-                                SlimeWho,
+                                "slime",
                                 "eunice"
                             }
                         },
@@ -616,7 +619,7 @@ namespace CorrosiveCobra
                             },
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 LoopTag = "laugh",
                                 What = "We had fun, though!",
                             },
@@ -641,7 +644,7 @@ namespace CorrosiveCobra
                             },
                             allPresent = new HashSet<string>()
                             {
-                                SlimeWho,
+                                "slime",
                                 "hacker"
                             }
                         },
@@ -649,7 +652,7 @@ namespace CorrosiveCobra
                         {
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 LoopTag = "sad",
                                 What = "I had a whole new campaign planned out.",
                             },
@@ -676,7 +679,7 @@ namespace CorrosiveCobra
                             },
                             allPresent = new HashSet<string>()
                             {
-                                SlimeWho,
+                                "slime",
                                 "hacker"
                             }
                         },
@@ -684,7 +687,7 @@ namespace CorrosiveCobra
                         {
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 LoopTag = "nervous",
                                 What = "Next time's the charm.",
                             },
@@ -710,7 +713,7 @@ namespace CorrosiveCobra
                             },
                             allPresent = new HashSet<string>()
                             {
-                                SlimeWho,
+                                "slime",
                                 "hacker"
                             }
                         },
@@ -723,7 +726,7 @@ namespace CorrosiveCobra
                             },
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 LoopTag = "laugh",
                                 What = "Who should I give MVP?",
                             },
@@ -744,7 +747,7 @@ namespace CorrosiveCobra
                             },
                             allPresent = new HashSet<string>()
                             {
-                                SlimeWho,
+                                "slime",
                                 "shard"
                             }
                         },
@@ -752,7 +755,7 @@ namespace CorrosiveCobra
                         {
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 LoopTag = "sad",
                                 What = "Is this it?",
                             },
@@ -779,7 +782,7 @@ namespace CorrosiveCobra
                             },
                             allPresent = new HashSet<string>()
                             {
-                                SlimeWho,
+                                "slime",
                                 "shard"
                             }
                         },
@@ -793,7 +796,7 @@ namespace CorrosiveCobra
                             },
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 LoopTag = "nervous",
                                 What = "Trying to focus here, Books!",
                             },
@@ -814,7 +817,7 @@ namespace CorrosiveCobra
                             },
                             allPresent = new HashSet<string>()
                             {
-                                SlimeWho,
+                                "slime",
                                 "comp"
                             }
                         },
@@ -822,7 +825,7 @@ namespace CorrosiveCobra
                         {
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 LoopTag = "nervous",
                                 What = "Loop time?",
                             },
@@ -849,7 +852,7 @@ namespace CorrosiveCobra
                             },
                             allPresent = new HashSet<string>()
                             {
-                                SlimeWho,
+                                "slime",
                                 "comp"
                             }
                         },
@@ -863,7 +866,7 @@ namespace CorrosiveCobra
                             },
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 LoopTag = "mad",
                                 What = "Maybe we can still do this!",
                             },
@@ -885,21 +888,21 @@ namespace CorrosiveCobra
                             },
                             allPresent = new HashSet<string>()
                             {
-                                SlimeWho,
-                                DaveWho,
+                                "slime",
+                                "dave",
                             }
                         },
                         new List<object>()
                         {
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 LoopTag = "sad",
                                 What = "I don't see a way out.",
                             },
                             new ExternalStory.ExternalSay()
                             {
-                                Who = DaveWho,
+                                Who = "dave",
                                 What = "The house of cards comes tumbling down.",
                             },
                         });
@@ -919,20 +922,20 @@ namespace CorrosiveCobra
                             },
                             allPresent = new HashSet<string>()
                             {
-                                SlimeWho,
-                                DaveWho,
+                                "slime",
+                                "dave",
                             }
                         },
                         new List<object>()
                         {
                             new ExternalStory.ExternalSay()
                             {
-                                Who = DaveWho,
+                                Who = "dave",
                                 What = "We need to find a backdoor soon or we're done for.",
                             },
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 LoopTag = "nervous",
                                 What = "We can do something, surely?",
                             },
@@ -956,7 +959,7 @@ namespace CorrosiveCobra
                             },
                             allPresent = new HashSet<string>()
                             {
-                                SlimeWho,
+                                "slime",
                                 "bandit"
                             }
                         },
@@ -970,7 +973,7 @@ namespace CorrosiveCobra
                             },
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 What = "Oh! Tasty!",
                             },
                         });
@@ -983,7 +986,7 @@ namespace CorrosiveCobra
 						{
 							new ExternalStory.ExternalSay()
 							{
-								Who = SlimeWho,
+								Who = "slime",
 								What = "Oh! Tasty!",
 							},
 						});
@@ -1003,7 +1006,7 @@ namespace CorrosiveCobra
                             },
                             allPresent = new HashSet<string>()
                             {
-                                SlimeWho,
+                                "slime",
                                 "batboy"
                             }
                         },
@@ -1016,7 +1019,7 @@ namespace CorrosiveCobra
                             },
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 LoopTag = "laugh",
                                 What = "Nice! I have my own Cherenkov radiation lamp!"
                             },
@@ -1030,7 +1033,7 @@ namespace CorrosiveCobra
 						{
 							new ExternalStory.ExternalSay()
 							{
-								Who = SlimeWho,
+								Who = "slime",
 								LoopTag = "laugh",
 								What = "Nice! I have my own Cherenkov radiation lamp!"
 							},
@@ -1049,7 +1052,7 @@ namespace CorrosiveCobra
                             maxTurnsThisCombat = 3,
                             allPresent = new HashSet<string>()
                             {
-                                SlimeWho,
+                                "slime",
                                 "tentacle"
                             }
                         },
@@ -1080,18 +1083,18 @@ namespace CorrosiveCobra
                                 lines = new List<Say> {
                                     new Say()
                                     {
-                                        who = SlimeWho,
+                                        who = "slime",
                                         loopTag = "laugh",
                                         hash = "tentacleDialogueAnswer0"
                                     },
                                     new Say()
                                     {
-                                        who = SlimeWho,
+                                        who = "slime",
                                         hash = "tentacleDialogueAnswer1"
                                     },
                                     new Say()
                                     {
-                                        who = SlimeWho,
+                                        who = "slime",
                                         loopTag = "sad",
                                         hash = "tentacleDialogueAnswer2"
                                     },
@@ -1115,18 +1118,18 @@ namespace CorrosiveCobra
 							{
 								new ExternalStory.ExternalSay()
 								{
-									Who = SlimeWho,
+									Who = "slime",
 									LoopTag = "laugh",
 									What = "Haha. You're funny."
 								},
 								new ExternalStory.ExternalSay()
 								{
-									Who = SlimeWho,
+									Who = "slime",
 									What = "Ah... aha... Hm... I see!"
 								},
 								new ExternalStory.ExternalSay()
 								{
-									Who = SlimeWho,
+									Who = "slime",
 									LoopTag = "sad",
 									What = "To shreds you say?"
 								},
@@ -1145,18 +1148,18 @@ namespace CorrosiveCobra
 							{
 								new ExternalStory.ExternalSay()
 								{
-									Who = SlimeWho,
+									Who = "slime",
 									LoopTag = "laugh",
 									What = "YES I KNOW RIGHT?!"
 								},
 								new ExternalStory.ExternalSay()
 								{
-									Who = SlimeWho,
+									Who = "slime",
 									What = "No, not really."
 								},
 								new ExternalStory.ExternalSay()
 								{
-									Who = SlimeWho,
+									Who = "slime",
 									LoopTag = "sad",
 									What = "Oh wow. That's... That's so sad."
 								},
@@ -1180,14 +1183,14 @@ namespace CorrosiveCobra
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho
+                                    "slime"
                                 }
                             },
                                 new List<object>()
                                 {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     LoopTag = "laugh",
                                     What = "Huh, this armor is great!",
                                 },
@@ -1208,14 +1211,14 @@ namespace CorrosiveCobra
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                SlimeWho
+                                "slime"
                                 }
                             },
                             new List<object>()
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     LoopTag = "laugh",
                                     What = "Nice try, buddy. That was armored!",
                                 },
@@ -1236,14 +1239,14 @@ namespace CorrosiveCobra
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho
+                                    "slime"
                                 }
                             },
                             new List<object>()
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     What = "Maybe we should armor up the kitchen too.",
                                 },
                             });
@@ -1265,14 +1268,14 @@ namespace CorrosiveCobra
                             },
                             allPresent = new HashSet<string>()
                             {
-                                SlimeWho
+                                "slime"
                             }
                         },
                         new List<object>()
                         {
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 What = "Wait, you targeted the armor? Why?",
                             },
                         });
@@ -1289,14 +1292,14 @@ namespace CorrosiveCobra
                             minDamageDealtToEnemyThisTurn = 10,
                             allPresent = new HashSet<string>()
                             {
-                                SlimeWho
+                                "slime"
                             }
                         },
                         new List<object>()
                         {
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 What = "We are just CRUSHING them now!",
                                 LoopTag = "laugh"
                             },
@@ -1313,14 +1316,14 @@ namespace CorrosiveCobra
                             minDamageDealtToPlayerThisTurn = 3,
                             allPresent = new HashSet<string>()
                             {
-                                SlimeWho
+                                "slime"
                             }
                         },
                         new List<object>()
                         {
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 LoopTag = "sad",
                                 What = "Ah! Did that hit my room?",
                             },
@@ -1346,14 +1349,14 @@ namespace CorrosiveCobra
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho
+                                    "slime"
                                 }
                             },
                             new List<object>()
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     LoopTag = "squint",
                                     What = "Huh? Where did I go? I mean, where did the other I go?",
                                 },
@@ -1377,14 +1380,14 @@ namespace CorrosiveCobra
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho
+                                    "slime"
                                 }
                             },
                             new List<object>()
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     LoopTag = "sad",
                                     What = "Huh? Huh? Peri? PERI?!",
                                 },
@@ -1408,14 +1411,14 @@ namespace CorrosiveCobra
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho
+                                    "slime"
                                 }
                             },
                             new List<object>()
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     LoopTag = "mad",
                                     What = "Did you take Riggs?! Give her back!",
                                 },
@@ -1439,14 +1442,14 @@ namespace CorrosiveCobra
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho
+                                    "slime"
                                 }
                             },
                             new List<object>()
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     LoopTag = "mad",
                                     What = "ISAAC!",
                                 },
@@ -1470,14 +1473,14 @@ namespace CorrosiveCobra
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho
+                                    "slime"
                                 }
                             },
                             new List<object>()
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     LoopTag = "mad",
                                     What = "Drake?! What did you do to Drake?!",
                                 },
@@ -1501,14 +1504,14 @@ namespace CorrosiveCobra
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho
+                                    "slime"
                                 }
                             },
                             new List<object>()
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     LoopTag = "sad",
                                     What = "Max!",
                                 },
@@ -1532,14 +1535,14 @@ namespace CorrosiveCobra
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho
+                                    "slime"
                                 }
                             },
                             new List<object>()
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     LoopTag = "dark",
                                     What = "GIVE BOOKS BACK.",
                                 },
@@ -1563,14 +1566,14 @@ namespace CorrosiveCobra
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho
+                                    "slime"
                                 }
                             },
                             new List<object>()
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     LoopTag = "sad",
                                     What = "Cat! Oh no?!",
                                 },
@@ -1589,14 +1592,14 @@ namespace CorrosiveCobra
                                 minEnergy = 1,
                                 allPresent = new HashSet<string>()
                                     {
-                                        SlimeWho
+                                        "slime"
                                     }
                             },
                                 new List<object>()
                                 {
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 LoopTag = "squint",
                                 What = "Can we, like, not restrict ourselves to a metaphorical draw cycle?",
                             },
@@ -1612,14 +1615,14 @@ namespace CorrosiveCobra
                                 minEnergy = 1,
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho
+                                    "slime"
                                 }
                             },
                             new List<object>()
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     LoopTag = "nervous",
                                     What = "All done a bit early, huh?",
                                 },
@@ -1640,14 +1643,14 @@ namespace CorrosiveCobra
                             },
                             allPresent = new HashSet<string>()
                             {
-                                SlimeWho
+                                "slime"
                             }
                         },
                         new List<object>()
                         {
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 LoopTag = "laugh",
                                 What = "Let's lock-on to that brittle spot!",
                             },
@@ -1667,14 +1670,14 @@ namespace CorrosiveCobra
                             },
                             allPresent = new HashSet<string>()
                             {
-                                SlimeWho
+                                "slime"
                             }
                         },
                         new List<object>()
                         {
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 LoopTag = "laugh",
                                 What = "Is that a weak spot? Nice!",
                             },
@@ -1692,14 +1695,14 @@ namespace CorrosiveCobra
                                 minDamageDealtToEnemyThisAction = 1,
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho
+                                    "slime"
                                 }
                             },
                             new List<object>()
                             {
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 What = "Nice shot.",
                             },
                             });
@@ -1714,14 +1717,14 @@ namespace CorrosiveCobra
                                 minDamageDealtToEnemyThisAction = 1,
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho
+                                    "slime"
                                 }
                             },
                             new List<object>()
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     What = "On target.",
                                 },
                             });
@@ -1736,14 +1739,14 @@ namespace CorrosiveCobra
                                 minDamageDealtToEnemyThisAction = 1,
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho
+                                    "slime"
                                 }
                             },
                             new List<object>()
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     What = "Nicely done.",
                                 },
                             });
@@ -1758,14 +1761,14 @@ namespace CorrosiveCobra
                                 minDamageDealtToEnemyThisAction = 1,
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho
+                                    "slime"
                                 }
                             },
                             new List<object>()
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     What = "Got them.",
                                 },
                             });
@@ -1782,14 +1785,14 @@ namespace CorrosiveCobra
                             oncePerRun = true,
                             allPresent = new HashSet<string>()
                             {
-                                SlimeWho
+                                "slime"
                             }
                         },
                         new List<object>()
                         {
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 LoopTag = "laugh",
                                 What = "Thanks, Dracula!",
                             },
@@ -1818,14 +1821,14 @@ namespace CorrosiveCobra
                             },
                             allPresent = new HashSet<string>()
                             {
-                                SlimeWho
+                                "slime"
                             }
                         },
                         new List<object>()
                         {
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 LoopTag = "nervous",
                                 What = "That missile looks nasty.",
                             },
@@ -1845,7 +1848,7 @@ namespace CorrosiveCobra
                             whoDidThat = Deck.eunice,
                             allPresent = new HashSet<string>()
                             {
-                                SlimeWho,
+                                "slime",
                                 "eunice"
                             }
                         },
@@ -1857,18 +1860,18 @@ namespace CorrosiveCobra
                                 {
                                     new Say()
                                     {
-                                        who = SlimeWho,
+                                        who = "slime",
                                         loopTag = "laugh",
                                         hash = "slimeOverheatFix0"
                                     },
                                     new Say()
                                     {
-                                        who = SlimeWho,
+                                        who = "slime",
                                         hash = "slimeOverheatFix1"
                                     },
                                     new Say()
                                     {
-                                        who = SlimeWho,
+                                        who = "slime",
                                         loopTag = "sad",
                                         hash = "slimeOverheatFix2"
                                     },
@@ -1906,13 +1909,13 @@ namespace CorrosiveCobra
                                 {
                                     new Say()
                                     {
-                                        who = SlimeWho,
+                                        who = "slime",
                                         loopTag = "sad",
                                         hash = "slimeShopAboutToDie0"
                                     },
                                     new Say()
                                     {
-                                        who = SlimeWho,
+                                        who = "slime",
                                         loopTag = "dark",
                                         hash = "slimeShopAboutToDie1"
                                     },
@@ -1939,14 +1942,14 @@ namespace CorrosiveCobra
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho
+                                    "slime"
                                 }
                             },
                             new List<object>()
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     LoopTag = "mad",
                                     What = "Why are we still here?",
                                 },
@@ -1967,14 +1970,14 @@ namespace CorrosiveCobra
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho
+                                    "slime"
                                 }
                             },
                             new List<object>()
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     LoopTag = "sad",
                                     What = "We're really doing 18 hour shifts, huh.",
                                 },
@@ -1995,14 +1998,14 @@ namespace CorrosiveCobra
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho
+                                    "slime"
                                 }
                             },
                             new List<object>()
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     What = "Dinner's ready. Pause the loop, son.",
                                 },
                             });
@@ -2023,14 +2026,14 @@ namespace CorrosiveCobra
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho
+                                    "slime"
                                 }
                             },
                             new List<object>()
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     LoopTag = "laugh",
                                     What = "Oh? We're corroded! Nice.",
                                 },
@@ -2049,14 +2052,14 @@ namespace CorrosiveCobra
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho
+                                    "slime"
                                 }
                             },
                             new List<object>()
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     LoopTag = "laugh",
                                     What = "I love poison, but the ship not so much.",
                                 },
@@ -2075,14 +2078,14 @@ namespace CorrosiveCobra
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho
+                                    "slime"
                                 }
                             },
                             new List<object>()
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     LoopTag = "laugh",
                                     What = "Oooh! The controls are flashing green, so techy!",
                                 },
@@ -2108,7 +2111,7 @@ namespace CorrosiveCobra
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho
+                                    "slime"
                                 },
                                 nonePresent = new HashSet<string>()
                                 {
@@ -2119,7 +2122,7 @@ namespace CorrosiveCobra
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     LoopTag = "laugh",
                                     What = "Oooh! Nice colors. Where's the green side?",
                                 },
@@ -2143,7 +2146,7 @@ namespace CorrosiveCobra
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho,
+                                    "slime",
                                     "dizzy"
                                 }
                             },
@@ -2156,7 +2159,7 @@ namespace CorrosiveCobra
                                 },
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     LoopTag = "laugh",
                                     What = "I'm a green guy.",
                                 },
@@ -2170,7 +2173,7 @@ namespace CorrosiveCobra
 							{
 								new ExternalStory.ExternalSay()
 								{
-									Who = SlimeWho,
+									Who = "slime",
 									LoopTag = "laugh",
 									What = "I'm a green guy.",
 								},
@@ -2198,14 +2201,14 @@ namespace CorrosiveCobra
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho
+                                    "slime"
                                 },
                             },
                             new List<object>()
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     What = "The wood grain in the dorms is a really nice touch. What is this, birch?",
                                 },
                             });
@@ -2229,14 +2232,14 @@ namespace CorrosiveCobra
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho
+                                    "slime"
                                 },
                             },
                             new List<object>()
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     LoopTag = "laugh",
                                     What = "Oh, I love this ship. It bounces around like me!",
                                 },
@@ -2264,14 +2267,14 @@ namespace CorrosiveCobra
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho
+                                    "slime"
                                 },
                             },
                             new List<object>()
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     LoopTag = "squint",
                                     What = "So like, what would a tetradimensional Cockpit even LOOK like?",
                                 },
@@ -2295,14 +2298,14 @@ namespace CorrosiveCobra
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho
+                                    "slime"
                                 },
                             },
                             new List<object>()
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     LoopTag = "phone",
                                     What = "No rush. I'll order pizza then.",
                                 },
@@ -2327,14 +2330,14 @@ namespace CorrosiveCobra
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho
+                                    "slime"
                                 },
                             },
                             new List<object>()
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     LoopTag = "laugh",
                                     What = "Anyone up for Checkers?",
                                 },
@@ -2359,14 +2362,14 @@ namespace CorrosiveCobra
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho
+                                    "slime"
                                 },
                             },
                             new List<object>()
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     LoopTag = "phone",
                                     What = "Hi, yes... Yes... Extra pepperoni, yes.",
                                 },
@@ -2387,14 +2390,14 @@ namespace CorrosiveCobra
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho
+                                    "slime"
                                 },
                             },
                             new List<object>()
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     What = "This is fine.",
                                 },
                             });
@@ -2407,7 +2410,7 @@ namespace CorrosiveCobra
 							{
 								new ExternalStory.ExternalSay()
 								{
-									Who = SlimeWho,
+									Who = "slime",
 									What = "Not at all!",
 								},
 							});
@@ -2427,14 +2430,14 @@ namespace CorrosiveCobra
                                 minDamageDealtToEnemyThisAction = 6,
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho
+                                    "slime"
                                 },
                             },
                             new List<object>()
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     LoopTag = "dark",
                                     What = "Weak.",
                                 },
@@ -2451,7 +2454,7 @@ namespace CorrosiveCobra
                                 minDamageDealtToEnemyThisAction = 6,
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho,
+                                    "slime",
                                     "riggs"
                                 },
                             },
@@ -2459,7 +2462,7 @@ namespace CorrosiveCobra
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     What = "Wow! That was insane!",
                                 },
                                 new ExternalStory.ExternalSay()
@@ -2480,7 +2483,7 @@ namespace CorrosiveCobra
                                 minDamageDealtToEnemyThisAction = 6,
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho,
+                                    "slime",
                                     "riggs",
                                     "peri"
                                 },
@@ -2489,7 +2492,7 @@ namespace CorrosiveCobra
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     What = "Didn't know our cannons could handle that.",
                                 },
                                 new ExternalStory.ExternalSay()
@@ -2516,7 +2519,7 @@ namespace CorrosiveCobra
                                 minDamageDealtToEnemyThisAction = 6,
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho,
+                                    "slime",
                                     "goat"
                                 },
                             },
@@ -2529,7 +2532,7 @@ namespace CorrosiveCobra
                                 },
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     What = "Yeah!",
                                 },
                             });
@@ -2545,7 +2548,7 @@ namespace CorrosiveCobra
                                 minDamageDealtToEnemyThisAction = 6,
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho,
+                                    "slime",
                                     "eunice"
                                 },
                             },
@@ -2558,7 +2561,7 @@ namespace CorrosiveCobra
                                 },
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     What = "Wow.",
                                 },
                             });
@@ -2574,7 +2577,7 @@ namespace CorrosiveCobra
                                 minDamageDealtToEnemyThisAction = 6,
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho,
+                                    "slime",
                                     "hacker"
                                 },
                             },
@@ -2582,7 +2585,7 @@ namespace CorrosiveCobra
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     What = "Good job, everyone.",
                                 },
                                 new ExternalStory.ExternalSay()
@@ -2603,7 +2606,7 @@ namespace CorrosiveCobra
                                 minDamageDealtToEnemyThisAction = 6,
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho,
+                                    "slime",
                                     "shard"
                                 },
                             },
@@ -2611,7 +2614,7 @@ namespace CorrosiveCobra
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     LoopTag = "phone",
                                     What = "A serving of humble pie, coming right up!",
                                 },
@@ -2634,7 +2637,7 @@ namespace CorrosiveCobra
                                 minDamageDealtToEnemyThisAction = 6,
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho,
+                                    "slime",
                                     "comp"
                                 },
                             },
@@ -2648,7 +2651,7 @@ namespace CorrosiveCobra
                                 },
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     What = "That was huge.",
                                 },
                             });
@@ -2665,20 +2668,20 @@ namespace CorrosiveCobra
                                 minDamageDealtToEnemyThisAction = 6,
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho,
-                                    DaveWho
+                                    "slime",
+                                    "dave"
                                 },
                             },
                             new List<object>()
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = DaveWho,
+                                    Who = "dave",
                                     What = "Lady Luck is on our side today!",
                                 },
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     What = "Great job.",
                                 },
                             });
@@ -2694,20 +2697,20 @@ namespace CorrosiveCobra
                                 minDamageDealtToEnemyThisAction = 6,
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho,
-                                    JohannaWho
+                                    "slime",
+                                    "johanna"
                                 },
                             },
                             new List<object>()
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = JohannaWho,
+                                    Who = "johanna",
                                     What = "That's some big damage!",
                                 },
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     What = "Wow.",
                                 },
                             });
@@ -2728,14 +2731,14 @@ namespace CorrosiveCobra
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho
+                                    "slime"
                                 },
                             },
                             new List<object>()
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     What = "Ha! Joke's on you, this was the plan all along!",
                                 },
                             });
@@ -2753,14 +2756,14 @@ namespace CorrosiveCobra
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho
+                                    "slime"
                                 },
                             },
                             new List<object>()
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     What = "Missed. Recalibrating.",
                                 },
                             });
@@ -2782,14 +2785,14 @@ namespace CorrosiveCobra
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho
+                                    "slime"
                                 },
                             },
                             new List<object>()
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     What = "Okay, maybe it was a bad idea to turn off the roomba.",
                                 },
                             });
@@ -2808,14 +2811,14 @@ namespace CorrosiveCobra
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho
+                                    "slime"
                                 },
                             },
                             new List<object>()
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     LoopTag = "phone",
                                     What = "Hi. Room service?",
                                 },
@@ -2837,14 +2840,14 @@ namespace CorrosiveCobra
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho
+                                    "slime"
                                 },
                             },
                             new List<object>()
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     LoopTag = "nervous",
                                     What = "Oh, this might be too toasty.",
                                 },
@@ -2863,14 +2866,14 @@ namespace CorrosiveCobra
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho
+                                    "slime"
                                 },
                             },
                             new List<object>()
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     LoopTag = "phone",
                                     What = "Yes, two cold packs. No, just two.",
                                 },
@@ -2896,14 +2899,14 @@ namespace CorrosiveCobra
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho
+                                    "slime"
                                 },
                             },
                             new List<object>()
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     LoopTag = "nervous",
                                     What = "Ah. The enemy is primed to dodge.",
                                 },
@@ -2926,14 +2929,14 @@ namespace CorrosiveCobra
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho
+                                    "slime"
                                 },
                             },
                             new List<object>()
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     LoopTag = "nervous",
                                     What = "Ah. The enemy is primed to dodge.",
                                 },
@@ -2953,14 +2956,14 @@ namespace CorrosiveCobra
                                 maxDamageDealtToPlayerThisTurn = 1,
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho
+                                    "slime"
                                 }
                             },
                             new List<object>()
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     LoopTag = "laugh",
                                     What = "That tickled my funny bone.",
                                 },
@@ -2977,14 +2980,14 @@ namespace CorrosiveCobra
                                 maxDamageDealtToPlayerThisTurn = 1,
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho
+                                    "slime"
                                 }
                             },
                             new List<object>()
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     What = "Nothing a band-aid can't fix.",
                                 },
                             });
@@ -3002,14 +3005,14 @@ namespace CorrosiveCobra
                                 maxDamageDealtToPlayerThisTurn = 0,
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho
+                                    "slime"
                                 }
                             },
                             new List<object>()
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     LoopTag = "laugh",
                                     What = "Nothing to report. Hah!",
                                 },
@@ -3025,14 +3028,14 @@ namespace CorrosiveCobra
                                 maxDamageDealtToPlayerThisTurn = 0,
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho
+                                    "slime"
                                 }
                             },
                             new List<object>()
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     LoopTag = "laugh",
                                     What = "Ship shows no damage from that attack.",
                                 },
@@ -3057,14 +3060,14 @@ namespace CorrosiveCobra
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho
+                                    "slime"
                                 },
                             },
                             new List<object>()
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     What = "Cockpit targetting systems, online.",
                                 },
                             });
@@ -3085,7 +3088,7 @@ namespace CorrosiveCobra
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho,
+                                    "slime",
                                     "peri"
                                 },
                             },
@@ -3098,7 +3101,7 @@ namespace CorrosiveCobra
                                 },
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     What = "Roger.",
                                 },
                             });
@@ -3124,7 +3127,7 @@ namespace CorrosiveCobra
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho
+                                    "slime"
                                 },
                                 nonePresent = new HashSet<string>()
                                 {
@@ -3135,7 +3138,7 @@ namespace CorrosiveCobra
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     What = "These thrusters make me wonder what Riggs is doing right now.",
                                 },
                             });
@@ -3158,7 +3161,7 @@ namespace CorrosiveCobra
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho
+                                    "slime"
                                 },
                                 nonePresent = new HashSet<string>()
                                 {
@@ -3169,7 +3172,7 @@ namespace CorrosiveCobra
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     What = "These thrusters make me miss Riggs. I wonder where she is.",
                                 },
                             });
@@ -3196,14 +3199,14 @@ namespace CorrosiveCobra
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho
+                                    "slime"
                                 },
                             },
                             new List<object>()
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     What = "That'll get nanofixed right out.",
                                 },
                             });
@@ -3227,14 +3230,14 @@ namespace CorrosiveCobra
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho
+                                    "slime"
                                 },
                             },
                             new List<object>()
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     What = "The bots will deal with that, don't worry.",
                                 },
                             });
@@ -3259,14 +3262,14 @@ namespace CorrosiveCobra
                             },
                             allPresent = new HashSet<string>()
                             {
-                                SlimeWho
+                                "slime"
                             },
                         },
                         new List<object>()
                         {
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 What = "Our nanobuddies will heal some of that, at least.",
                             },
                         });
@@ -3281,7 +3284,7 @@ namespace CorrosiveCobra
 						{
 							new ExternalStory.ExternalSay()
 							{
-								Who = SlimeWho,
+								Who = "slime",
 								What = "We're ready, yeah.",
 							},
 						});
@@ -3305,14 +3308,14 @@ namespace CorrosiveCobra
                             },
                             allPresent = new HashSet<string>()
                             {
-                                SlimeWho,
+                                "slime",
                             },
                         },
                         new List<object>()
                         {
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 LoopTag = "phone",
                                 What = "Does an extra large have a discount too?",
                             },
@@ -3328,7 +3331,7 @@ namespace CorrosiveCobra
 						{
 							new ExternalStory.ExternalSay()
 							{
-								Who = SlimeWho,
+								Who = "slime",
 								LoopTag = "laugh",
 								What = "Don't let Peri hear it. She's still mad about the core.",
 							},
@@ -3354,14 +3357,14 @@ namespace CorrosiveCobra
                             },
                             allPresent = new HashSet<string>()
                             {
-                                SlimeWho,
+                                "slime",
                             },
                         },
                         new List<object>()
                         {
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 LoopTag = "nervous",
                                 What = "We'll be fine without warp prep, right?",
                             },
@@ -3386,14 +3389,14 @@ namespace CorrosiveCobra
                             },
                             allPresent = new HashSet<string>()
                             {
-                                SlimeWho,
+                                "slime",
                             },
                         },
                         new List<object>()
                         {
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 LoopTag = "laugh",
                                 What = "Everyone knows Green makes stuff Stronger.",
                             },
@@ -3419,14 +3422,14 @@ namespace CorrosiveCobra
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho,
+                                    "slime",
                                 },
                             },
                             new List<object>()
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     What = "In my timeline, we armored the Artemis' cockpit. It was Easy Mode.",
                                 },
                             });
@@ -3449,14 +3452,14 @@ namespace CorrosiveCobra
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho,
+                                    "slime",
                                 },
                             },
                             new List<object>()
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     What = "In my timeline, we armored the Gemini's cannons. It was Easy Mode.",
                                 },
                             });
@@ -3479,14 +3482,14 @@ namespace CorrosiveCobra
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho,
+                                    "slime",
                                 },
                             },
                             new List<object>()
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     What = "In my timeline, we armored the Jupiter's comms. It was Easy Mode.",
                                 },
                             });
@@ -3509,14 +3512,14 @@ namespace CorrosiveCobra
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho,
+                                    "slime",
                                 },
                             },
                             new List<object>()
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     What = "In my timeline, we didn't even armor the Ares' cannons. It was Easy Mode either way.",
                                 },
                             });
@@ -3545,14 +3548,14 @@ namespace CorrosiveCobra
 
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho,
+                                    "slime",
                                 }
                             },
                             new List<object>()
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     LoopTag = "dark",
                                     What = "KAME...",
                                 },
@@ -3573,14 +3576,14 @@ namespace CorrosiveCobra
 
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho,
+                                    "slime",
                                 }
                             },
                             new List<object>()
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     LoopTag = "squint",
                                     What = "I'm changing...",
                                 },
@@ -3605,14 +3608,14 @@ namespace CorrosiveCobra
 
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho,
+                                    "slime",
                                 }
                             },
                             new List<object>()
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     LoopTag = "dark",
                                     What = "HAME...",
                                 },
@@ -3639,14 +3642,14 @@ namespace CorrosiveCobra
 
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho,
+                                    "slime",
                                 }
                             },
                             new List<object>()
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     LoopTag = "squint",
                                     What = "I'm... stronger...",
                                 },
@@ -3671,14 +3674,14 @@ namespace CorrosiveCobra
 
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho,
+                                    "slime",
                                 }
                             },
                             new List<object>()
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     LoopTag = "dark",
                                     What = "HADOUKEN!!!",
                                 },
@@ -3705,14 +3708,14 @@ namespace CorrosiveCobra
 
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho,
+                                    "slime",
                                 }
                             },
                             new List<object>()
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     LoopTag = "laugh",
                                     What = "Oh, nevermind, it was the cannon.",
                                 },
@@ -3737,14 +3740,14 @@ namespace CorrosiveCobra
 
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho,
+                                    "slime",
                                 }
                             },
                             new List<object>()
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     LoopTag = "laugh",
                                     What = "I'll take care of the trash now.",
                                 },
@@ -3770,14 +3773,14 @@ namespace CorrosiveCobra
 
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho,
+                                    "slime",
                                 }
                             },
                             new List<object>()
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     What = "The trash should be easier to manage now.",
                                 },
                                 new ExternalStory.ExternalSay()
@@ -3804,14 +3807,14 @@ namespace CorrosiveCobra
 
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho,
+                                    "slime",
                                 }
                             },
                             new List<object>()
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     LoopTag = "laugh",
                                     What = "Jumpy!",
                                 },
@@ -3837,14 +3840,14 @@ namespace CorrosiveCobra
 
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho,
+                                    "slime",
                                 }
                             },
                             new List<object>()
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     LoopTag = "laugh",
                                     What = "We won't be needing these, anyway.",
                                 },
@@ -3870,14 +3873,14 @@ namespace CorrosiveCobra
 
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho,
+                                    "slime",
                                 }
                             },
                             new List<object>()
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     LoopTag = "dark",
                                     What = "The best defense is a barrage of poison.",
                                 },
@@ -3906,7 +3909,7 @@ namespace CorrosiveCobra
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho,
+                                    "slime",
                                     "dizzy",
                                     "peri"
                                 }
@@ -3921,7 +3924,7 @@ namespace CorrosiveCobra
                                 },
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     What = "Have we always had a hole in the fuel tanks?",
                                     LoopTag = "laugh"
                                 },
@@ -3946,7 +3949,7 @@ namespace CorrosiveCobra
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho,
+                                    "slime",
                                     "riggs",
                                     "peri"
                                 }
@@ -3955,7 +3958,7 @@ namespace CorrosiveCobra
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     What = "Have we always had a hole in the fuel tanks?",
                                     LoopTag = "laugh"
                                 },
@@ -3986,7 +3989,7 @@ namespace CorrosiveCobra
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho,
+                                    "slime",
                                     "peri"
                                 }
                             },
@@ -3994,7 +3997,7 @@ namespace CorrosiveCobra
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     What = "Have we always had a hole in the fuel tanks?",
                                     LoopTag = "laugh"
                                 },
@@ -4019,7 +4022,7 @@ namespace CorrosiveCobra
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho,
+                                    "slime",
                                     "goat"
                                 }
                             },
@@ -4027,7 +4030,7 @@ namespace CorrosiveCobra
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     What = "Have we always had a hole in the fuel tanks?",
                                     LoopTag = "laugh"
                                 },
@@ -4052,7 +4055,7 @@ namespace CorrosiveCobra
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho,
+                                    "slime",
                                     "eunice"
                                 }
                             },
@@ -4060,7 +4063,7 @@ namespace CorrosiveCobra
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     What = "Now we relax and wait!",
                                     LoopTag = "laugh"
                                 },
@@ -4085,7 +4088,7 @@ namespace CorrosiveCobra
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho,
+                                    "slime",
                                     "hacker"
                                 }
                             },
@@ -4093,7 +4096,7 @@ namespace CorrosiveCobra
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     What = "Have we always had a hole in the fuel tanks?",
                                     LoopTag = "laugh"
                                 },
@@ -4118,7 +4121,7 @@ namespace CorrosiveCobra
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho,
+                                    "slime",
                                     "shard"
                                 }
                             },
@@ -4126,7 +4129,7 @@ namespace CorrosiveCobra
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     What = "Have we always had a hole in the fuel tanks?",
                                     LoopTag = "laugh"
                                 },
@@ -4151,7 +4154,7 @@ namespace CorrosiveCobra
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho,
+                                    "slime",
                                     "comp"
                                 }
                             },
@@ -4159,7 +4162,7 @@ namespace CorrosiveCobra
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     What = "Have we always had a hole in the fuel tanks?",
                                     LoopTag = "laugh"
                                 },
@@ -4185,21 +4188,21 @@ namespace CorrosiveCobra
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho,
-                                    DaveWho
+                                    "slime",
+                                    "dave"
                                 }
                             },
                             new List<object>()
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     What = "Have we always had a hole in the fuel tanks?",
                                     LoopTag = "laugh"
                                 },
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = DaveWho,
+                                    Who = "dave",
                                     What = "Is this a low roll?"
                                 },
                             });
@@ -4217,21 +4220,21 @@ namespace CorrosiveCobra
                                 },
                                 allPresent = new HashSet<string>()
                                 {
-                                    SlimeWho,
-                                    JohannaWho
+                                    "slime",
+                                    "johanna"
                                 }
                             },
                             new List<object>()
                             {
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = SlimeWho,
+                                    Who = "slime",
                                     What = "Have we always had a hole in the fuel tanks?",
                                     LoopTag = "laugh"
                                 },
                                 new ExternalStory.ExternalSay()
                                 {
-                                    Who = JohannaWho,
+                                    Who = "johanna",
                                     LoopTag = "squint",
                                     What = "Careful with the ship, Slime. We've only got one."
                                 },
@@ -4256,14 +4259,14 @@ namespace CorrosiveCobra
 
                             allPresent = new HashSet<string>()
                             {
-                                SlimeWho,
+                                "slime",
                             }
                         },
                         new List<object>()
                         {
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 LoopTag = "nervous",
                                 What = "Anyone else see that rupture in spacetime right behind the enemy?",
                             },
@@ -4324,7 +4327,7 @@ namespace CorrosiveCobra
 								},
 								new ExternalStory.ExternalSay()
 								{
-									Who = DaveWho,
+									Who = "dave",
 									What = "The timer is on.",
 								},
 							}
@@ -4352,14 +4355,14 @@ namespace CorrosiveCobra
                             },
                             allPresent = new HashSet<string>()
                             {
-                                SlimeWho,
+                                "slime",
                             },
                         },
                         new List<object>()
                         {
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 What = "Let the corrode stacking begin!",
                             },
                         });
@@ -4380,14 +4383,14 @@ namespace CorrosiveCobra
                             },
                             allPresent = new HashSet<string>()
                             {
-                                SlimeWho,
+                                "slime",
                             },
                         },
                         new List<object>()
                         {
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 What = "Woah! I'm 10% more liquid than a minute ago. Cool!",
                             },
                         });
@@ -4480,14 +4483,14 @@ namespace CorrosiveCobra
                             },
                             allPresent = new HashSet<string>()
                             {
-                                SlimeWho,
+                                "slime",
                             },
                         },
                         new List<object>()
                         {
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 What = "Now all we need to do is give the enemy some Corrode.",
                             },
                         });
@@ -4508,14 +4511,14 @@ namespace CorrosiveCobra
                             },
                             allPresent = new HashSet<string>()
                             {
-                                SlimeWho,
+                                "slime",
                             },
                         },
                         new List<object>()
                         {
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 What = "Now there's two of me! The roomba me, and me!",
                             },
                         });
@@ -4536,14 +4539,14 @@ namespace CorrosiveCobra
                             },
                             allPresent = new HashSet<string>()
                             {
-                                SlimeWho,
+                                "slime",
                             },
                         },
                         new List<object>()
                         {
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 LoopTag = "laugh",
                                 What = "Oh, my favorite dish!",
                             },
@@ -4569,7 +4572,7 @@ namespace CorrosiveCobra
                             },
                             allPresent = new HashSet<string>()
                             {
-                                SlimeWho,
+                                "slime",
                             },
                         },
                         new List<object>()
@@ -4587,7 +4590,7 @@ namespace CorrosiveCobra
                             },
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 Flipped = true,
                                 What = "Hi CAT.",
                             },
@@ -4604,7 +4607,7 @@ namespace CorrosiveCobra
                             },
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 Flipped = true,
                                 LoopTag = "laugh",
                                 What = "Hm? I'm Dizzy?",
@@ -4655,7 +4658,7 @@ namespace CorrosiveCobra
 							},*/
 							new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 Flipped = true,
                                 What = "...",
                             },
@@ -4673,26 +4676,26 @@ namespace CorrosiveCobra
                             },
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 Flipped = true,
                                 What = "Where am I? Where's Peri and Riggs and Isaac and Max and...",
                             },
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 Flipped = true,
                                 What = "...",
                             },
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 Flipped = true,
                                 LoopTag = "sad",
                                 What = "...",
                             },
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 Flipped = true,
                                 LoopTag = "sad",
                                 What = "What happened?",
@@ -4705,7 +4708,7 @@ namespace CorrosiveCobra
                             },
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 Flipped = true,
                                 What = "Oh, okay.",
                             },
@@ -4726,7 +4729,7 @@ namespace CorrosiveCobra
                             },
                             allPresent = new HashSet<string>()
                             {
-                                SlimeWho,
+                                "slime",
                             },
                             requiredScenes = new HashSet<string>()
                             {
@@ -4742,7 +4745,7 @@ namespace CorrosiveCobra
                             },
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 Flipped = true,
                                 What = "Hi!",
                             },
@@ -4759,14 +4762,14 @@ namespace CorrosiveCobra
                             },
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 Flipped = true,
                                 LoopTag = "laugh",
                                 What = "Haha, you're funny.",
                             },
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 Flipped = true,
                                 LoopTag = "laugh",
                                 What = "...",
@@ -4779,7 +4782,7 @@ namespace CorrosiveCobra
                             },
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 Flipped = true,
                                 What = "...",
                             },
@@ -4800,7 +4803,7 @@ namespace CorrosiveCobra
                             },
                             allPresent = new HashSet<string>()
                             {
-                                SlimeWho,
+                                "slime",
                             },
                             requiredScenes = new HashSet<string>()
                             {
@@ -4816,7 +4819,7 @@ namespace CorrosiveCobra
                             },
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 Flipped = true,
                                 What = "Yeah.",
                             },
@@ -4833,7 +4836,7 @@ namespace CorrosiveCobra
                             },
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 Flipped = true,
                                 LoopTag = "laugh",
                                 What = "Sure.",
@@ -4870,7 +4873,7 @@ namespace CorrosiveCobra
                             },
                             allPresent = new HashSet<string>()
                             {
-                                SlimeWho,
+                                "slime",
                                 "dizzy"
                             },
                         },
@@ -4884,7 +4887,7 @@ namespace CorrosiveCobra
                             },
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 Flipped = true,
                                 LoopTag = "sad",
                                 What = "I don't know.",
@@ -4923,7 +4926,7 @@ namespace CorrosiveCobra
                             },
                             allPresent = new HashSet<string>()
                             {
-                                SlimeWho,
+                                "slime",
                                 "dizzy"
                             },
                             requiredScenes = new HashSet<string>()
@@ -4935,7 +4938,7 @@ namespace CorrosiveCobra
                         {
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 Flipped = true,
                                 What = "Hey, Dizzy.",
                             },
@@ -4946,7 +4949,7 @@ namespace CorrosiveCobra
                             },
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 Flipped = true,
                                 What = "Is everyone in this timeline meat-based lifeforms?",
                             },
@@ -4958,14 +4961,14 @@ namespace CorrosiveCobra
                             },
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 Flipped = true,
                                 LoopTag = "laugh",
                                 What = "Cool, cool.",
                             },
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 Flipped = true,
                                 LoopTag = "laugh",
                                 What = "...",
@@ -4977,7 +4980,7 @@ namespace CorrosiveCobra
                             },
                             new ExternalStory.ExternalSay()
                             {
-                                Who = SlimeWho,
+                                Who = "slime",
                                 Flipped = true,
                                 LoopTag = "laugh",
                                 What = "Why, though?",
