@@ -30,11 +30,9 @@ namespace CorrosiveCobra
     {
         public string Name => "Sorwest.CorrosiveCobra";
 
-        public static System.Drawing.Color CorrosiveCobra_Primary_Color = System.Drawing.Color.FromArgb(107, 255, 205);
-        public static string CorrosiveCobra_CharacterColH = string.Format("<c={0:X2}{1:X2}{2:X2}>", (object)CorrosiveCobra_Primary_Color.R, (object)CorrosiveCobra_Primary_Color.G, (object)CorrosiveCobra_Primary_Color.B.ToString("X2"));
-        public IEnumerable<DependencyEntry> Dependencies => new DependencyEntry[]
-            {
-            };
+        public static System.Drawing.Color CorrosiveCobra_Primary_Color => System.Drawing.Color.FromArgb(107, 255, 205);
+        public static string CorrosiveCobra_CharacterColH => string.Format("<c={0:X2}{1:X2}{2:X2}>", (object)CorrosiveCobra_Primary_Color.R, (object)CorrosiveCobra_Primary_Color.G, (object)CorrosiveCobra_Primary_Color.B.ToString("X2"));
+        public IEnumerable<DependencyEntry> Dependencies => Array.Empty<DependencyEntry>();
         public DirectoryInfo? ModRootFolder { get; set; }
         public ILogger? Logger { get; set; }
         public static ExternalShip? CorrosiveCobra_Main { get; private set; }
