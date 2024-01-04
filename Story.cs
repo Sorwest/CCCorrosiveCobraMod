@@ -1041,7 +1041,7 @@ namespace CorrosiveCobra
                             {
                                 Who = SogginsWho,
                                 LoopTag = "smug-2",
-                                What = "Please spare me! I'll do anything! Take that ugly slime if you want!",
+                                What = "Please spare me! I'll do anything!",
                             },
                         });
                         storyRegistry.RegisterStory(SlimeDuo_AboutToDieAndLoop_Multi_29);
@@ -1070,7 +1070,7 @@ namespace CorrosiveCobra
                             {
                                 Who = SogginsWho,
                                 LoopTag = "smug-3",
-                                What = "Do something you ugly slime! I'm too cute to die!",
+                                What = "Do something slime boy! I'm too cute to die!",
                             },
                             new ExternalStory.ExternalSay()
                             {
@@ -1080,6 +1080,293 @@ namespace CorrosiveCobra
                             },
                         });
                         storyRegistry.RegisterStory(SlimeDuo_AboutToDieAndLoop_Multi_30);
+                    }
+                    {
+                        var SlimeDuo_AboutToDieAndLoop_Multi_31 = new ExternalStory("CorrosiveCobra.Story.SlimeDuo_AboutToDieAndLoop_Multi_31",
+                        new StoryNode()
+                        {
+                            type = NodeType.combat,
+                            oncePerRun = true,
+                            enemyShotJustHit = true,
+                            maxHull = 2,
+                            oncePerCombatTags = new HashSet<string>()
+                            {
+                                "aboutToDie"
+                            },
+                            allPresent = new HashSet<string>()
+                            {
+                                SlimeWho,
+                                IlyaWho,
+                            }
+                        },
+                        new List<object>()
+                        {
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                LoopTag = "phone",
+                                What = "Ripperonni.",
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = IlyaWho,
+                                LoopTag = "happy",
+                                What = "Going down in a blaze.",
+                            },
+                        });
+                        storyRegistry.RegisterStory(SlimeDuo_AboutToDieAndLoop_Multi_31);
+                    }
+                    {
+                        var SlimeDuo_AboutToDieAndLoop_Multi_32 = new ExternalStory("CorrosiveCobra.Story.SlimeDuo_AboutToDieAndLoop_Multi_32",
+                        new StoryNode()
+                        {
+                            type = NodeType.combat,
+                            oncePerRun = true,
+                            enemyShotJustHit = true,
+                            maxHull = 2,
+                            oncePerCombatTags = new HashSet<string>()
+                            {
+                                "aboutToDie"
+                            },
+                            allPresent = new HashSet<string>()
+                            {
+                                SlimeWho,
+                                IsabelleWho,
+                            }
+                        },
+                        new List<object>()
+                        {
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                LoopTag = "phone",
+                                What = "Ripperonni.",
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = IsabelleWho,
+                                LoopTag = "shocked",
+                                What = "I don't think this is a good place or time to joke around.",
+                            },
+                        });
+                        storyRegistry.RegisterStory(SlimeDuo_AboutToDieAndLoop_Multi_32);
+                    }
+                    {
+                        var SlimeDuo_AboutToDieAndLoop_Multi_33 = new ExternalStory("CorrosiveCobra.Story.SlimeDuo_AboutToDieAndLoop_Multi_33",
+                        new StoryNode()
+                        {
+                            type = NodeType.combat,
+                            oncePerRun = true,
+                            enemyShotJustHit = true,
+                            maxHull = 2,
+                            oncePerCombatTags = new HashSet<string>()
+                            {
+                                "aboutToDie"
+                            },
+                            allPresent = new HashSet<string>()
+                            {
+                                SlimeWho,
+                                NolaWho,
+                            }
+                        },
+                        new List<object>()
+                        {
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                LoopTag = "phone",
+                                What = "Ripperonni.",
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = NolaWho,
+                                LoopTag = "smug",
+                                What = "I'm getting one with pineapple first thing next time.",
+                            },
+                        });
+                        storyRegistry.RegisterStory(SlimeDuo_AboutToDieAndLoop_Multi_33);
+                    }
+                    {
+                        var SlimeDuo_AboutToDieAndLoop_Multi_34 = new ExternalStory("CorrosiveCobra.Story.SlimeDuo_AboutToDieAndLoop_Multi_34",
+                        new StoryNode()
+                        {
+                            type = NodeType.combat,
+                            oncePerRun = true,
+                            enemyShotJustHit = true,
+                            maxHull = 2,
+                            oncePerCombatTags = new HashSet<string>()
+                            {
+                                "aboutToDie"
+                            },
+                            allPresent = new HashSet<string>()
+                            {
+                                SlimeWho,
+                                NolaWho,
+                            }
+                        },
+                        new List<object>()
+                        {
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                LoopTag = "phone",
+                                What = "Ripperonni.",
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = NolaWho,
+                                LoopTag = "smug",
+                                What = "I'm getting one with pineapple first thing next time.",
+                            },
+                        });
+                        storyRegistry.RegisterStory(SlimeDuo_AboutToDieAndLoop_Multi_34);
+                    }
+                    {
+                        var SlimeDuo_AboutToDieAndLoop_Multi_35 = new ExternalStory("CorrosiveCobra.Story.SlimeDuo_AboutToDieAndLoop_Multi_35",
+                        new StoryNode()
+                        {
+                            type = NodeType.combat,
+                            oncePerRun = true,
+                            enemyShotJustHit = true,
+                            maxHull = 2,
+                            oncePerCombatTags = new HashSet<string>()
+                            {
+                                "aboutToDie"
+                            },
+                            allPresent = new HashSet<string>()
+                            {
+                                SlimeWho,
+                                NolaWho,
+                            }
+                        },
+                        new List<object>()
+                        {
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                LoopTag = "phone",
+                                What = "Ripperonni.",
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = NolaWho,
+                                LoopTag = "smug",
+                                What = "I'm getting one with pineapple first thing next time.",
+                            },
+                        });
+                        storyRegistry.RegisterStory(SlimeDuo_AboutToDieAndLoop_Multi_35);
+                    }
+                    {
+                        var SlimeDuo_AboutToDieAndLoop_Multi_36 = new ExternalStory("CorrosiveCobra.Story.SlimeDuo_AboutToDieAndLoop_Multi_36",
+                        new StoryNode()
+                        {
+                            type = NodeType.combat,
+                            oncePerRun = true,
+                            enemyShotJustHit = true,
+                            maxHull = 2,
+                            oncePerCombatTags = new HashSet<string>()
+                            {
+                                "aboutToDie"
+                            },
+                            allPresent = new HashSet<string>()
+                            {
+                                SlimeWho,
+                                PhilipWho,
+                            }
+                        },
+                        new List<object>()
+                        {
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = PhilipWho,
+                                LoopTag = "excited",
+                                What = "We're exploding 80% of the time here.",
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                LoopTag = "nervous",
+                                What =  "Don't give up!",
+                            },
+                        });
+                        storyRegistry.RegisterStory(SlimeDuo_AboutToDieAndLoop_Multi_36);
+                    }
+                    {
+                        var SlimeDuo_AboutToDieAndLoop_Multi_37 = new ExternalStory("CorrosiveCobra.Story.SlimeDuo_AboutToDieAndLoop_Multi_37",
+                        new StoryNode()
+                        {
+                            type = NodeType.combat,
+                            once = true,
+                            oncePerRun = true,
+                            enemyShotJustHit = true,
+                            maxHull = 2,
+                            requiredScenes = new HashSet<string>()
+                            {
+                                "Dizzy_Memory_2"
+                            },
+                            oncePerCombatTags = new HashSet<string>()
+                            {
+                                "aboutToDie"
+                            },
+                            allPresent = new HashSet<string>()
+                            {
+                                SlimeWho,
+                                PhilipWho,
+                            }
+                        },
+                        new List<object>()
+                        {
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                LoopTag = "laugh",
+                                What = "This gives me a campaign idea for next loop.",
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = PhilipWho,
+                                What =  "What's that and can I play?",
+                            },
+                        });
+                        storyRegistry.RegisterStory(SlimeDuo_AboutToDieAndLoop_Multi_37);
+                    }
+                    {
+                        var SlimeDuo_AboutToDieAndLoop_Multi_38 = new ExternalStory("CorrosiveCobra.Story.SlimeDuo_AboutToDieAndLoop_Multi_38",
+                        new StoryNode()
+                        {
+                            type = NodeType.combat,
+                            oncePerRun = true,
+                            enemyShotJustHit = true,
+                            maxHull = 2,
+                            requiredScenes = new HashSet<string>()
+                            {
+                                "CorrosiveCobra.Story.SlimeDuo_AboutToDieAndLoop_Multi_35"
+                            },
+                            oncePerCombatTags = new HashSet<string>()
+                            {
+                                "aboutToDie"
+                            },
+                            allPresent = new HashSet<string>()
+                            {
+                                SlimeWho,
+                                PhilipWho,
+                            }
+                        },
+                        new List<object>()
+                        {
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                LoopTag = "laugh",
+                                What = "This gives me a campaign idea for next loop.",
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = PhilipWho,
+                                What =  "I made a new badass cannoneer, can I play it next time?",
+                            },
+                        });
+                        storyRegistry.RegisterStory(SlimeDuo_AboutToDieAndLoop_Multi_38);
                     }
                 }
                 //SlimeBanditThreats_Multi
@@ -1129,55 +1416,45 @@ namespace CorrosiveCobra
                         },
                         new List<object>()
                         {
-                        new SaySwitch()
+                        new ExternalStory.ExternalSaySwitch(new List<ExternalStory.ExternalSay>
                         {
-                            lines = new List<Say> {
-                                new Say()
-                                {
-                                    who = "tentacle",
-                                    hash = "tentacleDialogue0"
-                                },
-                                new Say()
-                                {
-                                    who = "tentacle",
-                                    hash = "tentacleDialogue1"
-                                },
-                                new Say()
-                                {
-                                    who = "tentacle",
-                                    hash = "tentacleDialogue2"
-                                },
-                            }
-                        },
-                        new SaySwitch()
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = "tentacle",
+                                What = "GLARP"
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = "tentacle",
+                                What = "GLORP"
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = "tentacle",
+                                What = "GLURP"
+                            },
+                        }),
+                        new ExternalStory.ExternalSaySwitch(new List<ExternalStory.ExternalSay>
                         {
-                            lines = new List<Say> {
-                                new Say()
-                                {
-                                    who = SlimeWho,
-                                    loopTag = "laugh",
-                                    hash = "tentacleDialogueAnswer0"
-                                },
-                                new Say()
-                                {
-                                    who = SlimeWho,
-                                    hash = "tentacleDialogueAnswer1"
-                                },
-                                new Say()
-                                {
-                                    who = SlimeWho,
-                                    loopTag = "sad",
-                                    hash = "tentacleDialogueAnswer2"
-                                },
-                            }
-                        },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                LoopTag = "laugh",
+                                What = "Haha. You're funny."
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                What = "Ah... aha... Hm... I see!"
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                LoopTag = "sad",
+                                What = "To shreds you say?"
+                            },
+                        }),
                         });
-                    SlimeTentacleThreats_Multi_0.AddLocalisation("tentacleDialogue0", "GLARP");
-                    SlimeTentacleThreats_Multi_0.AddLocalisation("tentacleDialogue1", "GLARP");
-                    SlimeTentacleThreats_Multi_0.AddLocalisation("tentacleDialogue2", "GLARP");
-                    SlimeTentacleThreats_Multi_0.AddLocalisation("tentacleDialogueAnswer0", "Haha. You're funny.");
-                    SlimeTentacleThreats_Multi_0.AddLocalisation("tentacleDialogueAnswer1", "Ah... aha... Hm... I see!");
-                    SlimeTentacleThreats_Multi_0.AddLocalisation("tentacleDialogueAnswer2", "To shreds you say?");
                     storyRegistry.RegisterStory(SlimeTentacleThreats_Multi_0);
                 }
                 //SlimeTentacleThreatsOnShellBreak_Multi
@@ -1189,64 +1466,58 @@ namespace CorrosiveCobra
                             type = NodeType.combat,
                             priority = true,
                             turnStart = true,
-                            maxTurnsThisCombat = 3,
+                            enemyIntent = "cracked",
                             allPresent = new HashSet<string>()
                             {
                             SlimeWho,
                             "tentacle"
-                            }
+                            },
+                            oncePerRunTags = new HashSet<string>()
+                            {
+                                "youCrackedTheStarnacleShellBro"
+                            },
                         },
                         new List<object>()
                         {
-                        new SaySwitch()
+                        new ExternalStory.ExternalSaySwitch(new List<ExternalStory.ExternalSay>
                         {
-                            lines = new List<Say> {
-                                new Say()
-                                {
-                                    who = "tentacle",
-                                    hash = "tentacleShellDialogue0"
-                                },
-                                new Say()
-                                {
-                                    who = "tentacle",
-                                    hash = "tentacleShellDialogue1"
-                                },
-                                new Say()
-                                {
-                                    who = "tentacle",
-                                    hash = "tentacleShellDialogue2"
-                                },
-                            }
-                        },
-                        new SaySwitch()
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = "tentacle",
+                                What = "GLARP GLORP!!"
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = "tentacle",
+                                What = "GLORP GLURP!!"
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = "tentacle",
+                                What = "GLURP GLARP!!"
+                            },
+                        }),
+                        new ExternalStory.ExternalSaySwitch(new List<ExternalStory.ExternalSay>
                         {
-                            lines = new List<Say> {
-                                new Say()
-                                {
-                                    who = SlimeWho,
-                                    loopTag = "laugh",
-                                    hash = "tentacleShellDialogueAnswer0"
-                                },
-                                new Say()
-                                {
-                                    who = SlimeWho,
-                                    hash = "tentacleShellDialogueAnswer1"
-                                },
-                                new Say()
-                                {
-                                    who = SlimeWho,
-                                    loopTag = "sad",
-                                    hash = "tentacleShellDialogueAnswer2"
-                                },
-                            }
-                        },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                LoopTag = "laugh",
+                                What = "YES I KNOW RIGHT?!"
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                What = "No, not really."
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                LoopTag = "sad",
+                                What = "Oh wow. That's... That's so sad."
+                            },
+                        }),
                         });
-                    SlimeTentacleThreatsOnShellBreak_Multi_0.AddLocalisation("tentacleShellDialogue0", "GLARP GLORP!!");
-                    SlimeTentacleThreatsOnShellBreak_Multi_0.AddLocalisation("tentacleShellDialogue1", "GLORP GLURP!!");
-                    SlimeTentacleThreatsOnShellBreak_Multi_0.AddLocalisation("tentacleShellDialogue2", "GLURP GLARP!!");
-                    SlimeTentacleThreatsOnShellBreak_Multi_0.AddLocalisation("tentacleShellDialogueAnswer0", "YES I KNOW RIGHT?!");
-                    SlimeTentacleThreatsOnShellBreak_Multi_0.AddLocalisation("tentacleShellDialogueAnswer1", "No, not really.");
-                    SlimeTentacleThreatsOnShellBreak_Multi_0.AddLocalisation("tentacleShellDialogueAnswer2", "Oh wow. That's... That's so sad.");
                     storyRegistry.RegisterStory(SlimeTentacleThreatsOnShellBreak_Multi_0);
                 }
                 //SlimeBlockedAnEnemyAttackWithArmor_Multi
@@ -2120,33 +2391,27 @@ namespace CorrosiveCobra
                         },
                         new List<object>()
                         {
-                            new SaySwitch()
+                        new ExternalStory.ExternalSaySwitch(new List<ExternalStory.ExternalSay>
+                        {
+                            new ExternalStory.ExternalSay()
                             {
-                                lines = new List<Say>
-                                {
-                                    new Say()
-                                    {
-                                        who = SlimeWho,
-                                        loopTag = "laugh",
-                                        hash = "slimeOverheatFix0"
-                                    },
-                                    new Say()
-                                    {
-                                        who = SlimeWho,
-                                        hash = "slimeOverheatFix1"
-                                    },
-                                    new Say()
-                                    {
-                                        who = SlimeWho,
-                                        loopTag = "sad",
-                                        hash = "slimeOverheatFix2"
-                                    },
-                                }
-                            }
+                                Who = SlimeWho,
+                                LoopTag = "laugh",
+                                What = "Did you turn on the AC?"
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                What = "Oh. Nice save, Drake."
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                LoopTag = "sad",
+                                What = "I liked being liquid-er."
+                            },
+                        }),
                         });
-                    SlimeOverheatDrakeFix_Multi_0.AddLocalisation("slimeOverheatFix0", "Did you turn on the AC?");
-                    SlimeOverheatDrakeFix_Multi_0.AddLocalisation("slimeOverheatFix1", "Oh. Nice save, Drake.");
-                    SlimeOverheatDrakeFix_Multi_0.AddLocalisation("slimeOverheatFix2", "I liked being liquid-er.");
                     storyRegistry.RegisterStory(SlimeOverheatDrakeFix_Multi_0);
                 }
                 //SlimeShopKeepBattleInsult
@@ -2169,27 +2434,22 @@ namespace CorrosiveCobra
                         },
                         new List<object>()
                         {
-                            new SaySwitch()
+                        new ExternalStory.ExternalSaySwitch(new List<ExternalStory.ExternalSay>
+                        {
+                            new ExternalStory.ExternalSay()
                             {
-                                lines = new List<Say>
-                                {
-                                    new Say()
-                                    {
-                                        who = SlimeWho,
-                                        loopTag = "sad",
-                                        hash = "slimeShopAboutToDie0"
-                                    },
-                                    new Say()
-                                    {
-                                        who = SlimeWho,
-                                        loopTag = "dark",
-                                        hash = "slimeShopAboutToDie1"
-                                    },
-                                }
-                            }
+                                Who = SlimeWho,
+                                LoopTag = "sad",
+                                What = "I see..."
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                LoopTag = "dark",
+                                What = "Loop time, then."
+                            },
+                        }),
                         });
-                    SlimeShopKeepBattleInsult_0.AddLocalisation("slimeShopAboutToDie0", "I see...");
-                    SlimeShopKeepBattleInsult_0.AddLocalisation("slimeShopAboutToDie1", "Loop time, then.");
                     storyRegistry.RegisterStory(SlimeShopKeepBattleInsult_0);
                 }
                 //SlimeVeryManyTurns_Multi
