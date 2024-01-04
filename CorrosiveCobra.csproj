@@ -8,16 +8,6 @@
 	  <Version>1.0.5</Version>
 	  <IncludedModProjectPaths>Sprites</IncludedModProjectPaths>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Compile Remove="References\Sprites\Artifacts\**" />
-    <Compile Remove="References\Sprites\Parts\**" />
-    <EmbeddedResource Remove="References\Sprites\Artifacts\**" />
-    <EmbeddedResource Remove="References\Sprites\Parts\**" />
-    <None Remove="References\Sprites\Artifacts\**" />
-    <None Remove="References\Sprites\Parts\**" />
-  </ItemGroup>
-
   <ItemGroup>
     <PackageReference Include="Shockah.CobaltCoreModBuildConfig" Version="2.0.0" />
   </ItemGroup>
