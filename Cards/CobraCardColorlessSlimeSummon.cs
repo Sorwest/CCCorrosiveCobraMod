@@ -24,7 +24,6 @@
             result.art = new Spr?((Spr)Manifest.CorrosiveCobra_CardBackgroud!.Id!);
             result.exhaust = true;
             result.artTint = "45e0ab";
-            State s = state;
             int count = 0;
             switch (upgrade)
             {
@@ -41,8 +40,7 @@
             result.description = string.Format(
                 Loc.GetLocString(Manifest.CobraCardColorlessSlimeSummon?.DescLocKey ?? throw new Exception("Card ColorlessSlimeSummon not found")),
                 count,
-                Manifest.CorrosiveCobra_CharacterColH,
-                "Dizzy?</c>");
+                Manifest.CobraColor);
             return result;
         }
 

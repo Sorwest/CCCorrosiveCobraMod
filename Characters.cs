@@ -26,8 +26,8 @@ namespace CorrosiveCobra
                     },
                 CorrosiveCobra_Character_TalkNeutralAnimation ?? throw new Exception("missing default animation"),
                 CorrosiveCobra_Character_MiniAnimation ?? throw new Exception("missing mini animation"));
-                CorrosiveCobra_Character.AddNameLocalisation(CorrosiveCobra_CharacterColH + "Dizzy?</c>", "en");
-                CorrosiveCobra_Character.AddDescLocalisation(CorrosiveCobra_CharacterColH + "DIZZY?</c>\nA friend from another timeline. His cards play with <c=keyword>heat and corrode</c>, for better, or <c=hurt>worse</c>. His jokes are still funny.", "en");
+                CorrosiveCobra_Character.AddNameLocalisation($"<c={CobraColor}>Dizzy?</c>", "en");
+                CorrosiveCobra_Character.AddDescLocalisation($"<c={CobraColor}>Dizzy?</c>\nA friend from another timeline. His cards play with <c=keyword>heat and corrode</c>, for better, or <c=hurt>worse</c>. His jokes are still funny.", "en");
                 registry.RegisterCharacter(CorrosiveCobra_Character);
             }
         }

@@ -12,14 +12,14 @@
             switch (upgrade)
             {
                 case Upgrade.None:
-                    result.cost = 1;
+                    result.cost = 0;
                     break;
                 case Upgrade.A:
                     result.cost = 0;
-                    result.buoyant = true;
                     break;
                 case Upgrade.B:
                     result.cost = 1;
+                    result.buoyant = true;
                     break;
             }
             return result;
@@ -50,10 +50,11 @@
                     AStatus astatus3 = new AStatus();
                     astatus3.status = heatoutbreak_status;
                     astatus3.statusAmount = 1;
+                    astatus3.targetPlayer = true;
                     cardActionList2.Add(astatus3);
                     AStatus astatus4 = new AStatus();
                     astatus4.status = heatoutbreak_status;
-                    astatus4.statusAmount = 2;
+                    astatus4.statusAmount = 3;
                     astatus4.targetPlayer = false;
                     cardActionList2.Add(astatus4);
                     result = cardActionList2;
@@ -63,12 +64,8 @@
                     AStatus astatus5 = new AStatus();
                     astatus5.status = heatoutbreak_status;
                     astatus5.statusAmount = 1;
+                    astatus5.targetPlayer = false;
                     cardActionList3.Add(astatus5);
-                    AStatus astatus6 = new AStatus();
-                    astatus6.status = heatoutbreak_status;
-                    astatus6.statusAmount = 3;
-                    astatus6.targetPlayer = false;
-                    cardActionList3.Add(astatus6);
                     result = cardActionList3;
                     break;
             }

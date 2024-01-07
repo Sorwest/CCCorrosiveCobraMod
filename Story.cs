@@ -5037,6 +5037,90 @@ namespace CorrosiveCobra
                 }
             }
             // ================ 
+            // EXISTING EVENTS ADDITION
+            // ================
+            {
+                //SlimeChoiceCardRewardOfYourColorChoice
+                {
+                    var SlimeChoiceCardRewardOfYourColorChoice = new ExternalStory($"ChoiceCardRewardOfYourColorChoice_{SlimeWho}",
+                        new StoryNode()
+                        {
+                            type = NodeType.@event,
+                            oncePerRun = true,
+                            bg = "BGBootSequence",
+                            allPresent = new HashSet<string>()
+                            {
+                                SlimeWho
+                            }
+                        },
+                        new List<object>()
+                        {
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                What = "Hey, thanks, weird entity.",
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = "comp",
+                                What = "Energy readings are back to normal.",
+                            }
+                        });
+                    storyRegistry.RegisterStory(SlimeChoiceCardRewardOfYourColorChoice);
+                }
+                //SlimeLoseCharacterCard
+                {
+                    var SlimeLoseCharacterCard = new ExternalStory($"LoseCharacterCard_{SlimeWho}",
+                        new StoryNode()
+                        {
+                            type = NodeType.@event,
+                            oncePerRun = true,
+                            bg = "BGBootSequence",
+                            allPresent = new HashSet<string>()
+                            {
+                                SlimeWho
+                            }
+                        },
+                        new List<object>()
+                        {
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                What = "I did the math and our chances of survival have changed by about 20%.",
+                            },
+                        });
+                    storyRegistry.RegisterStory(SlimeLoseCharacterCard);
+                }
+                //SlimeCrystallizedFriendEvent
+                {
+                    var SlimeCrystallizedFriendEvent = new ExternalStory($"CrystallizedFriendEvent_{SlimeWho}",
+                        new StoryNode()
+                        {
+                            type = NodeType.@event,
+                            oncePerRun = true,
+                            bg = "BGCrystalizedFriend",
+                            allPresent = new HashSet<string>()
+                            {
+                                SlimeWho
+                            }
+                        },
+                        new List<object>()
+                        {
+                            new Wait()
+                            {
+                                secs = 1.5
+                            },
+                            new ExternalStory.ExternalSay()
+                            {
+                                Who = SlimeWho,
+                                What = "... Oh! Hi, guys.",
+                                LoopTag = "laugh",
+                            },
+                        });
+                    storyRegistry.RegisterStory(SlimeCrystallizedFriendEvent);
+                }
+            }
+            // ================ 
             // NEW EVENTS
             // ================
             {

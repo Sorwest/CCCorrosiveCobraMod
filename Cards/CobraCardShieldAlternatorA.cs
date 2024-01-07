@@ -23,7 +23,7 @@
                 case Upgrade.B:
                     result.cost = 1;
                     result.exhaust = false;
-                    result.description = Loc.GetLocString(Manifest.CobraCardShieldAlternatorA?.DescLocKey ?? throw new Exception("Missing card"));
+                    result.description = Loc.GetLocString(Manifest.CobraCardShieldAlternatorA?.DescBLocKey ?? throw new Exception("Missing card"));
                     break;
             }
             return result;
@@ -37,7 +37,7 @@
                     List<CardAction> cardActionList1 = new List<CardAction>();
                     AStatus astatus1 = new AStatus();
                     astatus1.status = Status.shield;
-                    astatus1.statusAmount = 1;
+                    astatus1.statusAmount = 2;
                     astatus1.targetPlayer = true;
                     cardActionList1.Add(astatus1);
                     AAddCard aaddCard1 = new AAddCard();
@@ -52,7 +52,7 @@
                     List<CardAction> cardActionList2 = new List<CardAction>();
                     AStatus astatus2 = new AStatus();
                     astatus2.status = Status.shield;
-                    astatus2.statusAmount = 1;
+                    astatus2.statusAmount = 2;
                     astatus2.targetPlayer = true;
                     cardActionList2.Add(astatus2);
                     AAddCard aaddCard2 = new AAddCard();
@@ -67,7 +67,7 @@
                     List<CardAction> cardActionList3 = new List<CardAction>();
                     AStatus astatus3 = new AStatus();
                     astatus3.status = Status.shield;
-                    astatus3.statusAmount = 1;
+                    astatus3.statusAmount = 2;
                     astatus3.targetPlayer = true;
                     cardActionList3.Add(astatus3);
                     AAddCard aaddCard3 = new AAddCard();

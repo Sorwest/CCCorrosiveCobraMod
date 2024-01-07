@@ -19,7 +19,7 @@
             List<CardAction> cardActionList1 = new List<CardAction>();
             AStatus astatus1 = new AStatus();
             astatus1.status = Status.tempShield;
-            astatus1.statusAmount = 2;
+            astatus1.statusAmount = 3;
             astatus1.targetPlayer = true;
             cardActionList1.Add(astatus1);
             AAddCard aaddCard1 = new AAddCard();

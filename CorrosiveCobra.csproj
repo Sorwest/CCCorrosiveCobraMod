@@ -4,12 +4,14 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-	  <RootNamespace>Sorwest.CorrosiveCobra</RootNamespace>
-	  <Version>1.1</Version>
-	  <IncludedModProjectPaths>Sprites</IncludedModProjectPaths>
+	<RootNamespace>Sorwest.CorrosiveCobra</RootNamespace>
+	<Version>1.1</Version>
+	<IncludedModProjectPaths>Sprites</IncludedModProjectPaths>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Shockah.CobaltCoreModBuildConfig" Version="2.0.0" />
+	<PackageReference Include="Shrike" Version="2.1.0" />
+	<PackageReference Include="Shrike.Harmony" Version="2.0.2" />
   </ItemGroup>
 
 </Project>

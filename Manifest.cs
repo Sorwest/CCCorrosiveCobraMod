@@ -4,6 +4,8 @@ using CobaltCoreModding.Definitions.ModContactPoints;
 using CobaltCoreModding.Definitions.ModManifests;
 using CorrosiveCobra.Artifacts;
 using CorrosiveCobra.Cards;
+using HarmonyLib;
+using System.Reflection;
 using Microsoft.Extensions.Logging;
 using Sorwest.CorrosiveCobra;
 
@@ -30,16 +32,22 @@ namespace CorrosiveCobra
         IStoryManifest,
         IModManifest
     {
+        public DirectoryInfo? ModRootFolder { get; set; }
+        public DirectoryInfo? GameRootFolder { get; set; }
+        internal static Manifest Instance { get; private set; } = null!;
         public string Name => "Sorwest.CorrosiveCobra";
         internal static IKokoroApi KokoroApi { get; private set; } = null!;
-        public static System.Drawing.Color CorrosiveCobra_Primary_Color => System.Drawing.Color.FromArgb(107, 255, 205);
-        public static string CorrosiveCobra_CharacterColH => string.Format("<c={0:X2}{1:X2}{2:X2}>", (object)CorrosiveCobra_Primary_Color.R, (object)CorrosiveCobra_Primary_Color.G, (object)CorrosiveCobra_Primary_Color.B.ToString("X2"));
         public IEnumerable<DependencyEntry> Dependencies => new DependencyEntry[]
         {
             new DependencyEntry<IModManifest>("Shockah.Kokoro", ignoreIfMissing: false),
         };
-        public DirectoryInfo? ModRootFolder { get; set; }
         public ILogger? Logger { get; set; }
+        public static System.Drawing.Color CorrosiveCobraColor => System.Drawing.Color.FromArgb(107, 255, 205);
+        public static string CobraColor => string.Format("{0:X2}{1:X2}{2:X2}",
+            (object)CorrosiveCobraColor.R,
+            (object)CorrosiveCobraColor.G,
+            (object)CorrosiveCobraColor.B.ToString("X2"));
+
         public static ExternalShip? CorrosiveCobra_Main { get; private set; }
         public static ExternalStarterShip? CorrosiveCobra_StarterShip { get; private set; }
         public static ExternalDeck? CobraDeck { get; private set; }
@@ -52,6 +60,7 @@ namespace CorrosiveCobra
         public static ExternalSprite? CorrosiveCobra_CharacterPanelFrame_Sprite { get; private set; }
         public static ExternalSprite? CorrosiveCobra_CharacterGameover_Sprite { get; private set; }
         public static ExternalSprite? CorrosiveCobra_CharacterSquint_Sprite { get; private set; }
+        public static ExternalSprite? CorrosiveCobra_CharacterCrystal_Sprite { get; private set; }
 
         //character animation sprites
         public static ExternalAnimation? CorrosiveCobra_Character_DefaultAnimation { get; private set; }
@@ -96,8 +105,10 @@ namespace CorrosiveCobra
         public static ExternalSprite? CorrosiveCobra_CorrodeSprite { get; private set; }
         public static ExternalSprite? CorrosiveCobra_CorrosionIgnitionSprite { get; private set; }
         public static ExternalSprite? CorrosiveCobra_BoxHeatSprite { get; private set; }
-        public static ExternalSprite? CorrosiveCobra_SplitTopSprite { get; private set; }
-        public static ExternalSprite? CorrosiveCobra_SplitBottomSprite { get; private set; }
+        public static ExternalSprite? CorrosiveCobra_Split3_2TopSprite { get; private set; }
+        public static ExternalSprite? CorrosiveCobra_Split3_2BottomSprite { get; private set; }
+        public static ExternalSprite? CorrosiveCobra_SplitHalfTopSprite { get; private set; }
+        public static ExternalSprite? CorrosiveCobra_SplitHalfBottomSprite { get; private set; }
         public static ExternalSprite? CorrosiveCobra_SeekerCobraSprite { get; private set; }
         public static ExternalSprite? CorrosiveCobra_FumeCannonSprite { get; private set; }
         public static ExternalSprite? CorrosiveCobra_EvolveBackgroundSprite { get; private set; }
@@ -167,6 +178,8 @@ namespace CorrosiveCobra
         public static ExternalCard? CobraCardShieldAlternatorB { get; private set; }
         public static ExternalCard? CobraCardAcidicFlare { get; private set; }
         public static ExternalCard? CobraCardFlameShot { get; private set; }
+        public static ExternalCard? CobraCardStolenFueltank { get; private set; }
+        public static ExternalCard? CobraCardUncontrolledEngines { get; private set; }
 
         //ship parts
         public static ExternalPart? CorrosiveCobra_Cannon { get; private set; }
@@ -177,10 +190,28 @@ namespace CorrosiveCobra
         public static ExternalPart? CorrosiveCobra_WingRight { get; private set; }
         public static ExternalGlossary? AIncomingCorrode_Glossary { get; private set; }
         public static ExternalGlossary? AEvolveStatus_Glossary { get; private set; }
-        public DirectoryInfo? GameRootFolder { get; set; }
         public void BootMod(IModLoaderContact contact)
         {
             KokoroApi = contact.GetApi<IKokoroApi>("Shockah.Kokoro")!;
+
+            Harmony harmony = new("Sorwest.CorrosiveCobra.Harmony");
+            
+            harmony.Patch(
+                original: AccessTools.DeclaredMethod(typeof(Card), nameof(Card.OnDraw)),
+                postfix: new HarmonyMethod(typeof(Manifest).GetMethod("EvolveOnDraw", BindingFlags.Static | BindingFlags.NonPublic))
+            );
+            harmony.Patch(
+                original: AccessTools.DeclaredMethod(typeof(Ship), nameof(Ship.OnAfterTurn)),
+                postfix: new HarmonyMethod(typeof(Manifest).GetMethod("HeatOutbreakTurnEnd", BindingFlags.Static | BindingFlags.NonPublic))
+            );
+            harmony.Patch(
+                original: AccessTools.DeclaredMethod(typeof(Ship), nameof(Ship.OnAfterTurn)),
+                prefix: new HarmonyMethod(typeof(Manifest).GetMethod("HeatControlTurnEnd", BindingFlags.Static | BindingFlags.NonPublic))
+            );
+            harmony.Patch(
+                original: typeof(Colors).GetMethod("LookupColor", BindingFlags.Static | BindingFlags.Public),
+                prefix: new HarmonyMethod(typeof(CustomColor).GetMethod("CobraLookupColor", BindingFlags.Static | BindingFlags.NonPublic))
+            );
         }
         void ISpriteManifest.LoadManifest(ISpriteRegistry artRegistry)
         {
@@ -246,6 +277,11 @@ namespace CorrosiveCobra
                     var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", Path.GetFileName("CorrosiveCobra_CharacterSquint_Sprite.png"));
                     CorrosiveCobra_CharacterSquint_Sprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_CharacterSquint_Sprite", new FileInfo(path));
                     artRegistry.RegisterArt(CorrosiveCobra_CharacterSquint_Sprite);
+                }
+                {
+                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", Path.GetFileName("CorrosiveCobra_CharacterCrystal_Sprite.png"));
+                    CorrosiveCobra_CharacterCrystal_Sprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_CharacterCrystal_Sprite", new FileInfo(path));
+                    artRegistry.RegisterArt(CorrosiveCobra_CharacterCrystal_Sprite);
                 }
             }
             //talk animations
@@ -427,14 +463,24 @@ namespace CorrosiveCobra
                     artRegistry.RegisterArt(CorrosiveCobra_CorrosionIgnitionSprite);
                 }
                 {
-                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_SplitTopSprite.png"));
-                    CorrosiveCobra_SplitTopSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_SplitTopSprite", new FileInfo(path));
-                    artRegistry.RegisterArt(CorrosiveCobra_SplitTopSprite);
+                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_Split3_2TopSprite.png"));
+                    CorrosiveCobra_Split3_2TopSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_Split3_2TopSprite", new FileInfo(path));
+                    artRegistry.RegisterArt(CorrosiveCobra_Split3_2TopSprite);
                 }
                 {
-                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_SplitBottomSprite.png"));
-                    CorrosiveCobra_SplitBottomSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_SplitBottomSprite", new FileInfo(path));
-                    artRegistry.RegisterArt(CorrosiveCobra_SplitBottomSprite);
+                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_Split3_2BottomSprite.png"));
+                    CorrosiveCobra_Split3_2BottomSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_Split3_2BottomSprite", new FileInfo(path));
+                    artRegistry.RegisterArt(CorrosiveCobra_Split3_2BottomSprite);
+                }
+                {
+                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_SplitHalfTopSprite.png"));
+                    CorrosiveCobra_SplitHalfTopSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_SplitHalfTopSprite", new FileInfo(path));
+                    artRegistry.RegisterArt(CorrosiveCobra_SplitHalfTopSprite);
+                }
+                {
+                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_SplitHalfBottomSprite.png"));
+                    CorrosiveCobra_SplitHalfBottomSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_SplitHalfBottomSprite", new FileInfo(path));
+                    artRegistry.RegisterArt(CorrosiveCobra_SplitHalfBottomSprite);
                 }
                 {
                     var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_BoxHeatSprite.png"));
@@ -533,7 +579,7 @@ namespace CorrosiveCobra
             var borderCobraShipDeckSprite = BorderCobraBasic ?? throw new Exception();
             CobraDeck = new ExternalDeck(
                 "Sorwest.CorrosiveCobra.CobraDeck",
-                CorrosiveCobra_Primary_Color,
+                CorrosiveCobraColor,
                 System.Drawing.Color.Black,
                 card_DefaultArt,
                 borderCobraDeckSprite,
@@ -541,7 +587,7 @@ namespace CorrosiveCobra
             registry.RegisterDeck(Manifest.CobraDeck);
             CobraShipDeck = new ExternalDeck(
                 "Sorwest.CorrosiveCobra.CobraShipDeck",
-                CorrosiveCobra_Primary_Color,
+                CorrosiveCobraColor,
                 System.Drawing.Color.Black,
                 card_DefaultArt,
                 borderCobraShipDeckSprite,
@@ -581,7 +627,7 @@ namespace CorrosiveCobra
             {
                 CobraCardColorlessSlimeSummon = new ExternalCard("CorrosiveCobra.CobraCardColorlessSlimeSummon", typeof(CobraCardColorlessSlimeSummon), card_DefaultArt, ExternalDeck.GetRaw((int)Deck.colorless));
                 registry.RegisterCard(CobraCardColorlessSlimeSummon);
-                CobraCardColorlessSlimeSummon.AddLocalisation("Dizzy?.EXE", "Add 1 of {0} <c=cardtrait>discount, temp</c> {1}{2} cards to your hand.");
+                CobraCardColorlessSlimeSummon.AddLocalisation("Dizzy?.EXE", "Add 1 of {0} <c=cardtrait>discount, temp</c> <c={1}>Dizzy?</c> cards to your hand.");
             }
             {
                 CobraCardColorlessAbsorbArtifact = new ExternalCard("CorrosiveCobra.CobraCardColorlessAbsorbArtifact", typeof(CobraCardColorlessAbsorbArtifact), card_DefaultArt, ExternalDeck.GetRaw((int)Deck.colorless));
@@ -702,12 +748,12 @@ namespace CorrosiveCobra
             {
                 CobraCardShieldAlternatorA = new ExternalCard("CorrosiveCobra.CobraCardShieldAlternatorA", typeof(CobraCardShieldAlternatorA), card_DefaultArt, CobraDeck);
                 registry.RegisterCard(CobraCardShieldAlternatorA);
-                CobraCardShieldAlternatorA.AddLocalisation("Shield Replica", desc: "Gain <c=keyword>1</c> <c=status>shield</c>.\nAdd a <c=card>Temp Shield Replica</c> to your <c=keyword>draw pile</c>.", descB: "Gain <c=keyword>1</c> <c=status>shield</c>.\nAdd a <c=card>Temp Shield Replica</c> to your hand.");
+                CobraCardShieldAlternatorA.AddLocalisation("Shield Replica", desc: "Gain <c=keyword>2</c> <c=status>shield</c>.\nAdd a <c=card>Temp Shield Replica</c> to your <c=keyword>draw pile</c>.", descB: "Gain <c=keyword>2</c> <c=status>shield</c>.\nAdd a <c=card>Temp Shield Replica</c> to your hand.");
             }
             {
                 CobraCardShieldAlternatorB = new ExternalCard("CorrosiveCobra.CobraCardShieldAlternatorB", typeof(CobraCardShieldAlternatorB), card_DefaultArt, CobraDeck);
                 registry.RegisterCard(CobraCardShieldAlternatorB);
-                CobraCardShieldAlternatorB.AddLocalisation("Temp Shield Replica", desc: "Gain <c=keyword>2</c> <c=status>temp shield</c>.\nAdd a <c=card>Shield Replica</c> to your hand.");
+                CobraCardShieldAlternatorB.AddLocalisation("Temp Shield Replica", desc: "Gain <c=keyword>3</c> <c=status>temp shield</c>.\nAdd a <c=card>Shield Replica</c> to your hand.");
             }
             {
                 CobraCardAcidicFlare = new ExternalCard("CorrosiveCobra.CobraCardAcidicFlare", typeof(CobraCardAcidicFlare), card_DefaultArt, CobraDeck);
@@ -718,6 +764,16 @@ namespace CorrosiveCobra
                 CobraCardFlameShot = new ExternalCard("CorrosiveCobra.CobraCardFlameShot", typeof(CobraCardFlameShot), card_DefaultArt, CobraDeck);
                 registry.RegisterCard(CobraCardFlameShot);
                 CobraCardFlameShot.AddLocalisation("Flame Blast", desc: "Attack for <c=redd>{0}</c> damage. Add {1} <c=card>Miasma</c> to your <c=keyword>draw pile</c>.");
+            }
+            {
+                CobraCardStolenFueltank = new ExternalCard("CorrosiveCobra.CobraCardStolenFueltank", typeof(CobraCardStolenFueltank), card_DefaultArt, CobraDeck);
+                registry.RegisterCard(CobraCardStolenFueltank);
+                CobraCardStolenFueltank.AddLocalisation("Stolen Fueltank");
+            }
+            {
+                CobraCardUncontrolledEngines = new ExternalCard("CorrosiveCobra.CobraCardUncontrolledEngines", typeof(CobraCardUncontrolledEngines), card_DefaultArt, CobraDeck);
+                registry.RegisterCard(CobraCardUncontrolledEngines);
+                CobraCardUncontrolledEngines.AddLocalisation("Uncontrolled Engine");
             }
         }
         public void LoadManifest(IArtifactRegistry registry)

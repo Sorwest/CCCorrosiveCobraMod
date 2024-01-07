@@ -4,39 +4,32 @@
     public class CobraCardLeakingContainer : Card
     {
         public override string Name() => "Leaking Container";
-        private int GetHandTotal(State s)
-        {
-            int handTotal = 0;
-            if (s.route is Combat route)
-                handTotal = route.hand.Count - 1;
-            if (upgrade == Upgrade.A)
-                ++handTotal;
-            return handTotal;
-        }
         public override CardData GetData(State state)
         {
             CardData result = new CardData();
             result.floppable = true;
             result.retain = true;
-            result.art = new Spr?(!flipped ? (Spr)Manifest.CorrosiveCobra_SplitTopSprite!.Id! : (Spr)Manifest.CorrosiveCobra_SplitBottomSprite!.Id!);
             switch (upgrade)
             {
                 case Upgrade.None:
                     {
                         result.cost = 2;
                         result.exhaust = true;
+                        result.art = new Spr?(!flipped ? (Spr)Manifest.CorrosiveCobra_SplitHalfTopSprite!.Id! : (Spr)Manifest.CorrosiveCobra_SplitHalfBottomSprite!.Id!);
                         break;
                     }
                 case Upgrade.A:
                     {
                         result.cost = 2;
                         result.exhaust = true;
+                        result.art = new Spr?(!flipped ? (Spr)Manifest.CorrosiveCobra_SplitHalfTopSprite!.Id! : (Spr)Manifest.CorrosiveCobra_SplitHalfBottomSprite!.Id!);
                         break;
                     }
                 case Upgrade.B:
                     {
                         result.cost = 2;
                         result.exhaust = false;
+                        result.art = new Spr?(!flipped ? (Spr)Manifest.CorrosiveCobra_Split3_2TopSprite!.Id! : (Spr)Manifest.CorrosiveCobra_Split3_2BottomSprite!.Id!);
                         break;
                     }
             }
@@ -49,12 +42,6 @@
             {
                 case Upgrade.None:
                     List<CardAction> cardActionList1 = new List<CardAction>();
-                    cardActionList1.Add(new AVariableHint()
-                    {
-                        hand = true,
-                        handAmount = GetHandTotal(s),
-                        disabled = flipped,
-                    });
                     AHurt ahurt1 = new AHurt();
                     ahurt1.hurtAmount = 3;
                     ahurt1.targetPlayer = true;
@@ -63,10 +50,8 @@
                     cardActionList1.Add(ahurt1);
                     AStatus astatus1 = new AStatus();
                     astatus1.status = Status.corrode;
-                    astatus1.statusAmount = GetHandTotal(s);
-                    astatus1.xHint = new int?(1);
+                    astatus1.statusAmount = 4;
                     astatus1.disabled = flipped;
-                    astatus1.omitFromTooltips = true;
                     cardActionList1.Add(astatus1);
                     AStatus astatus2 = new AStatus();
                     astatus2.status = Status.heat;
@@ -82,12 +67,6 @@
                     break;
                 case Upgrade.A:
                     List<CardAction> cardActionList2 = new List<CardAction>();
-                    cardActionList2.Add(new AVariableHint()
-                    {
-                        hand = true,
-                        handAmount = GetHandTotal(s),
-                        disabled = flipped,
-                    });
                     AHurt ahurt3 = new AHurt();
                     ahurt3.hurtAmount = 3;
                     ahurt3.targetPlayer = true;
@@ -96,9 +75,7 @@
                     cardActionList2.Add(ahurt3);
                     AStatus astatus3 = new AStatus();
                     astatus3.status = Status.corrode;
-                    astatus3.statusAmount = GetHandTotal(s);
-                    astatus3.omitFromTooltips = true;
-                    astatus3.xHint = new int?(1);
+                    astatus3.statusAmount = 4;
                     astatus3.disabled = flipped;
                     cardActionList2.Add(astatus3);
                     AStatus astatus4 = new AStatus();
