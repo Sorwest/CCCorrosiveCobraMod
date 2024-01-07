@@ -25,7 +25,7 @@ namespace CorrosiveCobra
             }
             {
                 HeatOutbreakStatus = new ExternalStatus("CorrosiveCobra.Status.HeatOutbreakStatus", true, CorrosiveCobra_Primary_Color, null, HeatOutbreakStatusSprite ?? throw new Exception("MissingSprite"), true);
-                HeatOutbreakStatus.AddLocalisation("Heat Outbreak", "At the end of turn, the enemy is dealt {0} damage per <c=status>heat</c> stack you both have.");
+                HeatOutbreakStatus.AddLocalisation("Heat Outbreak", "At the end of turn, this ship is dealt {0} damage per <c=status>heat</c> it has.");
                 statusRegistry.RegisterStatus(HeatOutbreakStatus);
             }
             {
@@ -60,55 +60,61 @@ namespace CorrosiveCobra
         }
         private static void EvolveOnDraw(Card __instance, State s, Combat c)
         {
-            if (Manifest.EvolveStatus?.Id == null)
-                return;
-            var status = (Status)Manifest.EvolveStatus.Id;
-            var amount = s.ship.Get(status);
-            if (amount != 0)
+            if (Manifest.EvolveStatus?.Id != null)
             {
-                var deck = __instance.GetMeta().deck;
-                if (deck == Deck.trash || deck == Deck.corrupted)
+                var status = (Status)Manifest.EvolveStatus.Id;
+                var amount = s.ship.Get(status);
+                if (amount != 0)
                 {
-                    s.ship.PulseStatus(status);
-                    ADrawCard adrawCard1 = new ADrawCard();
-                    adrawCard1.count = amount;
-                    c.Queue(adrawCard1);
-                    return;
+                    var deck = __instance.GetMeta().deck;
+                    if (deck == Deck.trash || deck == Deck.corrupted)
+                    {
+                        s.ship.PulseStatus(status);
+                        ADrawCard adrawCard1 = new ADrawCard();
+                        adrawCard1.count = amount;
+                        c.Queue(adrawCard1);
+                    }
                 }
             }
+            return;
         }
         private static void HeatOutbreakTurnEnd(Ship __instance, State s, Combat c)
         {
-            if (Manifest.HeatOutbreakStatus?.Id == null)
-                return;
-            var status = (Status)Manifest.HeatOutbreakStatus.Id;
-            var amount = s.ship.Get(status);
-            if (amount <= 0)
-                return;
-            if (!(__instance.isPlayerShip))
-                return;
-            if (c.otherShip.Get(Status.heat) > 0 || s.ship.Get(Status.heat) > 0)
+            if (Manifest.HeatOutbreakStatus?.Id != null)
             {
-                AHurt ahurt1 = new AHurt();
-                ahurt1.hurtAmount = amount * (c.otherShip.Get(Status.heat) + s.ship.Get(Status.heat));
-                ahurt1.targetPlayer = false;
-                ahurt1.hurtShieldsFirst = true;
-                c.QueueImmediate(ahurt1);
-                s.ship.PulseStatus(status);
+                var heatOutbreak_status = (Status)Manifest.HeatOutbreakStatus.Id;
+                var heatOutbreak_amount = __instance.Get(heatOutbreak_status);
+                if (heatOutbreak_amount > 0)
+                {
+                    var isPlayer = __instance.isPlayerShip;
+                    if (__instance.Get(Status.heat) > 0)
+                    {
+                        AHurt ahurt1 = new AHurt();
+                        ahurt1.hurtAmount = heatOutbreak_amount * (__instance.Get(Status.heat));
+                        ahurt1.targetPlayer = isPlayer;
+                        ahurt1.hurtShieldsFirst = true;
+                        c.QueueImmediate(ahurt1);
+                        __instance.PulseStatus(heatOutbreak_status);
+                    }
+                }
             }
+            return;
         }
         private static void HeatControlTurnEnd(Ship __instance, State s, Combat c)
         {
-            if (Manifest.HeatControlStatus?.Id == null)
-                return;
-            var status = (Status)Manifest.HeatControlStatus.Id;
-            var amount = s.ship.Get(status);
-            if (amount <= 0)
-                return;
-            s.ship.PulseStatus(status);
-            s.ship.heatTrigger += 1;
-            if (__instance.Get(Status.timeStop) <= 0)
-                __instance.Set(status, amount - 1);
+            if (Manifest.HeatControlStatus?.Id != null)
+            {
+                var heatControl_status = (Status)Manifest.HeatControlStatus.Id;
+                var heatControl_amount = __instance.Get(heatControl_status);
+                if (heatControl_amount > 0)
+                {
+                    __instance.PulseStatus(heatControl_status);
+                    __instance.heatTrigger += 1;
+                    if (__instance.Get(Status.timeStop) <= 0)
+                        __instance.Set(heatControl_status, heatControl_amount - 1);
+                }
+            }
+            return;
         }
     }
 }

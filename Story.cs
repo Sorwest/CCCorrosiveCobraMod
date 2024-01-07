@@ -42,7 +42,7 @@ namespace CorrosiveCobra
                             {
                                 Who = SlimeWho,
                                 What = "Oh, my suit is melting. Cool.",
-                                LoopTag = "laugh"
+                                LoopTag = "laugh",
                             },
                         });
                     storyRegistry.RegisterStory(SlimeHeatIncrease_Multi_0);
@@ -1382,6 +1382,7 @@ namespace CorrosiveCobra
                             },
                         });
                     storyRegistry.RegisterInjector(injectDialogue0);
+                    
                 }
                 //SlimeBatboyKeepsTalking_Multi
                 {
@@ -4728,7 +4729,6 @@ namespace CorrosiveCobra
                     }
                 }
                 //playedTimestreamLeak_Multi
-                // (TO FIX)
                 {
                     var playedTimestreamLeak_Multi_0 = new ExternalStory("CorrosiveCobra.Story.playedTimestreamLeak_Multi_0",
                         new StoryNode()
@@ -4945,7 +4945,7 @@ namespace CorrosiveCobra
                             new ExternalStory.ExternalSay()
                             {
                                 Who = "crew",
-                                What = "Siri, turn on the AC to 0 K, thanks.",
+                                What = "Siri, AC to 0 K, thanks.",
                             },
                         });
                     storyRegistry.RegisterStory(hasArtifactUnstableTanks_Multi_0);
@@ -4989,7 +4989,7 @@ namespace CorrosiveCobra
                             maxTurnsThisCombat = 1,
                             hasArtifacts = new HashSet<string>()
                             {
-                            "CobraArtifactSlimeHeart"
+                                "CobraArtifactSlimeHeart"
                             },
                             allPresent = new HashSet<string>()
                             {

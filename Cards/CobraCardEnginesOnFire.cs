@@ -16,10 +16,10 @@
                     break;
                 case Upgrade.A:
                     result.cost = 0;
+                    result.buoyant = true;
                     break;
                 case Upgrade.B:
                     result.cost = 1;
-                    result.buoyant = true;
                     break;
             }
             return result;
@@ -38,24 +38,37 @@
                     astatus1.statusAmount = 1;
                     astatus1.targetPlayer = true;
                     cardActionList1.Add(astatus1);
+                    AStatus astatus2 = new AStatus();
+                    astatus2.status = heatoutbreak_status;
+                    astatus2.statusAmount = 2;
+                    astatus2.targetPlayer = false;
+                    cardActionList1.Add(astatus2);
                     result = cardActionList1;
                     break;
                 case Upgrade.A:
                     List<CardAction> cardActionList2 = new List<CardAction>();
-                    AStatus astatus2 = new AStatus();
-                    astatus2.status = heatoutbreak_status;
-                    astatus2.statusAmount = 1;
-                    astatus2.targetPlayer = true;
-                    cardActionList2.Add(astatus2);
+                    AStatus astatus3 = new AStatus();
+                    astatus3.status = heatoutbreak_status;
+                    astatus3.statusAmount = 1;
+                    cardActionList2.Add(astatus3);
+                    AStatus astatus4 = new AStatus();
+                    astatus4.status = heatoutbreak_status;
+                    astatus4.statusAmount = 2;
+                    astatus4.targetPlayer = false;
+                    cardActionList2.Add(astatus4);
                     result = cardActionList2;
                     break;
                 case Upgrade.B:
                     List<CardAction> cardActionList3 = new List<CardAction>();
-                    AStatus astatus3 = new AStatus();
-                    astatus3.status = heatoutbreak_status;
-                    astatus3.statusAmount = 1;
-                    astatus3.targetPlayer = true;
-                    cardActionList3.Add(astatus3);
+                    AStatus astatus5 = new AStatus();
+                    astatus5.status = heatoutbreak_status;
+                    astatus5.statusAmount = 1;
+                    cardActionList3.Add(astatus5);
+                    AStatus astatus6 = new AStatus();
+                    astatus6.status = heatoutbreak_status;
+                    astatus6.statusAmount = 3;
+                    astatus6.targetPlayer = false;
+                    cardActionList3.Add(astatus6);
                     result = cardActionList3;
                     break;
             }

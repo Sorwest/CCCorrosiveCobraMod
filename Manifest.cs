@@ -5,6 +5,7 @@ using CobaltCoreModding.Definitions.ModManifests;
 using CorrosiveCobra.Artifacts;
 using CorrosiveCobra.Cards;
 using Microsoft.Extensions.Logging;
+using Sorwest.CorrosiveCobra;
 
 // Many thanks to parchmentengineer and theirs armada mod, check them out!
 // https://github.com/parchmentEngineer/parchmentArmada/releases/
@@ -26,13 +27,17 @@ namespace CorrosiveCobra
         IDeckManifest,
         IStatusManifest,
         IGlossaryManifest,
-        IStoryManifest
+        IStoryManifest,
+        IModManifest
     {
         public string Name => "Sorwest.CorrosiveCobra";
-
+        internal static IKokoroApi KokoroApi { get; private set; } = null!;
         public static System.Drawing.Color CorrosiveCobra_Primary_Color => System.Drawing.Color.FromArgb(107, 255, 205);
         public static string CorrosiveCobra_CharacterColH => string.Format("<c={0:X2}{1:X2}{2:X2}>", (object)CorrosiveCobra_Primary_Color.R, (object)CorrosiveCobra_Primary_Color.G, (object)CorrosiveCobra_Primary_Color.B.ToString("X2"));
-        public IEnumerable<DependencyEntry> Dependencies => Array.Empty<DependencyEntry>();
+        public IEnumerable<DependencyEntry> Dependencies => new DependencyEntry[]
+        {
+            new DependencyEntry<IModManifest>("Shockah.Kokoro", ignoreIfMissing: false),
+        };
         public DirectoryInfo? ModRootFolder { get; set; }
         public ILogger? Logger { get; set; }
         public static ExternalShip? CorrosiveCobra_Main { get; private set; }
@@ -79,6 +84,8 @@ namespace CorrosiveCobra
         public static ExternalSprite? DissolventSprite { get; private set; }
         public static ExternalSprite? DummyHeatSprite { get; private set; }
         public static ExternalSprite? FuelWallsSprite { get; private set; }
+        public static ExternalSprite? HeatCostSatisfied { get; private set; }
+        public static ExternalSprite? HeatCostUnsatisfied { get; private set; }
         public static ExternalSprite? IncomingCorrodeIcon { get; private set; }
         public static ExternalSprite? EvolveStatusSprite { get; private set; }
         public static ExternalSprite? HeatOutbreakStatusSprite { get; private set; }
@@ -159,7 +166,7 @@ namespace CorrosiveCobra
         public static ExternalCard? CobraCardShieldAlternatorA { get; private set; }
         public static ExternalCard? CobraCardShieldAlternatorB { get; private set; }
         public static ExternalCard? CobraCardAcidicFlare { get; private set; }
-        public static ExternalCard? CobraCardFlameBlast { get; private set; }
+        public static ExternalCard? CobraCardFlameShot { get; private set; }
 
         //ship parts
         public static ExternalPart? CorrosiveCobra_Cannon { get; private set; }
@@ -171,6 +178,10 @@ namespace CorrosiveCobra
         public static ExternalGlossary? AIncomingCorrode_Glossary { get; private set; }
         public static ExternalGlossary? AEvolveStatus_Glossary { get; private set; }
         public DirectoryInfo? GameRootFolder { get; set; }
+        public void BootMod(IModLoaderContact contact)
+        {
+            KokoroApi = contact.GetApi<IKokoroApi>("Shockah.Kokoro")!;
+        }
         void ISpriteManifest.LoadManifest(ISpriteRegistry artRegistry)
         {
             if (this.ModRootFolder == null)
@@ -322,6 +333,16 @@ namespace CorrosiveCobra
             }
             //icon sprites
             {
+                {
+                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Icon", Path.GetFileName("HeatCostSatisfied.png"));
+                    HeatCostSatisfied = new ExternalSprite("CorrosiveCobra.sprites.HeatCostSatisfied", new FileInfo(path));
+                    artRegistry.RegisterArt(HeatCostSatisfied);
+                }
+                {
+                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Icon", Path.GetFileName("HeatCostUnsatisfied.png"));
+                    HeatCostUnsatisfied = new ExternalSprite("CorrosiveCobra.sprites.HeatCostUnsatisfied", new FileInfo(path));
+                    artRegistry.RegisterArt(HeatCostUnsatisfied);
+                }
                 {
                     var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Icon", Path.GetFileName("IncomingCorrodeIcon.png"));
                     IncomingCorrodeIcon = new ExternalSprite("CorrosiveCobra.sprites.IncomingCorrodeIcon", new FileInfo(path));
@@ -694,9 +715,9 @@ namespace CorrosiveCobra
                 CobraCardAcidicFlare.AddLocalisation("Acidic Flare", desc: "Turn <c=redd>ALL</c> <c=status>heat</c> into <c=status>corrode</c>.", descA: "Turn <c=redd>ALL</c> <c=status>corrode</c> into <c=status>heat</c>. Gain a <c=card>Corrosion Ignition A</c>.", descB: "Turn <c=redd>ALL</c> <c=status>heat</c> into <c=status>corrode</c>. Gain a <c=card>Corrosion Ignition B</c>.");
             }
             {
-                CobraCardFlameBlast = new ExternalCard("CorrosiveCobra.CobraCardFlameBlast", typeof(CobraCardFlameBlast), card_DefaultArt, CobraDeck);
-                registry.RegisterCard(CobraCardFlameBlast);
-                CobraCardFlameBlast.AddLocalisation("Flame Blast", desc: "Attack for <c=redd>{0}</c> damage. Add {1} <c=card>Miasma</c> to your <c=keyword>draw pile</c>.");
+                CobraCardFlameShot = new ExternalCard("CorrosiveCobra.CobraCardFlameShot", typeof(CobraCardFlameShot), card_DefaultArt, CobraDeck);
+                registry.RegisterCard(CobraCardFlameShot);
+                CobraCardFlameShot.AddLocalisation("Flame Blast", desc: "Attack for <c=redd>{0}</c> damage. Add {1} <c=card>Miasma</c> to your <c=keyword>draw pile</c>.");
             }
         }
         public void LoadManifest(IArtifactRegistry registry)

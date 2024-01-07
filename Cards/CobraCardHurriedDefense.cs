@@ -11,44 +11,64 @@
             switch (upgrade)
             {
                 case Upgrade.None:
-                    result.Add(new AStatus()
+                    List<CardAction> cardActionList1 = new List<CardAction>
                     {
-                        status = Status.tempShield,
-                        statusAmount = 2,
-                        targetPlayer = true
-                    });
-                    result.Add(new AStatus()
-                    {
-                        status = Status.heat,
-                        statusAmount = -1,
-                        targetPlayer = true
-                    });
+                        Manifest.KokoroApi.ActionCosts.Make(
+                            Manifest.KokoroApi.ActionCosts.Cost(
+                                Manifest.KokoroApi.ActionCosts.StatusResource(
+                                    Status.heat,
+                                    (Spr)Manifest.HeatCostUnsatisfied!.Id!.Value,
+                                    (Spr)Manifest.HeatCostSatisfied!.Id!.Value
+                                ),
+                                amount: 1
+                            ),
+                            new AStatus()
+                            {
+                                status = Status.tempShield,
+                                statusAmount = 2,
+                                targetPlayer = true
+                            }
+                        )
+                    };
+                    result = cardActionList1;
                     break;
                 case Upgrade.A:
-                    result.Add(new AAttack()
+                    List<CardAction> cardActionList2 = new List<CardAction>
                     {
-                        damage = GetDmg(s, 1),
-                    });
-                    result.Add(new AStatus()
-                    {
-                        status = Status.shield,
-                        statusAmount = 2,
-                        targetPlayer = true
-                    });
+                        new AAttack()
+                        {
+                            damage = GetDmg(s, 1),
+                        },
+                        new AStatus()
+                        {
+                            status = Status.shield,
+                            statusAmount = 2,
+                            targetPlayer = true
+                        }
+                    };
+                    result = cardActionList2;
                     break;
                 case Upgrade.B:
-                    result.Add(new AStatus()
+                    List<CardAction> cardActionList3 = new List<CardAction>
                     {
-                        status = Status.tempShield,
-                        statusAmount = 5,
-                        targetPlayer = true
-                    });
-                    result.Add(new AStatus()
-                    {
-                        status = Status.heat,
-                        statusAmount = 1,
-                        targetPlayer = true
-                    });
+                        Manifest.KokoroApi.ActionCosts.Make(
+                            Manifest.KokoroApi.ActionCosts.Cost(
+                                Manifest.KokoroApi.ActionCosts.StatusResource(
+                                    Status.heat,
+                                    (Spr)Manifest.HeatCostUnsatisfied!.Id!.Value,
+                                    (Spr)Manifest.HeatCostSatisfied!.Id!.Value
+                                ),
+                                amount: 1
+                            ),
+                            new AStatus()
+                            {
+                                status = Status.tempShield,
+                                statusAmount = 5,
+                                targetPlayer = true
+                            }
+                        )
+                    };
+                    result = cardActionList3;
                     break;
             }
             return result;

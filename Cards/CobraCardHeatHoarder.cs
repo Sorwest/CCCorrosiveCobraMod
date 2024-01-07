@@ -11,11 +11,11 @@
             switch (upgrade)
             {
                 case Upgrade.None:
-                    result.cost = 3;
+                    result.cost = 1;
                     result.description = string.Format(Loc.GetLocString(Manifest.CobraCardHeatHoarder?.DescLocKey ?? throw new Exception("Missing card")), 1, 2);
                     break;
                 case Upgrade.A:
-                    result.cost = 1;
+                    result.cost = 0;
                     result.description = string.Format(Loc.GetLocString(Manifest.CobraCardHeatHoarder?.DescLocKey ?? throw new Exception("Missing card")), 1, 2);
                     break;
                 case Upgrade.B:
