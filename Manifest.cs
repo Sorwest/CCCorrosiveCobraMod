@@ -2,804 +2,966 @@
 using CobaltCoreModding.Definitions.ExternalItems;
 using CobaltCoreModding.Definitions.ModContactPoints;
 using CobaltCoreModding.Definitions.ModManifests;
-using CorrosiveCobra.Artifacts;
-using CorrosiveCobra.Cards;
+using Sorwest.CorrosiveCobra.Artifacts;
+using Sorwest.CorrosiveCobra.Cards;
 using HarmonyLib;
 using System.Reflection;
 using Microsoft.Extensions.Logging;
-using Sorwest.CorrosiveCobra;
 
-// Many thanks to parchmentengineer and theirs armada mod, check them out!
-// https://github.com/parchmentEngineer/parchmentArmada/releases/
-// So many thanks to EWanderer's selfless dedication to making the Cobalt Core modding community THRIVE!! Check Arin and EWanderer's collab project!
-// https://github.com/Ewanderer/CCMod.JohannaTheTrucker/releases/
+/* Many thanks to parchmentengineer and theirs armada mod, check them out!
+ * (January 7th, 2024 NOTE: parchmentArmada mod is outdated and might crash unexpectedly)
+ * https://github.com/parchmentEngineer/parchmentArmada/releases/
+ * So many thanks to EWanderer's selfless dedication to making the Cobalt Core modding community THRIVE!! Check Arin and EWanderer's collab project!
+ * (January 7th, 2024 NOTE: JohannaTheTrucker mod is outdated and might crash unexpectedly)
+ * https://github.com/Ewanderer/CCMod.JohannaTheTrucker/releases/
+ * Cobalt Core modding community is where it is now thanks to Shockah's hard work and motivation. Be sure to check Shockah's mods, they're extremely fun and add such an incredible depth to the game it's unreal!!
+ * https://github.com/Shockah/Cobalt-Core-Mods
+ */
 
-namespace CorrosiveCobra
+namespace Sorwest.CorrosiveCobra;
+public partial class Manifest :
+    ISpriteManifest,
+    IManifest,
+    IShipPartManifest,
+    IShipManifest,
+    ICharacterManifest,
+    IAnimationManifest,
+    IStartershipManifest,
+    IArtifactManifest,
+    ICardManifest,
+    IDeckManifest,
+    IStatusManifest,
+    IGlossaryManifest,
+    IStoryManifest,
+    IModManifest
 {
-    public partial class Manifest :
-        ISpriteManifest,
-        IManifest,
-        IShipPartManifest,
-        IShipManifest,
-        ICharacterManifest,
-        IAnimationManifest,
-        IStartershipManifest,
-        IArtifactManifest,
-        ICardManifest,
-        IDeckManifest,
-        IStatusManifest,
-        IGlossaryManifest,
-        IStoryManifest,
-        IModManifest
+    public DirectoryInfo? ModRootFolder { get; set; }
+    public DirectoryInfo? GameRootFolder { get; set; }
+    public string Name => "Sorwest.CorrosiveCobra";
+    internal static Manifest Instance { get; private set; } = null!;
+    internal static IKokoroApi KokoroApi { get; private set; } = null!;
+    internal IDuoArtifactsApi? DuoArtifactsApi { get; private set; } = null!;
+    public IEnumerable<DependencyEntry> Dependencies => new DependencyEntry[]
     {
-        public DirectoryInfo? ModRootFolder { get; set; }
-        public DirectoryInfo? GameRootFolder { get; set; }
-        internal static Manifest Instance { get; private set; } = null!;
-        public string Name => "Sorwest.CorrosiveCobra";
-        internal static IKokoroApi KokoroApi { get; private set; } = null!;
-        public IEnumerable<DependencyEntry> Dependencies => new DependencyEntry[]
-        {
-            new DependencyEntry<IModManifest>("Shockah.Kokoro", ignoreIfMissing: false),
-        };
-        public ILogger? Logger { get; set; }
-        public static System.Drawing.Color CorrosiveCobraColor => System.Drawing.Color.FromArgb(107, 255, 205);
-        public static string CobraColor => string.Format("{0:X2}{1:X2}{2:X2}",
-            (object)CorrosiveCobraColor.R,
-            (object)CorrosiveCobraColor.G,
-            (object)CorrosiveCobraColor.B.ToString("X2"));
+        new DependencyEntry<IModManifest>("Shockah.Kokoro", ignoreIfMissing: false),
+        new DependencyEntry<IModManifest>("Shockah.DuoArtifacts", ignoreIfMissing: true)
+    };
+    public ILogger? Logger { get; set; }
+    public static System.Drawing.Color CorrosiveCobraColor => System.Drawing.Color.FromArgb(107, 255, 205);
+    public static string CobraColor => string.Format("{0:X2}{1:X2}{2:X2}",
+        (object)CorrosiveCobraColor.R,
+        (object)CorrosiveCobraColor.G,
+        (object)CorrosiveCobraColor.B.ToString("X2"));
 
-        public static ExternalShip? CorrosiveCobra_Main { get; private set; }
-        public static ExternalStarterShip? CorrosiveCobra_StarterShip { get; private set; }
-        public static ExternalDeck? CobraDeck { get; private set; }
-        public static ExternalDeck? CobraShipDeck { get; private set; }
+    public static ExternalShip? CorrosiveCobra_Main { get; private set; }
+    public static ExternalStarterShip? CorrosiveCobra_StarterShip { get; private set; }
+    public static ExternalDeck? CobraDeck { get; private set; }
+    public static ExternalDeck? CobraShipDeck { get; private set; }
 
-        //character art sprites
-        public static ExternalCharacter? CorrosiveCobra_Character { get; private set; }
-        public static ExternalSprite? CorrosiveCobra_CharacterMini_Sprite { get; private set; }
-        public static ExternalSprite? CorrosiveCobra_CharacterPortrait_Sprite { get; private set; }
-        public static ExternalSprite? CorrosiveCobra_CharacterPanelFrame_Sprite { get; private set; }
-        public static ExternalSprite? CorrosiveCobra_CharacterGameover_Sprite { get; private set; }
-        public static ExternalSprite? CorrosiveCobra_CharacterSquint_Sprite { get; private set; }
-        public static ExternalSprite? CorrosiveCobra_CharacterCrystal_Sprite { get; private set; }
+    //character art sprites
+    public static ExternalCharacter? CorrosiveCobra_Character { get; private set; }
+    public static ExternalSprite? CorrosiveCobra_CharacterMini_Sprite { get; private set; }
+    public static ExternalSprite? CorrosiveCobra_CharacterPortrait_Sprite { get; private set; }
+    public static ExternalSprite? CorrosiveCobra_CharacterPanelFrame_Sprite { get; private set; }
+    public static ExternalSprite? CorrosiveCobra_CharacterGameover_Sprite { get; private set; }
+    public static ExternalSprite? CorrosiveCobra_CharacterSquint_Sprite { get; private set; }
+    public static ExternalSprite? CorrosiveCobra_CharacterCrystal_Sprite { get; private set; }
 
-        //character animation sprites
-        public static ExternalAnimation? CorrosiveCobra_Character_DefaultAnimation { get; private set; }
-        public static ExternalAnimation? CorrosiveCobra_Character_MiniAnimation { get; private set; }
-        public static ExternalAnimation? CorrosiveCobra_Character_GameoverAnimation { get; private set; }
-        public static ExternalAnimation? CorrosiveCobra_Character_TalkLaughAnimation { get; private set; }
-        public static ExternalAnimation? CorrosiveCobra_Character_TalkNeutralAnimation { get; private set; }
-        public static ExternalAnimation? CorrosiveCobra_Character_TalkSquintAnimation { get; private set; }
-        public static ExternalAnimation? CorrosiveCobra_Character_TalkSadAnimation { get; private set; }
-        public static ExternalAnimation? CorrosiveCobra_Character_TalkMadAnimation { get; private set; }
-        public static ExternalAnimation? CorrosiveCobra_Character_TalkDarkAnimation { get; private set; }
-        public static ExternalAnimation? CorrosiveCobra_Character_TalkPhoneAnimation { get; private set; }
-        public static ExternalAnimation? CorrosiveCobra_Character_TalkNervousAnimation { get; private set; }
-        public static List<ExternalSprite> TalkLaughSprites { get; private set; } = new List<ExternalSprite>();
-        public static List<ExternalSprite> TalkNeutralSprites { get; private set; } = new List<ExternalSprite>();
-        public static List<ExternalSprite> TalkSquintSprites { get; private set; } = new List<ExternalSprite>();
-        public static List<ExternalSprite> TalkSadSprites { get; private set; } = new List<ExternalSprite>();
-        public static List<ExternalSprite> TalkMadSprites { get; private set; } = new List<ExternalSprite>();
-        public static List<ExternalSprite> TalkDarkSprites { get; private set; } = new List<ExternalSprite>();
-        public static List<ExternalSprite> TalkPhoneSprites { get; private set; } = new List<ExternalSprite>();
-        public static List<ExternalSprite> TalkNervousSprites { get; private set; } = new List<ExternalSprite>();
+    //character animation sprites
+    public static ExternalAnimation? CorrosiveCobra_Character_DefaultAnimation { get; private set; }
+    public static ExternalAnimation? CorrosiveCobra_Character_MiniAnimation { get; private set; }
+    public static ExternalAnimation? CorrosiveCobra_Character_GameoverAnimation { get; private set; }
+    public static ExternalAnimation? CorrosiveCobra_Character_TalkLaughAnimation { get; private set; }
+    public static ExternalAnimation? CorrosiveCobra_Character_TalkNeutralAnimation { get; private set; }
+    public static ExternalAnimation? CorrosiveCobra_Character_TalkSquintAnimation { get; private set; }
+    public static ExternalAnimation? CorrosiveCobra_Character_TalkSadAnimation { get; private set; }
+    public static ExternalAnimation? CorrosiveCobra_Character_TalkMadAnimation { get; private set; }
+    public static ExternalAnimation? CorrosiveCobra_Character_TalkDarkAnimation { get; private set; }
+    public static ExternalAnimation? CorrosiveCobra_Character_TalkPhoneAnimation { get; private set; }
+    public static ExternalAnimation? CorrosiveCobra_Character_TalkNervousAnimation { get; private set; }
+    public static List<ExternalSprite> TalkLaughSprites { get; private set; } = new List<ExternalSprite>();
+    public static List<ExternalSprite> TalkNeutralSprites { get; private set; } = new List<ExternalSprite>();
+    public static List<ExternalSprite> TalkSquintSprites { get; private set; } = new List<ExternalSprite>();
+    public static List<ExternalSprite> TalkSadSprites { get; private set; } = new List<ExternalSprite>();
+    public static List<ExternalSprite> TalkMadSprites { get; private set; } = new List<ExternalSprite>();
+    public static List<ExternalSprite> TalkDarkSprites { get; private set; } = new List<ExternalSprite>();
+    public static List<ExternalSprite> TalkPhoneSprites { get; private set; } = new List<ExternalSprite>();
+    public static List<ExternalSprite> TalkNervousSprites { get; private set; } = new List<ExternalSprite>();
 
-        //icons sprites
-        public static ExternalSprite? UnstableTanksSprite { get; private set; }
-        public static ExternalSprite? OverdriveTanksSprite { get; private set; }
-        public static ExternalSprite? SlimeHeartSprite { get; private set; }
-        public static ExternalSprite? ToxicCaviarSprite { get; private set; }
-        public static ExternalSprite? CorrodeAttackSprite { get; private set; }
-        public static ExternalSprite? PowerAcidSprite { get; private set; }
-        public static ExternalSprite? DissolventSprite { get; private set; }
-        public static ExternalSprite? DummyHeatSprite { get; private set; }
-        public static ExternalSprite? FuelWallsSprite { get; private set; }
-        public static ExternalSprite? HeatCostSatisfied { get; private set; }
-        public static ExternalSprite? HeatCostUnsatisfied { get; private set; }
-        public static ExternalSprite? IncomingCorrodeIcon { get; private set; }
-        public static ExternalSprite? EvolveStatusSprite { get; private set; }
-        public static ExternalSprite? HeatOutbreakStatusSprite { get; private set; }
-        public static ExternalSprite? HeatControlStatusSprite { get; private set; }
+    //artifact sprites
+    public static ExternalSprite? UnstableTanksSprite { get; private set; }
+    public static ExternalSprite? OverdriveTanksSprite { get; private set; }
+    public static ExternalSprite? SlimeHeartSprite { get; private set; }
+    public static ExternalSprite? ToxicCaviarSprite { get; private set; }
+    public static ExternalSprite? CorrodeAttackSprite { get; private set; }
+    public static ExternalSprite? PowerAcidSprite { get; private set; }
+    public static ExternalSprite? DissolventSprite { get; private set; }
+    public static ExternalSprite? DummyHeatSprite { get; private set; }
+    public static ExternalSprite? FuelWallsSprite { get; private set; }
+    public static ExternalSprite? SlimeDizzyArtifactSprite { get; private set; }
+    public static ExternalSprite? SlimeRiggsArtifactSprite { get; private set; }
+    public static ExternalSprite? SlimePeriArtifactSprite { get; private set; }
+    public static ExternalSprite? SlimeIsaacArtifactSprite { get; private set; }
+    public static ExternalSprite? SlimeDrakeArtifactSprite { get; private set; }
+    public static ExternalSprite? SlimeMaxArtifactSprite { get; private set; }
+    public static ExternalSprite? SlimeBooksArtifactSprite { get; private set; }
+    public static ExternalSprite? SlimeCatArtifactSprite { get; private set; }
+    //icon sprites
+    public static ExternalSprite? HeatCostSatisfied { get; private set; }
+    public static ExternalSprite? HeatCostUnsatisfied { get; private set; }
+    public static ExternalSprite? CorrodeCostSatisfied { get; private set; }
+    public static ExternalSprite? CorrodeCostUnsatisfied { get; private set; }
+    public static ExternalSprite? IncomingCorrodeIcon { get; private set; }
+    public static ExternalSprite? EvolveStatusSprite { get; private set; }
+    public static ExternalSprite? HeatOutbreakStatusSprite { get; private set; }
+    public static ExternalSprite? HeatControlStatusSprite { get; private set; }
 
-        //background art sprites
-        public static ExternalSprite? CorrosiveCobra_CardBackgroud { get; private set; }
-        public static ExternalSprite? CorrosiveCobra_CorrodeSprite { get; private set; }
-        public static ExternalSprite? CorrosiveCobra_CorrosionIgnitionSprite { get; private set; }
-        public static ExternalSprite? CorrosiveCobra_BoxHeatSprite { get; private set; }
-        public static ExternalSprite? CorrosiveCobra_Split3_2TopSprite { get; private set; }
-        public static ExternalSprite? CorrosiveCobra_Split3_2BottomSprite { get; private set; }
-        public static ExternalSprite? CorrosiveCobra_SplitHalfTopSprite { get; private set; }
-        public static ExternalSprite? CorrosiveCobra_SplitHalfBottomSprite { get; private set; }
-        public static ExternalSprite? CorrosiveCobra_SeekerCobraSprite { get; private set; }
-        public static ExternalSprite? CorrosiveCobra_FumeCannonSprite { get; private set; }
-        public static ExternalSprite? CorrosiveCobra_EvolveBackgroundSprite { get; private set; }
-        public static ExternalSprite? CorrosiveCobra_RecklessFuelshotSprite { get; private set; }
-        public static ExternalSprite? CorrosiveCobra_CorrosiveMultishotSprite { get; private set; }
-        public static ExternalSprite? CorrosiveCobra_RepairsSprite { get; private set; }
-        public static ExternalSprite? CorrosiveCobra_SlimeBlastSprite { get; private set; }
-        public static ExternalSprite? CorrosiveCobra_BlockShotSprite { get; private set; }
-        public static ExternalSprite? CorrosiveCobra_HeatSprite { get; private set; }
-        public static ExternalSprite? CorrosiveCobra_GoatDroneSprite { get; private set; }
-        public static ExternalSprite? CorrosiveCobra_CannonCardSprite { get; private set; }
-        public static ExternalSprite? CorrosiveCobra_CorrosionBlockStarter { get; private set; }
+    //background art sprites
+    public static ExternalSprite? CorrosiveCobra_CardBackgroud { get; private set; }
+    public static ExternalSprite? CorrosiveCobra_CorrodeSprite { get; private set; }
+    public static ExternalSprite? CorrosiveCobra_CorrosionIgnitionSprite { get; private set; }
+    public static ExternalSprite? CorrosiveCobra_BoxHeatSprite { get; private set; }
+    public static ExternalSprite? CorrosiveCobra_Split3_2TopSprite { get; private set; }
+    public static ExternalSprite? CorrosiveCobra_Split3_2BottomSprite { get; private set; }
+    public static ExternalSprite? CorrosiveCobra_SplitHalfTopSprite { get; private set; }
+    public static ExternalSprite? CorrosiveCobra_SplitHalfBottomSprite { get; private set; }
+    public static ExternalSprite? CorrosiveCobra_SeekerCobraSprite { get; private set; }
+    public static ExternalSprite? CorrosiveCobra_FumeCannonSprite { get; private set; }
+    public static ExternalSprite? CorrosiveCobra_EvolveBackgroundSprite { get; private set; }
+    public static ExternalSprite? CorrosiveCobra_RecklessFuelshotSprite { get; private set; }
+    public static ExternalSprite? CorrosiveCobra_CorrosiveMultishotSprite { get; private set; }
+    public static ExternalSprite? CorrosiveCobra_RepairsSprite { get; private set; }
+    public static ExternalSprite? CorrosiveCobra_SlimeBlastSprite { get; private set; }
+    public static ExternalSprite? CorrosiveCobra_BlockShotSprite { get; private set; }
+    public static ExternalSprite? CorrosiveCobra_HeatSprite { get; private set; }
+    public static ExternalSprite? CorrosiveCobra_GoatDroneSprite { get; private set; }
+    public static ExternalSprite? CorrosiveCobra_CannonCardSprite { get; private set; }
+    public static ExternalSprite? CorrosiveCobra_CorrosionBlockStarter { get; private set; }
 
-        //ship parts sprites
-        public static ExternalSprite? CorrosiveCobra_CannonSprite { get; private set; }
-        public static ExternalSprite? CorrosiveCobra_WingLeftSprite { get; private set; }
-        public static ExternalSprite? CorrosiveCobra_WingRightSprite { get; private set; }
-        public static ExternalSprite? CorrosiveCobra_MissileBaySprite { get; private set; }
-        public static ExternalSprite? CorrosiveCobra_CockpitSprite { get; private set; }
-        public static ExternalSprite? CorrosiveCobra_ScaffoldingSprite { get; private set; }
-        public static ExternalSprite? CorrosiveCobra_ChassisSprite { get; private set; }
+    //ship parts sprites
+    public static ExternalSprite? CorrosiveCobra_CannonSprite { get; private set; }
+    public static ExternalSprite? CorrosiveCobra_WingLeftSprite { get; private set; }
+    public static ExternalSprite? CorrosiveCobra_WingRightSprite { get; private set; }
+    public static ExternalSprite? CorrosiveCobra_MissileBaySprite { get; private set; }
+    public static ExternalSprite? CorrosiveCobra_CockpitSprite { get; private set; }
+    public static ExternalSprite? CorrosiveCobra_ScaffoldingSprite { get; private set; }
+    public static ExternalSprite? CorrosiveCobra_ChassisSprite { get; private set; }
 
-        // card borders sprites
-        public static ExternalSprite? BorderCobraBasic { get; private set; }
-        public static ExternalSprite? BorderCobraCommon { get; private set; }
-        public static ExternalSprite? BorderCobraUncommon { get; private set; }
-        public static ExternalSprite? BorderCobraRare { get; private set; }
+    // card borders sprites
+    public static ExternalSprite? BorderCobraBasic { get; private set; }
+    public static ExternalSprite? BorderCobraCommon { get; private set; }
 
-        //artifacts
-        public static ExternalArtifact? CobraArtifactUnstableTanks { get; private set; }
-        public static ExternalArtifact? CobraArtifactOverdriveTanks { get; private set; }
-        public static ExternalArtifact? CobraArtifactSlimeHeart { get; private set; }
-        public static ExternalArtifact? CobraArtifactToxicCaviar { get; private set; }
-        public static ExternalArtifact? CobraArtifactCorrodeAttack { get; private set; }
-        public static ExternalArtifact? CobraArtifactPowerAcid { get; private set; }
-        public static ExternalArtifact? CobraArtifactDissolvent { get; private set; }
-        public static ExternalArtifact? CobraArtifactDummyHeat { get; private set; }
-        public static ExternalArtifact? CobraArtifactFuelWalls { get; private set; }
+    //artifacts
+    public static ExternalArtifact? CobraArtifactUnstableTanks { get; private set; }
+    public static ExternalArtifact? CobraArtifactOverdriveTanks { get; private set; }
+    public static ExternalArtifact? CobraArtifactSlimeHeart { get; private set; }
+    public static ExternalArtifact? CobraArtifactToxicCaviar { get; private set; }
+    public static ExternalArtifact? CobraArtifactCorrodeAttack { get; private set; }
+    public static ExternalArtifact? CobraArtifactPowerAcid { get; private set; }
+    public static ExternalArtifact? CobraArtifactDissolvent { get; private set; }
+    public static ExternalArtifact? CobraArtifactDummyHeat { get; private set; }
+    public static ExternalArtifact? CobraArtifactFuelWalls { get; private set; }
 
-        //cards
-        public static ExternalCard? CobraCardCorrosionStarter { get; private set; }
-        public static ExternalCard? CobraCardCorrosionBlockStarter { get; private set; }
-        public static ExternalCard? CobraCardFuelWall { get; private set; }
-        public static ExternalCard? CobraCardFuelEjection { get; private set; }
-        public static ExternalCard? CobraCardTankThrow { get; private set; }
-        public static ExternalCard? CobraCardHeatedEvade { get; private set; }
-        public static ExternalCard? CobraCardHurriedDefense { get; private set; }
-        public static ExternalCard? CobraCardLeakingContainer { get; private set; }
-        public static ExternalCard? CobraCardBooksCorrosiveCrystal { get; private set; }
-        public static ExternalCard? CobraCardBooksGainCrystal { get; private set; }
-        public static ExternalCard? CobraCardColorlessSlimeSummon { get; private set; }
-        public static ExternalCard? CobraCardCorrosionIgnition { get; private set; }
-        public static ExternalCard? CobraCardSlimeShield { get; private set; }
-        public static ExternalCard? CobraCardSlimeHeal { get; private set; }
-        public static ExternalCard? CobraCardTinkerWithTheTanks { get; private set; }
-        public static ExternalCard? CobraCardTimestreamLeak { get; private set; }
-        public static ExternalCard? CobraCardCorrosiveMultishot { get; private set; }
-        public static ExternalCard? CobraCardSlimeEvolution { get; private set; }
-        public static ExternalCard? CobraCardSlimeMutation { get; private set; }
-        public static ExternalCard? CobraCardSlimeBLAST { get; private set; }
-        public static ExternalCard? CobraCardSlimeHug { get; private set; }
-        public static ExternalCard? CobraCardRecklessFuelshot { get; private set; }
-        public static ExternalCard? CobraCardColorlessAbsorbArtifact { get; private set; }
-        public static ExternalCard? CobraCardEnginesOnFire { get; private set; }
-        public static ExternalCard? CobraCardHeatHoarder { get; private set; }
-        public static ExternalCard? CobraCardShieldAlternatorA { get; private set; }
-        public static ExternalCard? CobraCardShieldAlternatorB { get; private set; }
-        public static ExternalCard? CobraCardAcidicFlare { get; private set; }
-        public static ExternalCard? CobraCardFlameShot { get; private set; }
-        public static ExternalCard? CobraCardStolenFueltank { get; private set; }
-        public static ExternalCard? CobraCardUncontrolledEngines { get; private set; }
+    //duo artifacts
+    public static ExternalArtifact? SlimeDizzyArtifact { get; private set; }
+    public static ExternalArtifact? SlimeRiggsArtifact { get; private set; }
+    public static ExternalArtifact? SlimePeriArtifact { get; private set; }
+    public static ExternalArtifact? SlimeIsaacArtifact { get; private set; }
+    public static ExternalArtifact? SlimeDrakeArtifact { get; private set; }
+    public static ExternalArtifact? SlimeMaxArtifact { get; private set; }
+    public static ExternalArtifact? SlimeBooksArtifact { get; private set; }
+    public static ExternalArtifact? SlimeCatArtifact { get; private set; }
+
+    //cards
+    public static ExternalCard? CobraCardCorrosionStarter { get; private set; }
+    public static ExternalCard? CobraCardCorrosionBlockStarter { get; private set; }
+    public static ExternalCard? CobraCardFuelWall { get; private set; }
+    public static ExternalCard? CobraCardFuelEjection { get; private set; }
+    public static ExternalCard? CobraCardTankThrow { get; private set; }
+    public static ExternalCard? CobraCardHeatedEvade { get; private set; }
+    public static ExternalCard? CobraCardHurriedDefense { get; private set; }
+    public static ExternalCard? CobraCardLeakingContainer { get; private set; }
+    public static ExternalCard? CobraCardBooksCorrosiveCrystal { get; private set; }
+    public static ExternalCard? CobraCardBooksGainCrystal { get; private set; }
+    public static ExternalCard? CobraCardColorlessSlimeSummon { get; private set; }
+    public static ExternalCard? CobraCardCorrosionIgnition { get; private set; }
+    public static ExternalCard? CobraCardSlimeShield { get; private set; }
+    public static ExternalCard? CobraCardSlimeHeal { get; private set; }
+    public static ExternalCard? CobraCardTinkerWithTheTanks { get; private set; }
+    public static ExternalCard? CobraCardTimestreamLeak { get; private set; }
+    public static ExternalCard? CobraCardCorrosiveMultishot { get; private set; }
+    public static ExternalCard? CobraCardSlimeEvolution { get; private set; }
+    public static ExternalCard? CobraCardSlimeMutation { get; private set; }
+    public static ExternalCard? CobraCardSlimeBLAST { get; private set; }
+    public static ExternalCard? CobraCardSlimeHug { get; private set; }
+    public static ExternalCard? CobraCardRecklessFuelshot { get; private set; }
+    public static ExternalCard? CobraCardColorlessAbsorbArtifact { get; private set; }
+    public static ExternalCard? CobraCardEnginesOnFire { get; private set; }
+    public static ExternalCard? CobraCardHeatHoarder { get; private set; }
+    public static ExternalCard? CobraCardShieldAlternatorA { get; private set; }
+    public static ExternalCard? CobraCardShieldAlternatorB { get; private set; }
+    public static ExternalCard? CobraCardAcidicFlare { get; private set; }
+    public static ExternalCard? CobraCardFlameShot { get; private set; }
+    public static ExternalCard? CobraCardStolenFueltank { get; private set; }
+    public static ExternalCard? CobraCardUncontrolledEngines { get; private set; }
+
+    //duo cards
+    public static ExternalCard? CobraCardSlimeRiggsDuo { get; private set; }
+
+    //ship parts
+    public static ExternalPart? CorrosiveCobra_Cannon { get; private set; }
+    public static ExternalPart? CorrosiveCobra_MissileBay { get; private set; }
+    public static ExternalPart? CorrosiveCobra_Cockpit { get; private set; }
+    public static ExternalPart? CorrosiveCobra_Scaffolding { get; private set; }
+    public static ExternalPart? CorrosiveCobra_WingLeft { get; private set; }
+    public static ExternalPart? CorrosiveCobra_WingRight { get; private set; }
+    public static ExternalGlossary? AIncomingCorrode_Glossary { get; private set; }
+    public static ExternalGlossary? AEvolveStatus_Glossary { get; private set; }
+    public void BootMod(IModLoaderContact contact)
+    {
+        KokoroApi = contact.GetApi<IKokoroApi>("Shockah.Kokoro")!;
+        DuoArtifactsApi = contact.LoadedManifests.Any(m => m.Name == "Shockah.DuoArtifacts") ? contact.GetApi<IDuoArtifactsApi>("Shockah.DuoArtifacts") : null;
+
+        Harmony harmony = new("Sorwest.CorrosiveCobra.Harmony");
+
+        harmony.Patch(
+            original: AccessTools.DeclaredMethod(typeof(Card), nameof(Card.OnDraw)),
+            postfix: new HarmonyMethod(typeof(Manifest).GetMethod("EvolveOnDraw", BindingFlags.Static | BindingFlags.NonPublic))
+        );
+        harmony.Patch(
+            original: AccessTools.DeclaredMethod(typeof(Ship), nameof(Ship.OnAfterTurn)),
+            postfix: new HarmonyMethod(typeof(Manifest).GetMethod("HeatOutbreakTurnEnd", BindingFlags.Static | BindingFlags.NonPublic))
+        );
+        harmony.Patch(
+            original: AccessTools.DeclaredMethod(typeof(Ship), nameof(Ship.OnAfterTurn)),
+            prefix: new HarmonyMethod(typeof(Manifest).GetMethod("HeatControlTurnEnd", BindingFlags.Static | BindingFlags.NonPublic))
+        );
+        harmony.Patch(
+            original: typeof(Colors).GetMethod("LookupColor", BindingFlags.Static | BindingFlags.Public),
+            prefix: new HarmonyMethod(typeof(CustomColor).GetMethod("CobraLookupColor", BindingFlags.Static | BindingFlags.NonPublic))
+        );
+    }
+    void ISpriteManifest.LoadManifest(ISpriteRegistry artRegistry)
+    {
+        if (this.ModRootFolder == null)
+            throw new Exception("Root Folder not set");
 
         //ship parts
-        public static ExternalPart? CorrosiveCobra_Cannon { get; private set; }
-        public static ExternalPart? CorrosiveCobra_MissileBay { get; private set; }
-        public static ExternalPart? CorrosiveCobra_Cockpit { get; private set; }
-        public static ExternalPart? CorrosiveCobra_Scaffolding { get; private set; }
-        public static ExternalPart? CorrosiveCobra_WingLeft { get; private set; }
-        public static ExternalPart? CorrosiveCobra_WingRight { get; private set; }
-        public static ExternalGlossary? AIncomingCorrode_Glossary { get; private set; }
-        public static ExternalGlossary? AEvolveStatus_Glossary { get; private set; }
-        public void BootMod(IModLoaderContact contact)
         {
-            KokoroApi = contact.GetApi<IKokoroApi>("Shockah.Kokoro")!;
-
-            Harmony harmony = new("Sorwest.CorrosiveCobra.Harmony");
-            
-            harmony.Patch(
-                original: AccessTools.DeclaredMethod(typeof(Card), nameof(Card.OnDraw)),
-                postfix: new HarmonyMethod(typeof(Manifest).GetMethod("EvolveOnDraw", BindingFlags.Static | BindingFlags.NonPublic))
-            );
-            harmony.Patch(
-                original: AccessTools.DeclaredMethod(typeof(Ship), nameof(Ship.OnAfterTurn)),
-                postfix: new HarmonyMethod(typeof(Manifest).GetMethod("HeatOutbreakTurnEnd", BindingFlags.Static | BindingFlags.NonPublic))
-            );
-            harmony.Patch(
-                original: AccessTools.DeclaredMethod(typeof(Ship), nameof(Ship.OnAfterTurn)),
-                prefix: new HarmonyMethod(typeof(Manifest).GetMethod("HeatControlTurnEnd", BindingFlags.Static | BindingFlags.NonPublic))
-            );
-            harmony.Patch(
-                original: typeof(Colors).GetMethod("LookupColor", BindingFlags.Static | BindingFlags.Public),
-                prefix: new HarmonyMethod(typeof(CustomColor).GetMethod("CobraLookupColor", BindingFlags.Static | BindingFlags.NonPublic))
-            );
+            {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "ShipPart", Path.GetFileName("CorrosiveCobra_CannonSprite.png"));
+                CorrosiveCobra_CannonSprite = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.CorrosiveCobra_CannonSprite", new FileInfo(path));
+                artRegistry.RegisterArt(CorrosiveCobra_CannonSprite);
+            }
+            {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "ShipPart", Path.GetFileName("CorrosiveCobra_WingLeftSprite.png"));
+                CorrosiveCobra_WingLeftSprite = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.CorrosiveCobra_WingLeftSprite", new FileInfo(path));
+                artRegistry.RegisterArt(CorrosiveCobra_WingLeftSprite);
+            }
+            {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "ShipPart", Path.GetFileName("CorrosiveCobra_MissileBaySprite.png"));
+                CorrosiveCobra_MissileBaySprite = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.CorrosiveCobra_MissileBaySprite", new FileInfo(path));
+                artRegistry.RegisterArt(CorrosiveCobra_MissileBaySprite);
+            }
+            {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "ShipPart", Path.GetFileName("CorrosiveCobra_CockpitSprite.png"));
+                CorrosiveCobra_CockpitSprite = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.CorrosiveCobra_CockpitSprite", new FileInfo(path));
+                artRegistry.RegisterArt(CorrosiveCobra_CockpitSprite);
+            }
+            {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "ShipPart", Path.GetFileName("CorrosiveCobra_ScaffoldingSprite.png"));
+                CorrosiveCobra_ScaffoldingSprite = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.CorrosiveCobra_ScaffoldingSprite", new FileInfo(path));
+                artRegistry.RegisterArt(CorrosiveCobra_ScaffoldingSprite);
+            }
+            {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "ShipPart", Path.GetFileName("CorrosiveCobra_ChassisSprite.png"));
+                CorrosiveCobra_ChassisSprite = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.CorrosiveCobra_ChassisSprite", new FileInfo(path));
+                artRegistry.RegisterArt(CorrosiveCobra_ChassisSprite);
+            }
         }
-        void ISpriteManifest.LoadManifest(ISpriteRegistry artRegistry)
+        //character sprites
         {
-            if (this.ModRootFolder == null)
-                throw new Exception("Root Folder not set");
-
-            //ship parts
             {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", Path.GetFileName("CorrosiveCobra_CharacterPortrait_Sprite.png"));
+                CorrosiveCobra_CharacterPortrait_Sprite = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.CorrosiveCobra_CharacterPortrait_Sprite", new FileInfo(path));
+                artRegistry.RegisterArt(CorrosiveCobra_CharacterPortrait_Sprite);
+            }
+            {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", Path.GetFileName("CorrosiveCobra_CharacterMini_Sprite.png"));
+                CorrosiveCobra_CharacterMini_Sprite = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.CorrosiveCobra_CharacterMini_Sprite", new FileInfo(path));
+                artRegistry.RegisterArt(CorrosiveCobra_CharacterMini_Sprite);
+            }
+            {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", Path.GetFileName("CorrosiveCobra_CharacterPanelFrame_Sprite.png"));
+                CorrosiveCobra_CharacterPanelFrame_Sprite = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.CorrosiveCobra_CharacterPanelFrame_Sprite", new FileInfo(path));
+                artRegistry.RegisterArt(CorrosiveCobra_CharacterPanelFrame_Sprite);
+            }
+            {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", Path.GetFileName("CorrosiveCobra_CharacterGameover_Sprite.png"));
+                CorrosiveCobra_CharacterGameover_Sprite = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.CorrosiveCobra_CharacterGameover_Sprite", new FileInfo(path));
+                artRegistry.RegisterArt(CorrosiveCobra_CharacterGameover_Sprite);
+            }
+            {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", Path.GetFileName("CorrosiveCobra_CharacterSquint_Sprite.png"));
+                CorrosiveCobra_CharacterSquint_Sprite = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.CorrosiveCobra_CharacterSquint_Sprite", new FileInfo(path));
+                artRegistry.RegisterArt(CorrosiveCobra_CharacterSquint_Sprite);
+            }
+            {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", Path.GetFileName("CorrosiveCobra_CharacterCrystal_Sprite.png"));
+                CorrosiveCobra_CharacterCrystal_Sprite = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.CorrosiveCobra_CharacterCrystal_Sprite", new FileInfo(path));
+                artRegistry.RegisterArt(CorrosiveCobra_CharacterCrystal_Sprite);
+            }
+        }
+        //talk animations
+        {
+            {
+                var dir_path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", "talk_laugh");
+                var files = Directory.GetFiles(dir_path).Select(e => new FileInfo(e)).ToArray();
+                for (int i = 0; i < files.Length; i++)
                 {
-                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "ShipPart", Path.GetFileName("CorrosiveCobra_CannonSprite.png"));
-                    CorrosiveCobra_CannonSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_CannonSprite", new FileInfo(path));
-                    artRegistry.RegisterArt(CorrosiveCobra_CannonSprite);
-                }
-                {
-                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "ShipPart", Path.GetFileName("CorrosiveCobra_WingLeftSprite.png"));
-                    CorrosiveCobra_WingLeftSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_WingLeftSprite", new FileInfo(path));
-                    artRegistry.RegisterArt(CorrosiveCobra_WingLeftSprite);
-                }
-                {
-                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "ShipPart", Path.GetFileName("CorrosiveCobra_MissileBaySprite.png"));
-                    CorrosiveCobra_MissileBaySprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_MissileBaySprite", new FileInfo(path));
-                    artRegistry.RegisterArt(CorrosiveCobra_MissileBaySprite);
-                }
-                {
-                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "ShipPart", Path.GetFileName("CorrosiveCobra_CockpitSprite.png"));
-                    CorrosiveCobra_CockpitSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_CockpitSprite", new FileInfo(path));
-                    artRegistry.RegisterArt(CorrosiveCobra_CockpitSprite);
-                }
-                {
-                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "ShipPart", Path.GetFileName("CorrosiveCobra_ScaffoldingSprite.png"));
-                    CorrosiveCobra_ScaffoldingSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_ScaffoldingSprite", new FileInfo(path));
-                    artRegistry.RegisterArt(CorrosiveCobra_ScaffoldingSprite);
-                }
-                {
-                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "ShipPart", Path.GetFileName("CorrosiveCobra_ChassisSprite.png"));
-                    CorrosiveCobra_ChassisSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_ChassisSprite", new FileInfo(path));
-                    artRegistry.RegisterArt(CorrosiveCobra_ChassisSprite);
+                    var spr = new ExternalSprite("Sorwest.CorrosiveCobra.Character.DizzySlime.TalkLaugh" + i, files[i]);
+                    TalkLaughSprites.Add(spr);
+                    artRegistry.RegisterArt(spr);
                 }
             }
-            //character sprites
             {
+                var dir_path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", "talk_neutral");
+                var files = Directory.GetFiles(dir_path).Select(e => new FileInfo(e)).ToArray();
+                for (int i = 0; i < files.Length; i++)
                 {
-                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", Path.GetFileName("CorrosiveCobra_CharacterPortrait_Sprite.png"));
-                    CorrosiveCobra_CharacterPortrait_Sprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_CharacterPortrait_Sprite", new FileInfo(path));
-                    artRegistry.RegisterArt(CorrosiveCobra_CharacterPortrait_Sprite);
-                }
-                {
-                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", Path.GetFileName("CorrosiveCobra_CharacterMini_Sprite.png"));
-                    CorrosiveCobra_CharacterMini_Sprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_CharacterMini_Sprite", new FileInfo(path));
-                    artRegistry.RegisterArt(CorrosiveCobra_CharacterMini_Sprite);
-                }
-                {
-                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", Path.GetFileName("CorrosiveCobra_CharacterPanelFrame_Sprite.png"));
-                    CorrosiveCobra_CharacterPanelFrame_Sprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_CharacterPanelFrame_Sprite", new FileInfo(path));
-                    artRegistry.RegisterArt(CorrosiveCobra_CharacterPanelFrame_Sprite);
-                }
-                {
-                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", Path.GetFileName("CorrosiveCobra_CharacterGameover_Sprite.png"));
-                    CorrosiveCobra_CharacterGameover_Sprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_CharacterGameover_Sprite", new FileInfo(path));
-                    artRegistry.RegisterArt(CorrosiveCobra_CharacterGameover_Sprite);
-                }
-                {
-                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", Path.GetFileName("CorrosiveCobra_CharacterSquint_Sprite.png"));
-                    CorrosiveCobra_CharacterSquint_Sprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_CharacterSquint_Sprite", new FileInfo(path));
-                    artRegistry.RegisterArt(CorrosiveCobra_CharacterSquint_Sprite);
-                }
-                {
-                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", Path.GetFileName("CorrosiveCobra_CharacterCrystal_Sprite.png"));
-                    CorrosiveCobra_CharacterCrystal_Sprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_CharacterCrystal_Sprite", new FileInfo(path));
-                    artRegistry.RegisterArt(CorrosiveCobra_CharacterCrystal_Sprite);
+                    var spr = new ExternalSprite("Sorwest.CorrosiveCobra.Character.DizzySlime.TalkNeutral" + i, files[i]);
+                    TalkNeutralSprites.Add(spr);
+                    artRegistry.RegisterArt(spr);
                 }
             }
-            //talk animations
             {
+                var dir_path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", "talk_squint");
+                var files = Directory.GetFiles(dir_path).Select(e => new FileInfo(e)).ToArray();
+                for (int i = 0; i < files.Length; i++)
                 {
-                    var dir_path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", "talk_laugh");
-                    var files = Directory.GetFiles(dir_path).Select(e => new FileInfo(e)).ToArray();
-                    for (int i = 0; i < files.Length; i++)
-                    {
-                        var spr = new ExternalSprite("CorrosiveCobra.Character.DizzySlime.TalkLaugh" + i, files[i]);
-                        TalkLaughSprites.Add(spr);
-                        artRegistry.RegisterArt(spr);
-                    }
-                }
-                {
-                    var dir_path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", "talk_neutral");
-                    var files = Directory.GetFiles(dir_path).Select(e => new FileInfo(e)).ToArray();
-                    for (int i = 0; i < files.Length; i++)
-                    {
-                        var spr = new ExternalSprite("CorrosiveCobra.Character.DizzySlime.TalkNeutral" + i, files[i]);
-                        TalkNeutralSprites.Add(spr);
-                        artRegistry.RegisterArt(spr);
-                    }
-                }
-                {
-                    var dir_path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", "talk_squint");
-                    var files = Directory.GetFiles(dir_path).Select(e => new FileInfo(e)).ToArray();
-                    for (int i = 0; i < files.Length; i++)
-                    {
-                        var spr = (new ExternalSprite("CorrosiveCobra.Character.DizzySlime.TalkSquint" + i, files[i]));
-                        TalkSquintSprites.Add(spr);
-                        artRegistry.RegisterArt(spr);
-                    }
-                }
-                {
-                    var dir_path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", "talk_sad");
-                    var files = Directory.GetFiles(dir_path).Select(e => new FileInfo(e)).ToArray();
-                    for (int i = 0; i < files.Length; i++)
-                    {
-                        var spr = (new ExternalSprite("CorrosiveCobra.Character.DizzySlime.TalkSad" + i, files[i]));
-                        TalkSadSprites.Add(spr);
-                        artRegistry.RegisterArt(spr);
-                    }
-                }
-                {
-                    var dir_path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", "talk_mad");
-                    var files = Directory.GetFiles(dir_path).Select(e => new FileInfo(e)).ToArray();
-                    for (int i = 0; i < files.Length; i++)
-                    {
-                        var spr = (new ExternalSprite("CorrosiveCobra.Character.DizzySlime.TalkMad" + i, files[i]));
-                        TalkMadSprites.Add(spr);
-                        artRegistry.RegisterArt(spr);
-                    }
-                }
-                {
-                    var dir_path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", "talk_dark");
-                    var files = Directory.GetFiles(dir_path).Select(e => new FileInfo(e)).ToArray();
-                    for (int i = 0; i < files.Length; i++)
-                    {
-                        var spr = (new ExternalSprite("CorrosiveCobra.Character.DizzySlime.TalkDark" + i, files[i]));
-                        TalkDarkSprites.Add(spr);
-                        artRegistry.RegisterArt(spr);
-                    }
-                }
-                {
-                    var dir_path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", "talk_phone");
-                    var files = Directory.GetFiles(dir_path).Select(e => new FileInfo(e)).ToArray();
-                    for (int i = 0; i < files.Length; i++)
-                    {
-                        var spr = (new ExternalSprite("CorrosiveCobra.Character.DizzySlime.TalkPhone" + i, files[i]));
-                        TalkPhoneSprites.Add(spr);
-                        artRegistry.RegisterArt(spr);
-                    }
-                }
-                {
-                    var dir_path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", "talk_nervous");
-                    var files = Directory.GetFiles(dir_path).Select(e => new FileInfo(e)).ToArray();
-                    for (int i = 0; i < files.Length; i++)
-                    {
-                        var spr = (new ExternalSprite("CorrosiveCobra.Character.DizzySlime.TalkNervous" + i, files[i]));
-                        TalkNervousSprites.Add(spr);
-                        artRegistry.RegisterArt(spr);
-                    }
+                    var spr = (new ExternalSprite("Sorwest.CorrosiveCobra.Character.DizzySlime.TalkSquint" + i, files[i]));
+                    TalkSquintSprites.Add(spr);
+                    artRegistry.RegisterArt(spr);
                 }
             }
-            //icon sprites
             {
+                var dir_path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", "talk_sad");
+                var files = Directory.GetFiles(dir_path).Select(e => new FileInfo(e)).ToArray();
+                for (int i = 0; i < files.Length; i++)
                 {
-                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Icon", Path.GetFileName("HeatCostSatisfied.png"));
-                    HeatCostSatisfied = new ExternalSprite("CorrosiveCobra.sprites.HeatCostSatisfied", new FileInfo(path));
-                    artRegistry.RegisterArt(HeatCostSatisfied);
-                }
-                {
-                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Icon", Path.GetFileName("HeatCostUnsatisfied.png"));
-                    HeatCostUnsatisfied = new ExternalSprite("CorrosiveCobra.sprites.HeatCostUnsatisfied", new FileInfo(path));
-                    artRegistry.RegisterArt(HeatCostUnsatisfied);
-                }
-                {
-                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Icon", Path.GetFileName("IncomingCorrodeIcon.png"));
-                    IncomingCorrodeIcon = new ExternalSprite("CorrosiveCobra.sprites.IncomingCorrodeIcon", new FileInfo(path));
-                    artRegistry.RegisterArt(IncomingCorrodeIcon);
-                }
-                {
-                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Icon", Path.GetFileName("EvolveStatusSprite.png"));
-                    EvolveStatusSprite = new ExternalSprite("CorrosiveCobra.sprites.EvolveStatusSprite", new FileInfo(path));
-                    artRegistry.RegisterArt(EvolveStatusSprite);
-                }
-                {
-                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Icon", Path.GetFileName("HeatOutbreakStatusSprite.png"));
-                    HeatOutbreakStatusSprite = new ExternalSprite("CorrosiveCobra.sprites.HeatOutbreakStatusSprite", new FileInfo(path));
-                    artRegistry.RegisterArt(HeatOutbreakStatusSprite);
-                }
-                {
-                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Icon", Path.GetFileName("HeatControlStatusSprite.png"));
-                    HeatControlStatusSprite = new ExternalSprite("CorrosiveCobra.sprites.HeatControlStatusSprite", new FileInfo(path));
-                    artRegistry.RegisterArt(HeatControlStatusSprite);
-                }
-                {
-                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Icon", Path.GetFileName("UnstableTanksSprite.png"));
-                    UnstableTanksSprite = new ExternalSprite("CorrosiveCobra.sprites.UnstableTanksSprite", new FileInfo(path));
-                    artRegistry.RegisterArt(UnstableTanksSprite);
-                }
-                {
-                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Icon", Path.GetFileName("OverdriveTanksSprite.png"));
-                    OverdriveTanksSprite = new ExternalSprite("CorrosiveCobra.sprites.OverdriveTanksSprite", new FileInfo(path));
-                    artRegistry.RegisterArt(OverdriveTanksSprite);
-                }
-                {
-                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Icon", Path.GetFileName("SlimeHeartSprite.png"));
-                    SlimeHeartSprite = new ExternalSprite("CorrosiveCobra.sprites.SlimeHeartSprite", new FileInfo(path));
-                    artRegistry.RegisterArt(SlimeHeartSprite);
-                }
-                {
-                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Icon", Path.GetFileName("ToxicCaviarSprite.png"));
-                    ToxicCaviarSprite = new ExternalSprite("CorrosiveCobra.sprites.ToxicCaviarSprite", new FileInfo(path));
-                    artRegistry.RegisterArt(ToxicCaviarSprite);
-                }
-                {
-                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Icon", Path.GetFileName("CorrodeAttackSprite.png"));
-                    CorrodeAttackSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrodeAttackSprite", new FileInfo(path));
-                    artRegistry.RegisterArt(CorrodeAttackSprite);
-                }
-                {
-                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Icon", Path.GetFileName("PowerAcidSprite.png"));
-                    PowerAcidSprite = new ExternalSprite("CorrosiveCobra.sprites.PowerAcidSprite", new FileInfo(path));
-                    artRegistry.RegisterArt(PowerAcidSprite);
-                }
-                {
-                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Icon", Path.GetFileName("DissolventSprite.png"));
-                    DissolventSprite = new ExternalSprite("CorrosiveCobra.sprites.DissolventSprite", new FileInfo(path));
-                    artRegistry.RegisterArt(DissolventSprite);
-                }
-                {
-                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Icon", Path.GetFileName("DummyHeatSprite.png"));
-                    DummyHeatSprite = new ExternalSprite("CorrosiveCobra.sprites.DummyHeatSprite", new FileInfo(path));
-                    artRegistry.RegisterArt(DummyHeatSprite);
-                }
-                {
-                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Icon", Path.GetFileName("FuelWallsSprite.png"));
-                    FuelWallsSprite = new ExternalSprite("CorrosiveCobra.sprites.FuelWallsSprite", new FileInfo(path));
-                    artRegistry.RegisterArt(FuelWallsSprite);
+                    var spr = (new ExternalSprite("Sorwest.CorrosiveCobra.Character.DizzySlime.TalkSad" + i, files[i]));
+                    TalkSadSprites.Add(spr);
+                    artRegistry.RegisterArt(spr);
                 }
             }
-            //card background
             {
+                var dir_path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", "talk_mad");
+                var files = Directory.GetFiles(dir_path).Select(e => new FileInfo(e)).ToArray();
+                for (int i = 0; i < files.Length; i++)
                 {
-                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_CardBackgroud.png"));
-                    CorrosiveCobra_CardBackgroud = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_CardBackgroud", new FileInfo(path));
-                    artRegistry.RegisterArt(CorrosiveCobra_CardBackgroud);
-                }
-                {
-                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_CorrodeSprite.png"));
-                    CorrosiveCobra_CorrodeSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_CorrodeSprite", new FileInfo(path));
-                    artRegistry.RegisterArt(CorrosiveCobra_CorrodeSprite);
-                }
-                {
-                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_CorrosionIgnitionSprite.png"));
-                    CorrosiveCobra_CorrosionIgnitionSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_CorrosionIgnitionSprite", new FileInfo(path));
-                    artRegistry.RegisterArt(CorrosiveCobra_CorrosionIgnitionSprite);
-                }
-                {
-                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_Split3_2TopSprite.png"));
-                    CorrosiveCobra_Split3_2TopSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_Split3_2TopSprite", new FileInfo(path));
-                    artRegistry.RegisterArt(CorrosiveCobra_Split3_2TopSprite);
-                }
-                {
-                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_Split3_2BottomSprite.png"));
-                    CorrosiveCobra_Split3_2BottomSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_Split3_2BottomSprite", new FileInfo(path));
-                    artRegistry.RegisterArt(CorrosiveCobra_Split3_2BottomSprite);
-                }
-                {
-                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_SplitHalfTopSprite.png"));
-                    CorrosiveCobra_SplitHalfTopSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_SplitHalfTopSprite", new FileInfo(path));
-                    artRegistry.RegisterArt(CorrosiveCobra_SplitHalfTopSprite);
-                }
-                {
-                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_SplitHalfBottomSprite.png"));
-                    CorrosiveCobra_SplitHalfBottomSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_SplitHalfBottomSprite", new FileInfo(path));
-                    artRegistry.RegisterArt(CorrosiveCobra_SplitHalfBottomSprite);
-                }
-                {
-                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_BoxHeatSprite.png"));
-                    CorrosiveCobra_BoxHeatSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_BoxHeatSprite", new FileInfo(path));
-                    artRegistry.RegisterArt(CorrosiveCobra_BoxHeatSprite);
-                }
-                {
-                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_SeekerCobraSprite.png"));
-                    CorrosiveCobra_SeekerCobraSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_SeekerCobraSprite", new FileInfo(path));
-                    artRegistry.RegisterArt(CorrosiveCobra_SeekerCobraSprite);
-                }
-                {
-                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_FumeCannonSprite.png"));
-                    CorrosiveCobra_FumeCannonSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_FumeCannonSprite", new FileInfo(path));
-                    artRegistry.RegisterArt(CorrosiveCobra_FumeCannonSprite);
-                }
-                {
-                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_EvolveBackgroundSprite.png"));
-                    CorrosiveCobra_EvolveBackgroundSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_EvolveBackgroundSprite", new FileInfo(path));
-                    artRegistry.RegisterArt(CorrosiveCobra_EvolveBackgroundSprite);
-                }
-                {
-                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_SlimeBlastSprite.png"));
-                    CorrosiveCobra_SlimeBlastSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_SlimeBlastSprite", new FileInfo(path));
-                    artRegistry.RegisterArt(CorrosiveCobra_SlimeBlastSprite);
-                }
-                {
-                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_RecklessFuelshotSprite.png"));
-                    CorrosiveCobra_RecklessFuelshotSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_RecklessFuelshotSprite", new FileInfo(path));
-                    artRegistry.RegisterArt(CorrosiveCobra_RecklessFuelshotSprite);
-                }
-                {
-                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_CorrosiveMultishotSprite.png"));
-                    CorrosiveCobra_CorrosiveMultishotSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_CorrosiveMultishotSprite", new FileInfo(path));
-                    artRegistry.RegisterArt(CorrosiveCobra_CorrosiveMultishotSprite);
-                }
-                {
-                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_RepairsSprite.png"));
-                    CorrosiveCobra_RepairsSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_RepairsSprite", new FileInfo(path));
-                    artRegistry.RegisterArt(CorrosiveCobra_RepairsSprite);
-                }
-                {
-                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_BlockShotSprite.png"));
-                    CorrosiveCobra_BlockShotSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_BlockShotSprite", new FileInfo(path));
-                    artRegistry.RegisterArt(CorrosiveCobra_BlockShotSprite);
-                }
-                {
-                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_HeatSprite.png"));
-                    CorrosiveCobra_HeatSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_HeatSprite", new FileInfo(path));
-                    artRegistry.RegisterArt(CorrosiveCobra_HeatSprite);
-                }
-                {
-                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_GoatDroneSprite.png"));
-                    CorrosiveCobra_GoatDroneSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_GoatDroneSprite", new FileInfo(path));
-                    artRegistry.RegisterArt(CorrosiveCobra_GoatDroneSprite);
-                }
-                {
-                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_CannonCardSprite.png"));
-                    CorrosiveCobra_CannonCardSprite = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_CannonCardSprite", new FileInfo(path));
-                    artRegistry.RegisterArt(CorrosiveCobra_CannonCardSprite);
-                }
-                {
-                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_CorrosionBlockStarter.png"));
-                    CorrosiveCobra_CorrosionBlockStarter = new ExternalSprite("CorrosiveCobra.sprites.CorrosiveCobra_CorrosionBlockStarter", new FileInfo(path));
-                    artRegistry.RegisterArt(CorrosiveCobra_CorrosionBlockStarter);
+                    var spr = (new ExternalSprite("Sorwest.CorrosiveCobra.Character.DizzySlime.TalkMad" + i, files[i]));
+                    TalkMadSprites.Add(spr);
+                    artRegistry.RegisterArt(spr);
                 }
             }
-            //card border
             {
+                var dir_path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", "talk_dark");
+                var files = Directory.GetFiles(dir_path).Select(e => new FileInfo(e)).ToArray();
+                for (int i = 0; i < files.Length; i++)
                 {
-                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBorder", Path.GetFileName("BorderCobraBasic.png"));
-                    BorderCobraBasic = new ExternalSprite("CorrosiveCobra.sprites.BorderCobraBasic", new FileInfo(path));
-                    artRegistry.RegisterArt(BorderCobraBasic);
+                    var spr = (new ExternalSprite("Sorwest.CorrosiveCobra.Character.DizzySlime.TalkDark" + i, files[i]));
+                    TalkDarkSprites.Add(spr);
+                    artRegistry.RegisterArt(spr);
                 }
+            }
+            {
+                var dir_path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", "talk_phone");
+                var files = Directory.GetFiles(dir_path).Select(e => new FileInfo(e)).ToArray();
+                for (int i = 0; i < files.Length; i++)
                 {
-                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBorder", Path.GetFileName("BorderCobraCommon.png"));
-                    BorderCobraCommon = new ExternalSprite("CorrosiveCobra.sprites.BorderCobraCommon", new FileInfo(path));
-                    artRegistry.RegisterArt(BorderCobraCommon);
+                    var spr = (new ExternalSprite("Sorwest.CorrosiveCobra.Character.DizzySlime.TalkPhone" + i, files[i]));
+                    TalkPhoneSprites.Add(spr);
+                    artRegistry.RegisterArt(spr);
                 }
+            }
+            {
+                var dir_path = Path.Combine(ModRootFolder.FullName, "Sprites", "Character", "talk_nervous");
+                var files = Directory.GetFiles(dir_path).Select(e => new FileInfo(e)).ToArray();
+                for (int i = 0; i < files.Length; i++)
                 {
-                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBorder", Path.GetFileName("BorderCobraUncommon.png"));
-                    BorderCobraUncommon = new ExternalSprite("CorrosiveCobra.sprites.BorderCobraUncommon", new FileInfo(path));
-                    artRegistry.RegisterArt(BorderCobraUncommon);
-                }
-                {
-                    var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBorder", Path.GetFileName("BorderCobraRare.png"));
-                    BorderCobraRare = new ExternalSprite("CorrosiveCobra.sprites.BorderCobraRare", new FileInfo(path));
-                    artRegistry.RegisterArt(BorderCobraRare);
+                    var spr = (new ExternalSprite("Sorwest.CorrosiveCobra.Character.DizzySlime.TalkNervous" + i, files[i]));
+                    TalkNervousSprites.Add(spr);
+                    artRegistry.RegisterArt(spr);
                 }
             }
         }
-        public void LoadManifest(IDeckRegistry registry)
+        //icon sprites
         {
-            var card_DefaultArt = CorrosiveCobra_CardBackgroud ?? throw new Exception();
-            var borderCobraDeckSprite = BorderCobraCommon ?? throw new Exception();
-            var borderCobraShipDeckSprite = BorderCobraBasic ?? throw new Exception();
-            CobraDeck = new ExternalDeck(
-                "Sorwest.CorrosiveCobra.CobraDeck",
-                CorrosiveCobraColor,
-                System.Drawing.Color.Black,
-                card_DefaultArt,
-                borderCobraDeckSprite,
-                null);
-            registry.RegisterDeck(Manifest.CobraDeck);
-            CobraShipDeck = new ExternalDeck(
-                "Sorwest.CorrosiveCobra.CobraShipDeck",
-                CorrosiveCobraColor,
-                System.Drawing.Color.Black,
-                card_DefaultArt,
-                borderCobraShipDeckSprite,
-                null);
-            registry.RegisterDeck(Manifest.CobraShipDeck);
-        }
-        void IGlossaryManifest.LoadManifest(IGlossaryRegisty registry)
-        {
-            AIncomingCorrode_Glossary = new ExternalGlossary("CorrosiveCobra.Glossary.AIncomingCorrode", "CorrosiveCobraIncomingCorrode", false, ExternalGlossary.GlossayType.action, IncomingCorrodeIcon ?? throw new Exception("Missing IncomingCorrode Icon"));
-            AIncomingCorrode_Glossary.AddLocalisation("en", "Recoil Corrode", "<c=hurt>Apply to self</c> <c=keyword>{0}</c> <c=status>Corrode</c>.", null);
-            registry.RegisterGlossary(AIncomingCorrode_Glossary);
-
-            AEvolveStatus_Glossary = new ExternalGlossary("CorrosiveCobra.Glossary.AEvolveStatus", "CorrosiveCobraEvolveStatusGlossary", false, ExternalGlossary.GlossayType.action, EvolveStatusSprite ?? throw new Exception("Missing EvolveStatus Icon"));
-            AEvolveStatus_Glossary.AddLocalisation("en", "Evolve", "Whenever you draw a <c=trash>Trash</c> card, <c=keyword>draw {0}</c>.", null);
-            registry.RegisterGlossary(AEvolveStatus_Glossary);
-
-        }
-        void ICardManifest.LoadManifest(ICardRegistry registry)
-        {
-            var card_DefaultArt = CorrosiveCobra_CardBackgroud;
-
-            // BOOKS Cards
-
             {
-                CobraCardBooksCorrosiveCrystal = new ExternalCard("CorrosiveCobra.CobraCardCorrosiveCrystal", typeof(CobraCardBooksCorrosiveCrystal), card_DefaultArt ?? throw new Exception("missing card_DefaultArt"), ExternalDeck.GetRaw((int)Deck.shard));
-                registry.RegisterCard(CobraCardBooksCorrosiveCrystal);
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Icons", Path.GetFileName("HeatCostSatisfied.png"));
+                HeatCostSatisfied = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.HeatCostSatisfied", new FileInfo(path));
+                artRegistry.RegisterArt(HeatCostSatisfied);
+            }
+            {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Icons", Path.GetFileName("HeatCostUnsatisfied.png"));
+                HeatCostUnsatisfied = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.HeatCostUnsatisfied", new FileInfo(path));
+                artRegistry.RegisterArt(HeatCostUnsatisfied);
+            }
+            {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Icons", Path.GetFileName("CorrodeCostSatisfied.png"));
+                CorrodeCostSatisfied = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.CorrodeCostSatisfied", new FileInfo(path));
+                artRegistry.RegisterArt(CorrodeCostSatisfied);
+            }
+            {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Icons", Path.GetFileName("CorrodeCostUnsatisfied.png"));
+                CorrodeCostUnsatisfied = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.CorrodeCostUnsatisfied", new FileInfo(path));
+                artRegistry.RegisterArt(CorrodeCostUnsatisfied);
+            }
+            {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Icons", Path.GetFileName("IncomingCorrodeIcon.png"));
+                IncomingCorrodeIcon = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.IncomingCorrodeIcon", new FileInfo(path));
+                artRegistry.RegisterArt(IncomingCorrodeIcon);
+            }
+            {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Icons", Path.GetFileName("EvolveStatusSprite.png"));
+                EvolveStatusSprite = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.EvolveStatusSprite", new FileInfo(path));
+                artRegistry.RegisterArt(EvolveStatusSprite);
+            }
+            {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Icons", Path.GetFileName("HeatOutbreakStatusSprite.png"));
+                HeatOutbreakStatusSprite = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.HeatOutbreakStatusSprite", new FileInfo(path));
+                artRegistry.RegisterArt(HeatOutbreakStatusSprite);
+            }
+            {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Icons", Path.GetFileName("HeatControlStatusSprite.png"));
+                HeatControlStatusSprite = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.HeatControlStatusSprite", new FileInfo(path));
+                artRegistry.RegisterArt(HeatControlStatusSprite);
+            }
+        }
+        //artifact sprites
+        {
+            {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Artifacts", Path.GetFileName("UnstableTanksSprite.png"));
+                UnstableTanksSprite = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.UnstableTanksSprite", new FileInfo(path));
+                artRegistry.RegisterArt(UnstableTanksSprite);
+            }
+            {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Artifacts", Path.GetFileName("OverdriveTanksSprite.png"));
+                OverdriveTanksSprite = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.OverdriveTanksSprite", new FileInfo(path));
+                artRegistry.RegisterArt(OverdriveTanksSprite);
+            }
+            {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Artifacts", Path.GetFileName("FuelWallsSprite.png"));
+                FuelWallsSprite = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.FuelWallsSprite", new FileInfo(path));
+                artRegistry.RegisterArt(FuelWallsSprite);
+            }
+            {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Artifacts", Path.GetFileName("SlimeHeartSprite.png"));
+                SlimeHeartSprite = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.SlimeHeartSprite", new FileInfo(path));
+                artRegistry.RegisterArt(SlimeHeartSprite);
+            }
+            {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Artifacts", Path.GetFileName("ToxicCaviarSprite.png"));
+                ToxicCaviarSprite = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.ToxicCaviarSprite", new FileInfo(path));
+                artRegistry.RegisterArt(ToxicCaviarSprite);
+            }
+            {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Artifacts", Path.GetFileName("CorrodeAttackSprite.png"));
+                CorrodeAttackSprite = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.CorrodeAttackSprite", new FileInfo(path));
+                artRegistry.RegisterArt(CorrodeAttackSprite);
+            }
+            {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Artifacts", Path.GetFileName("PowerAcidSprite.png"));
+                PowerAcidSprite = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.PowerAcidSprite", new FileInfo(path));
+                artRegistry.RegisterArt(PowerAcidSprite);
+            }
+            {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Artifacts", Path.GetFileName("DissolventSprite.png"));
+                DissolventSprite = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.DissolventSprite", new FileInfo(path));
+                artRegistry.RegisterArt(DissolventSprite);
+            }
+            {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Artifacts", Path.GetFileName("DummyHeatSprite.png"));
+                DummyHeatSprite = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.DummyHeatSprite", new FileInfo(path));
+                artRegistry.RegisterArt(DummyHeatSprite);
+            }
+            //duos
+            {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Artifacts", "Duo", Path.GetFileName("SlimeDizzyArtifactSprite.png"));
+                SlimeDizzyArtifactSprite = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.SlimeDizzyArtifactSprite", new FileInfo(path));
+                artRegistry.RegisterArt(SlimeDizzyArtifactSprite);
+            }
+            {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Artifacts", "Duo", Path.GetFileName("SlimeRiggsArtifactSprite.png"));
+                SlimeRiggsArtifactSprite = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.SlimeRiggsArtifactSprite", new FileInfo(path));
+                artRegistry.RegisterArt(SlimeRiggsArtifactSprite);
+            }
+            {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Artifacts", "Duo", Path.GetFileName("SlimePeriArtifactSprite.png"));
+                SlimePeriArtifactSprite = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.SlimePeriArtifactSprite", new FileInfo(path));
+                artRegistry.RegisterArt(SlimePeriArtifactSprite);
+            }
+            {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Artifacts", "Duo", Path.GetFileName("SlimeIsaacArtifactSprite.png"));
+                SlimeIsaacArtifactSprite = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.SlimeIsaacArtifactSprite", new FileInfo(path));
+                artRegistry.RegisterArt(SlimeIsaacArtifactSprite);
+            }
+            {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Artifacts", "Duo", Path.GetFileName("SlimeDrakeArtifactSprite.png"));
+                SlimeDrakeArtifactSprite = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.SlimeDrakeArtifactSprite", new FileInfo(path));
+                artRegistry.RegisterArt(SlimeDrakeArtifactSprite);
+            }
+            {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Artifacts", "Duo", Path.GetFileName("SlimeMaxArtifactSprite.png"));
+                SlimeMaxArtifactSprite = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.SlimeMaxArtifactSprite", new FileInfo(path));
+                artRegistry.RegisterArt(SlimeMaxArtifactSprite);
+            }
+            {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Artifacts", "Duo", Path.GetFileName("SlimeBooksArtifactSprite.png"));
+                SlimeBooksArtifactSprite = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.SlimeBooksArtifactSprite", new FileInfo(path));
+                artRegistry.RegisterArt(SlimeBooksArtifactSprite);
+            }
+            {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Artifacts", "Duo", Path.GetFileName("SlimeCatArtifactSprite.png"));
+                SlimeCatArtifactSprite = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.SlimeCatArtifactSprite", new FileInfo(path));
+                artRegistry.RegisterArt(SlimeCatArtifactSprite);
+            }
+        }
+        //card background
+        {
+            {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_CardBackgroud.png"));
+                CorrosiveCobra_CardBackgroud = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.CorrosiveCobra_CardBackgroud", new FileInfo(path));
+                artRegistry.RegisterArt(CorrosiveCobra_CardBackgroud);
+            }
+            {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_CorrodeSprite.png"));
+                CorrosiveCobra_CorrodeSprite = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.CorrosiveCobra_CorrodeSprite", new FileInfo(path));
+                artRegistry.RegisterArt(CorrosiveCobra_CorrodeSprite);
+            }
+            {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_CorrosionIgnitionSprite.png"));
+                CorrosiveCobra_CorrosionIgnitionSprite = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.CorrosiveCobra_CorrosionIgnitionSprite", new FileInfo(path));
+                artRegistry.RegisterArt(CorrosiveCobra_CorrosionIgnitionSprite);
+            }
+            {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_Split3_2TopSprite.png"));
+                CorrosiveCobra_Split3_2TopSprite = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.CorrosiveCobra_Split3_2TopSprite", new FileInfo(path));
+                artRegistry.RegisterArt(CorrosiveCobra_Split3_2TopSprite);
+            }
+            {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_Split3_2BottomSprite.png"));
+                CorrosiveCobra_Split3_2BottomSprite = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.CorrosiveCobra_Split3_2BottomSprite", new FileInfo(path));
+                artRegistry.RegisterArt(CorrosiveCobra_Split3_2BottomSprite);
+            }
+            {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_SplitHalfTopSprite.png"));
+                CorrosiveCobra_SplitHalfTopSprite = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.CorrosiveCobra_SplitHalfTopSprite", new FileInfo(path));
+                artRegistry.RegisterArt(CorrosiveCobra_SplitHalfTopSprite);
+            }
+            {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_SplitHalfBottomSprite.png"));
+                CorrosiveCobra_SplitHalfBottomSprite = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.CorrosiveCobra_SplitHalfBottomSprite", new FileInfo(path));
+                artRegistry.RegisterArt(CorrosiveCobra_SplitHalfBottomSprite);
+            }
+            {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_BoxHeatSprite.png"));
+                CorrosiveCobra_BoxHeatSprite = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.CorrosiveCobra_BoxHeatSprite", new FileInfo(path));
+                artRegistry.RegisterArt(CorrosiveCobra_BoxHeatSprite);
+            }
+            {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_SeekerCobraSprite.png"));
+                CorrosiveCobra_SeekerCobraSprite = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.CorrosiveCobra_SeekerCobraSprite", new FileInfo(path));
+                artRegistry.RegisterArt(CorrosiveCobra_SeekerCobraSprite);
+            }
+            {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_FumeCannonSprite.png"));
+                CorrosiveCobra_FumeCannonSprite = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.CorrosiveCobra_FumeCannonSprite", new FileInfo(path));
+                artRegistry.RegisterArt(CorrosiveCobra_FumeCannonSprite);
+            }
+            {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_EvolveBackgroundSprite.png"));
+                CorrosiveCobra_EvolveBackgroundSprite = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.CorrosiveCobra_EvolveBackgroundSprite", new FileInfo(path));
+                artRegistry.RegisterArt(CorrosiveCobra_EvolveBackgroundSprite);
+            }
+            {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_SlimeBlastSprite.png"));
+                CorrosiveCobra_SlimeBlastSprite = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.CorrosiveCobra_SlimeBlastSprite", new FileInfo(path));
+                artRegistry.RegisterArt(CorrosiveCobra_SlimeBlastSprite);
+            }
+            {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_RecklessFuelshotSprite.png"));
+                CorrosiveCobra_RecklessFuelshotSprite = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.CorrosiveCobra_RecklessFuelshotSprite", new FileInfo(path));
+                artRegistry.RegisterArt(CorrosiveCobra_RecklessFuelshotSprite);
+            }
+            {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_CorrosiveMultishotSprite.png"));
+                CorrosiveCobra_CorrosiveMultishotSprite = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.CorrosiveCobra_CorrosiveMultishotSprite", new FileInfo(path));
+                artRegistry.RegisterArt(CorrosiveCobra_CorrosiveMultishotSprite);
+            }
+            {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_RepairsSprite.png"));
+                CorrosiveCobra_RepairsSprite = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.CorrosiveCobra_RepairsSprite", new FileInfo(path));
+                artRegistry.RegisterArt(CorrosiveCobra_RepairsSprite);
+            }
+            {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_BlockShotSprite.png"));
+                CorrosiveCobra_BlockShotSprite = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.CorrosiveCobra_BlockShotSprite", new FileInfo(path));
+                artRegistry.RegisterArt(CorrosiveCobra_BlockShotSprite);
+            }
+            {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_HeatSprite.png"));
+                CorrosiveCobra_HeatSprite = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.CorrosiveCobra_HeatSprite", new FileInfo(path));
+                artRegistry.RegisterArt(CorrosiveCobra_HeatSprite);
+            }
+            {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_GoatDroneSprite.png"));
+                CorrosiveCobra_GoatDroneSprite = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.CorrosiveCobra_GoatDroneSprite", new FileInfo(path));
+                artRegistry.RegisterArt(CorrosiveCobra_GoatDroneSprite);
+            }
+            {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_CannonCardSprite.png"));
+                CorrosiveCobra_CannonCardSprite = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.CorrosiveCobra_CannonCardSprite", new FileInfo(path));
+                artRegistry.RegisterArt(CorrosiveCobra_CannonCardSprite);
+            }
+            {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBackground", Path.GetFileName("CorrosiveCobra_CorrosionBlockStarter.png"));
+                CorrosiveCobra_CorrosionBlockStarter = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.CorrosiveCobra_CorrosionBlockStarter", new FileInfo(path));
+                artRegistry.RegisterArt(CorrosiveCobra_CorrosionBlockStarter);
+            }
+        }
+        //card border
+        {
+            {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBorder", Path.GetFileName("BorderCobraBasic.png"));
+                BorderCobraBasic = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.BorderCobraBasic", new FileInfo(path));
+                artRegistry.RegisterArt(BorderCobraBasic);
+            }
+            {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "CardBorder", Path.GetFileName("BorderCobraCommon.png"));
+                BorderCobraCommon = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.BorderCobraCommon", new FileInfo(path));
+                artRegistry.RegisterArt(BorderCobraCommon);
+            }
+        }
+    }
+    public void LoadManifest(IDeckRegistry registry)
+    {
+        var card_DefaultArt = CorrosiveCobra_CardBackgroud ?? throw new Exception();
+        var borderCobraDeckSprite = BorderCobraCommon ?? throw new Exception();
+        var borderCobraShipDeckSprite = BorderCobraBasic ?? throw new Exception();
+        CobraDeck = new ExternalDeck(
+            "Sorwest.CorrosiveCobra.CobraDeck",
+            CorrosiveCobraColor,
+            System.Drawing.Color.Black,
+            card_DefaultArt,
+            borderCobraDeckSprite,
+            null);
+        registry.RegisterDeck(Manifest.CobraDeck);
+        CobraShipDeck = new ExternalDeck(
+            "Sorwest.CorrosiveCobra.CobraShipDeck",
+            CorrosiveCobraColor,
+            System.Drawing.Color.Black,
+            card_DefaultArt,
+            borderCobraShipDeckSprite,
+            null);
+        registry.RegisterDeck(Manifest.CobraShipDeck);
+    }
+    void IGlossaryManifest.LoadManifest(IGlossaryRegisty registry)
+    {
+        AIncomingCorrode_Glossary = new ExternalGlossary("Sorwest.CorrosiveCobra.Glossary.AIncomingCorrode", "CorrosiveCobraIncomingCorrode", false, ExternalGlossary.GlossayType.action, IncomingCorrodeIcon ?? throw new Exception("Missing IncomingCorrode Icon"));
+        AIncomingCorrode_Glossary.AddLocalisation("en", "Recoil Corrode", "<c=hurt>Apply to self</c> <c=keyword>{0}</c> <c=status>Corrode</c>.", null);
+        registry.RegisterGlossary(AIncomingCorrode_Glossary);
+
+        AEvolveStatus_Glossary = new ExternalGlossary("Sorwest.CorrosiveCobra.Glossary.AEvolveStatus", "CorrosiveCobraEvolveStatusGlossary", false, ExternalGlossary.GlossayType.action, EvolveStatusSprite ?? throw new Exception("Missing EvolveStatus Icon"));
+        AEvolveStatus_Glossary.AddLocalisation("en", "Evolve", "Whenever you draw a <c=trash>Trash</c> card, <c=keyword>draw {0}</c>.", null);
+        registry.RegisterGlossary(AEvolveStatus_Glossary);
+
+    }
+    void ICardManifest.LoadManifest(ICardRegistry registry)
+    {
+        var card_DefaultArt = CorrosiveCobra_CardBackgroud;
+
+        // BOOKS CARDS
+        {
+            {
+                CobraCardBooksCorrosiveCrystal = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardCorrosiveCrystal", typeof(CobraCardSlimeRiggsDuo), card_DefaultArt ?? throw new Exception("missing card_DefaultArt"), ExternalDeck.GetRaw((int)Deck.shard));
+
                 CobraCardBooksCorrosiveCrystal.AddLocalisation("Corrosive Crystal");
+
+                registry.RegisterCard(CobraCardBooksCorrosiveCrystal);
             }
             {
-                CobraCardBooksGainCrystal = new ExternalCard("CorrosiveCobra.CobraCardFuelFreezing", typeof(CobraCardBooksGainCrystal), card_DefaultArt, ExternalDeck.GetRaw((int)Deck.shard));
+                CobraCardBooksGainCrystal = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardFuelFreezing", typeof(CobraCardBooksGainCrystal), card_DefaultArt, ExternalDeck.GetRaw((int)Deck.shard));
+
+                CobraCardBooksGainCrystal.AddLocalisation("Fuel Freezing"); 
+                
                 registry.RegisterCard(CobraCardBooksGainCrystal);
-                CobraCardBooksGainCrystal.AddLocalisation("Fuel Freezing");
-            }
-
-            // CAT Cards
-
-            {
-                CobraCardColorlessSlimeSummon = new ExternalCard("CorrosiveCobra.CobraCardColorlessSlimeSummon", typeof(CobraCardColorlessSlimeSummon), card_DefaultArt, ExternalDeck.GetRaw((int)Deck.colorless));
-                registry.RegisterCard(CobraCardColorlessSlimeSummon);
-                CobraCardColorlessSlimeSummon.AddLocalisation("Dizzy?.EXE", "Add 1 of {0} <c=cardtrait>discount, temp</c> <c={1}>Dizzy?</c> cards to your hand.");
-            }
-            {
-                CobraCardColorlessAbsorbArtifact = new ExternalCard("CorrosiveCobra.CobraCardColorlessAbsorbArtifact", typeof(CobraCardColorlessAbsorbArtifact), card_DefaultArt, ExternalDeck.GetRaw((int)Deck.colorless));
-                registry.RegisterCard(CobraCardColorlessAbsorbArtifact);
-                CobraCardColorlessAbsorbArtifact.AddLocalisation("Absorb Artifact", desc: "<c=hurt>Lose a random artifact</c>. <c=healing>Heal 10</c>.");
-            }
-
-            //CORROSIVE COBRA Cards
-
-            {
-                CobraCardCorrosionStarter = new ExternalCard("CorrosiveCobra.CobraCardCorrosionStarter", typeof(CobraCardCorrosionStarter), card_DefaultArt, ExternalDeck.GetRaw((int)Deck.colorless));
-                registry.RegisterCard(CobraCardCorrosionStarter);
-                CobraCardCorrosionStarter.AddLocalisation("Corrosive Fuelshot");
-            }
-            {
-                CobraCardCorrosionBlockStarter = new ExternalCard("CorrosiveCobra.CobraCardCorrosionBlockStarter", typeof(CobraCardCorrosionBlockStarter), card_DefaultArt, ExternalDeck.GetRaw((int)Deck.colorless));
-                registry.RegisterCard(CobraCardCorrosionBlockStarter);
-                CobraCardCorrosionBlockStarter.AddLocalisation("Basic Heat Protection");
-            }
-            {
-                CobraCardFuelWall = new ExternalCard("CorrosiveCobra.CobraCardFuelWall", typeof(CobraCardFuelWall), card_DefaultArt, ExternalDeck.GetRaw((int)Deck.colorless));
-                registry.RegisterCard(CobraCardFuelWall);
-                CobraCardFuelWall.AddLocalisation("Adv. Heat Protection");
-            }
-            {
-                CobraCardLeakingContainer = new ExternalCard("CorrosiveCobra.CobraCardLeakingContainer", typeof(CobraCardLeakingContainer), card_DefaultArt, CobraShipDeck);
-                registry.RegisterCard(CobraCardLeakingContainer);
-                CobraCardLeakingContainer.AddLocalisation("Leaking Container");
-            }
-
-            // DIZZY SLIME CARDS
-
-            {
-                CobraCardFuelEjection = new ExternalCard("CorrosiveCobra.CobraCardFuelEjection", typeof(CobraCardFuelEjection), card_DefaultArt, CobraDeck);
-                registry.RegisterCard(CobraCardFuelEjection);
-                CobraCardFuelEjection.AddLocalisation("Fuel Ejection");
-            }
-            {
-                CobraCardTankThrow = new ExternalCard("CorrosiveCobra.CobraCardTankThrow", typeof(CobraCardTankThrow), card_DefaultArt, CobraDeck);
-                registry.RegisterCard(CobraCardTankThrow);
-                CobraCardTankThrow.AddLocalisation("Tank Throw");
-            }
-            {
-                CobraCardHeatedEvade = new ExternalCard("CorrosiveCobra.CobraCardHeatedEvade", typeof(CobraCardHeatedEvade), card_DefaultArt, CobraDeck);
-                registry.RegisterCard(CobraCardHeatedEvade);
-                CobraCardHeatedEvade.AddLocalisation("Heated Evade");
-            }
-            {
-                CobraCardHurriedDefense = new ExternalCard("CorrosiveCobra.CobraCardHurriedDefense", typeof(CobraCardHurriedDefense), card_DefaultArt, CobraDeck);
-                registry.RegisterCard(CobraCardHurriedDefense);
-                CobraCardHurriedDefense.AddLocalisation("Hurried Defense");
-            }
-            {
-                CobraCardCorrosionIgnition = new ExternalCard("CorrosiveCobra.CobraCardCorrosionIgnition", typeof(CobraCardCorrosionIgnition), card_DefaultArt, CobraDeck);
-                registry.RegisterCard(CobraCardCorrosionIgnition);
-                CobraCardCorrosionIgnition.AddLocalisation("Corrosion Ignition");
-            }
-            {
-                CobraCardSlimeShield = new ExternalCard("CorrosiveCobra.CobraCardSlimeShield", typeof(CobraCardSlimeShield), card_DefaultArt, CobraDeck);
-                registry.RegisterCard(CobraCardSlimeShield);
-                CobraCardSlimeShield.AddLocalisation("Slime Shield", desc: "Gain <c=keyword>2</c> <c=status>shield</c>.\nAdd a <c=card>Slime Heal </c> to your <c=keyword>draw pile</c>.", descA: "Gain <c=keyword>1</c> <c=status>shield</c>.\nAdd a <c=card>Slime Heal A</c> to your <c=keyword>draw pile</c>.", descB: "Gain <c=keyword>1</c> <c=status>shield</c>.\nAdd a <c=card>Slime Heal B</c> to your <c=keyword>draw pile</c>.");
-            }
-            {
-                CobraCardSlimeHeal = new ExternalCard("CorrosiveCobra.CobraCardSlimeHeal", typeof(CobraCardSlimeHeal), card_DefaultArt, CobraDeck);
-                registry.RegisterCard(CobraCardSlimeHeal);
-                CobraCardSlimeHeal.AddLocalisation("Slime Heal");
-            }
-            {
-                CobraCardTinkerWithTheTanks = new ExternalCard("CorrosiveCobra.CobraCardTinkerWithTheTanks", typeof(CobraCardTinkerWithTheTanks), card_DefaultArt, CobraDeck);
-                registry.RegisterCard(CobraCardTinkerWithTheTanks);
-                CobraCardTinkerWithTheTanks.AddLocalisation("Tinker With The Tanks", desc: "<c=healing>Heal 1</c>.\nGain a <c=card>Leaking Container</c>.", descA: "<c=healing>Heal 1</c>.\nGain a <c=card>Leaking Container A</c>.", descB: "<c=healing>Heal 1</c>.\nGain a <c=card>Leaking Container B</c>.");
-            }
-            {
-                CobraCardTimestreamLeak = new ExternalCard("CorrosiveCobra.CobraCardTimestreamLeak", typeof(CobraCardTimestreamLeak), card_DefaultArt, CobraDeck);
-                registry.RegisterCard(CobraCardTimestreamLeak);
-                CobraCardTimestreamLeak.AddLocalisation("Timestream Leak", desc: "Enemy gains <c=keyword>{0}</c> <c=status>corrode</c>. +1 for every second time ever played. {1}", descB: "Enemy gains <c=keyword>{0}</c> <c=status>corrode</c>.");
-            }
-            {
-                CobraCardCorrosiveMultishot = new ExternalCard("CorrosiveCobra.CobraCardCorrosiveMultishot", typeof(CobraCardCorrosiveMultishot), card_DefaultArt, CobraDeck);
-                registry.RegisterCard(CobraCardCorrosiveMultishot);
-                CobraCardCorrosiveMultishot.AddLocalisation("Corrosive Multishot");
-            }
-            {
-                CobraCardSlimeEvolution = new ExternalCard("CorrosiveCobra.CobraCardSlimeEvolution", typeof(CobraCardSlimeEvolution), card_DefaultArt, CobraDeck);
-                registry.RegisterCard(CobraCardSlimeEvolution);
-                CobraCardSlimeEvolution.AddLocalisation("Slime Evolution", desc: "Put a <c=card>Slime Mutation</c> in your <c=keyword>discard pile</c>. Draw <c=keyword>1</c>.", descB: "Put a <c=card>Slime Mutation</c> in your <c=keyword>draw pile</c>. Draw <c=keyword>1</c>.");
-            }
-            {
-                CobraCardSlimeMutation = new ExternalCard("CorrosiveCobra.CobraCardSlimeMutation", typeof(CobraCardSlimeMutation), card_DefaultArt, CobraDeck);
-                registry.RegisterCard(CobraCardSlimeMutation);
-                CobraCardSlimeMutation.AddLocalisation("Slime Mutation", desc: "Put a <c=card>SLIME BLAST!!</c> in your <c=keyword>discard pile</c>.");
-            }
-            {
-                CobraCardSlimeBLAST = new ExternalCard("CorrosiveCobra.CobraCardSlimeBLAST", typeof(CobraCardSlimeBLAST), card_DefaultArt, CobraDeck);
-                registry.RegisterCard(CobraCardSlimeBLAST);
-                CobraCardSlimeBLAST.AddLocalisation("SLIME BLAST!!", desc: "Attack.\nDmg = Double of all your statuses.{0}");
-            }
-            {
-                CobraCardSlimeHug = new ExternalCard("CorrosiveCobra.CobraCardSlimeHug", typeof(CobraCardSlimeHug), card_DefaultArt, CobraDeck);
-                registry.RegisterCard(CobraCardSlimeHug);
-                CobraCardSlimeHug.AddLocalisation("Slime Hug");
-            }
-            {
-                CobraCardRecklessFuelshot = new ExternalCard("CorrosiveCobra.CobraCardRecklessFuelshot", typeof(CobraCardRecklessFuelshot), card_DefaultArt, CobraDeck);
-                registry.RegisterCard(CobraCardRecklessFuelshot);
-                CobraCardRecklessFuelshot.AddLocalisation("Reckless Fuelshot", desc: "Attack for <c=redd>{0}</c> damage. Add {1} <c=card>Toxic</c> to your <c=keyword>draw pile</c>.", descA: "Attack for <c=redd>{0}</c> damage. Add {1} <c=card>Toxic</c> to your <c=keyword>discard pile</c>.");
-            }
-            {
-                CobraCardEnginesOnFire = new ExternalCard("CorrosiveCobra.CobraCardEnginesOnFire", typeof(CobraCardEnginesOnFire), card_DefaultArt, CobraDeck);
-                registry.RegisterCard(CobraCardEnginesOnFire);
-                CobraCardEnginesOnFire.AddLocalisation("Engines! On Fire!");
-            }
-            {
-                CobraCardHeatHoarder = new ExternalCard("CorrosiveCobra.CobraCardHeatHoarder", typeof(CobraCardHeatHoarder), card_DefaultArt, CobraDeck);
-                registry.RegisterCard(CobraCardHeatHoarder);
-                CobraCardHeatHoarder.AddLocalisation("Heat Hoarder", desc: "Gain <c=keyword>{0}</c> <c=status>Heat Control</c>. Add {1} non-temp <c=card>Miasma</c> to your <c=keyword>draw pile</c>.");
-            }
-            {
-                CobraCardShieldAlternatorA = new ExternalCard("CorrosiveCobra.CobraCardShieldAlternatorA", typeof(CobraCardShieldAlternatorA), card_DefaultArt, CobraDeck);
-                registry.RegisterCard(CobraCardShieldAlternatorA);
-                CobraCardShieldAlternatorA.AddLocalisation("Shield Replica", desc: "Gain <c=keyword>2</c> <c=status>shield</c>.\nAdd a <c=card>Temp Shield Replica</c> to your <c=keyword>draw pile</c>.", descB: "Gain <c=keyword>2</c> <c=status>shield</c>.\nAdd a <c=card>Temp Shield Replica</c> to your hand.");
-            }
-            {
-                CobraCardShieldAlternatorB = new ExternalCard("CorrosiveCobra.CobraCardShieldAlternatorB", typeof(CobraCardShieldAlternatorB), card_DefaultArt, CobraDeck);
-                registry.RegisterCard(CobraCardShieldAlternatorB);
-                CobraCardShieldAlternatorB.AddLocalisation("Temp Shield Replica", desc: "Gain <c=keyword>3</c> <c=status>temp shield</c>.\nAdd a <c=card>Shield Replica</c> to your hand.");
-            }
-            {
-                CobraCardAcidicFlare = new ExternalCard("CorrosiveCobra.CobraCardAcidicFlare", typeof(CobraCardAcidicFlare), card_DefaultArt, CobraDeck);
-                registry.RegisterCard(CobraCardAcidicFlare);
-                CobraCardAcidicFlare.AddLocalisation("Acidic Flare", desc: "Turn <c=redd>ALL</c> <c=status>heat</c> into <c=status>corrode</c>.", descA: "Turn <c=redd>ALL</c> <c=status>corrode</c> into <c=status>heat</c>. Gain a <c=card>Corrosion Ignition A</c>.", descB: "Turn <c=redd>ALL</c> <c=status>heat</c> into <c=status>corrode</c>. Gain a <c=card>Corrosion Ignition B</c>.");
-            }
-            {
-                CobraCardFlameShot = new ExternalCard("CorrosiveCobra.CobraCardFlameShot", typeof(CobraCardFlameShot), card_DefaultArt, CobraDeck);
-                registry.RegisterCard(CobraCardFlameShot);
-                CobraCardFlameShot.AddLocalisation("Flame Blast", desc: "Attack for <c=redd>{0}</c> damage. Add {1} <c=card>Miasma</c> to your <c=keyword>draw pile</c>.");
-            }
-            {
-                CobraCardStolenFueltank = new ExternalCard("CorrosiveCobra.CobraCardStolenFueltank", typeof(CobraCardStolenFueltank), card_DefaultArt, CobraDeck);
-                registry.RegisterCard(CobraCardStolenFueltank);
-                CobraCardStolenFueltank.AddLocalisation("Stolen Fueltank");
-            }
-            {
-                CobraCardUncontrolledEngines = new ExternalCard("CorrosiveCobra.CobraCardUncontrolledEngines", typeof(CobraCardUncontrolledEngines), card_DefaultArt, CobraDeck);
-                registry.RegisterCard(CobraCardUncontrolledEngines);
-                CobraCardUncontrolledEngines.AddLocalisation("Uncontrolled Engine");
             }
         }
-        public void LoadManifest(IArtifactRegistry registry)
+        // CAT CARDS
         {
             {
-                CobraArtifactUnstableTanks = new ExternalArtifact("CorrosiveCobra.Artifacts.CobraArtifactUnstableTanks",
+                CobraCardColorlessSlimeSummon = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardColorlessSlimeSummon", typeof(CobraCardColorlessSlimeSummon), card_DefaultArt, ExternalDeck.GetRaw((int)Deck.colorless));
+
+                CobraCardColorlessSlimeSummon.AddLocalisation("Dizzy?.EXE", "Add 1 of {0} <c=cardtrait>discount, temp</c> <c={1}>Dizzy?</c> cards to your hand.");
+                
+                registry.RegisterCard(CobraCardColorlessSlimeSummon);}
+            {
+                CobraCardColorlessAbsorbArtifact = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardColorlessAbsorbArtifact", typeof(CobraCardColorlessAbsorbArtifact), card_DefaultArt, ExternalDeck.GetRaw((int)Deck.colorless));
+                
+                CobraCardColorlessAbsorbArtifact.AddLocalisation("Absorb Artifact", desc: "<c=hurt>Lose a random artifact</c>. <c=healing>Heal 10</c>.");
+                
+                registry.RegisterCard(CobraCardColorlessAbsorbArtifact);
+            }
+        }
+        // CORROSIVE COBRA CARDS
+        {
+            {
+                CobraCardCorrosionStarter = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardCorrosionStarter", typeof(CobraCardCorrosionStarter), card_DefaultArt, ExternalDeck.GetRaw((int)Deck.colorless));
+
+                CobraCardCorrosionStarter.AddLocalisation("Corrosive Fuelshot");
+
+                registry.RegisterCard(CobraCardCorrosionStarter);
+            }
+            {
+                CobraCardCorrosionBlockStarter = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardCorrosionBlockStarter", typeof(CobraCardCorrosionBlockStarter), card_DefaultArt, ExternalDeck.GetRaw((int)Deck.colorless));
+                
+                CobraCardCorrosionBlockStarter.AddLocalisation("Basic Heat Protection");
+            
+                registry.RegisterCard(CobraCardCorrosionBlockStarter);
+            }
+            {
+                CobraCardFuelWall = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardFuelWall", typeof(CobraCardFuelWall), card_DefaultArt, ExternalDeck.GetRaw((int)Deck.colorless));
+
+                CobraCardFuelWall.AddLocalisation("Adv. Heat Protection"); 
+                
+                registry.RegisterCard(CobraCardFuelWall);
+            }
+            {
+                CobraCardLeakingContainer = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardLeakingContainer", typeof(CobraCardLeakingContainer), card_DefaultArt, CobraShipDeck);
+
+                CobraCardLeakingContainer.AddLocalisation("Leaking Container"); 
+                
+                registry.RegisterCard(CobraCardLeakingContainer);
+            }
+        }
+        // DIZZY SLIME CARDS
+        {
+            {
+                CobraCardFuelEjection = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardFuelEjection", typeof(CobraCardFuelEjection), card_DefaultArt, CobraDeck);
+
+                CobraCardFuelEjection.AddLocalisation("Fuel Ejection");
+                
+                registry.RegisterCard(CobraCardFuelEjection);
+            }
+            {
+                CobraCardTankThrow = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardTankThrow", typeof(CobraCardTankThrow), card_DefaultArt, CobraDeck);
+
+                CobraCardTankThrow.AddLocalisation("Tank Throw");
+
+                registry.RegisterCard(CobraCardTankThrow);
+            }
+            {
+                CobraCardHeatedEvade = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardHeatedEvade", typeof(CobraCardHeatedEvade), card_DefaultArt, CobraDeck);
+
+                CobraCardHeatedEvade.AddLocalisation("Heated Evade");
+
+                registry.RegisterCard(CobraCardHeatedEvade);
+            }
+            {
+                CobraCardHurriedDefense = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardHurriedDefense", typeof(CobraCardHurriedDefense), card_DefaultArt, CobraDeck);
+
+                CobraCardHurriedDefense.AddLocalisation("Hurried Defense");
+
+                registry.RegisterCard(CobraCardHurriedDefense);
+            }
+            {
+                CobraCardCorrosionIgnition = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardCorrosionIgnition", typeof(CobraCardCorrosionIgnition), card_DefaultArt, CobraDeck);
+
+                CobraCardCorrosionIgnition.AddLocalisation("Corrosion Ignition"); 
+                
+                registry.RegisterCard(CobraCardCorrosionIgnition);
+            }
+            {
+                CobraCardSlimeShield = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardSlimeShield", typeof(CobraCardSlimeShield), card_DefaultArt, CobraDeck);
+                
+                CobraCardSlimeShield.AddLocalisation("Slime Shield", desc: "Gain <c=keyword>2</c> <c=status>shield</c>.\nAdd a <c=card>Slime Heal </c> to your <c=keyword>draw pile</c>.", descA: "Gain <c=keyword>1</c> <c=status>shield</c>.\nAdd a <c=card>Slime Heal A</c> to your <c=keyword>draw pile</c>.", descB: "Gain <c=keyword>1</c> <c=status>shield</c>.\nAdd a <c=card>Slime Heal B</c> to your <c=keyword>draw pile</c>.");
+
+                registry.RegisterCard(CobraCardSlimeShield);
+            }
+            {
+                CobraCardSlimeHeal = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardSlimeHeal", typeof(CobraCardSlimeHeal), card_DefaultArt, CobraDeck);
+                
+                CobraCardSlimeHeal.AddLocalisation("Slime Heal");
+            
+                registry.RegisterCard(CobraCardSlimeHeal);
+            }
+            {
+                CobraCardTinkerWithTheTanks = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardTinkerWithTheTanks", typeof(CobraCardTinkerWithTheTanks), card_DefaultArt, CobraDeck);
+                
+                CobraCardTinkerWithTheTanks.AddLocalisation("Tinker With The Tanks", desc: "<c=healing>Heal 1</c>.\nGain a <c=card>Leaking Container</c>.", descA: "<c=healing>Heal 1</c>.\nGain a <c=card>Leaking Container A</c>.", descB: "<c=healing>Heal 1</c>.\nGain a <c=card>Leaking Container B</c>.");
+                
+                registry.RegisterCard(CobraCardTinkerWithTheTanks);
+            }
+            {
+                CobraCardTimestreamLeak = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardTimestreamLeak", typeof(CobraCardTimestreamLeak), card_DefaultArt, CobraDeck);
+                
+                CobraCardTimestreamLeak.AddLocalisation("Timestream Leak", desc: "Enemy gains <c=keyword>{0}</c> <c=status>corrode</c>. +1 for every second time ever played. {1}", descB: "Enemy gains <c=keyword>{0}</c> <c=status>corrode</c>.");
+            
+                registry.RegisterCard(CobraCardTimestreamLeak);
+            }
+            {
+                CobraCardCorrosiveMultishot = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardCorrosiveMultishot", typeof(CobraCardCorrosiveMultishot), card_DefaultArt, CobraDeck);
+            
+                CobraCardCorrosiveMultishot.AddLocalisation("Corrosive Multishot");
+            
+                registry.RegisterCard(CobraCardCorrosiveMultishot);
+            }
+            {
+                CobraCardSlimeEvolution = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardSlimeEvolution", typeof(CobraCardSlimeEvolution), card_DefaultArt, CobraDeck);
+
+                CobraCardSlimeEvolution.AddLocalisation("Slime Evolution", desc: "Put a <c=card>Slime Mutation</c> in your <c=keyword>discard pile</c>. Draw <c=keyword>1</c>.", descB: "Put a <c=card>Slime Mutation</c> in your <c=keyword>draw pile</c>. Draw <c=keyword>1</c>.");
+
+                registry.RegisterCard(CobraCardSlimeEvolution);
+            }
+            {
+                CobraCardSlimeMutation = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardSlimeMutation", typeof(CobraCardSlimeMutation), card_DefaultArt, CobraDeck);
+
+                CobraCardSlimeMutation.AddLocalisation("Slime Mutation", desc: "Put a <c=card>SLIME BLAST!!</c> in your <c=keyword>discard pile</c>.");
+            
+                registry.RegisterCard(CobraCardSlimeMutation);
+            }
+            {
+                CobraCardSlimeBLAST = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardSlimeBLAST", typeof(CobraCardSlimeBLAST), card_DefaultArt, CobraDeck);
+
+                CobraCardSlimeBLAST.AddLocalisation("SLIME BLAST!!", desc: "Attack.\nDmg = Double of all your statuses.{0}");
+
+                registry.RegisterCard(CobraCardSlimeBLAST);
+            }
+            {
+                CobraCardSlimeHug = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardSlimeHug", typeof(CobraCardSlimeHug), card_DefaultArt, CobraDeck);
+
+                CobraCardSlimeHug.AddLocalisation("Slime Hug");
+
+                registry.RegisterCard(CobraCardSlimeHug);
+            }
+            {
+                CobraCardRecklessFuelshot = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardRecklessFuelshot", typeof(CobraCardRecklessFuelshot), card_DefaultArt, CobraDeck);
+                
+                CobraCardRecklessFuelshot.AddLocalisation("Reckless Fuelshot", desc: "Attack for <c=redd>{0}</c> damage. Add {1} <c=card>Toxic</c> to your <c=keyword>draw pile</c>.", descA: "Attack for <c=redd>{0}</c> damage. Add {1} <c=card>Toxic</c> to your <c=keyword>discard pile</c>.");
+
+                registry.RegisterCard(CobraCardRecklessFuelshot);
+            }
+            {
+                CobraCardEnginesOnFire = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardEnginesOnFire", typeof(CobraCardEnginesOnFire), card_DefaultArt, CobraDeck);
+                
+                CobraCardEnginesOnFire.AddLocalisation("Engines! On Fire!");
+
+                registry.RegisterCard(CobraCardEnginesOnFire);
+            }
+            {
+                CobraCardHeatHoarder = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardHeatHoarder", typeof(CobraCardHeatHoarder), card_DefaultArt, CobraDeck);
+                
+                CobraCardHeatHoarder.AddLocalisation("Heat Hoarder", desc: "Gain <c=keyword>{0}</c> <c=status>Heat Control</c>. Add {1} non-temp <c=card>Miasma</c> to your <c=keyword>draw pile</c>.");
+
+                registry.RegisterCard(CobraCardHeatHoarder);
+            }
+            {
+                CobraCardShieldAlternatorA = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardShieldAlternatorA", typeof(CobraCardShieldAlternatorA), card_DefaultArt, CobraDeck);
+                
+                CobraCardShieldAlternatorA.AddLocalisation("Shield Replica", desc: "Gain <c=keyword>2</c> <c=status>shield</c>.\nAdd a <c=card>Temp Shield Replica</c> to your <c=keyword>draw pile</c>.", descB: "Gain <c=keyword>2</c> <c=status>shield</c>.\nAdd a <c=card>Temp Shield Replica</c> to your hand.");
+            
+                registry.RegisterCard(CobraCardShieldAlternatorA);
+            }
+            {
+                CobraCardShieldAlternatorB = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardShieldAlternatorB", typeof(CobraCardShieldAlternatorB), card_DefaultArt, CobraDeck);
+                
+                CobraCardShieldAlternatorB.AddLocalisation("Temp Shield Replica", desc: "Gain <c=keyword>3</c> <c=status>temp shield</c>.\nAdd a <c=card>Shield Replica</c> to your hand.");
+            
+                registry.RegisterCard(CobraCardShieldAlternatorB);
+            }
+            {
+                CobraCardAcidicFlare = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardAcidicFlare", typeof(CobraCardAcidicFlare), card_DefaultArt, CobraDeck);
+            
+                CobraCardAcidicFlare.AddLocalisation("Acidic Flare", desc: "Turn <c=redd>ALL</c> <c=status>heat</c> into <c=status>corrode</c>.", descA: "Turn <c=redd>ALL</c> <c=status>corrode</c> into <c=status>heat</c>. Gain a <c=card>Corrosion Ignition A</c>.", descB: "Turn <c=redd>ALL</c> <c=status>heat</c> into <c=status>corrode</c>. Gain a <c=card>Corrosion Ignition B</c>.");
+            
+                registry.RegisterCard(CobraCardAcidicFlare);
+            }
+            {
+                CobraCardFlameShot = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardFlameShot", typeof(CobraCardFlameShot), card_DefaultArt, CobraDeck);
+                
+                CobraCardFlameShot.AddLocalisation("Flame Blast", desc: "Attack for <c=redd>{0}</c> damage. Add {1} <c=card>Miasma</c> to your <c=keyword>draw pile</c>.");
+            
+                registry.RegisterCard(CobraCardFlameShot);
+            }
+            {
+                CobraCardStolenFueltank = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardStolenFueltank", typeof(CobraCardStolenFueltank), card_DefaultArt, CobraDeck);
+                
+                CobraCardStolenFueltank.AddLocalisation("Stolen Fueltank");
+            
+                registry.RegisterCard(CobraCardStolenFueltank);
+            }
+            {
+                CobraCardUncontrolledEngines = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardUncontrolledEngines", typeof(CobraCardUncontrolledEngines), card_DefaultArt, CobraDeck);
+                
+                CobraCardUncontrolledEngines.AddLocalisation("Uncontrolled Engine");
+            
+                registry.RegisterCard(CobraCardUncontrolledEngines);
+            }
+        }
+        var harmony = new Harmony("Sorwest.CorrosiveCobra.DuoCards");
+        if (DuoArtifactsApi != null) RegisterDuoCards(registry, harmony);
+    }
+    void RegisterDuoCards(ICardRegistry registry, Harmony harmony)
+    {
+        var card_DefaultArt = CorrosiveCobra_CardBackgroud;
+        var duoDeck = DuoArtifactsApi!.DuoArtifactDeck;
+        {
+            CobraCardSlimeRiggsDuo = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardSlimeRiggsDuo", typeof(CobraCardSlimeRiggsDuo), card_DefaultArt ?? throw new Exception("missing card_DefaultArt"), duoDeck);
+
+            CobraCardSlimeRiggsDuo.AddLocalisation("Cheese Tea");
+            
+            registry.RegisterCard(CobraCardSlimeRiggsDuo);
+        }
+    }
+    public void LoadManifest(IArtifactRegistry registry)
+    {
+        // CORROSIVE COBRA ARTIFACTS
+        {
+            {
+                CobraArtifactUnstableTanks = new ExternalArtifact("Sorwest.CorrosiveCobra.Artifacts.CobraArtifactUnstableTanks",
                     typeof(CobraArtifactUnstableTanks),
                     UnstableTanksSprite ?? throw new Exception("missing UnstableTanks artifact sprite"));
 
                 CobraArtifactUnstableTanks.AddLocalisation("UNSTABLE TANKS",
-                    "Gain 1 extra <c=energy>ENERGY</c> every turn. <c=hurt>Gain 1 heat each turn</c>. At the start of battle, gain a <c=card>Leaking Container</c>.");
+                    "Gain 1 extra <c=energy>ENERGY</c> every turn. <c=downside>Gain 1 heat each turn</c>. At the start of battle, gain a <c=card>Leaking Container</c>.");
 
                 registry.RegisterArtifact(CobraArtifactUnstableTanks);
             }
             {
-                CobraArtifactOverdriveTanks = new ExternalArtifact("CorrosiveCobra.Artifacts.CobraArtifactOverdriveTanks",
+                CobraArtifactOverdriveTanks = new ExternalArtifact("Sorwest.CorrosiveCobra.Artifacts.CobraArtifactOverdriveTanks",
                     typeof(CobraArtifactOverdriveTanks),
                     OverdriveTanksSprite ?? throw new Exception("missing OverdriveTanks artifact sprite"));
 
                 CobraArtifactOverdriveTanks.AddLocalisation("OVERDRIVE TANKS",
-                    "Replaces <c=artifact>UNSTABLE FUELTANKS</c>. Gain 2 extra <c=energy>ENERGY</c> every turn. <c=hurt>Gain 2 heat each turn</c>. At the start of battle, gain a <c=card>Leaking Container</c>.");
+                    "Replaces <c=artifact>UNSTABLE FUELTANKS</c>. Gain 2 extra <c=energy>ENERGY</c> every turn. <c=downside>Gain 2 heat each turn</c>. At the start of battle, gain a <c=card>Leaking Container</c>.");
 
                 registry.RegisterArtifact(CobraArtifactOverdriveTanks);
             }
             {
-                CobraArtifactSlimeHeart = new ExternalArtifact("CorrosiveCobra.Artifacts.CobraArtifactSlimeHeart",
+                CobraArtifactFuelWalls = new ExternalArtifact("Sorwest.CorrosiveCobra.Artifacts.CobraArtifactFuelWalls",
+                    typeof(CobraArtifactFuelWalls),
+                    FuelWallsSprite ?? throw new Exception("missing FuelWalls artifact sprite"));
+
+                CobraArtifactFuelWalls.AddLocalisation("FUEL WALLS", "(Corrosive Cobra-excluse artifact!)\nOn pickup, add 3 <c=card>Adv. Heat Protection</c> to your deck.");
+
+                registry.RegisterArtifact(CobraArtifactFuelWalls);
+            }
+        }
+        // SLIME ARTIFACTS
+        {
+            {
+                CobraArtifactSlimeHeart = new ExternalArtifact("Sorwest.CorrosiveCobra.Artifacts.CobraArtifactSlimeHeart",
                     typeof(CobraArtifactSlimeHeart),
                     SlimeHeartSprite ?? throw new Exception("missing SlimeHeart artifact sprite"),
                     ownerDeck: CobraDeck ?? throw new Exception("missing CobraDeck."));
@@ -810,7 +972,7 @@ namespace CorrosiveCobra
                 registry.RegisterArtifact(CobraArtifactSlimeHeart);
             }
             {
-                CobraArtifactToxicCaviar = new ExternalArtifact("CorrosiveCobra.Artifacts.CobraArtifactToxicCaviar",
+                CobraArtifactToxicCaviar = new ExternalArtifact("Sorwest.CorrosiveCobra.Artifacts.CobraArtifactToxicCaviar",
                     typeof(CobraArtifactToxicCaviar),
                     ToxicCaviarSprite ?? throw new Exception("missing ToxicCaviar artifact sprite"),
                     ownerDeck: CobraDeck ?? throw new Exception("missing CobraDeck."));
@@ -821,7 +983,7 @@ namespace CorrosiveCobra
                 registry.RegisterArtifact(CobraArtifactToxicCaviar);
             }
             {
-                CobraArtifactCorrodeAttack = new ExternalArtifact("CorrosiveCobra.Artifacts.CobraArtifactCorrodeAttack",
+                CobraArtifactCorrodeAttack = new ExternalArtifact("Sorwest.CorrosiveCobra.Artifacts.CobraArtifactCorrodeAttack",
                     typeof(CobraArtifactCorrodeAttack),
                     CorrodeAttackSprite ?? throw new Exception("missing CorrodeAttack artifact sprite"),
                     ownerDeck: CobraDeck ?? throw new Exception("missing CobraDeck."));
@@ -832,7 +994,7 @@ namespace CorrosiveCobra
                 registry.RegisterArtifact(CobraArtifactCorrodeAttack);
             }
             {
-                CobraArtifactPowerAcid = new ExternalArtifact("CorrosiveCobra.Artifacts.CobraArtifactPowerAcid",
+                CobraArtifactPowerAcid = new ExternalArtifact("Sorwest.CorrosiveCobra.Artifacts.CobraArtifactPowerAcid",
                     typeof(CobraArtifactPowerAcid),
                     PowerAcidSprite ?? throw new Exception("missing PowerAcid artifact sprite"),
                     ownerDeck: CobraDeck ?? throw new Exception("missing CobraDeck."));
@@ -843,7 +1005,7 @@ namespace CorrosiveCobra
                 registry.RegisterArtifact(CobraArtifactPowerAcid);
             }
             {
-                CobraArtifactDissolvent = new ExternalArtifact("CorrosiveCobra.Artifacts.CobraArtifactDissolvent",
+                CobraArtifactDissolvent = new ExternalArtifact("Sorwest.CorrosiveCobra.Artifacts.CobraArtifactDissolvent",
                     typeof(CobraArtifactDissolvent),
                     DissolventSprite ?? throw new Exception("missing Dissolvent artifact sprite"),
                     ownerDeck: CobraDeck ?? throw new Exception("missing CobraDeck."));
@@ -854,7 +1016,7 @@ namespace CorrosiveCobra
                 registry.RegisterArtifact(CobraArtifactDissolvent);
             }
             {
-                CobraArtifactDummyHeat = new ExternalArtifact("CorrosiveCobra.Artifacts.CobraArtifactDummyHeat",
+                CobraArtifactDummyHeat = new ExternalArtifact("Sorwest.CorrosiveCobra.Artifacts.CobraArtifactDummyHeat",
                     typeof(CobraArtifactDummyHeat),
                     DummyHeatSprite ?? throw new Exception("missing DummyHeat artifact sprite"),
                     ownerDeck: CobraDeck ?? throw new Exception("missing CobraDeck."));
@@ -863,14 +1025,37 @@ namespace CorrosiveCobra
 
                 registry.RegisterArtifact(CobraArtifactDummyHeat);
             }
+        }
+        var harmony = new Harmony("Sorwest.CorrosiveCobra.DuoArtifacts");
+        if (DuoArtifactsApi != null) RegisterDuoArtifacts(registry, harmony);
+    }
+    void RegisterDuoArtifacts(IArtifactRegistry registry, Harmony harmony)
+    {
+        // VANILLA DUO ARTIFACTS
+        {
+            var cobraDeck = (Deck)CobraDeck!.Id!.Value;
+            var duoDeck = DuoArtifactsApi!.DuoArtifactDeck;
             {
-                CobraArtifactFuelWalls = new ExternalArtifact("CorrosiveCobra.Artifacts.CobraArtifactFuelWalls",
-                    typeof(CobraArtifactFuelWalls),
-                    FuelWallsSprite ?? throw new Exception("missing FuelWalls artifact sprite"));
+                SlimeDizzyArtifact = new ExternalArtifact("Sorwest.CorrosiveCobra.Artifacts.SlimeDizzyArtifact",
+                    typeof(SlimeDizzyArtifact),
+                    SlimeDizzyArtifactSprite ?? throw new Exception("missing SlimeDizzyArtifact artifact sprite"),
+                    ownerDeck: duoDeck);
 
-                CobraArtifactFuelWalls.AddLocalisation("FUEL WALLS", "(Corrosive Cobra-excluse artifact!)\n<c=healing>Add 3 <c=card>Adv. Heat Protection</c> to your deck.</c>");
+                SlimeDizzyArtifact.AddLocalisation("UNYIELDING ROOK", "Gain <c=keyword>+1 max shield</c>. Whenever you lose hull, <c=downside>if you have any</c> <c=status>CORRODE</c>, gain <c=keyword>2</c> <c=status>SHIELD</c>.");
+                registry.RegisterArtifact(SlimeDizzyArtifact);
 
-                registry.RegisterArtifact(CobraArtifactFuelWalls);
+                DuoArtifactsApi!.RegisterDuoArtifact(typeof(SlimeDizzyArtifact), new[] { cobraDeck, Deck.dizzy });
+            }
+            {
+                SlimeRiggsArtifact = new ExternalArtifact("Sorwest.CorrosiveCobra.Artifacts.SlimeRiggsArtifact",
+                    typeof(SlimeRiggsArtifact),
+                    SlimeRiggsArtifactSprite ?? throw new Exception("missing SlimeRiggsArtifact artifact sprite"),
+                    ownerDeck: duoDeck);
+
+                SlimeRiggsArtifact.AddLocalisation("CHEESE TEA", "When you shuffle your deck, add a <c=card>Cheese Tea</c> to your deck.");
+                registry.RegisterArtifact(SlimeRiggsArtifact);
+
+                DuoArtifactsApi!.RegisterDuoArtifact(typeof(SlimeRiggsArtifact), new[] { cobraDeck, Deck.riggs });
             }
         }
     }

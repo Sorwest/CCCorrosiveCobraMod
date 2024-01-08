@@ -1,6 +1,4 @@
-﻿using CorrosiveCobra;
-
-namespace Sorwest.CorrosiveCobra
+﻿namespace Sorwest.CorrosiveCobra
 {
     public static class CustomColor
     {
