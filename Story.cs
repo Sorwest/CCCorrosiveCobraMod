@@ -1369,7 +1369,8 @@ public partial class Manifest
                 }
             }
             //SlimeBanditThreats_Multi
-            {
+            //(TO FIX)
+            /*{
                 var injectDialogue0 = new ExternalStoryInjector("BanditThreats_Multi_0",
                     ExternalStoryInjector.QuickInjection.Beginning, 1,
                     new List<object>()
@@ -1382,8 +1383,10 @@ public partial class Manifest
                     });
                 storyRegistry.RegisterInjector(injectDialogue0);
                 
-            }
+            }*/
             //SlimeBatboyKeepsTalking_Multi
+            // (TO FIX)
+            /*
             {
                 var injectDialogue0 = new ExternalStoryInjector("BatboyKeepsTalking_Multi_0",
                     ExternalStoryInjector.QuickInjection.Beginning, 1,
@@ -1397,7 +1400,7 @@ public partial class Manifest
                         },
                     });
                 storyRegistry.RegisterInjector(injectDialogue0);
-            }
+            }*/
             //SlimeTentacleThreats_Multi
             // (TO FIX)
             {
@@ -2654,6 +2657,8 @@ public partial class Manifest
                         });
                     storyRegistry.RegisterStory(SlimeArtifactGeminiCore_Multi_0);
                 }
+                //TO FIX
+                /*
                 {
                     var injectDialogue0 = new ExternalStoryInjector("ArtifactGeminiCore_Multi_4",
                         ExternalStoryInjector.QuickInjection.Beginning, 1,
@@ -2667,7 +2672,7 @@ public partial class Manifest
                             },
                         });
                     storyRegistry.RegisterInjector(injectDialogue0);
-                }
+                }*/
             }
             //SlimeArtifactTiderunner_Multi
             {
@@ -2890,6 +2895,8 @@ public partial class Manifest
                         });
                     storyRegistry.RegisterStory(SlimeOneHitPointThisIsFine_Multi_1);
                 }
+                //TO FIX
+                /*
                 {
                     var injectDialogue0 = new ExternalStoryInjector("OneHitPointThisIsFine_Multi_4",
                         ExternalStoryInjector.QuickInjection.Beginning, 1,
@@ -2902,7 +2909,7 @@ public partial class Manifest
                             },
                         });
                     storyRegistry.RegisterInjector(injectDialogue0);
-                }
+                }*/
             }
             //SlimeWeDidOverFiveDamage_Multi
             //MODDED
@@ -3763,6 +3770,8 @@ public partial class Manifest
                 storyRegistry.RegisterStory(SlimeArtifactNanofiberHull2_Multi_0);
             }
             //SlimeSpikeGetsChatty_Multi
+            //TO FIX
+            /*
             {
                 var injectDialogue0 = new ExternalStoryInjector("SpikeGetsChatty_Multi_0",
                     ExternalStoryInjector.QuickInjection.Beginning, 1,
@@ -3775,7 +3784,7 @@ public partial class Manifest
                         },
                     });
                 storyRegistry.RegisterInjector(injectDialogue0);
-            }
+            }*/
             //SlimeArtifactEnergyRefund_Multi
             {
                 var SlimeArtifactEnergyRefund_Multi_0 = new ExternalStory("CorrosiveCobra.Story.SlimeArtifactEnergyRefund_Multi_0",
@@ -3809,6 +3818,8 @@ public partial class Manifest
                 storyRegistry.RegisterStory(SlimeArtifactEnergyRefund_Multi_0);
             }
             //SlimeArtifactOverclockedGeneratorSeenMaxMemory3_Multi
+            //TO FIX
+            /*
             {
                 var injectDialogue0 = new ExternalStoryInjector("ArtifactOverclockedGeneratorSeenMaxMemory3_Multi_0",
                     ExternalStoryInjector.QuickInjection.Beginning, 1,
@@ -3822,7 +3833,7 @@ public partial class Manifest
                         },
                     });
                 storyRegistry.RegisterInjector(injectDialogue0);
-            }
+            }*/
             //SlimeArtifactShieldPrepIsGone_Multi
             {
                 var SlimeArtifactShieldPrepIsGone_Multi_0 = new ExternalStory("CorrosiveCobra.Story.SlimeArtifactShieldPrepIsGone_Multi_0",

@@ -43,10 +43,12 @@ public partial class Manifest :
     internal static Manifest Instance { get; private set; } = null!;
     internal static IKokoroApi KokoroApi { get; private set; } = null!;
     internal IDuoArtifactsApi? DuoArtifactsApi { get; private set; } = null!;
+    internal ISogginsApi? SogginsApi { get; private set; } = null!;
     public IEnumerable<DependencyEntry> Dependencies => new DependencyEntry[]
     {
         new DependencyEntry<IModManifest>("Shockah.Kokoro", ignoreIfMissing: false),
-        new DependencyEntry<IModManifest>("Shockah.DuoArtifacts", ignoreIfMissing: true)
+        new DependencyEntry<IModManifest>("Shockah.DuoArtifacts", ignoreIfMissing: true),
+        new DependencyEntry<IModManifest>("Shockah.Soggins", ignoreIfMissing: true)
     };
     public ILogger? Logger { get; set; }
     public static System.Drawing.Color CorrosiveCobraColor => System.Drawing.Color.FromArgb(107, 255, 205);
@@ -100,6 +102,8 @@ public partial class Manifest :
     public static ExternalSprite? DissolventSprite { get; private set; }
     public static ExternalSprite? DummyHeatSprite { get; private set; }
     public static ExternalSprite? FuelWallsSprite { get; private set; }
+    
+    //duo artifact sprites
     public static ExternalSprite? SlimeDizzyArtifactSprite { get; private set; }
     public static ExternalSprite? SlimeRiggsArtifactSprite { get; private set; }
     public static ExternalSprite? SlimePeriArtifactSprite { get; private set; }
@@ -112,6 +116,9 @@ public partial class Manifest :
     public static ExternalSprite? SlimeBooksArtifactSprite { get; private set; }
     public static ExternalSprite? SlimeCatArtifactSprite { get; private set; }
     public static ExternalSprite? SlimeCatArtifactSprite_Off { get; private set; }
+
+    //modded duo artifact sprites
+    public static ExternalSprite? SlimeSogginsArtifactSprite { get; private set; }
 
     //icon sprites
     public static ExternalSprite? HeatCostSatisfied { get; private set; }
@@ -184,6 +191,9 @@ public partial class Manifest :
     public static ExternalArtifact? SlimeBooksArtifact { get; private set; }
     public static ExternalArtifact? SlimeCatArtifact { get; private set; }
 
+    //modded duo artifacts
+    public static ExternalArtifact? SlimeSogginsArtifact { get; private set; }
+
     //cards
     public static ExternalCard? CobraCardCorrosionStarter { get; private set; }
     public static ExternalCard? CobraCardCorrosionBlockStarter { get; private set; }
@@ -234,6 +244,9 @@ public partial class Manifest :
     public static ExternalCard? CobraCardSlimeMaxDuoReward { get; private set; }
     public static ExternalCard? CobraCardSlimeBooksDuo { get; private set; }
 
+    //modded duo cards
+    public static ExternalCard? CobraCardSlimeSogginsDuoBotch { get; private set; }
+    public static ExternalCard? CobraCardSlimeSogginsDuoDouble { get; private set; }
 
     //ship parts
     public static ExternalPart? CorrosiveCobra_Cannon { get; private set; }
@@ -259,6 +272,7 @@ public partial class Manifest :
     {
         KokoroApi = contact.GetApi<IKokoroApi>("Shockah.Kokoro")!;
         DuoArtifactsApi = contact.LoadedManifests.Any(m => m.Name == "Shockah.DuoArtifacts") ? contact.GetApi<IDuoArtifactsApi>("Shockah.DuoArtifacts") : null;
+        SogginsApi = contact.LoadedManifests.Any(m => m.Name == "Shockah.Soggins") ? contact.GetApi<ISogginsApi>("Shockah.Soggins") : null;
 
         Harmony harmony = new("Sorwest.CorrosiveCobra.Harmony");
 
@@ -547,7 +561,9 @@ public partial class Manifest :
                 DummyHeatSprite = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.DummyHeatSprite", new FileInfo(path));
                 artRegistry.RegisterArt(DummyHeatSprite);
             }
-            //duos
+        }
+        //duo artifact sprites
+        {
             {
                 var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Artifacts", "Duo", Path.GetFileName("SlimeDizzyArtifactSprite.png"));
                 SlimeDizzyArtifactSprite = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.SlimeDizzyArtifactSprite", new FileInfo(path));
@@ -607,6 +623,14 @@ public partial class Manifest :
                 var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Artifacts", "Duo", Path.GetFileName("SlimeCatArtifactSprite_Off.png"));
                 SlimeCatArtifactSprite_Off = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.SlimeCatArtifactSprite_Off", new FileInfo(path));
                 artRegistry.RegisterArt(SlimeCatArtifactSprite_Off);
+            }
+        }
+        //modded artifact sprites
+        {
+            {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Artifacts", "Duo", Path.GetFileName("SlimeSogginsArtifactSprite.png"));
+                SlimeSogginsArtifactSprite = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.SlimeSogginsArtifactSprite", new FileInfo(path));
+                artRegistry.RegisterArt(SlimeSogginsArtifactSprite);
             }
         }
         //card background
@@ -1039,110 +1063,133 @@ public partial class Manifest :
     {
         var card_DefaultArt = CorrosiveCobra_CardBackgroud ?? throw new Exception("missing card_DefaultArt");
         var duoDeck = DuoArtifactsApi!.DuoArtifactDeck;
+        //duo cards
         {
-            CobraCardSlimeRiggsDuo = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardSlimeRiggsDuo", typeof(CobraCardSlimeRiggsDuo), card_DefaultArt, duoDeck);
+            {
+                CobraCardSlimeRiggsDuo = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardSlimeRiggsDuo", typeof(CobraCardSlimeRiggsDuo), card_DefaultArt, duoDeck);
 
-            CobraCardSlimeRiggsDuo.AddLocalisation("Cheese Tea");
-            
-            registry.RegisterCard(CobraCardSlimeRiggsDuo);
+                CobraCardSlimeRiggsDuo.AddLocalisation("Cheese Tea");
+
+                registry.RegisterCard(CobraCardSlimeRiggsDuo);
+            }
+            {
+                CobraCardSlimeIsaacDuo = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardSlimeIsaacDuo", typeof(CobraCardSlimeIsaacDuo), card_DefaultArt, duoDeck);
+
+                CobraCardSlimeIsaacDuo.AddLocalisation("Cobra Field");
+
+                registry.RegisterCard(CobraCardSlimeIsaacDuo);
+            }
+            {
+                CobraCardSlimeMaxDuo1 = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardSlimeMaxDuo1", typeof(CobraCardSlimeMaxDuo1), card_DefaultArt, duoDeck);
+
+                CobraCardSlimeMaxDuo1.AddLocalisation("UP Button");
+
+                registry.RegisterCard(CobraCardSlimeMaxDuo1);
+            }
+            {
+                CobraCardSlimeMaxDuo2 = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardSlimeMaxDuo2", typeof(CobraCardSlimeMaxDuo2), card_DefaultArt, duoDeck);
+
+                CobraCardSlimeMaxDuo2.AddLocalisation("UP Button");
+
+                registry.RegisterCard(CobraCardSlimeMaxDuo2);
+            }
+            {
+                CobraCardSlimeMaxDuo3 = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardSlimeMaxDuo3", typeof(CobraCardSlimeMaxDuo3), card_DefaultArt, duoDeck);
+
+                CobraCardSlimeMaxDuo3.AddLocalisation("DOWN Button");
+
+                registry.RegisterCard(CobraCardSlimeMaxDuo3);
+            }
+            {
+                CobraCardSlimeMaxDuo4 = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardSlimeMaxDuo4", typeof(CobraCardSlimeMaxDuo4), card_DefaultArt, duoDeck);
+
+                CobraCardSlimeMaxDuo4.AddLocalisation("DOWN Button");
+
+                registry.RegisterCard(CobraCardSlimeMaxDuo4);
+            }
+            {
+                CobraCardSlimeMaxDuo5 = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardSlimeMaxDuo5", typeof(CobraCardSlimeMaxDuo5), card_DefaultArt, duoDeck);
+
+                CobraCardSlimeMaxDuo5.AddLocalisation("LEFT Button");
+
+                registry.RegisterCard(CobraCardSlimeMaxDuo5);
+            }
+            {
+                CobraCardSlimeMaxDuo6 = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardSlimeMaxDuo6", typeof(CobraCardSlimeMaxDuo6), card_DefaultArt, duoDeck);
+
+                CobraCardSlimeMaxDuo6.AddLocalisation("RIGHT Button");
+
+                registry.RegisterCard(CobraCardSlimeMaxDuo6);
+            }
+            {
+                CobraCardSlimeMaxDuo7 = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardSlimeMaxDuo7", typeof(CobraCardSlimeMaxDuo7), card_DefaultArt, duoDeck);
+
+                CobraCardSlimeMaxDuo7.AddLocalisation("LEFT Button");
+
+                registry.RegisterCard(CobraCardSlimeMaxDuo7);
+            }
+            {
+                CobraCardSlimeMaxDuo8 = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardSlimeMaxDuo8", typeof(CobraCardSlimeMaxDuo8), card_DefaultArt, duoDeck);
+
+                CobraCardSlimeMaxDuo8.AddLocalisation("RIGHT Button");
+
+                registry.RegisterCard(CobraCardSlimeMaxDuo8);
+            }
+            {
+                CobraCardSlimeMaxDuoA1 = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardSlimeMaxDuoA1", typeof(CobraCardSlimeMaxDuoA1), card_DefaultArt, duoDeck);
+
+                CobraCardSlimeMaxDuoA1.AddLocalisation("B Button");
+
+                registry.RegisterCard(CobraCardSlimeMaxDuoA1);
+            }
+            {
+                CobraCardSlimeMaxDuoA2 = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardSlimeMaxDuoA2", typeof(CobraCardSlimeMaxDuoA2), card_DefaultArt, duoDeck);
+
+                CobraCardSlimeMaxDuoA2.AddLocalisation("A Button");
+
+                registry.RegisterCard(CobraCardSlimeMaxDuoA2);
+            }
+            {
+                CobraCardSlimeMaxDuoA3 = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardSlimeMaxDuoA3", typeof(CobraCardSlimeMaxDuoA3), card_DefaultArt, duoDeck);
+
+                CobraCardSlimeMaxDuoA3.AddLocalisation("START Button", desc: "Gain a special artifact and lose <c=status>KONAMI CODE</c>.");
+
+                registry.RegisterCard(CobraCardSlimeMaxDuoA3);
+            }
+            {
+                CobraCardSlimeMaxDuoReward = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardSlimeMaxDuoReward", typeof(CobraCardSlimeMaxDuoReward), card_DefaultArt, duoDeck);
+
+                CobraCardSlimeMaxDuoReward.AddLocalisation("Cheat Sheet");
+
+                registry.RegisterCard(CobraCardSlimeMaxDuoReward);
+            }
+            {
+                CobraCardSlimeBooksDuo = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardSlimeBooksDuo", typeof(CobraCardSlimeBooksDuo), card_DefaultArt, duoDeck);
+
+                CobraCardSlimeBooksDuo.AddLocalisation("Crystal Tap");
+
+                registry.RegisterCard(CobraCardSlimeBooksDuo);
+            }
         }
+        //modded duo cards
         {
-            CobraCardSlimeIsaacDuo = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardSlimeIsaacDuo", typeof(CobraCardSlimeIsaacDuo), card_DefaultArt, duoDeck);
+            if (SogginsApi != null)
+            {
+                {
+                    CobraCardSlimeSogginsDuoBotch = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardSlimeSogginsDuoBotch", typeof(CobraCardSlimeSogginsDuoBotch), card_DefaultArt, duoDeck);
 
-            CobraCardSlimeIsaacDuo.AddLocalisation("Cobra Field");
+                    CobraCardSlimeSogginsDuoBotch.AddLocalisation("Toad on a Treadmill");
 
-            registry.RegisterCard(CobraCardSlimeIsaacDuo);
-        }
-        {
-            CobraCardSlimeMaxDuo1 = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardSlimeMaxDuo1", typeof(CobraCardSlimeMaxDuo1), card_DefaultArt, duoDeck);
+                    registry.RegisterCard(CobraCardSlimeSogginsDuoBotch);
+                }
+                {
+                    CobraCardSlimeSogginsDuoDouble = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardSlimeSogginsDuoDouble", typeof(CobraCardSlimeSogginsDuoDouble), card_DefaultArt, duoDeck);
 
-            CobraCardSlimeMaxDuo1.AddLocalisation("UP Button");
+                    CobraCardSlimeSogginsDuoDouble.AddLocalisation("Toad with a Gun");
 
-            registry.RegisterCard(CobraCardSlimeMaxDuo1);
-        }
-        {
-            CobraCardSlimeMaxDuo2 = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardSlimeMaxDuo2", typeof(CobraCardSlimeMaxDuo2), card_DefaultArt, duoDeck);
-
-            CobraCardSlimeMaxDuo2.AddLocalisation("UP Button");
-
-            registry.RegisterCard(CobraCardSlimeMaxDuo2);
-        }
-        {
-            CobraCardSlimeMaxDuo3 = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardSlimeMaxDuo3", typeof(CobraCardSlimeMaxDuo3), card_DefaultArt, duoDeck);
-
-            CobraCardSlimeMaxDuo3.AddLocalisation("DOWN Button");
-
-            registry.RegisterCard(CobraCardSlimeMaxDuo3);
-        }
-        {
-            CobraCardSlimeMaxDuo4 = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardSlimeMaxDuo4", typeof(CobraCardSlimeMaxDuo4), card_DefaultArt, duoDeck);
-
-            CobraCardSlimeMaxDuo4.AddLocalisation("DOWN Button");
-
-            registry.RegisterCard(CobraCardSlimeMaxDuo4);
-        }
-        {
-            CobraCardSlimeMaxDuo5 = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardSlimeMaxDuo5", typeof(CobraCardSlimeMaxDuo5), card_DefaultArt, duoDeck);
-
-            CobraCardSlimeMaxDuo5.AddLocalisation("LEFT Button");
-
-            registry.RegisterCard(CobraCardSlimeMaxDuo5);
-        }
-        {
-            CobraCardSlimeMaxDuo6 = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardSlimeMaxDuo6", typeof(CobraCardSlimeMaxDuo6), card_DefaultArt, duoDeck);
-
-            CobraCardSlimeMaxDuo6.AddLocalisation("RIGHT Button");
-
-            registry.RegisterCard(CobraCardSlimeMaxDuo6);
-        }
-        {
-            CobraCardSlimeMaxDuo7 = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardSlimeMaxDuo7", typeof(CobraCardSlimeMaxDuo7), card_DefaultArt, duoDeck);
-
-            CobraCardSlimeMaxDuo7.AddLocalisation("LEFT Button");
-
-            registry.RegisterCard(CobraCardSlimeMaxDuo7);
-        }
-        {
-            CobraCardSlimeMaxDuo8 = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardSlimeMaxDuo8", typeof(CobraCardSlimeMaxDuo8), card_DefaultArt, duoDeck);
-
-            CobraCardSlimeMaxDuo8.AddLocalisation("RIGHT Button");
-
-            registry.RegisterCard(CobraCardSlimeMaxDuo8);
-        }
-        {
-            CobraCardSlimeMaxDuoA1 = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardSlimeMaxDuoA1", typeof(CobraCardSlimeMaxDuoA1), card_DefaultArt, duoDeck);
-
-            CobraCardSlimeMaxDuoA1.AddLocalisation("B Button");
-
-            registry.RegisterCard(CobraCardSlimeMaxDuoA1);
-        }
-        {
-            CobraCardSlimeMaxDuoA2 = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardSlimeMaxDuoA2", typeof(CobraCardSlimeMaxDuoA2), card_DefaultArt, duoDeck);
-
-            CobraCardSlimeMaxDuoA2.AddLocalisation("A Button");
-
-            registry.RegisterCard(CobraCardSlimeMaxDuoA2);
-        }
-        {
-            CobraCardSlimeMaxDuoA3 = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardSlimeMaxDuoA3", typeof(CobraCardSlimeMaxDuoA3), card_DefaultArt, duoDeck);
-
-            CobraCardSlimeMaxDuoA3.AddLocalisation("START Button", desc: "Gain a special artifact and lose <c=status>KONAMI CODE</c>.");
-
-            registry.RegisterCard(CobraCardSlimeMaxDuoA3);
-        }
-        {
-            CobraCardSlimeMaxDuoReward = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardSlimeMaxDuoReward", typeof(CobraCardSlimeMaxDuoReward), card_DefaultArt, duoDeck);
-
-            CobraCardSlimeMaxDuoReward.AddLocalisation("Cheat Sheet");
-
-            registry.RegisterCard(CobraCardSlimeMaxDuoReward);
-        }
-        {
-            CobraCardSlimeBooksDuo = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardSlimeBooksDuo", typeof(CobraCardSlimeBooksDuo), card_DefaultArt, duoDeck);
-
-            CobraCardSlimeBooksDuo.AddLocalisation("Crystal Tap");
-
-            registry.RegisterCard(CobraCardSlimeBooksDuo);
+                    registry.RegisterCard(CobraCardSlimeSogginsDuoDouble);
+                }
+            }
         }
     }
     public void LoadManifest(IArtifactRegistry registry)
@@ -1252,10 +1299,10 @@ public partial class Manifest :
     }
     void RegisterDuoArtifacts(IArtifactRegistry registry, Harmony harmony)
     {
-        // VANILLA DUO ARTIFACTS
+        var cobraDeck = (Deck)CobraDeck!.Id!.Value;
+        var duoDeck = DuoArtifactsApi!.DuoArtifactDeck;
+        // duo artifacts
         {
-            var cobraDeck = (Deck)CobraDeck!.Id!.Value;
-            var duoDeck = DuoArtifactsApi!.DuoArtifactDeck;
             {
                 SlimeDizzyArtifact = new ExternalArtifact("Sorwest.CorrosiveCobra.Artifacts.SlimeDizzyArtifact",
                     typeof(SlimeDizzyArtifact),
@@ -1354,6 +1401,21 @@ public partial class Manifest :
                 registry.RegisterArtifact(SlimeCatArtifact);
 
                 DuoArtifactsApi!.RegisterDuoArtifact(typeof(SlimeCatArtifact), new[] { cobraDeck, Deck.catartifact });
+            }
+        }
+        // modded duo artifacts
+        {
+            if (SogginsApi != null)
+            {
+                SlimeSogginsArtifact = new ExternalArtifact("Sorwest.CorrosiveCobra.Artifacts.SlimeSogginsArtifact",
+                    typeof(SlimeSogginsArtifact),
+                    SlimeSogginsArtifactSprite ?? throw new Exception("missing SlimeSogginsArtifact artifact sprite"),
+                    ownerDeck: duoDeck);
+
+                SlimeSogginsArtifact.AddLocalisation("TOAD GYM", "The forth time Soggins botches a card, gain a <c=card>Toad in a Treadmill</c>.\nThe forth time Soggins doubles a card, gain a <c=card>Toad with a Gun</c>.\n<c=downside>Reset this any time Soggins botches or doubles out of sequence</c>.");
+                registry.RegisterArtifact(SlimeSogginsArtifact);
+
+                DuoArtifactsApi!.RegisterDuoArtifact(typeof(SlimeSogginsArtifact), new[] { cobraDeck, (Deck)SogginsApi!.SogginsDeck.Id!.Value });
             }
         }
     }
