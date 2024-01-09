@@ -3,7 +3,6 @@
 [CardMeta(dontOffer = true)]
 public class CobraCardSlimeSogginsDuoDouble : Card
 {
-    public bool IsFrogProof = true;
     public override CardData GetData(State state)
     {
         CardData result = new CardData

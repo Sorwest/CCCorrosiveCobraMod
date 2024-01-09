@@ -1,6 +1,6 @@
-﻿
-using CobaltCoreModding.Definitions.ExternalItems;
+﻿using CobaltCoreModding.Definitions.ExternalItems;
 
+namespace Sorwest.CorrosiveCobra;
 public interface ISogginsApi
 {
     ExternalDeck SogginsDeck { get; }
