@@ -13,85 +13,52 @@ public class SlimeSogginsArtifact : Artifact , ISmugHook
     }
     public void OnCardBotchedBySmug(State state, Combat combat, Card card)
     {
-        if (counter > 0)
-        {
-            counter = 0;
-            this.Pulse();
-        }
-        else if (counter <= 0)
-        {
+        if (counter < 0 && counter != (-1 * TRIGGER))
             counter -= 1;
-            if (counter == (-1 * TRIGGER))
+        if (counter == (-1 * TRIGGER))
+        {
+            var duoCard = new CobraCardSlimeSogginsDuoBotch();
+            AAddCard aAddCard1 = new AAddCard()
             {
-                var duoCard = new CobraCardSlimeSogginsDuoBotch()
-                {
-                    temporaryOverride = true,
-                    discount = -1
-                };
-                AAddCard aAddCard1 = new AAddCard()
-                {
-                    card = duoCard,
-                    amount = 1,
-                };
-                combat.QueueImmediate(aAddCard1);
-                this.Pulse();
-                counter = 0;
-            }
+                card = duoCard,
+                amount = 1,
+            };
+            combat.QueueImmediate(aAddCard1);
+            this.Pulse();
+            counter = 0;
         }
+        else
+            counter = 0;
     }
     public void OnCardDoubledBySmug(State state, Combat combat, Card card)
     {
-        if (counter < 0)
-        {
-            counter = 0;
-            this.Pulse();
-        }
-        else if (counter >= 0)
-        {
+        if (counter > 0 && counter != TRIGGER)
             counter += 1;
-            if (counter == TRIGGER)
+        if (counter == TRIGGER)
+        {
+            var duoCard = new CobraCardSlimeSogginsDuoDouble();
+            AAddCard aAddCard1 = new AAddCard()
             {
-                var duoCard = new CobraCardSlimeSogginsDuoDouble()
-                {
-                    temporaryOverride = true,
-                    discount = -1
-                };
-                AAddCard aAddCard1 = new AAddCard()
-                {
-                    card = duoCard,
-                    amount = 1,
-                };
-                combat.QueueImmediate(aAddCard1);
-                this.Pulse();
-                counter = 0;
-            }
+                card = duoCard,
+                amount = 1,
+            };
+            combat.QueueImmediate(aAddCard1);
+            this.Pulse();
+            counter = 0;
         }
-    }
-    public override int? GetDisplayNumber(State s)
-    {
-        if (counter == 0)
-            return null;
-        return counter > 0 ? counter : -1 * counter;
-    }
-    public override Spr GetSprite()
-    {
-        Spr sprite = new Spr();
-        if (counter <= 0)
-            sprite = (Spr)Manifest.SlimeSogginsArtifactSprite!.Id!;
         else
-            sprite = (Spr)Manifest.SlimeSogginsArtifactSprite_Off!.Id!;
-        return sprite;
+            counter = 0;
     }
     public override List<Tooltip>? GetExtraTooltips()
     {
         if (counter != 0)
         {
             var tooltips = new List<Tooltip>();
-            var textSmug = "Will gain a card after {0} <c=boldPink>{1} more times</c>.";
+            var textSmug = "";
             if (counter < 0)
-                textSmug = string.Format(textSmug, "botching", counter + TRIGGER);
+                textSmug = string.Format("Will gain a card after botching {0} more times.", counter + TRIGGER);
             if (counter > 0)
-                textSmug = string.Format(textSmug, "doubling", TRIGGER - counter);
+                textSmug = string.Format("Will gain a card after botching {0} more times.", TRIGGER - counter);
             tooltips.Add(new TTText()
             {
                 text = textSmug
