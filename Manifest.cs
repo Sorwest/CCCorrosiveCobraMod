@@ -7,6 +7,8 @@ using Sorwest.CorrosiveCobra.Cards;
 using HarmonyLib;
 using System.Reflection;
 using Microsoft.Extensions.Logging;
+using System.Text;
+using Microsoft.Win32;
 
 /* Many thanks to parchmentengineer and theirs armada mod, check them out!
  * (January 7th, 2024 NOTE: parchmentArmada mod is outdated and might crash unexpectedly)
@@ -102,10 +104,15 @@ public partial class Manifest :
     public static ExternalSprite? SlimeRiggsArtifactSprite { get; private set; }
     public static ExternalSprite? SlimePeriArtifactSprite { get; private set; }
     public static ExternalSprite? SlimeIsaacArtifactSprite { get; private set; }
+    public static ExternalSprite? SlimeIsaacArtifactSprite_Off { get; private set; }
     public static ExternalSprite? SlimeDrakeArtifactSprite { get; private set; }
+    public static ExternalSprite? SlimeDrakeArtifactSprite_Off { get; private set; }
     public static ExternalSprite? SlimeMaxArtifactSprite { get; private set; }
+    public static ExternalSprite? SlimeMaxArtifactRewardSprite { get; private set; }
     public static ExternalSprite? SlimeBooksArtifactSprite { get; private set; }
     public static ExternalSprite? SlimeCatArtifactSprite { get; private set; }
+    public static ExternalSprite? SlimeCatArtifactSprite_Off { get; private set; }
+
     //icon sprites
     public static ExternalSprite? HeatCostSatisfied { get; private set; }
     public static ExternalSprite? HeatCostUnsatisfied { get; private set; }
@@ -115,6 +122,10 @@ public partial class Manifest :
     public static ExternalSprite? EvolveStatusSprite { get; private set; }
     public static ExternalSprite? HeatOutbreakStatusSprite { get; private set; }
     public static ExternalSprite? HeatControlStatusSprite { get; private set; }
+
+    // duo icon sprites
+    public static ExternalSprite? CobraFieldSprite { get; private set; }
+    public static ExternalSprite? CrystalTapStatusSprite { get; private set; }
 
     //background art sprites
     public static ExternalSprite? CorrosiveCobra_CardBackgroud { get; private set; }
@@ -169,6 +180,7 @@ public partial class Manifest :
     public static ExternalArtifact? SlimeIsaacArtifact { get; private set; }
     public static ExternalArtifact? SlimeDrakeArtifact { get; private set; }
     public static ExternalArtifact? SlimeMaxArtifact { get; private set; }
+    public static ExternalArtifact? SlimeMaxArtifactReward { get; private set; }
     public static ExternalArtifact? SlimeBooksArtifact { get; private set; }
     public static ExternalArtifact? SlimeCatArtifact { get; private set; }
 
@@ -207,6 +219,21 @@ public partial class Manifest :
 
     //duo cards
     public static ExternalCard? CobraCardSlimeRiggsDuo { get; private set; }
+    public static ExternalCard? CobraCardSlimeIsaacDuo { get; private set; }
+    public static ExternalCard? CobraCardSlimeMaxDuo1 { get; private set; }
+    public static ExternalCard? CobraCardSlimeMaxDuo2 { get; private set; }
+    public static ExternalCard? CobraCardSlimeMaxDuo3 { get; private set; }
+    public static ExternalCard? CobraCardSlimeMaxDuo4 { get; private set; }
+    public static ExternalCard? CobraCardSlimeMaxDuo5 { get; private set; }
+    public static ExternalCard? CobraCardSlimeMaxDuo6 { get; private set; }
+    public static ExternalCard? CobraCardSlimeMaxDuo7 { get; private set; }
+    public static ExternalCard? CobraCardSlimeMaxDuo8 { get; private set; }
+    public static ExternalCard? CobraCardSlimeMaxDuoA1 { get; private set; }
+    public static ExternalCard? CobraCardSlimeMaxDuoA2 { get; private set; }
+    public static ExternalCard? CobraCardSlimeMaxDuoA3 { get; private set; }
+    public static ExternalCard? CobraCardSlimeMaxDuoReward { get; private set; }
+    public static ExternalCard? CobraCardSlimeBooksDuo { get; private set; }
+
 
     //ship parts
     public static ExternalPart? CorrosiveCobra_Cannon { get; private set; }
@@ -215,8 +242,19 @@ public partial class Manifest :
     public static ExternalPart? CorrosiveCobra_Scaffolding { get; private set; }
     public static ExternalPart? CorrosiveCobra_WingLeft { get; private set; }
     public static ExternalPart? CorrosiveCobra_WingRight { get; private set; }
+
+    //statuses
+    public static ExternalStatus? EvolveStatus { get; private set; }
+    public static ExternalStatus? HeatOutbreakStatus { get; private set; }
+    public static ExternalStatus? HeatControlStatus { get; private set; }
+
+    //duo statuses
+    public static ExternalStatus? CrystalTapStatus { get; private set; }
+
+    //glossary
     public static ExternalGlossary? AIncomingCorrode_Glossary { get; private set; }
     public static ExternalGlossary? AEvolveStatus_Glossary { get; private set; }
+    public static ExternalGlossary? ACobraField_Glossary { get; private set; }
     public void BootMod(IModLoaderContact contact)
     {
         KokoroApi = contact.GetApi<IKokoroApi>("Shockah.Kokoro")!;
@@ -225,21 +263,32 @@ public partial class Manifest :
         Harmony harmony = new("Sorwest.CorrosiveCobra.Harmony");
 
         harmony.Patch(
-            original: AccessTools.DeclaredMethod(typeof(Card), nameof(Card.OnDraw)),
-            postfix: new HarmonyMethod(typeof(Manifest).GetMethod("EvolveOnDraw", BindingFlags.Static | BindingFlags.NonPublic))
-        );
-        harmony.Patch(
-            original: AccessTools.DeclaredMethod(typeof(Ship), nameof(Ship.OnAfterTurn)),
-            postfix: new HarmonyMethod(typeof(Manifest).GetMethod("HeatOutbreakTurnEnd", BindingFlags.Static | BindingFlags.NonPublic))
-        );
-        harmony.Patch(
-            original: AccessTools.DeclaredMethod(typeof(Ship), nameof(Ship.OnAfterTurn)),
-            prefix: new HarmonyMethod(typeof(Manifest).GetMethod("HeatControlTurnEnd", BindingFlags.Static | BindingFlags.NonPublic))
-        );
-        harmony.Patch(
             original: typeof(Colors).GetMethod("LookupColor", BindingFlags.Static | BindingFlags.Public),
-            prefix: new HarmonyMethod(typeof(CustomColor).GetMethod("CobraLookupColor", BindingFlags.Static | BindingFlags.NonPublic))
+            prefix: new HarmonyMethod(typeof(PatchLogic).GetMethod("CobraLookupColor", BindingFlags.Static | BindingFlags.NonPublic))
         );
+        harmony.Patch(
+            original: AccessTools.DeclaredMethod(typeof(Card), nameof(Card.OnDraw)),
+            postfix: new HarmonyMethod(typeof(PatchLogic).GetMethod("EvolveOnDraw", BindingFlags.Static | BindingFlags.NonPublic))
+        );
+        harmony.Patch(
+            original: AccessTools.DeclaredMethod(typeof(Ship), nameof(Ship.OnAfterTurn)),
+            postfix: new HarmonyMethod(typeof(PatchLogic).GetMethod("HeatOutbreakTurnEnd", BindingFlags.Static | BindingFlags.NonPublic))
+        );
+        harmony.Patch(
+            original: AccessTools.DeclaredMethod(typeof(Ship), nameof(Ship.OnAfterTurn)),
+            prefix: new HarmonyMethod(typeof(PatchLogic).GetMethod("HeatControlTurnEnd", BindingFlags.Static | BindingFlags.NonPublic))
+        );
+        if (DuoArtifactsApi != null)
+        {
+            harmony.Patch(
+                original: typeof(AStatus).GetMethod("Begin"),
+                postfix: new HarmonyMethod(typeof(PatchLogic).GetMethod("SlimeDrakeArtifactPatch", BindingFlags.Static | BindingFlags.NonPublic))
+            );
+            harmony.Patch(
+                original: typeof(Combat).GetMethod("TryPlayCard"),
+                postfix: new HarmonyMethod(typeof(PatchLogic).GetMethod("CrystalTapStatusPatch", BindingFlags.Static | BindingFlags.NonPublic))
+            );
+        }
     }
     void ISpriteManifest.LoadManifest(ISpriteRegistry artRegistry)
     {
@@ -438,6 +487,19 @@ public partial class Manifest :
                 artRegistry.RegisterArt(HeatControlStatusSprite);
             }
         }
+        //duo icon sprites
+        {
+            {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Icons", "Duo", Path.GetFileName("CobraFieldSprite.png"));
+                CobraFieldSprite = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.CobraFieldSprite", new FileInfo(path));
+                artRegistry.RegisterArt(CobraFieldSprite);
+            }
+            {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Icons", "Duo", Path.GetFileName("CrystalTapStatusSprite.png"));
+                CrystalTapStatusSprite = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.CrystalTapStatusSprite", new FileInfo(path));
+                artRegistry.RegisterArt(CrystalTapStatusSprite);
+            }
+        }
         //artifact sprites
         {
             {
@@ -507,14 +569,29 @@ public partial class Manifest :
                 artRegistry.RegisterArt(SlimeIsaacArtifactSprite);
             }
             {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Artifacts", "Duo", Path.GetFileName("SlimeIsaacArtifactSprite_Off.png"));
+                SlimeIsaacArtifactSprite_Off = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.SlimeIsaacArtifactSprite_Off", new FileInfo(path));
+                artRegistry.RegisterArt(SlimeIsaacArtifactSprite_Off);
+            }
+            {
                 var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Artifacts", "Duo", Path.GetFileName("SlimeDrakeArtifactSprite.png"));
                 SlimeDrakeArtifactSprite = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.SlimeDrakeArtifactSprite", new FileInfo(path));
                 artRegistry.RegisterArt(SlimeDrakeArtifactSprite);
             }
             {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Artifacts", "Duo", Path.GetFileName("SlimeDrakeArtifactSprite_Off.png"));
+                SlimeDrakeArtifactSprite_Off = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.SlimeDrakeArtifactSprite_Off", new FileInfo(path));
+                artRegistry.RegisterArt(SlimeDrakeArtifactSprite_Off);
+            }
+            {
                 var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Artifacts", "Duo", Path.GetFileName("SlimeMaxArtifactSprite.png"));
                 SlimeMaxArtifactSprite = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.SlimeMaxArtifactSprite", new FileInfo(path));
                 artRegistry.RegisterArt(SlimeMaxArtifactSprite);
+            }
+            {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Artifacts", "Duo", Path.GetFileName("SlimeMaxArtifactRewardSprite.png"));
+                SlimeMaxArtifactRewardSprite = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.SlimeMaxArtifactRewardSprite", new FileInfo(path));
+                artRegistry.RegisterArt(SlimeMaxArtifactRewardSprite);
             }
             {
                 var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Artifacts", "Duo", Path.GetFileName("SlimeBooksArtifactSprite.png"));
@@ -525,6 +602,11 @@ public partial class Manifest :
                 var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Artifacts", "Duo", Path.GetFileName("SlimeCatArtifactSprite.png"));
                 SlimeCatArtifactSprite = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.SlimeCatArtifactSprite", new FileInfo(path));
                 artRegistry.RegisterArt(SlimeCatArtifactSprite);
+            }
+            {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Artifacts", "Duo", Path.GetFileName("SlimeCatArtifactSprite_Off.png"));
+                SlimeCatArtifactSprite_Off = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.SlimeCatArtifactSprite_Off", new FileInfo(path));
+                artRegistry.RegisterArt(SlimeCatArtifactSprite_Off);
             }
         }
         //card background
@@ -668,7 +750,7 @@ public partial class Manifest :
     }
     void IGlossaryManifest.LoadManifest(IGlossaryRegisty registry)
     {
-        AIncomingCorrode_Glossary = new ExternalGlossary("Sorwest.CorrosiveCobra.Glossary.AIncomingCorrode", "CorrosiveCobraIncomingCorrode", false, ExternalGlossary.GlossayType.action, IncomingCorrodeIcon ?? throw new Exception("Missing IncomingCorrode Icon"));
+        AIncomingCorrode_Glossary = new ExternalGlossary("Sorwest.CorrosiveCobra.Glossary.AIncomingCorrode", "CorrosiveCobraIncomingCorrodeGlossary", false, ExternalGlossary.GlossayType.action, IncomingCorrodeIcon ?? throw new Exception("Missing IncomingCorrode Icon"));
         AIncomingCorrode_Glossary.AddLocalisation("en", "Recoil Corrode", "<c=hurt>Apply to self</c> <c=keyword>{0}</c> <c=status>Corrode</c>.", null);
         registry.RegisterGlossary(AIncomingCorrode_Glossary);
 
@@ -676,6 +758,47 @@ public partial class Manifest :
         AEvolveStatus_Glossary.AddLocalisation("en", "Evolve", "Whenever you draw a <c=trash>Trash</c> card, <c=keyword>draw {0}</c>.", null);
         registry.RegisterGlossary(AEvolveStatus_Glossary);
 
+        ACobraField_Glossary = new ExternalGlossary("Sorwest.CorrosiveCobra.Glossary.ACobraField", "CorrosiveCobraCobraFieldGlossary", false, ExternalGlossary.GlossayType.action, CobraFieldSprite ?? throw new Exception("Missing CobraFieldSprite Icon"));
+        ACobraField_Glossary.AddLocalisation("en", "Cobra Field", "Instantly turn every <c=midrow>object in the midrow</c> into <c=drone>Corrode missiles</c> aimed at the enemy.", null);
+        registry.RegisterGlossary(ACobraField_Glossary);
+
+    }
+    public void LoadManifest(IStatusRegistry registry)
+    {
+        {
+            EvolveStatus = new ExternalStatus("Sorwest.CorrosiveCobra.Status.EvolveStatus", true, CorrosiveCobraColor, null, EvolveStatusSprite ?? throw new Exception("MissingSprite"), true);
+            
+            EvolveStatus.AddLocalisation("Evolve", "Whenever you draw a <c=trash>Trash</c> card, <c=keyword>draw {0}</c>.");
+            
+            registry.RegisterStatus(EvolveStatus);
+        }
+        {
+            HeatOutbreakStatus = new ExternalStatus("Sorwest.CorrosiveCobra.Status.HeatOutbreakStatus", false, CorrosiveCobraColor, null, HeatOutbreakStatusSprite ?? throw new Exception("MissingSprite"), true);
+            
+            HeatOutbreakStatus.AddLocalisation("Heat Outbreak", "At the end of turn, this ship is dealt {0} damage per <c=status>heat</c> it has.");
+            
+            registry.RegisterStatus(HeatOutbreakStatus);
+        }
+        {
+            HeatControlStatus = new ExternalStatus("Sorwest.CorrosiveCobra.Status.HeatControlStatus", true, CorrosiveCobraColor, null, HeatControlStatusSprite ?? throw new Exception("MissingSprite"), true);
+            
+            HeatControlStatus.AddLocalisation("Heat Control", "At the end of turn, your overheat trigger increases by <c=keyword>1<c/> <c=healing>permanently</c>, <c=hurt>then decrease this by 1</c>.");
+            
+            registry.RegisterStatus(HeatControlStatus);
+        }
+
+        var harmony = new Harmony("Sorwest.CorrosiveCobra.DuoStatus");
+        if (DuoArtifactsApi != null) RegisterDuoStatus(registry, harmony);
+    }
+    void RegisterDuoStatus(IStatusRegistry registry, Harmony harmony)
+    {
+        {
+            CrystalTapStatus = new ExternalStatus("Sorwest.CorrosiveCobra.Status.CrystalTapStatus", true, CorrosiveCobraColor, null, CrystalTapStatusSprite ?? throw new Exception("MissingSprite"), true);
+
+            CrystalTapStatus.AddLocalisation("Crystal Tap", "The next card is played twice.");
+
+            registry.RegisterStatus(CrystalTapStatus);
+        }
     }
     void ICardManifest.LoadManifest(ICardRegistry registry)
     {
@@ -684,7 +807,7 @@ public partial class Manifest :
         // BOOKS CARDS
         {
             {
-                CobraCardBooksCorrosiveCrystal = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardCorrosiveCrystal", typeof(CobraCardSlimeRiggsDuo), card_DefaultArt ?? throw new Exception("missing card_DefaultArt"), ExternalDeck.GetRaw((int)Deck.shard));
+                CobraCardBooksCorrosiveCrystal = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardCorrosiveCrystal", typeof(CobraCardBooksCorrosiveCrystal), card_DefaultArt ?? throw new Exception("missing card_DefaultArt"), ExternalDeck.GetRaw((int)Deck.shard));
 
                 CobraCardBooksCorrosiveCrystal.AddLocalisation("Corrosive Crystal");
 
@@ -914,14 +1037,112 @@ public partial class Manifest :
     }
     void RegisterDuoCards(ICardRegistry registry, Harmony harmony)
     {
-        var card_DefaultArt = CorrosiveCobra_CardBackgroud;
+        var card_DefaultArt = CorrosiveCobra_CardBackgroud ?? throw new Exception("missing card_DefaultArt");
         var duoDeck = DuoArtifactsApi!.DuoArtifactDeck;
         {
-            CobraCardSlimeRiggsDuo = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardSlimeRiggsDuo", typeof(CobraCardSlimeRiggsDuo), card_DefaultArt ?? throw new Exception("missing card_DefaultArt"), duoDeck);
+            CobraCardSlimeRiggsDuo = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardSlimeRiggsDuo", typeof(CobraCardSlimeRiggsDuo), card_DefaultArt, duoDeck);
 
             CobraCardSlimeRiggsDuo.AddLocalisation("Cheese Tea");
             
             registry.RegisterCard(CobraCardSlimeRiggsDuo);
+        }
+        {
+            CobraCardSlimeIsaacDuo = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardSlimeIsaacDuo", typeof(CobraCardSlimeIsaacDuo), card_DefaultArt, duoDeck);
+
+            CobraCardSlimeIsaacDuo.AddLocalisation("Cobra Field");
+
+            registry.RegisterCard(CobraCardSlimeIsaacDuo);
+        }
+        {
+            CobraCardSlimeMaxDuo1 = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardSlimeMaxDuo1", typeof(CobraCardSlimeMaxDuo1), card_DefaultArt, duoDeck);
+
+            CobraCardSlimeMaxDuo1.AddLocalisation("UP Button");
+
+            registry.RegisterCard(CobraCardSlimeMaxDuo1);
+        }
+        {
+            CobraCardSlimeMaxDuo2 = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardSlimeMaxDuo2", typeof(CobraCardSlimeMaxDuo2), card_DefaultArt, duoDeck);
+
+            CobraCardSlimeMaxDuo2.AddLocalisation("UP Button");
+
+            registry.RegisterCard(CobraCardSlimeMaxDuo2);
+        }
+        {
+            CobraCardSlimeMaxDuo3 = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardSlimeMaxDuo3", typeof(CobraCardSlimeMaxDuo3), card_DefaultArt, duoDeck);
+
+            CobraCardSlimeMaxDuo3.AddLocalisation("DOWN Button");
+
+            registry.RegisterCard(CobraCardSlimeMaxDuo3);
+        }
+        {
+            CobraCardSlimeMaxDuo4 = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardSlimeMaxDuo4", typeof(CobraCardSlimeMaxDuo4), card_DefaultArt, duoDeck);
+
+            CobraCardSlimeMaxDuo4.AddLocalisation("DOWN Button");
+
+            registry.RegisterCard(CobraCardSlimeMaxDuo4);
+        }
+        {
+            CobraCardSlimeMaxDuo5 = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardSlimeMaxDuo5", typeof(CobraCardSlimeMaxDuo5), card_DefaultArt, duoDeck);
+
+            CobraCardSlimeMaxDuo5.AddLocalisation("LEFT Button");
+
+            registry.RegisterCard(CobraCardSlimeMaxDuo5);
+        }
+        {
+            CobraCardSlimeMaxDuo6 = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardSlimeMaxDuo6", typeof(CobraCardSlimeMaxDuo6), card_DefaultArt, duoDeck);
+
+            CobraCardSlimeMaxDuo6.AddLocalisation("RIGHT Button");
+
+            registry.RegisterCard(CobraCardSlimeMaxDuo6);
+        }
+        {
+            CobraCardSlimeMaxDuo7 = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardSlimeMaxDuo7", typeof(CobraCardSlimeMaxDuo7), card_DefaultArt, duoDeck);
+
+            CobraCardSlimeMaxDuo7.AddLocalisation("LEFT Button");
+
+            registry.RegisterCard(CobraCardSlimeMaxDuo7);
+        }
+        {
+            CobraCardSlimeMaxDuo8 = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardSlimeMaxDuo8", typeof(CobraCardSlimeMaxDuo8), card_DefaultArt, duoDeck);
+
+            CobraCardSlimeMaxDuo8.AddLocalisation("RIGHT Button");
+
+            registry.RegisterCard(CobraCardSlimeMaxDuo8);
+        }
+        {
+            CobraCardSlimeMaxDuoA1 = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardSlimeMaxDuoA1", typeof(CobraCardSlimeMaxDuoA1), card_DefaultArt, duoDeck);
+
+            CobraCardSlimeMaxDuoA1.AddLocalisation("B Button");
+
+            registry.RegisterCard(CobraCardSlimeMaxDuoA1);
+        }
+        {
+            CobraCardSlimeMaxDuoA2 = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardSlimeMaxDuoA2", typeof(CobraCardSlimeMaxDuoA2), card_DefaultArt, duoDeck);
+
+            CobraCardSlimeMaxDuoA2.AddLocalisation("A Button");
+
+            registry.RegisterCard(CobraCardSlimeMaxDuoA2);
+        }
+        {
+            CobraCardSlimeMaxDuoA3 = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardSlimeMaxDuoA3", typeof(CobraCardSlimeMaxDuoA3), card_DefaultArt, duoDeck);
+
+            CobraCardSlimeMaxDuoA3.AddLocalisation("START Button", desc: "Gain a special artifact and lose <c=status>KONAMI CODE</c>.");
+
+            registry.RegisterCard(CobraCardSlimeMaxDuoA3);
+        }
+        {
+            CobraCardSlimeMaxDuoReward = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardSlimeMaxDuoReward", typeof(CobraCardSlimeMaxDuoReward), card_DefaultArt, duoDeck);
+
+            CobraCardSlimeMaxDuoReward.AddLocalisation("Cheat Sheet");
+
+            registry.RegisterCard(CobraCardSlimeMaxDuoReward);
+        }
+        {
+            CobraCardSlimeBooksDuo = new ExternalCard("Sorwest.CorrosiveCobra.CobraCardSlimeBooksDuo", typeof(CobraCardSlimeBooksDuo), card_DefaultArt, duoDeck);
+
+            CobraCardSlimeBooksDuo.AddLocalisation("Crystal Tap");
+
+            registry.RegisterCard(CobraCardSlimeBooksDuo);
         }
     }
     public void LoadManifest(IArtifactRegistry registry)
@@ -1000,7 +1221,7 @@ public partial class Manifest :
                     ownerDeck: CobraDeck ?? throw new Exception("missing CobraDeck."));
 
                 CobraArtifactPowerAcid.AddLocalisation("POWERACID",
-                    "<c=hurt>Draw 1 less card per turn</c>. At the end of your turn, the enemy triggers <c=status>CORRODE</c>.");
+                    "<c=downside>Draw 1 less card per turn</c>. At the end of your turn, the enemy triggers <c=status>CORRODE</c>.");
 
                 registry.RegisterArtifact(CobraArtifactPowerAcid);
             }
@@ -1011,7 +1232,7 @@ public partial class Manifest :
                     ownerDeck: CobraDeck ?? throw new Exception("missing CobraDeck."));
 
                 CobraArtifactDissolvent.AddLocalisation("DISSOLVENT",
-                    "Gain 1 extra <c=energy>ENERGY</c> every turn. <c=hurt>The first time each turn you are dealt damage, you receive an extra 2 damage.");
+                    "Gain 1 extra <c=energy>ENERGY</c> every turn. <c=downside>The first time each turn you are dealt damage, you receive an extra 2 damage</c>.");
 
                 registry.RegisterArtifact(CobraArtifactDissolvent);
             }
@@ -1041,7 +1262,7 @@ public partial class Manifest :
                     SlimeDizzyArtifactSprite ?? throw new Exception("missing SlimeDizzyArtifact artifact sprite"),
                     ownerDeck: duoDeck);
 
-                SlimeDizzyArtifact.AddLocalisation("UNYIELDING ROOK", "Gain <c=keyword>+1 max shield</c>. Whenever you lose hull, <c=downside>if you have any</c> <c=status>CORRODE</c>, gain <c=keyword>2</c> <c=status>SHIELD</c>.");
+                SlimeDizzyArtifact.AddLocalisation("UNYIELDING ROOK", "Gain <c=keyword>+1 max shield</c>. Whenever you lose hull, <c=keyword>if you have any</c> <c=status>CORRODE</c>, gain 2 <c=status>SHIELD</c>.");
                 registry.RegisterArtifact(SlimeDizzyArtifact);
 
                 DuoArtifactsApi!.RegisterDuoArtifact(typeof(SlimeDizzyArtifact), new[] { cobraDeck, Deck.dizzy });
@@ -1052,10 +1273,87 @@ public partial class Manifest :
                     SlimeRiggsArtifactSprite ?? throw new Exception("missing SlimeRiggsArtifact artifact sprite"),
                     ownerDeck: duoDeck);
 
-                SlimeRiggsArtifact.AddLocalisation("CHEESE TEA", "When you shuffle your deck, add a <c=card>Cheese Tea</c> to your deck.");
+                SlimeRiggsArtifact.AddLocalisation("CHEESE TEA", "Every time your discard pile is shuffled back into your draw pile, add a <c=card>Cheese Tea</c> to <c=keyword>your draw pile</c>.");
                 registry.RegisterArtifact(SlimeRiggsArtifact);
 
                 DuoArtifactsApi!.RegisterDuoArtifact(typeof(SlimeRiggsArtifact), new[] { cobraDeck, Deck.riggs });
+            }
+            {
+                SlimePeriArtifact = new ExternalArtifact("Sorwest.CorrosiveCobra.Artifacts.SlimePeriArtifact",
+                    typeof(SlimePeriArtifact),
+                    SlimePeriArtifactSprite ?? throw new Exception("missing SlimePeriArtifact artifact sprite"),
+                    ownerDeck: duoDeck);
+
+                SlimePeriArtifact.AddLocalisation("UP-TO-DATE PROTOCOL", "<c=downside>Draw 1 less card per turn</c>. At the start of combat, gain 1 <c=status>POWERDRIVE</c>.");
+                registry.RegisterArtifact(SlimePeriArtifact);
+
+                DuoArtifactsApi!.RegisterDuoArtifact(typeof(SlimePeriArtifact), new[] { cobraDeck, Deck.peri });
+            }
+            {
+                SlimeIsaacArtifact = new ExternalArtifact("Sorwest.CorrosiveCobra.Artifacts.SlimeIsaacArtifact",
+                    typeof(SlimeIsaacArtifact),
+                    SlimeIsaacArtifactSprite ?? throw new Exception("missing SlimeIsaacArtifact artifact sprite"),
+                    ownerDeck: duoDeck);
+
+                SlimeIsaacArtifact.AddLocalisation("COBRA FIELD", "At the start of combat, add a <c=card>Cobra Field</c> to your hand. On the fifth turn of combat, gain 5 <c=status>DRONESHIFT</c>.");
+                registry.RegisterArtifact(SlimeIsaacArtifact);
+
+                DuoArtifactsApi!.RegisterDuoArtifact(typeof(SlimeIsaacArtifact), new[] { cobraDeck, Deck.goat });
+            }
+            {
+                SlimeDrakeArtifact = new ExternalArtifact("Sorwest.CorrosiveCobra.Artifacts.SlimeDrakeArtifact",
+                    typeof(SlimeDrakeArtifact),
+                    SlimeDrakeArtifactSprite ?? throw new Exception("missing SlimeDrakeArtifact artifact sprite"),
+                    ownerDeck: duoDeck);
+
+                SlimeDrakeArtifact.AddLocalisation("KITCHENWARE", "Whenever you gain heat while <c=downside>overheating</c>, fire for 1 <c=status>CORRODE</c>.");
+                registry.RegisterArtifact(SlimeDrakeArtifact);
+
+                DuoArtifactsApi!.RegisterDuoArtifact(typeof(SlimeDrakeArtifact), new[] { cobraDeck, Deck.eunice });
+            }
+            {
+                SlimeMaxArtifact = new ExternalArtifact("Sorwest.CorrosiveCobra.Artifacts.SlimeMaxArtifact",
+                    typeof(SlimeMaxArtifact),
+                    SlimeMaxArtifactSprite ?? throw new Exception("missing SlimeMaxArtifact artifact sprite"),
+                    ownerDeck: duoDeck);
+
+                SlimeMaxArtifact.AddLocalisation("KONAMI CODE", "At the start of combat, add an <c=card>UP Button</c> to your hand. <c=keyword>Play the last card of the sequence to gain a special artifact</c> <c=downside>and remove this one</c>.");
+                registry.RegisterArtifact(SlimeMaxArtifact);
+
+                DuoArtifactsApi!.RegisterDuoArtifact(typeof(SlimeMaxArtifact), new[] { cobraDeck, Deck.hacker });
+            }
+            {
+                SlimeMaxArtifactReward = new ExternalArtifact("Sorwest.CorrosiveCobra.Artifacts.SlimeMaxArtifactReward",
+                    typeof(SlimeMaxArtifactReward),
+                    SlimeMaxArtifactRewardSprite ?? throw new Exception("missing SlimeMaxArtifactReward artifact sprite"),
+                    ownerDeck: duoDeck);
+
+                SlimeMaxArtifactReward.AddLocalisation("CHEAT SHEET", "At the start of combat, add a <c=card>Cheat Sheet</c> to your hand.");
+                registry.RegisterArtifact(SlimeMaxArtifactReward);
+
+                DuoArtifactsApi!.RegisterDuoArtifact(typeof(SlimeMaxArtifactReward), new[] { cobraDeck, Deck.hacker });
+            }
+            {
+                SlimeBooksArtifact = new ExternalArtifact("Sorwest.CorrosiveCobra.Artifacts.SlimeBooksArtifact",
+                    typeof(SlimeBooksArtifact),
+                    SlimeBooksArtifactSprite ?? throw new Exception("missing SlimeBooksArtifact artifact sprite"),
+                    ownerDeck: duoDeck);
+
+                SlimeBooksArtifact.AddLocalisation("CRYSTAL TAP", "At the start of your turn, if you don't have a <c=card>Crystal Tap</c> in your hand, gain one.");
+                registry.RegisterArtifact(SlimeBooksArtifact);
+
+                DuoArtifactsApi!.RegisterDuoArtifact(typeof(SlimeBooksArtifact), new[] { cobraDeck, Deck.shard });
+            }
+            {
+                SlimeCatArtifact = new ExternalArtifact("Sorwest.CorrosiveCobra.Artifacts.SlimeCatArtifact",
+                    typeof(SlimeCatArtifact),
+                    SlimeCatArtifactSprite ?? throw new Exception("missing SlimeCatArtifact artifact sprite"),
+                    ownerDeck: duoDeck);
+
+                SlimeCatArtifact.AddLocalisation("TIME WACK", "The first time you end your turn with only 1 hull, gain 1 <c=status>PERFECT SHIELD</c> and the enemy gains 1 <c=status>CORRODE</c>. <c=downside>Once per combat</c>.");
+                registry.RegisterArtifact(SlimeCatArtifact);
+
+                DuoArtifactsApi!.RegisterDuoArtifact(typeof(SlimeCatArtifact), new[] { cobraDeck, Deck.catartifact });
             }
         }
     }

@@ -33,11 +33,15 @@ public class CobraArtifactUnstableTanks : Artifact
         combat.QueueImmediate((CardAction)aaddCard1);
     }
 
-    public override List<Tooltip>? GetExtraTooltips() => new List<Tooltip>()
+    public override List<Tooltip>? GetExtraTooltips()
     {
-        (Tooltip) new TTCard()
+        var tooltips = new List<Tooltip>()
         {
-            card = (Card) new Cards.CobraCardLeakingContainer()
-        }
-    };
+            new TTCard()
+            {
+                card = new CobraCardLeakingContainer()
+            }
+        };
+        return tooltips;
+    }
 }

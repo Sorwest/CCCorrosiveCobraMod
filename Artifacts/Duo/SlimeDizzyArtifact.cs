@@ -20,13 +20,16 @@ public class SlimeDizzyArtifact : Artifact
             aStatus1.statusAmount = 2;
             aStatus1.targetPlayer = true;
             combat.QueueImmediate(aStatus1);
+            this.Pulse();
         }
     }
     public override List<Tooltip>? GetExtraTooltips()
     {
-        var tooltips = base.GetExtraTooltips() ?? new();
-        tooltips.Add(new TTGlossary("status.corrodeAlt"));
-        tooltips.Add(new TTGlossary("status.shieldAlt"));
+        var tooltips = new List<Tooltip>()
+        {
+            new TTGlossary("status.corrodeAlt"),
+            new TTGlossary("status.shieldAlt")
+        };
         return tooltips;
     }
 }

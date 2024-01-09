@@ -11,14 +11,18 @@ public class CobraArtifactFuelWalls : Artifact
         state.GetCurrentQueue().Add((CardAction)new AAddCard()
         {
             amount = 3,
-            card = (Card)new CobraCardFuelWall()
+            card = new CobraCardFuelWall()
         });
     }
-    public override List<Tooltip>? GetExtraTooltips() => new List<Tooltip>()
+    public override List<Tooltip>? GetExtraTooltips()
     {
-        (Tooltip) new TTCard()
+        var tooltips = new List<Tooltip>()
         {
-            card = (Card) new CobraCardFuelWall()
-        },
-    };
+            new TTCard()
+            {
+                card =  new CobraCardFuelWall()
+            },
+        };
+        return tooltips;
+    }
 }

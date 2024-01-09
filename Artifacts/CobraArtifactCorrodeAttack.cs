@@ -26,7 +26,7 @@ public class CobraArtifactCorrodeAttack : Artifact
         if (this.count < TRIGGER_POINT)
             return;
         AAttack aattack1 = new AAttack();
-        aattack1.damage = card.GetDmg(state, 0);
+        aattack1.damage = 0;
         aattack1.status = Status.corrode;
         aattack1.statusAmount = 1;
         aattack1.targetPlayer = false;
@@ -35,8 +35,12 @@ public class CobraArtifactCorrodeAttack : Artifact
         this.Pulse();
     }
 
-    public override List<Tooltip>? GetExtraTooltips() => new List<Tooltip>()
+    public override List<Tooltip>? GetExtraTooltips()
     {
-        (Tooltip) new TTGlossary("status.corrode", 1),
-    };
+        var tooltips = new List<Tooltip>()
+        {
+            new TTGlossary("status.corrode", 1),
+        };
+        return tooltips;
+    }
 }

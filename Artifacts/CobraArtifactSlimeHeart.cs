@@ -16,8 +16,12 @@ public class CobraArtifactSlimeHeart : Artifact
         astatus1.targetPlayer = true;
         combat.Queue(astatus1);
     }
-    public override List<Tooltip>? GetExtraTooltips() => new List<Tooltip>()
+    public override List<Tooltip>? GetExtraTooltips()
     {
-        (Tooltip) new TTGlossary(Manifest.AEvolveStatus_Glossary?.Head ?? throw new Exception("Missing AIncomingCorrode_Glossary"), 1),
-    };
+        var tooltips = new List<Tooltip>()
+        {
+            new TTGlossary(Manifest.AEvolveStatus_Glossary?.Head ?? throw new Exception("Missing AIncomingCorrode_Glossary"), 1),
+        };
+        return tooltips;
+    }
 }

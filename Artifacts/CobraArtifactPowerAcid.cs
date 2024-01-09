@@ -24,8 +24,12 @@ public class CobraArtifactPowerAcid : Artifact
         }
     }
 
-    public override List<Tooltip>? GetExtraTooltips() => new List<Tooltip>()
+    public override List<Tooltip>? GetExtraTooltips()
     {
-        (Tooltip) new TTGlossary("status.corrode", otherShipCorrode),
-    };
+        var tooltips = new List<Tooltip>()
+        {
+            new TTGlossary("status.corrode", otherShipCorrode),
+        };
+        return tooltips;
+    }
 }

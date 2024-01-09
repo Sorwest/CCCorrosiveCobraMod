@@ -10,8 +10,12 @@ public class CobraArtifactDummyHeat : Artifact
         overheatTrigger = s.ship.heatTrigger;
         return overheatTrigger;
     }
-    public override List<Tooltip>? GetExtraTooltips() => new List<Tooltip>()
+    public override List<Tooltip>? GetExtraTooltips()
     {
-        (Tooltip) new TTText("CURRENT OVERHEAT TRIGGER : " + overheatTrigger),
-    };
+        var tooltips = new List<Tooltip>()
+        {
+            new TTText("CURRENT OVERHEAT TRIGGER : " + overheatTrigger),
+        };
+        return tooltips;
+    }
 }

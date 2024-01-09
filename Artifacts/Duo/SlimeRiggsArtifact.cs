@@ -18,12 +18,17 @@ public class SlimeRiggsArtifact : Artifact
             destination = CardDestination.Deck,
         };
         combat.QueueImmediate(aAddCard1);
+        this.Pulse();
     }
-    public override List<Tooltip>? GetExtraTooltips() => new List<Tooltip>()
+    public override List<Tooltip>? GetExtraTooltips()
     {
-        (Tooltip) new TTCard()
+        var tooltips = new List<Tooltip>()
         {
-            card = (Card) new Cards.CobraCardSlimeRiggsDuo()
-        }
-    };
+            new TTCard()
+            {
+                card = new CobraCardSlimeRiggsDuo()
+            }
+        };
+        return tooltips;
+    }
 }

@@ -18,7 +18,7 @@ public partial class Manifest :
                     active = true,
                     type = PType.cannon
                 },
-                CorrosiveCobra_CannonSprite ?? throw new Exception());
+                CorrosiveCobra_CannonSprite ?? throw new Exception("Missing CorrosiveCobra_CannonSprite Sprite"));
         }
         {
             CorrosiveCobra_MissileBay = new ExternalPart("Sorwest.CorrosiveCobra.Parts.MissileBay",
@@ -27,7 +27,7 @@ public partial class Manifest :
                 active = true,
                 type = PType.missiles
             },
-             CorrosiveCobra_MissileBaySprite ?? throw new Exception());
+             CorrosiveCobra_MissileBaySprite ?? throw new Exception("Missing CorrosiveCobra_MissileBaySprite Sprite"));
         }
         {
             CorrosiveCobra_Cockpit = new ExternalPart("Sorwest.CorrosiveCobra.Parts.Cockpit",
@@ -36,7 +36,7 @@ public partial class Manifest :
                 active = true,
                 type = PType.cockpit
             },
-             CorrosiveCobra_CockpitSprite ?? throw new Exception());
+             CorrosiveCobra_CockpitSprite ?? throw new Exception("Missing CorrosiveCobra_CockpitSprite Sprite"));
         }
         {
             CorrosiveCobra_Scaffolding = new ExternalPart("Sorwest.CorrosiveCobra.Parts.Scaffolding",
@@ -45,7 +45,7 @@ public partial class Manifest :
                 active = true,
                 type = PType.empty
             },
-             CorrosiveCobra_ScaffoldingSprite ?? throw new Exception());
+             CorrosiveCobra_ScaffoldingSprite ?? throw new Exception("Missing CorrosiveCobra_ScaffoldingSprite Sprite"));
         }
         {
             CorrosiveCobra_WingLeft = new ExternalPart("Sorwest.CorrosiveCobra.Parts.WingLeft",
@@ -54,7 +54,7 @@ public partial class Manifest :
                 active = true,
                 type = PType.wing
             },
-             CorrosiveCobra_WingLeftSprite ?? throw new Exception());
+             CorrosiveCobra_WingLeftSprite ?? throw new Exception("Missing CorrosiveCobra_WingLeftSprite Sprite"));
         }
         {
             CorrosiveCobra_WingRight = new ExternalPart("Sorwest.CorrosiveCobra.Parts.WingRight",
@@ -64,7 +64,7 @@ public partial class Manifest :
                 type = PType.wing,
                 flip = true
             },
-             CorrosiveCobra_WingLeftSprite ?? throw new Exception());
+             CorrosiveCobra_WingLeftSprite ?? throw new Exception("Missing CorrosiveCobra_WingLeftSprite Sprite"));
         }
         registry.RegisterPart(CorrosiveCobra_Cannon);
         registry.RegisterPart(CorrosiveCobra_MissileBay);

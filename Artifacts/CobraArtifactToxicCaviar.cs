@@ -20,8 +20,12 @@ public class CobraArtifactToxicCaviar : Artifact
         combat.QueueImmediate(astatus2);
     }
 
-    public override List<Tooltip>? GetExtraTooltips() => new List<Tooltip>()
+    public override List<Tooltip>? GetExtraTooltips()
     {
-        (Tooltip) new TTGlossary("status.corrode", 2),
-    };
+        var tooltips = new List<Tooltip>()
+        {
+            new TTGlossary("status.corrode", 2),
+        };
+        return tooltips;
+    }
 }

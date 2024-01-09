@@ -1,14 +1,15 @@
 ﻿namespace Sorwest.CorrosiveCobra.Cards;
 
 [CardMeta(dontOffer = true)]
-public class CobraCardSlimeRiggsDuo : Card
+public class CobraCardSlimeMaxDuoReward : Card
 {
     public override CardData GetData(State state)
     {
         CardData result = new CardData
         {
-            cost = 0,
+            cost = 1,
             exhaust = true,
+            retain = true,
         };
         return result;
     }
@@ -16,15 +17,16 @@ public class CobraCardSlimeRiggsDuo : Card
     {
         List<CardAction> result = new List<CardAction>
         {
-            new AAttack()
+            new AStatus()
             {
-                damage = GetDmg(s, 1),
-                fast = true,
+                status = Status.boost,
+                statusAmount = 3,
+                targetPlayer = true,
             },
             new ADrawCard()
             {
-                count = 2,
-            },
+                count = 1,
+            }
         };
         return result;
     }
