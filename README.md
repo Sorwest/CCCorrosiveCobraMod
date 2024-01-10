@@ -14,4 +14,5 @@ New playable crew member! Dizzy? comes from another timeline, all jelly! His car
 New playable spaceship! The Corrosive Cobra comes from another timeline, specializing in heat-inducing corrode attacks, melting hull, its own included.
 
 ## CARDS, STATUS, ARTIFACTS PREVIEW
-![AllCards](https://github.com/Sorwest/CCCorrosiveCobraMod/assets/151322116/7b8241fa-e3e9-4164-b317-3348e2bd936b)
+![AllCards](https://github.com/Sorwest/CCCorrosiveCobraMod/assets/151322116/c1f3a746-53d8-465f-ba41-81d9685eb715)
+![AllDuoStuff](https://github.com/Sorwest/CCCorrosiveCobraMod/assets/151322116/a684809b-6fd5-4444-af74-fdae45d4e91c)
