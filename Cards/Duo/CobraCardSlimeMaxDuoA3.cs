@@ -1,7 +1,7 @@
 ﻿using Sorwest.CorrosiveCobra.Artifacts;
 namespace Sorwest.CorrosiveCobra.Cards;
 
-[CardMeta(dontOffer = true, unreleased = true)]
+[CardMeta(dontOffer = true)]
 public class CobraCardSlimeMaxDuoA3 : Card
 {
     public override CardData GetData(State state)

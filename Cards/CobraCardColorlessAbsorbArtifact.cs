@@ -1,6 +1,6 @@
 ﻿namespace Sorwest.CorrosiveCobra.Cards;
 
-[CardMeta(unreleased = true, deck = Deck.colorless, rarity = Rarity.common, upgradesTo = new Upgrade[] { Upgrade.A, Upgrade.B })]
+[CardMeta(deck = Deck.colorless, rarity = Rarity.common, upgradesTo = new Upgrade[] { Upgrade.A, Upgrade.B })]
 public class CobraCardColorlessAbsorbArtifact : Card
 {
     public override string Name() => "Absorb Artifact";

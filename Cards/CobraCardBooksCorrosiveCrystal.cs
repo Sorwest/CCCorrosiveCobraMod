@@ -1,6 +1,5 @@
 ﻿namespace Sorwest.CorrosiveCobra.Cards;
 
-// BOOKS CARDS
 [CardMeta(deck = Deck.shard, rarity = Rarity.common, upgradesTo = new Upgrade[] { Upgrade.A, Upgrade.B })]
 public class CobraCardBooksCorrosiveCrystal : Card
 {
