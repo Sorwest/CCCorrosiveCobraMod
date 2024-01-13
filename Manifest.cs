@@ -7,14 +7,11 @@ using Sorwest.CorrosiveCobra.Cards;
 using HarmonyLib;
 using System.Reflection;
 using Microsoft.Extensions.Logging;
-using System.Text;
-using Microsoft.Win32;
 
 /* Many thanks to parchmentengineer and theirs armada mod, check them out!
  * (January 7th, 2024 NOTE: parchmentArmada mod is outdated and might crash unexpectedly)
  * https://github.com/parchmentEngineer/parchmentArmada/releases/
  * So many thanks to EWanderer's selfless dedication to making the Cobalt Core modding community THRIVE!! Check Arin and EWanderer's collab project!
- * (January 7th, 2024 NOTE: JohannaTheTrucker mod is outdated and might crash unexpectedly)
  * https://github.com/Ewanderer/CCMod.JohannaTheTrucker/releases/
  * Cobalt Core modding community is where it is now thanks to Shockah's hard work and motivation. Be sure to check Shockah's mods, they're extremely fun and add such an incredible depth to the game it's unreal!!
  * https://github.com/Shockah/Cobalt-Core-Mods
@@ -119,6 +116,7 @@ public partial class Manifest :
 
     //modded duo artifact sprites
     public static ExternalSprite? SlimeSogginsArtifactSprite { get; private set; }
+    public static ExternalSprite? SlimeSogginsArtifactSprite_Off { get; private set; }
 
     //icon sprites
     public static ExternalSprite? HeatCostSatisfied { get; private set; }
@@ -270,9 +268,11 @@ public partial class Manifest :
     public static ExternalGlossary? ACobraField_Glossary { get; private set; }
     public void BootMod(IModLoaderContact contact)
     {
+        Instance = this;
         KokoroApi = contact.GetApi<IKokoroApi>("Shockah.Kokoro")!;
         DuoArtifactsApi = contact.LoadedManifests.Any(m => m.Name == "Shockah.DuoArtifacts") ? contact.GetApi<IDuoArtifactsApi>("Shockah.DuoArtifacts") : null;
         SogginsApi = contact.LoadedManifests.Any(m => m.Name == "Shockah.Soggins") ? contact.GetApi<ISogginsApi>("Shockah.Soggins") : null;
+
 
         Harmony harmony = new("Sorwest.CorrosiveCobra.Harmony");
 
@@ -302,6 +302,10 @@ public partial class Manifest :
                 original: typeof(Combat).GetMethod("TryPlayCard"),
                 postfix: new HarmonyMethod(typeof(PatchLogic).GetMethod("CrystalTapStatusPatch", BindingFlags.Static | BindingFlags.NonPublic))
             );
+            if (SogginsApi != null)
+            {
+                _ = new FrogproofManager();
+            }
         }
     }
     void ISpriteManifest.LoadManifest(ISpriteRegistry artRegistry)
@@ -631,6 +635,11 @@ public partial class Manifest :
                 var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Artifacts", "Duo", Path.GetFileName("SlimeSogginsArtifactSprite.png"));
                 SlimeSogginsArtifactSprite = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.SlimeSogginsArtifactSprite", new FileInfo(path));
                 artRegistry.RegisterArt(SlimeSogginsArtifactSprite);
+            }
+            {
+                var path = Path.Combine(ModRootFolder.FullName, "Sprites", "Artifacts", "Duo", Path.GetFileName("SlimeSogginsArtifactSprite_Off.png"));
+                SlimeSogginsArtifactSprite_Off = new ExternalSprite("Sorwest.CorrosiveCobra.sprites.SlimeSogginsArtifactSprite_Off", new FileInfo(path));
+                artRegistry.RegisterArt(SlimeSogginsArtifactSprite_Off);
             }
         }
         //card background
