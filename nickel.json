@@ -1,6 +1,6 @@
 {
 	"UniqueName": "Sorwest.CorrosiveCobra",
-	"Version": "1.1",
+	"Version": "1.2",
 	"RequiredApiVersion": "0.1.0",
 	"ModType": "Nickel.Legacy",
 	"EntryPointAssembly": "CorrosiveCobra.dll",
