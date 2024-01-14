@@ -1,6 +1,6 @@
 ﻿namespace Sorwest.CorrosiveCobra.Cards;
 
-[CardMeta(dontOffer = true)]
+[CardMeta(unreleased = true, dontOffer = true)]
 public class CobraCardSlimeMaxDuoA1 : Card
 {
     public override CardData GetData(State state)
