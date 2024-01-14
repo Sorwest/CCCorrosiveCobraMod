@@ -91,7 +91,7 @@ public class SlimeSogginsArtifact : Artifact , ISmugHook
             if (counter < 0)
                 textSmug = string.Format(textSmug, "botching", counter + TRIGGER);
             if (counter > 0)
-                textSmug = string.Format("Will gain a card after botching {0} more times.", TRIGGER - counter);
+                textSmug = string.Format(textSmug, "doubling", TRIGGER - counter);
             tooltips.Add(new TTText()
             {
                 text = textSmug
