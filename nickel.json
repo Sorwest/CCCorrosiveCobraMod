@@ -1,6 +1,9 @@
 {
   "UniqueName": "Sorwest.CorrosiveCobra",
   "Version": "2.0.0",
+  "DisplayName": "Corrosive Cobra: Dizzy?",
+  "Description": "A jelly-looking acidic-feeling friend and a ship.",
+  "Author": "Sorwest",
   "RequiredApiVersion": "0.6.0",
   "EntryPointAssembly": "CorrosiveCobra.dll",
   "LoadPhase": "AfterDbInit",

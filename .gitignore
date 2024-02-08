@@ -4,14 +4,14 @@
 
 **/.vs/**
 **/vs/**
-*/bin/**
-*/obj/**
 **/obj/**
+**/bin/**
+**/.bin/**
 */.bin/**
-*/.obj/**
-*/.release/**
-*/release/**
-packages/**
+**/.obj/**
+**/.release/**
+**/release/**
+**/packages/**
 **/*.zip
 *.user
 *.user.*

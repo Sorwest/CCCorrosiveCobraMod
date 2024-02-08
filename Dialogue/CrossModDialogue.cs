@@ -14,15 +14,15 @@ internal static class CrossModDialogue
         string? DaveWho = helper.Content.Decks.LookupByUniqueName("Dave::rft.Dave.DaveDeck")?.Deck.Key();
         string? JohannaWho = helper.Content.Decks.LookupByUniqueName("JohannaTheTrucker::JohannaTheTrucker.JohannaDeck")?.Deck.Key();
         string? SogginsWho = helper.Content.Decks.LookupByUniqueName("Shockah.Soggins::Shockah.Soggins.Deck.Soggins")?.Deck.Key();
-        string? PhilipWho = helper.Content.Decks.LookupByUniqueName("PhilipTheMechanic::clay.PhilipTheMechanic.PhilipDeck")?.Deck.Key();
-        string? NolaWho = helper.Content.Decks.LookupByUniqueName("TwosCompany::Mezz.TwosCompany.NolaDeck")?.Deck.Key();
+        string? PhilipWho = helper.Content.Decks.LookupByUniqueName("clay.PhilipTheEngineer::clay.PhilipTheMechanic.PhilipDeck")?.Deck.Key();
+        string? NolaWho = helper.Content.Decks.LookupByUniqueName("Mezz.TwosCompany::Mezz.TwosCompany.NolaDeck")?.Deck.Key();
         if (DaveWho is not null)
         {
             {
                 DB.story.GetNode(currentStory = $"{SlimeWho}.playedTimestreamLeak_Multi_0")?.lines.OfType<SaySwitch>().FirstOrDefault()?.lines.Insert(0, new CustomSay()
                 {
                     who = DaveWho,
-                    Text = Instance.StoryLocs.Localize([$"{SlimeWho}.{currentStory}", "2", "9"])
+                    Text = Instance.StoryLocs.Localize([$"{currentStory}", "2", "9"])
                 });
             }
             {
@@ -151,7 +151,7 @@ internal static class CrossModDialogue
                 DB.story.GetNode(currentStory = $"{SlimeWho}.playedTimestreamLeak_Multi_0")?.lines.OfType<SaySwitch>().FirstOrDefault()?.lines.Insert(0, new CustomSay()
                 {
                     who = JohannaWho,
-                    Text = Instance.StoryLocs.Localize([$"{SlimeWho}.{currentStory}", "2", "10"])
+                    Text = Instance.StoryLocs.Localize([$"{currentStory}", "2", "10"])
                 });
             }
             {
@@ -527,10 +527,10 @@ internal static class CrossModDialogue
         }
         if (NolaWho is not null)
         {
-            string IsabelleWho = helper.Content.Decks.LookupByUniqueName("TwosCompany::Mezz.TwosCompany.IsabelleDeck")!.Deck.Key();
-            string IlyaWho = helper.Content.Decks.LookupByUniqueName("TwosCompany::Mezz.TwosCompany.IlyaDeck")!.Deck.Key();
-            string GaussWho = helper.Content.Decks.LookupByUniqueName("TwosCompany::Mezz.TwosCompany.GaussDeck")!.Deck.Key();
-            string JostWho = helper.Content.Decks.LookupByUniqueName("TwosCompany::Mezz.TwosCompany.JostDeck")!.Deck.Key();
+            string IsabelleWho = helper.Content.Decks.LookupByUniqueName("Mezz.TwosCompany::Mezz.TwosCompany.IsabelleDeck")!.Deck.Key();
+            string IlyaWho = helper.Content.Decks.LookupByUniqueName("Mezz.TwosCompany::Mezz.TwosCompany.IlyaDeck")!.Deck.Key();
+            string GaussWho = helper.Content.Decks.LookupByUniqueName("Mezz.TwosCompany::Mezz.TwosCompany.GaussDeck")!.Deck.Key();
+            string JostWho = helper.Content.Decks.LookupByUniqueName("Mezz.TwosCompany::Mezz.TwosCompany.JostDeck")!.Deck.Key();
             {
                 DB.story.all[currentStory = $"{SlimeWho}.Duo_AboutToDieAndLoop_Multi_34"] = new()
                 {

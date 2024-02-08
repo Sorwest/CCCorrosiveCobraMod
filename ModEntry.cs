@@ -21,7 +21,6 @@ namespace Sorwest.CorrosiveCobra;
  *      Create custom trash card
  * Flame Shot
  *      Create custom trash card
- * Dialogue
  */
 public sealed class ModEntry : SimpleMod
 {
