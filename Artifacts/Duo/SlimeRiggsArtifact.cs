@@ -1,24 +1,40 @@
-﻿using Sorwest.CorrosiveCobra.Cards;
+﻿using Nickel;
+using System.Collections.Generic;
+using System.Reflection;
+using Sorwest.CorrosiveCobra.Cards;
 
 namespace Sorwest.CorrosiveCobra.Artifacts;
 
-[ArtifactMeta(pools = new ArtifactPool[] { ArtifactPool.Common })]
-public class SlimeRiggsArtifact : Artifact
+public class SlimeRiggsArtifact : Artifact, IModdedArtifact
 {
+    public static void Register(IModHelper helper)
+    {
+        helper.Content.Artifacts.RegisterArtifact("SlimeRiggsArtifact", new()
+        {
+            ArtifactType = MethodBase.GetCurrentMethod()!.DeclaringType!,
+            Meta = new()
+            {
+                owner = ModEntry.Instance.DuoArtifactsApi!.DuoArtifactVanillaDeck,
+                pools = [ArtifactPool.Common]
+            },
+            Sprite = ModEntry.Instance.Sprites["SlimeRiggsArtifactSprite"].Sprite,
+            Name = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "SlimeRiggsArtifact", "name"]).Localize,
+            Description = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "SlimeRiggsArtifact", "description"]).Localize
+        });
+        ModEntry.Instance.DuoArtifactsApi!.RegisterDuoArtifact(typeof(SlimeRiggsArtifact), new[] { ModEntry.Instance.SlimeDeck.Deck, Deck.riggs });
+    }
     public override void OnPlayerDeckShuffle(State state, Combat combat)
     {
-        CobraCardSlimeRiggsDuo duoCard = new()
-        {
-            temporaryOverride = true
-        };
-        AAddCard aAddCard1 = new()
+        combat.QueueImmediate(new AAddCard()
         {
             amount = 1,
-            card = duoCard,
+            card = new CobraCardSlimeRiggsDuo()
+            {
+                temporaryOverride = true
+            },
             destination = CardDestination.Deck,
-        };
-        combat.QueueImmediate(aAddCard1);
-        this.Pulse();
+        });
+        Pulse();
     }
     public override List<Tooltip>? GetExtraTooltips()
     {

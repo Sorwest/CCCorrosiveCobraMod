@@ -1,8 +1,27 @@
-﻿namespace Sorwest.CorrosiveCobra.Cards;
+﻿using Nanoray.PluginManager;
+using Nickel;
+using System.Collections.Generic;
+using System.Reflection;
 
-[CardMeta(rarity = Rarity.rare, upgradesTo = new Upgrade[] { Upgrade.A, Upgrade.B })]
-public class CobraCardSlimeEvolution : Card
+namespace Sorwest.CorrosiveCobra.Cards;
+
+public class CobraCardSlimeEvolution : Card, IModdedCard
 {
+    public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
+    {
+        helper.Content.Cards.RegisterCard("SlimeEvolution", new()
+        {
+            CardType = MethodBase.GetCurrentMethod()!.DeclaringType!,
+            Meta = new()
+            {
+                deck = ModEntry.Instance.SlimeDeck.Deck,
+                rarity = Rarity.rare,
+                upgradesTo = [Upgrade.A, Upgrade.B],
+                dontOffer = true,
+            },
+            Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "SlimeEvolution", "name"]).Localize
+        });
+    }
     public override string Name() => "Slime Evolution";
     public override CardData GetData(State state)
     {
@@ -13,16 +32,16 @@ public class CobraCardSlimeEvolution : Card
         switch (upgrade)
         {
             case Upgrade.None:
-                result.description = Loc.GetLocString(Manifest.CobraCardSlimeEvolution?.DescLocKey ?? throw new Exception("Missing card"));
+                result.buoyant = false;
                 break;
             case Upgrade.A:
-                result.description = Loc.GetLocString(Manifest.CobraCardSlimeEvolution?.DescLocKey ?? throw new Exception("Missing card"));
                 result.buoyant = true;
                 break;
             case Upgrade.B:
-                result.description = Loc.GetLocString(Manifest.CobraCardSlimeEvolution?.DescBLocKey ?? throw new Exception("Missing card"));
+                result.buoyant = false;
                 break;
         }
+        result.description = ModEntry.Instance.Localizations.Localize(["card", "SlimeEvolution", "description", upgrade.ToString()]);
         return result;
     }
     public override List<CardAction> GetActions(State s, Combat c)

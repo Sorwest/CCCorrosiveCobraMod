@@ -1,31 +1,43 @@
-﻿namespace Sorwest.CorrosiveCobra.Artifacts;
+﻿using Nickel;
+using System.Collections.Generic;
+using System.Reflection;
 
-[ArtifactMeta(pools = new ArtifactPool[] { ArtifactPool.Common })]
-public class CobraArtifactToxicCaviar : Artifact
+namespace Sorwest.CorrosiveCobra.Artifacts;
+
+public class CobraArtifactToxicCaviar : Artifact, IModdedArtifact
 {
+    public static void Register(IModHelper helper)
+    {
+        helper.Content.Artifacts.RegisterArtifact("ToxicCaviar", new()
+        {
+            ArtifactType = MethodBase.GetCurrentMethod()!.DeclaringType!,
+            Meta = new()
+            {
+                owner = ModEntry.Instance.SlimeDeck.Deck,
+                pools = [ArtifactPool.Common]
+            },
+            Sprite = ModEntry.Instance.Sprites["ToxicCaviarSprite"].Sprite,
+            Name = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "ToxicCaviar", "name"]).Localize,
+            Description = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "ToxicCaviar", "description"]).Localize
+        });
+    }
     public override string Name() => "TOXIC CAVIAR";
     public override void OnTurnStart(State state, Combat combat)
     {
-        if (state.ship.Get(Status.corrode) == 0)
+        if (state.ship.Get(Status.corrode) <= 0)
             return;
-        AStatus astatus1 = new AStatus();
-        astatus1.status = Status.corrode;
-        astatus1.statusAmount = -1;
-        astatus1.targetPlayer = true;
-        combat.QueueImmediate(astatus1);
-        AStatus astatus2 = new AStatus();
-        astatus2.status = Status.corrode;
-        astatus2.statusAmount = 2;
-        astatus2.targetPlayer = false;
-        combat.QueueImmediate(astatus2);
-    }
-
-    public override List<Tooltip>? GetExtraTooltips()
-    {
-        var tooltips = new List<Tooltip>()
+        combat.QueueImmediate(new AStatus()
         {
-            new TTGlossary("status.corrode", 2),
-        };
-        return tooltips;
+            status = Status.corrode,
+            statusAmount = -1,
+            targetPlayer = true,
+            timer = 0
+        });
+        combat.QueueImmediate(new AStatus()
+        {
+            status = Status.corrode,
+            statusAmount = 2,
+            targetPlayer = false
+        });
     }
 }

@@ -1,70 +1,69 @@
-﻿namespace Sorwest.CorrosiveCobra.Cards;
+﻿using Nanoray.PluginManager;
+using Nickel;
+using System.Collections.Generic;
+using System.Reflection;
 
-[CardMeta(rarity = Rarity.uncommon, upgradesTo = new Upgrade[] { Upgrade.A, Upgrade.B })]
-public class CobraCardFuelEjection : Card
+namespace Sorwest.CorrosiveCobra.Cards;
+public class CobraCardFuelEjection : Card, IModdedCard
 {
+    public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
+    {
+        helper.Content.Cards.RegisterCard("FuelEjection", new()
+        {
+            CardType = MethodBase.GetCurrentMethod()!.DeclaringType!,
+            Meta = new()
+            {
+                deck = ModEntry.Instance.SlimeDeck.Deck,
+                rarity = Rarity.uncommon,
+                upgradesTo = [Upgrade.A, Upgrade.B]
+            },
+            Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "FuelEjection", "name"]).Localize
+        });
+    }
     public override string Name() => "Fuel Ejection";
     public override CardData GetData(State state)
     {
-        CardData result = new CardData();
-        switch (upgrade)
+        return new()
         {
-            case Upgrade.None:
-                {
-                    result.cost = 1;
-                    result.exhaust = true;
-                    result.art = new Spr?((Spr)Manifest.CorrosiveCobra_CorrodeSprite!.Id!);
-                    break;
-                }
-            case Upgrade.A:
-                {
-                    result.cost = 1;
-                    result.exhaust = false;
-                    result.art = new Spr?((Spr)Manifest.CorrosiveCobra_HeatSprite!.Id!);
-                    break;
-                }
-            case Upgrade.B:
-                {
-                    result.cost = 2;
-                    result.exhaust = true;
-                    result.art = new Spr?((Spr)Manifest.CorrosiveCobra_CorrodeSprite!.Id!);
-                    break;
-                }
-        }
-        return result;
+            cost = upgrade == Upgrade.B ? 2 : 1,
+            exhaust = upgrade == Upgrade.A ? false : true,
+            art = upgrade == Upgrade.A ? ModEntry.Instance.Sprites["HeatSprite"].Sprite : ModEntry.Instance.Sprites["CorrodeSprite"].Sprite
+        };
     }
     public override List<CardAction> GetActions(State s, Combat c)
     {
-        var result = new List<CardAction>();
+        List<CardAction> result = new();
         switch (upgrade)
         {
             case Upgrade.None:
-                List<CardAction> cardActionList1 = new List<CardAction>
+                result = new()
                 {
-                    Manifest.KokoroApi.ActionCosts.Make(
-                        Manifest.KokoroApi.ActionCosts.Cost(
-                            Manifest.KokoroApi.ActionCosts.StatusResource(
+                    ModEntry.Instance.KokoroApi.ActionCosts.Make(
+                        ModEntry.Instance.KokoroApi.ActionCosts.Cost(
+                            ModEntry.Instance.KokoroApi.ActionCosts.StatusResource(
                                 Status.heat,
-                                (Spr)Manifest.HeatCostUnsatisfied!.Id!.Value,
-                                (Spr)Manifest.HeatCostSatisfied!.Id!.Value
+                                ModEntry.Instance.Sprites["HeatCostUnsatisfied"].Sprite,
+                                ModEntry.Instance.Sprites["HeatCostSatisfied"].Sprite,
+                                iconWidth: 7
                             ),
                             amount: 1
                         ),
-                        new AAttack()
+                        new AStatus()
                         {
-                            damage = GetDmg(s, 0),
                             status = Status.heat,
-                            statusAmount = 1
+                            statusAmount = 2,
+                            targetPlayer = false
                         }
                     ),
-                    Manifest.KokoroApi.ActionCosts.Make(
-                        Manifest.KokoroApi.ActionCosts.Cost(
-                            Manifest.KokoroApi.ActionCosts.StatusResource(
+                    ModEntry.Instance.KokoroApi.ActionCosts.Make(
+                        ModEntry.Instance.KokoroApi.ActionCosts.Cost(
+                            ModEntry.Instance.KokoroApi.ActionCosts.StatusResource(
                                 Status.heat,
-                                (Spr)Manifest.HeatCostUnsatisfied!.Id!.Value,
-                                (Spr)Manifest.HeatCostSatisfied!.Id!.Value
+                                ModEntry.Instance.Sprites["HeatCostUnsatisfied"].Sprite,
+                                ModEntry.Instance.Sprites["HeatCostSatisfied"].Sprite,
+                                iconWidth: 6
                             ),
-                            amount: 1
+                            amount: 2
                         ),
                         new AAttack()
                         {
@@ -74,35 +73,36 @@ public class CobraCardFuelEjection : Card
                         }
                     )
                 };
-                result = cardActionList1;
                 break;
             case Upgrade.A:
-                List<CardAction> cardActionList2 = new List<CardAction>
+                result = new()
                 {
-                    Manifest.KokoroApi.ActionCosts.Make(
-                        Manifest.KokoroApi.ActionCosts.Cost(
-                            Manifest.KokoroApi.ActionCosts.StatusResource(
+                    ModEntry.Instance.KokoroApi.ActionCosts.Make(
+                        ModEntry.Instance.KokoroApi.ActionCosts.Cost(
+                            ModEntry.Instance.KokoroApi.ActionCosts.StatusResource(
                                 Status.heat,
-                                (Spr)Manifest.HeatCostUnsatisfied!.Id!.Value,
-                                (Spr)Manifest.HeatCostSatisfied!.Id!.Value
+                                ModEntry.Instance.Sprites["HeatCostUnsatisfied"].Sprite,
+                                ModEntry.Instance.Sprites["HeatCostSatisfied"].Sprite,
+                                iconWidth: 7
                             ),
                             amount: 1
                         ),
-                        new AAttack()
+                        new AStatus()
                         {
-                            damage = GetDmg(s, 0),
                             status = Status.heat,
-                            statusAmount = 3
+                            statusAmount = 3,
+                            targetPlayer = false
                         }
                     ),
-                    Manifest.KokoroApi.ActionCosts.Make(
-                        Manifest.KokoroApi.ActionCosts.Cost(
-                            Manifest.KokoroApi.ActionCosts.StatusResource(
+                    ModEntry.Instance.KokoroApi.ActionCosts.Make(
+                        ModEntry.Instance.KokoroApi.ActionCosts.Cost(
+                            ModEntry.Instance.KokoroApi.ActionCosts.StatusResource(
                                 Status.heat,
-                                (Spr)Manifest.HeatCostUnsatisfied!.Id!.Value,
-                                (Spr)Manifest.HeatCostSatisfied!.Id!.Value
+                                ModEntry.Instance.Sprites["HeatCostUnsatisfied"].Sprite,
+                                ModEntry.Instance.Sprites["HeatCostSatisfied"].Sprite,
+                                iconWidth: 6
                             ),
-                            amount: 1
+                            amount: 2
                         ),
                         new AAttack()
                         {
@@ -112,35 +112,36 @@ public class CobraCardFuelEjection : Card
                         }
                     ),
                 };
-                result = cardActionList2;
                 break;
             case Upgrade.B:
-                List<CardAction> cardActionList3 = new List<CardAction>
+                result = new()
                 {
-                    Manifest.KokoroApi.ActionCosts.Make(
-                        Manifest.KokoroApi.ActionCosts.Cost(
-                            Manifest.KokoroApi.ActionCosts.StatusResource(
+                    ModEntry.Instance.KokoroApi.ActionCosts.Make(
+                        ModEntry.Instance.KokoroApi.ActionCosts.Cost(
+                            ModEntry.Instance.KokoroApi.ActionCosts.StatusResource(
                                 Status.heat,
-                                (Spr)Manifest.HeatCostUnsatisfied!.Id!.Value,
-                                (Spr)Manifest.HeatCostSatisfied!.Id!.Value
+                                ModEntry.Instance.Sprites["HeatCostUnsatisfied"].Sprite,
+                                ModEntry.Instance.Sprites["HeatCostSatisfied"].Sprite,
+                                iconWidth: 7
                             ),
                             amount: 1
                         ),
-                        new AAttack()
+                        new AStatus()
                         {
-                            damage = GetDmg(s, 0),
                             status = Status.heat,
-                            statusAmount = 3
+                            statusAmount = 2,
+                            targetPlayer = false
                         }
                     ),
-                    Manifest.KokoroApi.ActionCosts.Make(
-                        Manifest.KokoroApi.ActionCosts.Cost(
-                            Manifest.KokoroApi.ActionCosts.StatusResource(
+                    ModEntry.Instance.KokoroApi.ActionCosts.Make(
+                        ModEntry.Instance.KokoroApi.ActionCosts.Cost(
+                            ModEntry.Instance.KokoroApi.ActionCosts.StatusResource(
                                 Status.heat,
-                                (Spr)Manifest.HeatCostUnsatisfied!.Id!.Value,
-                                (Spr)Manifest.HeatCostSatisfied!.Id!.Value
+                                ModEntry.Instance.Sprites["HeatCostUnsatisfied"].Sprite,
+                                ModEntry.Instance.Sprites["HeatCostSatisfied"].Sprite,
+                                iconWidth: 6
                             ),
-                            amount: 1
+                            amount: 2
                         ),
                         new AAttack()
                         {
@@ -149,12 +150,13 @@ public class CobraCardFuelEjection : Card
                             statusAmount = 1
                         }
                     ),
-                    Manifest.KokoroApi.ActionCosts.Make(
-                        Manifest.KokoroApi.ActionCosts.Cost(
-                            Manifest.KokoroApi.ActionCosts.StatusResource(
+                    ModEntry.Instance.KokoroApi.ActionCosts.Make(
+                        ModEntry.Instance.KokoroApi.ActionCosts.Cost(
+                            ModEntry.Instance.KokoroApi.ActionCosts.StatusResource(
                                 Status.heat,
-                                (Spr)Manifest.HeatCostUnsatisfied!.Id!.Value,
-                                (Spr)Manifest.HeatCostSatisfied!.Id!.Value
+                                ModEntry.Instance.Sprites["HeatCostUnsatisfied"].Sprite,
+                                ModEntry.Instance.Sprites["HeatCostSatisfied"].Sprite,
+                                iconWidth: 7
                             ),
                             amount: 1
                         ),
@@ -162,11 +164,10 @@ public class CobraCardFuelEjection : Card
                         {
                             damage = GetDmg(s, 0),
                             status = Status.corrode,
-                            statusAmount = 2
+                            statusAmount = 1
                         }
                     )
                 };
-                result = cardActionList3;
                 break;
         }
         return result;

@@ -1,33 +1,46 @@
-﻿using Sorwest.CorrosiveCobra.Actions;
+﻿using Nanoray.PluginManager;
+using Nickel;
+using System.Collections.Generic;
+using System.Reflection;
 
 namespace Sorwest.CorrosiveCobra.Cards;
 
-[CardMeta(dontOffer = true)]
-public class CobraCardSlimeBooksDuo : Card
+public class CobraCardSlimeBooksDuo : Card, IModdedCard
 {
+    public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
+    {
+        helper.Content.Cards.RegisterCard("SlimeBooksDuo", new()
+        {
+            CardType = MethodBase.GetCurrentMethod()!.DeclaringType!,
+            Meta = new()
+            {
+                rarity = Rarity.common,
+                deck = ModEntry.Instance.DuoArtifactsApi!.DuoArtifactVanillaDeck,
+                dontOffer = true
+            },
+            Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "SlimeBooksDuo", "name"]).Localize
+        });
+    }
     public override CardData GetData(State state)
     {
-        CardData result = new CardData
+        return new()
         {
             cost = 1,
             exhaust = true,
-            retain = true,
+            retain = true
         };
-        return result;
     }
     public override List<CardAction> GetActions(State s, Combat c)
     {
-        var duoStatus = (Status)(Manifest.CrystalTapStatus?.Id ?? throw new Exception("Missing CrystalTapStatus"));
-        List<CardAction> result = new List<CardAction>
+        return new()
         {
             new AStatus()
             {
-                status = duoStatus,
+                status = ModEntry.Instance.CrystalTapStatus.Status,
                 statusAmount = 1,
                 targetPlayer = true,
-                shardcost = 1,
+                shardcost = 1
             }
         };
-        return result;
     }
 }

@@ -1,8 +1,26 @@
-﻿namespace Sorwest.CorrosiveCobra.Cards;
+﻿using Nanoray.PluginManager;
+using Nickel;
+using System.Collections.Generic;
+using System.Reflection;
 
-[CardMeta(dontOffer = true, rarity = Rarity.common)]
-public class CobraCardSlimeMutation : Card
+namespace Sorwest.CorrosiveCobra.Cards;
+
+public class CobraCardSlimeMutation : Card, IModdedCard
 {
+    public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
+    {
+        helper.Content.Cards.RegisterCard("SlimeMutation", new()
+        {
+            CardType = MethodBase.GetCurrentMethod()!.DeclaringType!,
+            Meta = new()
+            {
+                deck = ModEntry.Instance.SlimeDeck.Deck,
+                rarity = Rarity.common,
+                dontOffer = true,
+            },
+            Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "SlimeMutation", "name"]).Localize
+        });
+    }
     public override string Name() => "Slime Mutation";
     public override CardData GetData(State state)
     {
@@ -10,7 +28,7 @@ public class CobraCardSlimeMutation : Card
 
         result.cost = 2;
         result.exhaust = true;
-        result.description = Loc.GetLocString(Manifest.CobraCardSlimeMutation?.DescLocKey ?? throw new Exception("Missing card"));
+        result.description = ModEntry.Instance.Localizations.Localize(["card", "SlimeMutation", "description"]);
         return result;
     }
     public override List<CardAction> GetActions(State s, Combat c)

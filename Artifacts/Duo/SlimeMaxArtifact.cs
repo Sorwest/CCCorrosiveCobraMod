@@ -1,23 +1,38 @@
-﻿using Sorwest.CorrosiveCobra.Cards;
+﻿using Nickel;
+using System.Reflection;
+using Sorwest.CorrosiveCobra.Cards;
 
 namespace Sorwest.CorrosiveCobra.Artifacts;
 
-[ArtifactMeta(pools = new ArtifactPool[] { ArtifactPool.Common })]
-public class SlimeMaxArtifact : Artifact
+public class SlimeMaxArtifact : Artifact, IModdedArtifact
 {
+    public static void Register(IModHelper helper)
+    {
+        helper.Content.Artifacts.RegisterArtifact("SlimeMaxArtifact", new()
+        {
+            ArtifactType = MethodBase.GetCurrentMethod()!.DeclaringType!,
+            Meta = new()
+            {
+                owner = ModEntry.Instance.DuoArtifactsApi!.DuoArtifactVanillaDeck,
+                pools = [ArtifactPool.Common]
+            },
+            Sprite = ModEntry.Instance.Sprites["SlimeMaxArtifactSprite"].Sprite,
+            Name = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "SlimeMaxArtifact", "name"]).Localize,
+            Description = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "SlimeMaxArtifact", "description"]).Localize
+        });
+        ModEntry.Instance.DuoArtifactsApi!.RegisterDuoArtifact(typeof(SlimeMaxArtifact), new[] { ModEntry.Instance.SlimeDeck.Deck, Deck.hacker });
+    }
     public override void OnCombatStart(State state, Combat combat)
     {
-        var duoCard = new CobraCardSlimeMaxDuo1()
+        combat.QueueImmediate(new AAddCard()
         {
-            temporaryOverride = true,
-        };
-        AAddCard aAddCard1 = new AAddCard()
-        {
-            card = duoCard,
+            card = new CobraCardSlimeMaxDuo1()
+            {
+                temporaryOverride = true,
+            },
             amount = 1,
             destination = CardDestination.Hand,
-        };
-        combat.QueueImmediate(aAddCard1);
-        this.Pulse();
+        });
+        Pulse();
     }
 }

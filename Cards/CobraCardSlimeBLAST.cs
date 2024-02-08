@@ -1,8 +1,26 @@
-﻿namespace Sorwest.CorrosiveCobra.Cards;
+﻿using Nanoray.PluginManager;
+using Nickel;
+using System.Collections.Generic;
+using System.Reflection;
 
-[CardMeta(dontOffer = true, rarity = Rarity.common)]
-public class CobraCardSlimeBLAST : Card
+namespace Sorwest.CorrosiveCobra.Cards;
+
+public class CobraCardSlimeBLAST : Card, IModdedCard
 {
+    public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
+    {
+        helper.Content.Cards.RegisterCard("SlimeBLAST", new()
+        {
+            CardType = MethodBase.GetCurrentMethod()!.DeclaringType!,
+            Meta = new()
+            {
+                deck = ModEntry.Instance.SlimeDeck.Deck,
+                rarity = Rarity.common,
+                dontOffer = true,
+            },
+            Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "SlimeBLAST", "name"]).Localize
+        });
+    }
     public override string Name() => "SLIME BLAST!!";
     private int GetStatusAmount(State state)
     {
@@ -18,16 +36,10 @@ public class CobraCardSlimeBLAST : Card
     public override CardData GetData(State state)
     {
         CardData result = new CardData();
-        string str1;
-
         result.cost = 3;
         result.exhaust = true;
-        result.art = new Spr?((Spr)Manifest.CorrosiveCobra_SlimeBlastSprite!.Id!);
-        if (!(state.route is Combat))
-            str1 = "";
-        else
-            str1 = string.Format("{0}{1}{2}", " (<c=keyword>", this.GetDmg(state, 2 * GetStatusAmount(state)), "</c>)");
-        result.description = string.Format(Loc.GetLocString(Manifest.CobraCardSlimeBLAST?.DescLocKey ?? throw new Exception("Missing card")), str1);
+        result.art = ModEntry.Instance.Sprites["SlimeBlastSprite"].Sprite;
+        result.description = ModEntry.Instance.Localizations.Localize(["card", "SlimeBLAST", "description"], new { Amount = state.route is Combat ? GetDmg(state, 2 * GetStatusAmount(state)).ToString() : ""});
         return result;
     }
     public override List<CardAction> GetActions(State s, Combat c)

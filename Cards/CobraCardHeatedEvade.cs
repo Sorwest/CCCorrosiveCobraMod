@@ -1,80 +1,107 @@
-﻿namespace Sorwest.CorrosiveCobra.Cards;
+﻿using Nanoray.PluginManager;
+using Nickel;
+using System.Collections.Generic;
+using System.Reflection;
 
-[CardMeta(rarity = Rarity.common, upgradesTo = new Upgrade[] { Upgrade.A, Upgrade.B })]
-public class CobraCardHeatedEvade : Card
+namespace Sorwest.CorrosiveCobra.Cards;
+
+public class CobraCardHeatedEvade : Card, IModdedCard
 {
+    public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
+    {
+        helper.Content.Cards.RegisterCard("HeatedEvade", new()
+        {
+            CardType = MethodBase.GetCurrentMethod()!.DeclaringType!,
+            Meta = new()
+            {
+                deck = ModEntry.Instance.SlimeDeck.Deck,
+                rarity = Rarity.common,
+                upgradesTo = [Upgrade.A, Upgrade.B]
+            },
+            Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "HeatedEvade", "name"]).Localize
+        });
+    }
     public override string Name() => "Heated Evade";
     public override CardData GetData(State state)
     {
         return new CardData
         {
             cost = upgrade == Upgrade.A ? 0 : 1,
-            art = new Spr?((Spr)Manifest.CorrosiveCobra_BoxHeatSprite!.Id!),
+            art = ModEntry.Instance.Sprites["BoxHeatSprite"].Sprite,
         };
     }
     public override List<CardAction> GetActions(State s, Combat c)
     {
-        var result = new List<CardAction>();
+        List<CardAction> result = new();
         switch (upgrade)
         {
 
             case Upgrade.None:
-                result.Add(new AStatus()
+                result = new()
                 {
-                    status = Status.heat,
-                    statusAmount = 1,
-                    targetPlayer = true
-                });
-                result.Add(new AStatus()
-                {
-                    status = Status.evade,
-                    statusAmount = 1,
-                    targetPlayer = true
-                });
-                result.Add(new AMove()
-                {
-                    dir = 1,
-                    targetPlayer = true
-                });
+                    new AStatus()
+                    {
+                        status = Status.heat,
+                        statusAmount = 1,
+                        targetPlayer = true
+                    },
+                    new AStatus()
+                    {
+                        status = Status.evade,
+                        statusAmount = 1,
+                        targetPlayer = true
+                    },
+                    new AMove()
+                    {
+                        dir = 1,
+                        targetPlayer = true
+                    }
+                };
                 break;
             case Upgrade.A:
-                result.Add(new AStatus()
+                result = new()
                 {
-                    status = Status.heat,
-                    statusAmount = 1,
-                    targetPlayer = true
-                });
-                result.Add(new AStatus()
-                {
-                    status = Status.evade,
-                    statusAmount = 1,
-                    targetPlayer = true
-                });
-                result.Add(new AMove()
-                {
-                    dir = 1,
-                    targetPlayer = true
-                });
+                    new AStatus()
+                    {
+                        status = Status.heat,
+                        statusAmount = 1,
+                        targetPlayer = true
+                    },
+                    new AStatus()
+                    {
+                        status = Status.evade,
+                        statusAmount = 1,
+                        targetPlayer = true
+                    },
+                    new AMove()
+                    {
+                        dir = 1,
+                        targetPlayer = true
+                    }
+                };
                 break;
             case Upgrade.B:
-                result.Add(new AStatus()
+                result = new()
                 {
-                    status = Status.heat,
-                    statusAmount = 2,
-                    targetPlayer = true
-                });
-                result.Add(new AStatus()
-                {
-                    status = Status.evade,
-                    statusAmount = 2,
-                    targetPlayer = true
-                });
-                result.Add(new AMove()
-                {
-                    dir = 3,
-                    isRandom = true,
-                    targetPlayer = true
-                });
+                    new AStatus()
+                    {
+                        status = Status.heat,
+                        statusAmount = 2,
+                        targetPlayer = true
+                    },
+                    new AStatus()
+                    {
+                        status = Status.evade,
+                        statusAmount = 2,
+                        targetPlayer = true
+                    },
+                    new AMove()
+                    {
+                        dir = 3,
+                        isRandom = true,
+                        targetPlayer = true
+                    }
+                };
                 break;
         }
         return result;

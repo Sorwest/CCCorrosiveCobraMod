@@ -1,41 +1,49 @@
-﻿namespace Sorwest.CorrosiveCobra.Cards;
+﻿using Nanoray.PluginManager;
+using Nickel;
+using System.Collections.Generic;
+using System.Reflection;
 
-[CardMeta(rarity = Rarity.common, upgradesTo = new Upgrade[] { Upgrade.A, Upgrade.B })]
-public class CobraCardStolenFueltank : Card
+namespace Sorwest.CorrosiveCobra.Cards;
+
+public class CobraCardStolenFueltank : Card, IModdedCard
 {
+    public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
+    {
+        helper.Content.Cards.RegisterCard("StolenFueltank", new()
+        {
+            CardType = MethodBase.GetCurrentMethod()!.DeclaringType!,
+            Meta = new()
+            {
+                deck = ModEntry.Instance.SlimeDeck.Deck,
+                rarity = Rarity.common,
+                upgradesTo = [Upgrade.A, Upgrade.B]
+            },
+            Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "StolenFueltank", "name"]).Localize
+        });
+    }
     public override string Name() => "Stolen Fueltank";
     public override CardData GetData(State state)
     {
-        CardData result = new CardData();
-        switch (upgrade)
+        return new CardData()
         {
-            case Upgrade.None:
-                result.cost = 1;
-                break;
-            case Upgrade.A:
-                result.cost = 0;
-                break;
-            case Upgrade.B:
-                result.cost = 1;
-                break;
-        }
-        return result;
+            cost = upgrade == Upgrade.A ? 0 : 1
+        };
     }
     public override List<CardAction> GetActions(State s, Combat c)
     {
-        var result = new List<CardAction>();
+        List<CardAction> result = new();
         switch (upgrade)
         {
             case Upgrade.None:
-                List<CardAction> cardActionList1 = new List<CardAction>
+                result = new()
                 {
-                    Manifest.KokoroApi.ActionCosts.Make(
-                        Manifest.KokoroApi.ActionCosts.Cost(
-                            Manifest.KokoroApi.ActionCosts.StatusResource(
+                    ModEntry.Instance.KokoroApi.ActionCosts.Make(
+                        ModEntry.Instance.KokoroApi.ActionCosts.Cost(
+                            ModEntry.Instance.KokoroApi.ActionCosts.StatusResource(
                                 Status.heat,
                                 target: IKokoroApi.IActionCostApi.StatusResourceTarget.EnemyWithOutgoingArrow,
-                                (Spr)Manifest.HeatCostUnsatisfied!.Id!.Value,
-                                (Spr)Manifest.HeatCostSatisfied!.Id!.Value
+                                ModEntry.Instance.Sprites["HeatCostUnsatisfied"].Sprite,
+                                ModEntry.Instance.Sprites["HeatCostSatisfied"].Sprite
                             ),
                             amount: 1
                         ),
@@ -45,18 +53,17 @@ public class CobraCardStolenFueltank : Card
                         }
                     )
                 };
-                result = cardActionList1;
                 break;
             case Upgrade.A:
-                List<CardAction> cardActionList2 = new List<CardAction>()
+                result = new()
                 {
-                    Manifest.KokoroApi.ActionCosts.Make(
-                        Manifest.KokoroApi.ActionCosts.Cost(
-                            Manifest.KokoroApi.ActionCosts.StatusResource(
+                    ModEntry.Instance.KokoroApi.ActionCosts.Make(
+                        ModEntry.Instance.KokoroApi.ActionCosts.Cost(
+                            ModEntry.Instance.KokoroApi.ActionCosts.StatusResource(
                                 Status.heat,
                                 target: IKokoroApi.IActionCostApi.StatusResourceTarget.EnemyWithOutgoingArrow,
-                                (Spr)Manifest.HeatCostUnsatisfied!.Id!.Value,
-                                (Spr)Manifest.HeatCostSatisfied!.Id!.Value
+                                ModEntry.Instance.Sprites["HeatCostUnsatisfied"].Sprite,
+                                ModEntry.Instance.Sprites["HeatCostSatisfied"].Sprite
                             ),
                             amount: 1
                         ),
@@ -66,16 +73,15 @@ public class CobraCardStolenFueltank : Card
                         }
                     )
                 };
-                result = cardActionList2;
                 break;
             case Upgrade.B:
-                List<CardAction> cardActionList3 = new List<CardAction>()
+                result = new()
                 {
-                    Manifest.KokoroApi.ConditionalActions.Make(
-                        Manifest.KokoroApi.ConditionalActions.Equation(
-                            Manifest.KokoroApi.ConditionalActions.Status(Status.heat),
+                    ModEntry.Instance.KokoroApi.ConditionalActions.Make(
+                        ModEntry.Instance.KokoroApi.ConditionalActions.Equation(
+                            ModEntry.Instance.KokoroApi.ConditionalActions.Status(Status.heat),
                             IKokoroApi.IConditionalActionApi.EquationOperator.GreaterThanOrEqual,
-                            Manifest.KokoroApi.ConditionalActions.Constant(2),
+                            ModEntry.Instance.KokoroApi.ConditionalActions.Constant(2),
                             IKokoroApi.IConditionalActionApi.EquationStyle.State,
                             hideOperator: true
                         ),
@@ -85,7 +91,6 @@ public class CobraCardStolenFueltank : Card
                         }
                     )
                 };
-                result = cardActionList3;
                 break;
         }
         return result;

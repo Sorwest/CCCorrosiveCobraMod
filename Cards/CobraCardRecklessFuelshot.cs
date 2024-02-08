@@ -1,73 +1,84 @@
-﻿namespace Sorwest.CorrosiveCobra.Cards;
+﻿using Nanoray.PluginManager;
+using Nickel;
+using System.Collections.Generic;
+using System.Reflection;
 
-[CardMeta(rarity = Rarity.common, upgradesTo = new Upgrade[] { Upgrade.A, Upgrade.B })]
-public class CobraCardRecklessFuelshot : Card
+namespace Sorwest.CorrosiveCobra.Cards;
+
+public class CobraCardRecklessFuelshot : Card, IModdedCard
 {
-    public override string Name() => "Reckless Fuelshot";
+    public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
+    {
+        helper.Content.Cards.RegisterCard("RecklessFuelshot", new()
+        {
+            CardType = MethodBase.GetCurrentMethod()!.DeclaringType!,
+            Meta = new()
+            {
+                deck = ModEntry.Instance.SlimeDeck.Deck,
+                rarity = Rarity.common,
+                upgradesTo = [Upgrade.A, Upgrade.B]
+            },
+            Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "RecklessFuelshot", "name"]).Localize
+        });
+    }
+    public override string Name() => "Reckless Fuel Shot";
     public override CardData GetData(State state)
     {
-        CardData result = new CardData();
-        result.cost = 1;
-        result.art = new Spr?((Spr)Manifest.CorrosiveCobra_RecklessFuelshotSprite!.Id!);
+        int num = 0;
+        int num2 = 0;
         switch (upgrade)
         {
             case Upgrade.None:
-                result.description = string.Format(Loc.GetLocString(Manifest.CobraCardRecklessFuelshot?.DescLocKey ?? throw new Exception("Missing card")), this.GetDmg(state, 3), 1);
+                num = 3;
+                num2 = 3;
                 break;
             case Upgrade.A:
-                result.description = string.Format(Loc.GetLocString(Manifest.CobraCardRecklessFuelshot?.DescALocKey ?? throw new Exception("Missing card")), this.GetDmg(state, 3), 1);
+                num = 3;
+                num2 = 2;
                 break;
             case Upgrade.B:
-                result.description = string.Format(Loc.GetLocString(Manifest.CobraCardRecklessFuelshot?.DescLocKey ?? throw new Exception("Missing card")), this.GetDmg(state, 6), 2);
+                num = 4;
+                num2 = 3;
                 break;
         }
-        return result;
+        return new()
+        {
+            cost = 1,
+            art = ModEntry.Instance.Sprites["RecklessFuelshotSprite"].Sprite,
+            description = ModEntry.Instance.Localizations.Localize(["card", "RecklessFuelshot", "description", upgrade.ToString()], new { Damage = GetDmg(state, num), Count = num2 })
+        };
     }
     public override List<CardAction> GetActions(State s, Combat c)
     {
-        var result = new List<CardAction>();
+        int num = 0;
+        int num2 = 0;
         switch (upgrade)
         {
             case Upgrade.None:
-                List<CardAction> cardActionList1 = new List<CardAction>();
-                AAttack aattack1 = new AAttack();
-                aattack1.damage = GetDmg(s, 3);
-                cardActionList1.Add(aattack1);
-                AAddCard aaddCard1 = new AAddCard();
-                Toxic toxic1 = new Toxic();
-                aaddCard1.card = toxic1;
-                aaddCard1.amount = 1;
-                aaddCard1.destination = CardDestination.Deck;
-                cardActionList1.Add(aaddCard1);
-                result = cardActionList1;
+                num = 3;
+                num2 = 1;
                 break;
             case Upgrade.A:
-                List<CardAction> cardActionList2 = new List<CardAction>();
-                AAttack aattack2 = new AAttack();
-                aattack2.damage = GetDmg(s, 3);
-                cardActionList2.Add(aattack2);
-                AAddCard aaddCard2 = new AAddCard();
-                Toxic toxic2 = new Toxic();
-                aaddCard2.card = toxic2;
-                aaddCard2.amount = 1;
-                aaddCard2.destination = CardDestination.Discard;
-                cardActionList2.Add(aaddCard2);
-                result = cardActionList2;
+                num = 3;
+                num2 = 1;
                 break;
             case Upgrade.B:
-                List<CardAction> cardActionList3 = new List<CardAction>();
-                AAttack aattack3 = new AAttack();
-                aattack3.damage = GetDmg(s, 6);
-                cardActionList3.Add(aattack3);
-                AAddCard aaddCard3 = new AAddCard();
-                Toxic toxic3 = new Toxic();
-                aaddCard3.card = toxic3;
-                aaddCard3.amount = 2;
-                aaddCard3.destination = CardDestination.Deck;
-                cardActionList3.Add(aaddCard3);
-                result = cardActionList3;
+                num = 6;
+                num2 = 2;
                 break;
-        }
-        return result;
+        };
+        return new()
+        {
+            new AAttack()
+            {
+                damage = GetDmg(s, num)
+            },
+            new AAddCard()
+            {
+                card = new TrashFumes(),
+                destination = upgrade == Upgrade.A ? CardDestination.Discard : CardDestination.Deck,
+                amount = num2
+            }
+        };
     }
 }

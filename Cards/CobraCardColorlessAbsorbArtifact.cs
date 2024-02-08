@@ -1,13 +1,31 @@
-﻿namespace Sorwest.CorrosiveCobra.Cards;
+﻿using Nanoray.PluginManager;
+using Nickel;
+using System.Collections.Generic;
+using System.Reflection;
 
-[CardMeta(deck = Deck.colorless, rarity = Rarity.common, upgradesTo = new Upgrade[] { Upgrade.A, Upgrade.B })]
-public class CobraCardColorlessAbsorbArtifact : Card
+namespace Sorwest.CorrosiveCobra.Cards;
+public class CobraCardColorlessAbsorbArtifact : Card, IModdedCard
 {
+    public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
+    {
+        helper.Content.Cards.RegisterCard("AbsorbArtifact", new()
+        {
+            CardType = MethodBase.GetCurrentMethod()!.DeclaringType!,
+            Meta = new()
+            {
+                deck = Deck.colorless,
+                rarity = Rarity.common,
+                upgradesTo = [Upgrade.A, Upgrade.B],
+                dontOffer = ModEntry.Instance.NoExtraCards
+            },
+            Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "AbsorbArtifact", "name"]).Localize
+        });
+    }
     public override string Name() => "Absorb Artifact";
 
     public string GetRandomArtifact(State state)
     {
-        var random1 = new Random();
+        var random1 = new Rand();
         List<string> artifactList1 = new List<string>();
         string randomArtifact1 = "";
         if (state.route is Combat)
@@ -17,7 +35,7 @@ public class CobraCardColorlessAbsorbArtifact : Card
                 if (!(currentartifact.GetMeta().unremovable))
                     artifactList1.Add(currentartifact.Key());
             }
-            int index = random1.Next(artifactList1.Count);
+            int index = random1.NextInt() % (artifactList1.Count);
             if (index < 0)
                 return randomArtifact1;
             if (artifactList1.Count > 0)
@@ -28,7 +46,7 @@ public class CobraCardColorlessAbsorbArtifact : Card
     public override CardData GetData(State state)
     {
         CardData result = new CardData();
-        result.description = Loc.GetLocString(Manifest.CobraCardColorlessAbsorbArtifact?.DescLocKey ?? throw new Exception("Missing card"));
+        result.description = ModEntry.Instance.Localizations.Localize(["card", "AbsorbArtifact", "description"]);
         switch (upgrade)
         {
             case Upgrade.None:

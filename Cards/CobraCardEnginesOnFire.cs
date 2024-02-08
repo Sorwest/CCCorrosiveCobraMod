@@ -1,73 +1,68 @@
-﻿namespace Sorwest.CorrosiveCobra.Cards;
+﻿using Nanoray.PluginManager;
+using Nickel;
+using System.Collections.Generic;
+using System.Reflection;
 
-[CardMeta(rarity = Rarity.rare, upgradesTo = new Upgrade[] { Upgrade.A, Upgrade.B })]
-public class CobraCardEnginesOnFire : Card
+namespace Sorwest.CorrosiveCobra.Cards;
+public class CobraCardEnginesOnFire : Card, IModdedCard
 {
+    public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
+    {
+        helper.Content.Cards.RegisterCard("EnginesOnFine", new()
+        {
+            CardType = MethodBase.GetCurrentMethod()!.DeclaringType!,
+            Meta = new()
+            {
+                deck = ModEntry.Instance.SlimeDeck.Deck,
+                rarity = Rarity.rare,
+                upgradesTo = [Upgrade.A, Upgrade.B]
+            },
+            Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "EnginesOnFine", "name"]).Localize
+        });
+    }
     public override string Name() => "Engines! On Fire!";
     public override CardData GetData(State state)
     {
-        CardData result = new CardData();
-        result.exhaust = true;
-        result.art = new Spr?((Spr)Manifest.CorrosiveCobra_HeatSprite!.Id!);
-        switch (upgrade)
+        return new()
         {
-            case Upgrade.None:
-                result.cost = 0;
-                break;
-            case Upgrade.A:
-                result.cost = 0;
-                break;
-            case Upgrade.B:
-                result.cost = 1;
-                result.buoyant = true;
-                break;
-        }
-        return result;
+            cost = upgrade == Upgrade.B ? 1 : 0,
+            buoyant = upgrade == Upgrade.B ? true : false,
+            exhaust = true,
+            art = ModEntry.Instance.Sprites["HeatSprite"].Sprite
+        };
     }
     public override List<CardAction> GetActions(State s, Combat c)
     {
-        var result = new List<CardAction>();
-        var heatoutbreak_status = (Status)(Manifest.HeatOutbreakStatus?.Id ?? throw new Exception("Missing HeatOutbreakStatus"));
-
+        int num = 0;
         switch (upgrade)
         {
             case Upgrade.None:
-                List<CardAction> cardActionList1 = new List<CardAction>();
-                AStatus astatus1 = new AStatus();
-                astatus1.status = heatoutbreak_status;
-                astatus1.statusAmount = 1;
-                astatus1.targetPlayer = true;
-                cardActionList1.Add(astatus1);
-                AStatus astatus2 = new AStatus();
-                astatus2.status = heatoutbreak_status;
-                astatus2.statusAmount = 2;
-                astatus2.targetPlayer = false;
-                cardActionList1.Add(astatus2);
-                result = cardActionList1;
+                num = 2;
                 break;
             case Upgrade.A:
-                List<CardAction> cardActionList2 = new List<CardAction>();
-                AStatus astatus3 = new AStatus();
-                astatus3.status = heatoutbreak_status;
-                astatus3.statusAmount = 1;
-                astatus3.targetPlayer = true;
-                cardActionList2.Add(astatus3);
-                AStatus astatus4 = new AStatus();
-                astatus4.status = heatoutbreak_status;
-                astatus4.statusAmount = 3;
-                astatus4.targetPlayer = false;
-                cardActionList2.Add(astatus4);
-                result = cardActionList2;
+                num = 3;
                 break;
             case Upgrade.B:
-                List<CardAction> cardActionList3 = new List<CardAction>();
-                AStatus astatus5 = new AStatus();
-                astatus5.status = heatoutbreak_status;
-                astatus5.statusAmount = 1;
-                astatus5.targetPlayer = false;
-                cardActionList3.Add(astatus5);
-                result = cardActionList3;
+                num = 1;
                 break;
+        };
+        List<CardAction> result = new()
+        {
+            new AStatus()
+            {
+                status = ModEntry.Instance.HeatOutbreakStatus.Status,
+                statusAmount = num,
+                targetPlayer = false
+            }
+        };
+        if (upgrade != Upgrade.B)
+        {
+            result.Add(new AStatus()
+            {
+                status = ModEntry.Instance.HeatOutbreakStatus.Status,
+                statusAmount = 1,
+                targetPlayer = true
+            });
         }
         return result;
     }

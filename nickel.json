@@ -1,27 +1,28 @@
 {
-	"UniqueName": "Sorwest.CorrosiveCobra",
-	"Version": "1.1",
-	"RequiredApiVersion": "0.1.0",
-	"ModType": "Nickel.Legacy",
-	"EntryPointAssembly": "CorrosiveCobra.dll",
-	"Dependencies": [
-		{
-			"UniqueName": "Nickel.Legacy",
-			"Version": "0.1.0"
-		},
-		{
-			"UniqueName": "Shockah.Kokoro",
-			"Version": "0.1.0"
-		},
-		{
-			"UniqueName": "Shockah.DuoArtifacts",
-			"Version": "0.1.0",
-			"IsRequired": false
-		},
-		{
-			"UniqueName": "Shockah.Soggins",
-			"Version": "0.1.0",
-			"IsRequired": false
-		}
-	]
+  "UniqueName": "Sorwest.CorrosiveCobra",
+  "Version": "2.0.0",
+  "RequiredApiVersion": "0.6.0",
+  "EntryPointAssembly": "CorrosiveCobra.dll",
+  "LoadPhase": "AfterDbInit",
+  "Dependencies": [
+    {
+      "UniqueName": "Shockah.Kokoro",
+      "Version": "1.3.1"
+    },
+    {
+      "UniqueName": "Shockah.DuoArtifacts",
+      "Version": "0.1.0",
+      "IsRequired": false
+    },
+    {
+      "UniqueName": "Shockah.Soggins",
+      "Version": "0.1.0",
+      "IsRequired": false
+    },
+    {
+      "UniqueName": "TheJazMaster.MoreDifficulties",
+      "Version": "1.3.0",
+      "IsRequired": false
+    }
+  ]
 }

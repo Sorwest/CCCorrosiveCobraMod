@@ -1,0 +1,343 @@
+{
+  "card": {
+    "CorrosionIgnition": {
+      "name": "Corrosion Ignition"
+    },
+    "CorrosiveCrystal": {
+      "name": "Corrosive Crystal"
+    },
+    "FuelFreezing": {
+      "name": "Fuel Freezing"
+    },
+    "SlimeSummon": {
+      "name": "Dizzy?.EXE",
+      "description": {
+        "None": "Add 1 of {{Amount}} <c=cardtrait>discount, temp</c> <c=6BFFCD>Dizzy?</c> cards to hand.",
+        "A": "Add 1 of {{Amount}} <c=cardtrait>discount, temp</c> <c=6BFFCD>Dizzy?</c> cards to hand.",
+        "B": "Add 1 of {{Amount}} <c=cardtrait>discount, temp</c> <c=6BFFCD>Dizzy?</c> cards to hand. <c=keyword>Then do it again</c>."
+      }
+    },
+    "AbsorbArtifact": {
+      "name": "Absorb Artifact",
+      "description": "<c=hurt>Lose a random artifact</c>. <c=healing>Heal {{Amount}}</c>."
+    },
+    "CorrosionShotStarter": {
+      "name": "Corrosive Fuelshot",
+      "description": "ATK: {{Damage}} dmg & <c=boldPink>{{Amount}}</c> <c=status>corrode</c>. Gain <c=boldPink>{{Amount}}</c> <c=status>heat</c>. Add a <c=card>Toxic</c> to deck."
+    },
+    "CorrosionBlockStarter": {
+      "name": "Basic Heat Protection"
+    },
+    "FuelWall": {
+      "name": "Adv. Heat Protection"
+    },
+    "LeakingContainer": {
+      "name": "Leaking Container"
+    },
+    "FuelEjection": {
+      "name": "Fuel Ejection"
+    },
+    "TankThrow": {
+      "name": "Tank Throw"
+    },
+    "HeatedEvade": {
+      "name": "Heated Evade"
+    },
+    "HurriedDefense": {
+      "name": "Hurried Defense"
+    },
+    "SlimeShield": {
+      "name": "Slime Shield",
+      "description": {
+        "None": "Gain <c=boldPink>{{Amount}}</c> <c=status>shield</c>.\nAdd a <c=card>Slime Heal </c> to your draw pile.",
+        "A": "Gain <c=boldPink>{{Amount}}</c> <c=status>shield</c>.\nAdd a <c=card>Slime Heal A</c> to your draw pile.",
+        "B": "Gain <c=boldPink>{{Amount}}</c> <c=status>shield</c>.\nAdd a <c=card>Slime Heal B</c> to your draw pile."
+      }
+    },
+    "SlimeHeal": {
+      "name": "Slime Heal"
+    },
+    "TinkerWithTheTanks": {
+      "name": "Tinker With The Tanks",
+      "description": {
+        "None": "<c=healing>Heal 1</c>.\nPlay a random card in <c=boldPink>hand</c>.",
+        "A": "<c=healing>Heal 1</c>.\nDraw the top card in your <c=boldPink>draw pile</c> and play it.",
+        "B": "<c=healing>Heal 1</c>.\nFrom your <c=boldPink>discard</c>, draw a card and play it."
+      }
+    },
+    "TimestreamLeak": {
+      "name": "Timestream Leak",
+      "description": {
+        "None": "Enemy gains <c=boldPink>{{Amount}}</c> <c=status>corrode</c>. +1 for every second time ever played. {{Count}}",
+        "A": "Enemy gains <c=boldPink>{{Amount}}</c> <c=status>corrode</c>. +1 for every second time ever played. {{Count}}",
+        "B": "Enemy gains <c=boldPink>{{Amount}}</c> <c=status>corrode</c>."
+      }
+    },
+    "CorrosiveMultishot": {
+      "name": "Corrosive Multishot"
+    },
+    "SlimeEvolution": {
+      "name": "Slime Evolution",
+      "description": {
+        "None": "Put a <c=card>Slime Mutation</c> in your <c=boldPink>discard pile</c>. Draw <c=boldPink>1</c>.",
+        "A": "Put a <c=card>Slime Mutation</c> in your <c=boldPink>discard pile</c>. Draw <c=boldPink>1</c>.",
+        "B": "Put a <c=card>Slime Mutation</c> in your <c=boldPink>draw pile</c>. Draw <c=boldPink>1</c>."
+      }
+    },
+    "SlimeMutation": {
+      "name": "Slime Mutation",
+      "description": "Put a <c=card>SLIME BLAST!!</c> in your discard pile."
+    },
+    "SlimeBLAST": {
+      "name": "Slime BLAST!!",
+      "description": "Attack.\nDmg = Double of all your statuses.{{Amount}}"
+    },
+    "SlimeHug": {
+      "name": "Slime Hug"
+    },
+    "RecklessFuelshot": {
+      "name": "Reckless Fuel Shot",
+      "description": {
+        "None": "Attack for <c=boldPink>{{Damage}}</c> damage. Add <c=boldPink>{{Count}}</c> <c=card>Fumes</c> to your <c=boldPink>draw pile</c>.",
+        "A": "Attack for <c=boldPink>{{Damage}}</c> damage. Add <c=boldPink>{{Count}}</c> <c=card>Fumes</c> to your <c=boldPink>discard pile</c>.",
+        "B": "Attack for <c=boldPink>{{Damage}}</c> damage. Add <c=boldPink>{{Count}}</c> <c=card>Fumes</c> to your <c=boldPink>draw pile</c>."
+      }
+    },
+    "EnginesOnFine": {
+      "name": "Engines! On Fire!"
+    },
+    "HeatHoarder": {
+      "name": "HeatHoarder",
+      "description": "Gain <c=boldPink>{{Amount}}</c> <c=status>Heat Control</c>. Add {{Count}} <c=cardtrait>non-temp</c> <c=card>Miasma</c> to your draw pile."
+    },
+    "ShieldAlternatorA": {
+      "name": "Shield Replica",
+      "description": {
+        "None": "Gain {{Amount}} <c=status>shield</c>.\nAdd a <c=card>Temp Shield Replica</c> to your draw pile.",
+        "A": "Gain {{Amount}} <c=status>shield</c>.\nAdd a <c=card>Temp Shield Replica A</c> to your draw pile.",
+        "B": "Gain {{Amount}} <c=status>shield</c>.\nAdd a <c=card>Temp Shield Replica B</c> to your draw pile."
+      }
+    },
+    "ShieldAlternatorB": {
+      "name": "Temp Shield Replica",
+      "description": {
+        "None": "Gain {{Amount}} <c=status>temp shield</c>.\nAdd a <c=card>Shield Replica</c> to your hand.",
+        "A": "Gain {{Amount}} <c=status>temp shield</c>.\nAdd a <c=card>Shield Replica A</c> to your hand.",
+        "B": "Gain {{Amount}} <c=status>temp shield</c>.\nAdd a <c=card>Shield Replica B</c> to your hand."
+      }
+    },
+    "AcidicFlare": {
+      "name": "Acidic Flare",
+      "description": {
+        "None": "Turn <c=redd>ALL</c> <c=status>heat</c> into <c=status>corrode</c>.",
+        "A": "Turn <c=redd>ALL</c> <c=status>corrode</c> into <c=status>heat</c>. Gain a <c=card>Corrosion Ignition A</c>.",
+        "B": "Turn <c=redd>ALL</c> <c=status>heat</c> into <c=status>corrode</c>. Gain a <c=card>Corrosion Ignition B</c>."
+      }
+    },
+    "FlameShot": {
+      "name": "Flame Shot",
+      "description": "Attack for <c=boldPink>{{Damage}}</c> damage. Add <c=boldPink>{{Count}}</c> <c=card>Miasma</c> to your draw pile."
+    },
+    "StolenFueltank": {
+      "name": "Stolen Fueltank"
+    },
+    "UncontrolledEngines": {
+      "name": "Uncontrolled Engines"
+    },
+    "ForgottenGelAmmo": {
+      "name": "Forgotten Gel-Ammo"
+    },
+    "SlimeBooksDuo": {
+      "name": "Crystal Tap"
+    },
+    "SlimeIsaacDuo": {
+      "name": "Cobra Field"
+    },
+    "SlimeMaxDuo": {
+      "1": {
+        "name": "UP Button"
+      },
+      "2": {
+        "name": "UP Button"
+      },
+      "3": {
+        "name": "DOWN Button"
+      },
+      "4": {
+        "name": "DOWN Button"
+      },
+      "5": {
+        "name": "LEFT Button"
+      },
+      "6": {
+        "name": "RIGHT Button"
+      },
+      "7": {
+        "name": "LEFT Button"
+      },
+      "8": {
+        "name": "RIGHT Button"
+      },
+      "A1": {
+        "name": "B Button"
+      },
+      "A2": {
+        "name": "A Button"
+      },
+      "A3": {
+        "name": "START",
+        "description": "Gain a special artifact and lose <c=status>KONAMI CODE</c>."
+      },
+      "Reward": {
+        "name": "Cheat Sheet"
+      }
+    },
+    "SlimeRiggsDuo": {
+      "name": "Cheese Tea"
+    },
+    "SlimeSogginsDuoBotch": {
+      "name": "Toad on a Treadmill"
+    },
+    "SlimeSogginsDuoDouble": {
+      "name": "Toad with a Gun"
+    }
+  },
+  "artifact": {
+    "UnstableTanks": {
+      "name": "UNSTABLE TANKS",
+      "description": "At the start of battle, add a <c=card>Leaking Container</c> to hand. <c=downside>Gain 2 oxidation each turn</c>."
+    },
+    "OverdriveTanks": {
+      "name": "OVERDRIVE TANKS",
+      "description": "Replaces <c=artifact>UNSTABLE FUELTANKS</c>. Gain 1 <c=energy>ENERGY</c> every turn. At the start of battle, gain a <c=card>Leaking Container</c>. <c=downside>Gain 2 oxidation each turn</c>."
+    },
+    "FuelWalls": {
+      "name": "FUEL WALLS",
+      "description": "(Corrosive Cobra-exclusive artifact!)\nOn pickup, add 3 <c=card>Adv. Heat Protection</c> to your deck."
+    },
+    "SlimeHeart": {
+      "name": "SLIME HEART",
+      "description": "Gain 1 <c=status>EVOLVE</c> at the start of your first turn of combat."
+    },
+    "ToxicCaviar": {
+      "name": "TOXIC CAVIAR",
+      "description": "Lose 1 <c=status>CORRODE</c> each turn. <c=healing>If you do</c>, the enemy gains <c=boldPink>2</c>."
+    },
+    "AcidArsenal": {
+      "name": "ACID ARSENAL",
+      "description": "Every 7 <c=6BFFCD>Dizzy?</c> cards played, fire for 1 <c=status>CORRODE</c>."
+    },
+    "PowerAcid": {
+      "name": "POWERACID",
+      "description": "<c=downside>Draw 1 less card per turn</c>. At the end of your turn, the enemy triggers <c=status>CORRODE</c>."
+    },
+    "Dissolvent": {
+      "name": "DISSOLVENT",
+      "description": "Gain 1 extra <c=energy>ENERGY</c> every turn. <c=downside>The first time each turn you are dealt damage, you receive an extra 2 damage</c>."
+    },
+    "DummyHeat": {
+      "name": "MISC ARTIFACT",
+      "description": "<c=status>OVERHEAT TRIGGER</c>."
+    },
+    "SlimeBooksArtifact": {
+      "name": "CRYSTAL TAP",
+      "description": "At the start of your turn, if you don't have a <c=card>Crystal Tap</c> in your hand, gain one."
+    },
+    "SlimeCatArtifact": {
+      "name": "TIME WACK",
+      "description": "The first time you end your turn with only 1 hull, gain 1 <c=status>PERFECT SHIELD</c> and the enemy gains 1 <c=status>CORRODE</c>. <c=downside>Only triggers once per combat</c>."
+    },
+    "SlimeDizzyArtifact": {
+      "name": "UNYIELDING ROOK",
+      "description": "Gain <c=keyword>+1 max shield</c>. Whenever you lose hull, if you have, either, 5 or more <c=status>OXIDATION</c>, or 1 or more <c=status>CORRODE</c>, gain 2 <c=status>SHIELD</c>."
+    },
+    "SlimeDrakeArtifact": {
+      "name": "KITCHENWARE",
+      "description": "Whenever you gain heat while <c=downside>overheating</c>, fire for 1 <c=status>CORRODE</c>."
+    },
+    "SlimeIsaacArtifact": {
+      "name": "COBRA FIELD",
+      "description": "At the start of combat, add a <c=card>Cobra Field</c> to your hand. On the fifth turn of combat, gain 5 <c=status>DRONESHIFT</c>."
+    },
+    "SlimeMaxArtifact": {
+      "name": "KONAMI CODE",
+      "description": "At the start of combat, add an <c=card>UP Button</c> to your hand. <c=keyword>Play the last card of the sequence to gain a special artifact</c> <c=downside>and remove this one</c>."
+    },
+    "SlimeMaxArtifactReward": {
+      "name": "CHEAT SHEET",
+      "description": "At the start of combat, add a <c=card>Cheat Sheet</c> to your hand."
+    },
+    "SlimePeriArtifact": {
+      "name": "UP-TO-DATE PROTOCOL",
+      "description": "<c=downside>Draw 1 less card per turn</c>. At the start of combat, gain 1 <c=status>POWERDRIVE</c>."
+    },
+    "SlimeRiggsArtifact": {
+      "name": "CHEESE TEA",
+      "description": "Every time your discard pile is shuffled back into your draw pile, add a <c=card>Cheese Tea</c> to <c=keyword>your draw pile</c>."
+    },
+    "SlimeSogginsArtifact": {
+      "name": "TOAD GYM",
+      "description": "The forth time Soggins botches a card, gain a <c=card>Toad in a Treadmill</c>.\nThe forth time Soggins doubles a card, gain a <c=card>Toad with a Gun</c>.\n<c=downside>Reset this any time Soggins botches or doubles out of sequence</c>."
+    }
+  },
+  "ship": {
+    "cobra": {
+      "name": "Corrosive Cobra",
+      "description": "A derelict from another timeline, the Cobra specializes in corrosion attacks. Beware the fuel leaks."
+    }
+  },
+  "character": {
+    "slime": {
+      "name": "<c=6BFFCD>Dizzy?</c>",
+      "description": [
+        "<c=6BFFCD>DIZZY?</c>",
+        "A friend from another timeline. His cards play with <c=keyword>heat and corrode</c>, for better, or <c=hurt>worse</c>.",
+        "His jokes are still funny."
+      ]
+    }
+  },
+  "status": {
+    "EvolveStatus": {
+      "name": "Evolve",
+      "description": "Whenever you draw a <c=trash>Trash</c> card, draw <c=boldPink>{0}</c>."
+    },
+    "HeatOutbreakStatus": {
+      "name": "Heat Outbreak",
+      "description": "At the end of turn, this ship is dealt <c=boldPink>{0}</c> damage per <c=status>heat</c> it has."
+    },
+    "HeatControlStatus": {
+      "name": "Heat Control",
+      "description": "At the end of turn, your overheat trigger increases by 1 <c=healing>permanently</c>, <c=downside>then decrease this by 1</c>."
+    },
+    "CrystalTapStatus": {
+      "name": "Crystal Tap",
+      "description": "The next card is played twice."
+    },
+    "OxidationStatus": {
+      "name": "Oxidation",
+      "description": "If oxidation is <c=boldPink>7</c> or more at end of turn, gain 1 <c=status>CORRODE</c> and set oxidation to 0."
+    }
+  },
+  "action": {
+    "PlayRandomCardHand": {
+      "name": "Bypass Hand",
+      "description": "Play a random card in hand, at no <c=energy>energy</c> cost."
+    },
+    "PlayRandomCardDeck": {
+      "name": "Bypass Draw",
+      "description": "Draw a card, then play it, at no <c=energy>energy</c> cost."
+    },
+    "PlayRandomCardDiscard": {
+      "name": "Bypass Discard",
+      "description": "Draw a random card from the discard pile, then play it, at no <c=energy>energy</c> cost."
+    },
+    "PlayRandomCardExhaust": {
+      "name": "Bypass Exhaust",
+      "description": "Draw a random card from the exhaust pile, then play it, at no <c=energy>energy</c> cost."
+    },
+    "CobraField": {
+      "name": "Cobra Field",
+      "description": "Instantly turn every <c=midrow>object in the midrow</c> into <c=drone>Corrode missiles</c> aimed at the enemy."
+    }
+  }
+}

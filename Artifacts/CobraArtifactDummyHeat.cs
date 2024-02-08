@@ -1,8 +1,27 @@
-﻿namespace Sorwest.CorrosiveCobra.Artifacts;
+﻿using Nickel;
+using System.Collections.Generic;
+using System.Reflection;
 
-[ArtifactMeta(owner = Deck.colorless, pools = new ArtifactPool[] { ArtifactPool.Unreleased }, unremovable = true)]
-public class CobraArtifactDummyHeat : Artifact
+namespace Sorwest.CorrosiveCobra.Artifacts;
+
+public class CobraArtifactDummyHeat : Artifact, IModdedArtifact
 {
+    public static void Register(IModHelper helper)
+    {
+        helper.Content.Artifacts.RegisterArtifact("DummyHeat", new()
+        {
+            ArtifactType = MethodBase.GetCurrentMethod()!.DeclaringType!,
+            Meta = new()
+            {
+                owner = ModEntry.Instance.SlimeDeck.Deck,
+                pools = [ArtifactPool.Unreleased],
+                unremovable = true
+            },
+            Sprite = ModEntry.Instance.Sprites["DummyHeatSprite"].Sprite,
+            Name = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "DummyHeat", "name"]).Localize,
+            Description = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "DummyHeat", "description"]).Localize
+        });
+    }
     public override string Name() => "COBRA MISC OVERHEAT";
     public int overheatTrigger;
     public override int? GetDisplayNumber(State s)

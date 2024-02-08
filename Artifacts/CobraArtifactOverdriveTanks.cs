@@ -1,42 +1,59 @@
-﻿using Sorwest.CorrosiveCobra.Cards;
+﻿using Nickel;
+using System.Collections.Generic;
+using System.Reflection;
+using Sorwest.CorrosiveCobra.Cards;
 
 namespace Sorwest.CorrosiveCobra.Artifacts;
 
-[ArtifactMeta(owner = Deck.colorless, pools = new ArtifactPool[] { ArtifactPool.Boss }, unremovable = true)]
-public class CobraArtifactOverdriveTanks : Artifact
+public class CobraArtifactOverdriveTanks : Artifact, IModdedArtifact
 {
+    public static void Register(IModHelper helper)
+    {
+        helper.Content.Artifacts.RegisterArtifact("OverdriveTanks", new()
+        {
+            ArtifactType = MethodBase.GetCurrentMethod()!.DeclaringType!,
+            Meta = new()
+            {
+                owner = Deck.colorless,
+                pools = [ArtifactPool.Boss],
+                unremovable = true
+            },
+            Sprite = ModEntry.Instance.Sprites["OverdriveTanksSprite"].Sprite,
+            Name = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "OverdriveTanks", "name"]).Localize,
+            Description = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "OverdriveTanks", "description"]).Localize
+        });
+    }
     public override string Name() => "OVERDRIVETANKS";
     public override void OnReceiveArtifact(State state)
     {
-        state.ship.baseEnergy += 2;
+        state.ship.baseEnergy += 1;
         foreach (Artifact artifact in state.artifacts)
         {
             if (artifact.Name() == "UNSTABLE FUELTANKS")
                 artifact.OnRemoveArtifact(state);
         }
-        state.artifacts.RemoveAll((Predicate<Artifact>)(r => r.Name() == "UNSTABLE FUELTANKS"));
+        state.artifacts.RemoveAll(r => r.GetType() == typeof(CobraArtifactUnstableTanks));
     }
     public override void OnRemoveArtifact(State state)
     {
-        state.ship.baseEnergy -= 2;
+        state.ship.baseEnergy -= 1;
     }
     public override void OnTurnStart(State state, Combat combat)
     {
-        Combat combat1 = combat;
-        AStatus astatus1 = new AStatus();
-        astatus1.status = Status.heat;
-        astatus1.statusAmount = 2;
-        astatus1.targetPlayer = true;
-        astatus1.timer = 0.0;
-        combat1.QueueImmediate((CardAction)astatus1);
-        if (combat.turn != 1)
-            return;
-        AAddCard aaddCard1 = new AAddCard();
-        CobraCardLeakingContainer leakingContainer1 = new CobraCardLeakingContainer();
-        leakingContainer1.temporaryOverride = true;
-        aaddCard1.card = (Card)leakingContainer1;
-        aaddCard1.destination = CardDestination.Hand;
-        combat.QueueImmediate((CardAction)aaddCard1);
+        combat.QueueImmediate(new AStatus()
+        {
+            status = ModEntry.Instance.OxidationStatus.Status,
+            statusAmount = 2,
+            targetPlayer = true
+        });
+        if (combat.turn == 1)
+            combat.QueueImmediate(new AAddCard()
+            {
+                card = new CobraCardLeakingContainer()
+                {
+                    temporaryOverride = true
+                }
+            });
     }
 
     public override List<Tooltip>? GetExtraTooltips()

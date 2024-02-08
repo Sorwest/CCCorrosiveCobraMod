@@ -1,9 +1,26 @@
-﻿namespace Sorwest.CorrosiveCobra.Artifacts;
+﻿using Nickel;
+using System.Reflection;
 
-[ArtifactMeta(pools = new ArtifactPool[] { ArtifactPool.Boss })]
-public class CobraArtifactPowerAcid : Artifact
+namespace Sorwest.CorrosiveCobra.Artifacts;
+
+public class CobraArtifactPowerAcid : Artifact, IModdedArtifact
 {
-    public int otherShipCorrode = 0;
+    public static void Register(IModHelper helper)
+    {
+        helper.Content.Artifacts.RegisterArtifact("PowerAcid", new()
+        {
+            ArtifactType = MethodBase.GetCurrentMethod()!.DeclaringType!,
+            Meta = new()
+            {
+                owner = ModEntry.Instance.SlimeDeck.Deck,
+                pools = [ArtifactPool.Boss],
+                unremovable = true
+            },
+            Sprite = ModEntry.Instance.Sprites["PowerAcidSprite"].Sprite,
+            Name = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "PowerAcid", "name"]).Localize,
+            Description = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "PowerAcid", "description"]).Localize
+        });
+    }
     public override string Name() => "POWERACID";
     public override void OnReceiveArtifact(State state)
     {
@@ -15,21 +32,12 @@ public class CobraArtifactPowerAcid : Artifact
     }
     public override void OnTurnEnd(State state, Combat combat)
     {
-        if (combat.otherShip.Get(Status.corrode) > 0)
+        if (combat.otherShip.Get(Status.corrode) <= 0)
+            return;
+        combat.QueueImmediate(new ACorrodeDamage()
         {
-            otherShipCorrode = combat.otherShip.Get(Status.corrode);
-            ACorrodeDamage aCorrodeDamage = new ACorrodeDamage();
-            aCorrodeDamage.targetPlayer = false;
-            combat.QueueImmediate(aCorrodeDamage);
-        }
-    }
-
-    public override List<Tooltip>? GetExtraTooltips()
-    {
-        var tooltips = new List<Tooltip>()
-        {
-            new TTGlossary("status.corrode", otherShipCorrode),
-        };
-        return tooltips;
+            targetPlayer = false
+        });
+        Pulse();
     }
 }

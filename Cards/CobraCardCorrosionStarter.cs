@@ -1,81 +1,62 @@
-﻿namespace Sorwest.CorrosiveCobra.Cards;
+﻿using Nanoray.PluginManager;
+using Nickel;
+using System.Collections.Generic;
+using System.Reflection;
 
-[CardMeta(dontOffer = true, rarity = Rarity.common, upgradesTo = new Upgrade[] { Upgrade.A, Upgrade.B })]
-public class CobraCardCorrosionStarter : Card
+namespace Sorwest.CorrosiveCobra.Cards;
+
+public class CobraCardCorrosionShotStarter : Card, IModdedCard
 {
+    public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
+    {
+        helper.Content.Cards.RegisterCard("CorrosionShotStarter", new()
+        {
+            CardType = MethodBase.GetCurrentMethod()!.DeclaringType!,
+            Meta = new()
+            {
+                deck = Deck.colorless,
+                rarity = Rarity.common,
+                upgradesTo = [Upgrade.A, Upgrade.B],
+                dontOffer = true,
+            },
+            Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "CorrosionShotStarter", "name"]).Localize
+        });
+    }
     public override string Name() => "Corrosive Fuelshot";
     public override CardData GetData(State state)
     {
-        CardData result = new CardData();
-        result.exhaust = true;
-        result.artTint = "45e0ab";
-        switch (upgrade)
+        int num = upgrade == Upgrade.B ? 2 : 1;
+        return new CardData()
         {
-            case Upgrade.None:
-                result.cost = 2;
-                result.art = new Spr?((Spr)Manifest.CorrosiveCobra_CannonCardSprite!.Id!);
-                break;
-            case Upgrade.A:
-                result.cost = 2;
-                result.art = new Spr?((Spr)Manifest.CorrosiveCobra_CannonCardSprite!.Id!);
-                break;
-            case Upgrade.B:
-                result.cost = 1;
-                result.art = new Spr?((Spr)Manifest.CorrosiveCobra_FumeCannonSprite!.Id!);
-                break;
-        }
-        return result;
+            art = ModEntry.Instance.Sprites["FumeCannonSprite"].Sprite,
+            artTint = "45e0ab",
+            exhaust = true,
+            cost = upgrade == Upgrade.A ? 1 : 2,
+            description = ModEntry.Instance.Localizations.Localize(["card", "CorrosionShotStarter", "description"], new { Damage = GetDmg(state, 0), Amount = num})
+        };
     }
     public override List<CardAction> GetActions(State s, Combat c)
     {
-        var result = new List<CardAction>();
-        switch (upgrade)
+        return new()
         {
-            case Upgrade.None:
-                List<CardAction> cardActionList1 = new List<CardAction>();
-                AAttack aattack1 = new AAttack();
-                aattack1.damage = GetDmg(s, 0);
-                aattack1.status = Status.corrode;
-                aattack1.statusAmount = 1;
-                aattack1.targetPlayer = false;
-                cardActionList1.Add(aattack1);
-                AStatus astatus1 = new AStatus();
-                astatus1.status = Status.heat;
-                astatus1.statusAmount = 1;
-                astatus1.targetPlayer = true;
-                cardActionList1.Add(astatus1);
-                result = cardActionList1;
-                break;
-            case Upgrade.A:
-                List<CardAction> cardActionList2 = new List<CardAction>();
-                AAttack aattack2 = new AAttack();
-                aattack2.damage = GetDmg(s, 0);
-                aattack2.status = Status.corrode;
-                aattack2.statusAmount = 2;
-                aattack2.targetPlayer = false;
-                cardActionList2.Add(aattack2);
-                AStatus astatus2 = new AStatus();
-                astatus2.status = Status.heat;
-                astatus2.statusAmount = 1;
-                astatus2.targetPlayer = true;
-                cardActionList2.Add(astatus2);
-                result = cardActionList2;
-                break;
-            case Upgrade.B:
-                List<CardAction> cardActionList3 = new List<CardAction>();
-                AAttack aattack3 = new AAttack();
-                aattack3.damage = GetDmg(s, 5);
-                cardActionList3.Add(aattack3);
-                Actions.AStatus2 astatus3 = new Actions.AStatus2();
-                astatus3.status = Status.corrode;
-                astatus3.statusAmount = 1;
-                astatus3.targetPlayer = true;
-                astatus3.SelfInflict = true;
-                cardActionList3.Add(astatus3);
-                result = cardActionList3;
-                break;
-        }
-        return result;
+            new AAttack()
+            {
+                damage = GetDmg(s, 0),
+                status = Status.corrode,
+                statusAmount = upgrade == Upgrade.B ? 2 : 1
+            },
+            new AStatus()
+            {
+                status = Status.heat,
+                statusAmount = upgrade == Upgrade.B ? 2 : 1,
+                targetPlayer = true
+            },
+            new AAddCard()
+            {
+                card = new Toxic(),
+                destination = CardDestination.Deck
+            }
+        };
     }
 
 };

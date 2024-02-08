@@ -1,107 +1,103 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Sorwest.CorrosiveCobra
+namespace Sorwest.CorrosiveCobra;
+
+public partial interface IKokoroApi
 {
-    public partial interface IKokoroApi
+    IConditionalActionApi ConditionalActions { get; }
+    IActionCostApi ActionCosts { get; }
+
+    public partial interface IConditionalActionApi
     {
-        IConditionalActionApi ConditionalActions { get; }
-        IActionCostApi ActionCosts { get; }
+        CardAction Make(IBoolExpression expression, CardAction action, bool fadeUnsatisfied = true);
+        IIntExpression Constant(int value);
+        IIntExpression HandConstant(int value);
+        IIntExpression XConstant(int value);
+        IIntExpression ScalarMultiplier(IIntExpression expression, int scalar);
+        IBoolExpression HasStatus(Status status, bool targetPlayer = true, bool countNegative = false);
+        IIntExpression Status(Status status, bool targetPlayer = true);
+        IBoolExpression Equation(IIntExpression lhs, EquationOperator @operator, IIntExpression rhs, EquationStyle style, bool hideOperator = false);
 
-        public partial interface IConditionalActionApi
+        public enum EquationOperator
         {
-            CardAction Make(IBoolExpression expression, CardAction action, bool fadeUnsatisfied = true);
-            IIntExpression Constant(int value);
-            IIntExpression HandConstant(int value);
-            IIntExpression XConstant(int value);
-            IIntExpression ScalarMultiplier(IIntExpression expression, int scalar);
-            IBoolExpression HasStatus(Status status, bool targetPlayer = true, bool countNegative = false);
-            IIntExpression Status(Status status, bool targetPlayer = true);
-            IBoolExpression Equation(IIntExpression lhs, EquationOperator @operator, IIntExpression rhs, EquationStyle style, bool hideOperator = false);
-
-            public enum EquationOperator
-            {
-                Equal, NotEqual, GreaterThan, LessThan, GreaterThanOrEqual, LessThanOrEqual
-            }
-
-            public enum EquationStyle
-            {
-                Formal, State, Possession, PossessionComparison
-            }
-
-            public interface IExpression
-            {
-                void Render(G g, ref Vec position, bool isDisabled, bool dontRender);
-                string GetTooltipDescription(State state, Combat? combat);
-                List<Tooltip> GetTooltips(State state, Combat? combat) => new();
-            }
-
-            public interface IBoolExpression : IExpression
-            {
-                bool GetValue(State state, Combat combat);
-                bool ShouldRenderQuestionMark(State state, Combat? combat) => true;
-            }
-
-            public interface IIntExpression : IExpression
-            {
-                int GetValue(State state, Combat combat);
-            }
+            Equal, NotEqual, GreaterThan, LessThan, GreaterThanOrEqual, LessThanOrEqual
         }
 
-        public partial interface IActionCostApi
+        public enum EquationStyle
         {
-            CardAction Make(IActionCost cost, CardAction action);
-            CardAction Make(IReadOnlyList<IActionCost> costs, CardAction action);
+            Formal, State, Possession, PossessionComparison
+        }
 
-            IActionCost Cost(IReadOnlyList<IResource> potentialResources, int amount = 1, int? iconOverlap = null, Spr? costUnsatisfiedIcon = null, Spr? costSatisfiedIcon = null, int? iconWidth = null, CustomCostTooltipProvider? customTooltipProvider = null);
-            IActionCost Cost(IResource resource, int amount = 1, int? iconOverlap = null, CustomCostTooltipProvider? customTooltipProvider = null);
+        public interface IExpression
+        {
+            void Render(G g, ref Vec position, bool isDisabled, bool dontRender);
+            string GetTooltipDescription(State state, Combat? combat);
+            List<Tooltip> GetTooltips(State state, Combat? combat) => new();
+        }
 
-            IResource StatusResource(Status status, Spr costUnsatisfiedIcon, Spr costSatisfiedIcon, int? iconWidth = null);
-            IResource StatusResource(Status status, StatusResourceTarget target, Spr costUnsatisfiedIcon, Spr costSatisfiedIcon, int? iconWidth = null);
-            IResource EnergyResource();
+        public interface IBoolExpression : IExpression
+        {
+            bool GetValue(State state, Combat combat);
+            bool ShouldRenderQuestionMark(State state, Combat? combat) => true;
+        }
 
-            public delegate List<Tooltip> CustomCostTooltipProvider(State state, Combat? combat, IReadOnlyList<IResource> potentialResources, int amount);
+        public interface IIntExpression : IExpression
+        {
+            int GetValue(State state, Combat combat);
+        }
+    }
 
-            public interface IActionCost
-            {
-                IReadOnlyList<IResource> PotentialResources { get; }
-                int ResourceAmount { get; }
-                Spr? CostUnsatisfiedIcon { get; }
-                Spr? CostSatisfiedIcon { get; }
+    public partial interface IActionCostApi
+    {
+        CardAction Make(IActionCost cost, CardAction action);
+        CardAction Make(IReadOnlyList<IActionCost> costs, CardAction action);
 
-                void RenderPrefix(G g, ref Vec position, bool isDisabled, bool dontRender)
-                    => PotentialResources.FirstOrDefault()?.RenderPrefix(g, ref position, isDisabled, dontRender);
+        IActionCost Cost(IReadOnlyList<IResource> potentialResources, int amount = 1, int? iconOverlap = null, Spr? costUnsatisfiedIcon = null, Spr? costSatisfiedIcon = null, int? iconWidth = null, CustomCostTooltipProvider? customTooltipProvider = null);
+        IActionCost Cost(IResource resource, int amount = 1, int? iconOverlap = null, CustomCostTooltipProvider? customTooltipProvider = null);
 
-                void RenderSuffix(G g, ref Vec position, bool isDisabled, bool dontRender)
-                    => PotentialResources.FirstOrDefault()?.RenderSuffix(g, ref position, isDisabled, dontRender);
+        IResource StatusResource(Status status, Spr costUnsatisfiedIcon, Spr costSatisfiedIcon, int? iconWidth = null);
+        IResource StatusResource(Status status, StatusResourceTarget target, Spr costUnsatisfiedIcon, Spr costSatisfiedIcon, int? iconWidth = null);
+        IResource EnergyResource();
 
-                void RenderSingle(G g, ref Vec position, IResource? satisfiedResource, bool isDisabled, bool dontRender);
-                List<Tooltip> GetTooltips(State state, Combat? combat) => new();
-            }
+        public delegate List<Tooltip> CustomCostTooltipProvider(State state, Combat? combat, IReadOnlyList<IResource> potentialResources, int amount);
 
-            public interface IResource
-            {
-                string ResourceKey { get; }
-                Spr? CostUnsatisfiedIcon { get; }
-                Spr? CostSatisfiedIcon { get; }
+        public interface IActionCost
+        {
+            IReadOnlyList<IResource> PotentialResources { get; }
+            int ResourceAmount { get; }
+            Spr? CostUnsatisfiedIcon { get; }
+            Spr? CostSatisfiedIcon { get; }
 
-                int GetCurrentResourceAmount(State state, Combat combat);
-                void PayResource(State state, Combat combat, int amount);
-                void RenderPrefix(G g, ref Vec position, bool isDisabled, bool dontRender) { }
-                void RenderSuffix(G g, ref Vec position, bool isDisabled, bool dontRender) { }
-                void Render(G g, ref Vec position, bool isSatisfied, bool isDisabled, bool dontRender);
-                List<Tooltip> GetTooltips(State state, Combat? combat, int amount) => new();
-            }
+            void RenderPrefix(G g, ref Vec position, bool isDisabled, bool dontRender)
+                => PotentialResources.FirstOrDefault()?.RenderPrefix(g, ref position, isDisabled, dontRender);
 
-            public enum StatusResourceTarget
-            {
-                Player,
-                Enemy,
-                EnemyWithOutgoingArrow
-            }
+            void RenderSuffix(G g, ref Vec position, bool isDisabled, bool dontRender)
+                => PotentialResources.FirstOrDefault()?.RenderSuffix(g, ref position, isDisabled, dontRender);
+
+            void RenderSingle(G g, ref Vec position, IResource? satisfiedResource, bool isDisabled, bool dontRender);
+            List<Tooltip> GetTooltips(State state, Combat? combat) => new();
+        }
+
+        public interface IResource
+        {
+            string ResourceKey { get; }
+            Spr? CostUnsatisfiedIcon { get; }
+            Spr? CostSatisfiedIcon { get; }
+
+            int GetCurrentResourceAmount(State state, Combat combat);
+            void PayResource(State state, Combat combat, int amount);
+            void RenderPrefix(G g, ref Vec position, bool isDisabled, bool dontRender) { }
+            void RenderSuffix(G g, ref Vec position, bool isDisabled, bool dontRender) { }
+            void Render(G g, ref Vec position, bool isSatisfied, bool isDisabled, bool dontRender);
+            List<Tooltip> GetTooltips(State state, Combat? combat, int amount) => new();
+        }
+
+        public enum StatusResourceTarget
+        {
+            Player,
+            Enemy,
+            EnemyWithOutgoingArrow
         }
     }
 }

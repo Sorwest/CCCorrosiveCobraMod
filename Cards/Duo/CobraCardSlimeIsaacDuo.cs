@@ -1,24 +1,39 @@
-﻿using Sorwest.CorrosiveCobra.Actions;
+﻿using Nanoray.PluginManager;
+using Nickel;
+using System.Collections.Generic;
+using System.Reflection;
 
 namespace Sorwest.CorrosiveCobra.Cards;
 
-[CardMeta(dontOffer = true)]
-public class CobraCardSlimeIsaacDuo : Card
+public class CobraCardSlimeIsaacDuo : Card, IModdedCard
 {
+    public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
+    {
+        helper.Content.Cards.RegisterCard("SlimeIsaacDuo", new()
+        {
+            CardType = MethodBase.GetCurrentMethod()!.DeclaringType!,
+            Meta = new()
+            {
+                rarity = Rarity.common,
+                deck = ModEntry.Instance.DuoArtifactsApi!.DuoArtifactVanillaDeck,
+                dontOffer = true
+            },
+            Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "SlimeIsaacDuo", "name"]).Localize
+        });
+    }
     public override CardData GetData(State state)
     {
-        CardData result = new CardData
+        return new()
         {
             cost = 2,
             exhaust = true,
             retain = true,
-            flippable = true,
+            flippable = true
         };
-        return result;
     }
     public override List<CardAction> GetActions(State s, Combat c)
     {
-        List<CardAction> result = new List<CardAction>
+        return new()
         {
             new ACobraField(),
             new ADroneMove()
@@ -26,6 +41,5 @@ public class CobraCardSlimeIsaacDuo : Card
                 dir = 1,
             }
         };
-        return result;
     }
 }

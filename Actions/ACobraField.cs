@@ -1,11 +1,8 @@
 ﻿using FMOD;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Sorwest.CorrosiveCobra.Actions;
+namespace Sorwest.CorrosiveCobra;
 public class ACobraField : CardAction
 {
     public override void Begin(G g, State s, Combat c)
@@ -29,6 +26,7 @@ public class ACobraField : CardAction
         Audio.Play(new GUID?(FSPRO.Event.Status_PowerDown));
     }
 
+    public override Icon? GetIcon(State s) => new Icon?(new Icon(ModEntry.Instance.Sprites["CobraFieldSprite"].Sprite, new int?(), Colors.textMain));
     public override List<Tooltip> GetTooltips(State s)
     {
         if (s.route is Combat route)
@@ -36,11 +34,16 @@ public class ACobraField : CardAction
             foreach (StuffBase stuffBase in route.stuff.Values)
                 stuffBase.hilight = 2;
         }
-        return new List<Tooltip>()
-    {
-      (Tooltip) new TTGlossary(Manifest.ACobraField_Glossary?.Head ?? throw new Exception("Missing ACobraField_Glossary"), Array.Empty<object>())
-    };
+        List<Tooltip> list = new List<Tooltip>()
+        {
+            new CustomTTGlossary(
+                CustomTTGlossary.GlossaryType.action,
+                () => ModEntry.Instance.Sprites["CobraFieldSprite"].Sprite,
+                () => ModEntry.Instance.Localizations.Localize(["action", "CobraField", "name"]),
+                () => ModEntry.Instance.Localizations.Localize(["action", "CobraField", "description"]),
+                key: $"{ModEntry.Instance.Package.Manifest.UniqueName}::CobraField"
+            )
+        };
+        return list;
     }
-
-    public override Icon? GetIcon(State s) => new Icon?(new Icon((Spr)Manifest.CobraFieldSprite!.Id!, new int?(), Colors.textMain));
 }

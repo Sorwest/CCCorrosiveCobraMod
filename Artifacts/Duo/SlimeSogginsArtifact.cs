@@ -1,12 +1,37 @@
-﻿using Sorwest.CorrosiveCobra.Cards;
+﻿using Nickel;
+using System.Collections.Generic;
+using System.Reflection;
+using Sorwest.CorrosiveCobra.Cards;
 
 namespace Sorwest.CorrosiveCobra.Artifacts;
 
-[ArtifactMeta(pools = new ArtifactPool[] { ArtifactPool.Common })]
-public class SlimeSogginsArtifact : Artifact , ISmugHook
+public class SlimeSogginsArtifact : Artifact , ISmugHook, IModdedArtifact
 {
+    public static void Register(IModHelper helper)
+    {
+        helper.Content.Artifacts.RegisterArtifact("SlimeSogginsArtifact", new()
+        {
+            ArtifactType = MethodBase.GetCurrentMethod()!.DeclaringType!,
+            Meta = new()
+            {
+                owner = ModEntry.Instance.DuoArtifactsApi!.DuoArtifactVanillaDeck,
+                pools = [ArtifactPool.Common]
+            },
+            Sprite = ModEntry.Instance.Sprites["SlimeSogginsArtifactSprite"].Sprite,
+            Name = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "SlimeSogginsArtifact", "name"]).Localize,
+            Description = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "SlimeSogginsArtifact", "description"]).Localize
+        });
+        ModEntry.Instance.DuoArtifactsApi!.RegisterDuoArtifact(typeof(SlimeSogginsArtifact), new[] { ModEntry.Instance.SlimeDeck.Deck, helper.Content.Decks.LookupByUniqueName("Shockah.Soggins::Shockah.Soggins.Deck.Soggins")!.Deck });
+    }
     public int counter;
     public int TRIGGER = 4;
+    public override Spr GetSprite()
+    {
+        if (counter <= 0)
+            return ModEntry.Instance.Sprites["SlimeSogginsArtifactSprite"].Sprite;
+        else
+            return ModEntry.Instance.Sprites["SlimeSogginsArtifactSprite_Off"].Sprite;
+    }
     public override void OnReceiveArtifact(State state)
     {
         counter = 0;
@@ -16,25 +41,23 @@ public class SlimeSogginsArtifact : Artifact , ISmugHook
         if (counter > 0)
         {
             counter = 0;
-            this.Pulse();
+            Pulse();
         }
         else if (counter <= 0)
         {
             counter -= 1;
             if (counter == (-1 * TRIGGER))
             {
-                var duoCard = new CobraCardSlimeSogginsDuoBotch()
+                combat.QueueImmediate(new AAddCard()
                 {
-                    temporaryOverride = true,
-                    discount = -1
-                };
-                AAddCard aAddCard1 = new AAddCard()
-                {
-                    card = duoCard,
+                    card = new CobraCardSlimeSogginsDuoBotch()
+                    {
+                        temporaryOverride = true,
+                        discount = -1
+                    },
                     amount = 1,
-                };
-                combat.QueueImmediate(aAddCard1);
-                this.Pulse();
+                });
+                Pulse();
                 counter = 0;
             }
         }
@@ -44,25 +67,23 @@ public class SlimeSogginsArtifact : Artifact , ISmugHook
         if (counter < 0)
         {
             counter = 0;
-            this.Pulse();
+            Pulse();
         }
         else if (counter >= 0)
         {
             counter += 1;
             if (counter == TRIGGER)
             {
-                var duoCard = new CobraCardSlimeSogginsDuoDouble()
+                combat.QueueImmediate(new AAddCard()
                 {
-                    temporaryOverride = true,
-                    discount = -1
-                };
-                AAddCard aAddCard1 = new AAddCard()
-                {
-                    card = duoCard,
+                    card = new CobraCardSlimeSogginsDuoDouble()
+                    {
+                        temporaryOverride = true,
+                        discount = -1
+                    },
                     amount = 1,
-                };
-                combat.QueueImmediate(aAddCard1);
-                this.Pulse();
+                });
+                Pulse();
                 counter = 0;
             }
         }
@@ -72,15 +93,6 @@ public class SlimeSogginsArtifact : Artifact , ISmugHook
         if (counter == 0)
             return null;
         return counter > 0 ? counter : -1 * counter;
-    }
-    public override Spr GetSprite()
-    {
-        Spr sprite = new Spr();
-        if (counter <= 0)
-            sprite = (Spr)Manifest.SlimeSogginsArtifactSprite!.Id!;
-        else
-            sprite = (Spr)Manifest.SlimeSogginsArtifactSprite_Off!.Id!;
-        return sprite;
     }
     public override List<Tooltip>? GetExtraTooltips()
     {

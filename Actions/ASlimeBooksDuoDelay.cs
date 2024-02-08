@@ -1,10 +1,11 @@
 ﻿using Sorwest.CorrosiveCobra.Cards;
-namespace Sorwest.CorrosiveCobra.Actions;
+
+namespace Sorwest.CorrosiveCobra;
 public class ASlimeBooksDuoDelay : CardAction
 {
     public override void Begin(G g, State s, Combat c)
     {
-        this.timer = 0.0;
+        timer = 0.0;
         bool flag = false;
         foreach (Card card in c.hand)
         {
@@ -13,9 +14,9 @@ public class ASlimeBooksDuoDelay : CardAction
         }
         if (flag)
             return;
-        c.QueueImmediate((CardAction)new AAddCard()
+        c.QueueImmediate(new AAddCard()
         {
-            card = (Card)new CobraCardSlimeBooksDuo(),
+            card = new CobraCardSlimeBooksDuo(),
             destination = CardDestination.Hand
         });
     }

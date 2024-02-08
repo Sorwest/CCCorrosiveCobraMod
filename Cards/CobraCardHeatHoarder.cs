@@ -1,85 +1,93 @@
-﻿namespace Sorwest.CorrosiveCobra.Cards;
+﻿using Nanoray.PluginManager;
+using Nickel;
+using System.Collections.Generic;
+using System.Reflection;
 
-[CardMeta(rarity = Rarity.rare, upgradesTo = new Upgrade[] { Upgrade.A, Upgrade.B })]
-public class CobraCardHeatHoarder : Card
+namespace Sorwest.CorrosiveCobra.Cards;
+
+public class CobraCardHeatHoarder : Card, IModdedCard
 {
+    public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
+    {
+        helper.Content.Cards.RegisterCard("HeatHoarder", new()
+        {
+            CardType = MethodBase.GetCurrentMethod()!.DeclaringType!,
+            Meta = new()
+            {
+                deck = ModEntry.Instance.SlimeDeck.Deck,
+                rarity = Rarity.rare,
+                upgradesTo = [Upgrade.A, Upgrade.B]
+            },
+            Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "HeatHoarder", "name"]).Localize
+        });
+    }
     public override string Name() => "Heat Hoarder";
     public override CardData GetData(State state)
     {
-        CardData result = new CardData();
-        result.singleUse = true;
+        int num = 0;
+        int num2 = 0;
+        int num3 = 0;
         switch (upgrade)
         {
             case Upgrade.None:
-                result.cost = 1;
-                result.description = string.Format(Loc.GetLocString(Manifest.CobraCardHeatHoarder?.DescLocKey ?? throw new Exception("Missing card")), 1, 2);
+                num = 1;
+                num2 = 1;
+                num3 = 2;
                 break;
             case Upgrade.A:
-                result.cost = 0;
-                result.description = string.Format(Loc.GetLocString(Manifest.CobraCardHeatHoarder?.DescLocKey ?? throw new Exception("Missing card")), 1, 2);
+                num = 0;
+                num2 = 1;
+                num3 = 2;
                 break;
             case Upgrade.B:
-                result.cost = 3;
-                result.description = string.Format(Loc.GetLocString(Manifest.CobraCardHeatHoarder?.DescLocKey ?? throw new Exception("Missing card")), 3, 3);
+                num = 3;
+                num2 = 3;
+                num3 = 3;
                 break;
         }
-        return result;
+        return new()
+        {
+            cost = num,
+            singleUse = true,
+            description = ModEntry.Instance.Localizations.Localize(["card", "HeatHoarder", "description"], new { Amount = num2, Count = num3 })
+        };
     }
     public override List<CardAction> GetActions(State s, Combat c)
     {
-        var result = new List<CardAction>();
-        var heatcontrol_status = (Status)(Manifest.HeatControlStatus?.Id ?? throw new Exception("Missing HeatOutbreakStatus"));
+        int num2 = 0;
+        int num3 = 0;
         switch (upgrade)
         {
             case Upgrade.None:
-                List<CardAction> cardActionList1 = new List<CardAction>();
-                AStatus astatus1 = new AStatus();
-                astatus1.status = heatcontrol_status;
-                astatus1.statusAmount = 1;
-                astatus1.targetPlayer = true;
-                cardActionList1.Add(astatus1);
-                AAddCard aaddCard1 = new AAddCard();
-                TrashMiasma trashMiasma1 = new TrashMiasma();
-                trashMiasma1.temporaryOverride = false;
-                aaddCard1.card = trashMiasma1;
-                aaddCard1.amount = 2;
-                aaddCard1.destination = CardDestination.Deck;
-                cardActionList1.Add(aaddCard1);
-                result = cardActionList1;
+                num2 = 1;
+                num3 = 2;
                 break;
             case Upgrade.A:
-                List<CardAction> cardActionList2 = new List<CardAction>();
-                AStatus astatus2 = new AStatus();
-                astatus2.status = heatcontrol_status;
-                astatus2.statusAmount = 1;
-                astatus2.targetPlayer = true;
-                cardActionList2.Add(astatus2);
-                AAddCard aaddCard2 = new AAddCard();
-                TrashMiasma trashMiasma2 = new TrashMiasma();
-                trashMiasma2.temporaryOverride = false;
-                aaddCard2.card = trashMiasma2;
-                aaddCard2.amount = 2;
-                aaddCard2.destination = CardDestination.Deck;
-                cardActionList2.Add(aaddCard2);
-                result = cardActionList2;
+                num2 = 1;
+                num3 = 2;
                 break;
             case Upgrade.B:
-                List<CardAction> cardActionList3 = new List<CardAction>();
-                AStatus astatus3 = new AStatus();
-                astatus3.status = heatcontrol_status;
-                astatus3.statusAmount = 2;
-                astatus3.targetPlayer = true;
-                cardActionList3.Add(astatus3);
-                AAddCard aaddCard3 = new AAddCard();
-                TrashMiasma trashMiasma3 = new TrashMiasma();
-                trashMiasma3.temporaryOverride = false;
-                aaddCard3.card = trashMiasma3;
-                aaddCard3.amount = 3;
-                aaddCard3.destination = CardDestination.Deck;
-                cardActionList3.Add(aaddCard3);
-                result = cardActionList3;
+                num2 = 3;
+                num3 = 3;
                 break;
         }
-        return result;
+        return new()
+        {
+            new AStatus()
+            {
+                status = ModEntry.Instance.HeatControlStatus.Status,
+                statusAmount = num2,
+                targetPlayer = true
+            },
+            new AAddCard()
+            {
+                card = new TrashMiasma()
+                {
+                    temporaryOverride = false,
+                },
+                amount = num3,
+                destination = CardDestination.Deck
+            }
+        };
     }
 }

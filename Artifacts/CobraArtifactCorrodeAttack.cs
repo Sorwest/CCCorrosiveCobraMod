@@ -1,13 +1,34 @@
-﻿namespace Sorwest.CorrosiveCobra.Artifacts;
+﻿using Nickel;
+using System.Collections.Generic;
+using System.Reflection;
 
-[ArtifactMeta(pools = new ArtifactPool[] { ArtifactPool.Common })]
-public class CobraArtifactCorrodeAttack : Artifact
+namespace Sorwest.CorrosiveCobra.Artifacts;
+
+public class CobraArtifactCorrodeAttack : Artifact, IModdedArtifact
 {
+    public static void Register(IModHelper helper)
+    {
+        helper.Content.Artifacts.RegisterArtifact("CorrodeAttack", new()
+        {
+            ArtifactType = MethodBase.GetCurrentMethod()!.DeclaringType!,
+            Meta = new()
+            {
+                owner = ModEntry.Instance.SlimeDeck.Deck,
+                pools = [ArtifactPool.Common]
+            },
+            Sprite = ModEntry.Instance.Sprites["CorrodeAttackSprite"].Sprite,
+            Name = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "CorrodeAttack", "name"]).Localize,
+            Description = ModEntry.Instance.AnyLocalizations.Bind(["artifact", "CorrodeAttack", "description"]).Localize
+        });
+    }
     public override string Name() => "ACID ARSENAL";
     public int count;
     private const int TRIGGER_POINT = 7;
 
-    public override int? GetDisplayNumber(State s) => new int?(this.count);
+    public override int? GetDisplayNumber(State s)
+    {
+        return count;
+    }
 
     public override void OnPlayerPlayCard(
       int energyCost,
@@ -18,10 +39,10 @@ public class CobraArtifactCorrodeAttack : Artifact
       int handPosition,
       int handCount)
     {
-        if ((int)deck == Manifest.CobraDeck!.Id)
+        if (deck == ModEntry.Instance.SlimeDeck.Deck)
         {
-            ++this.count;
-            this.Pulse();
+            ++count;
+            Pulse();
         }
         if (this.count < TRIGGER_POINT)
             return;
@@ -31,8 +52,8 @@ public class CobraArtifactCorrodeAttack : Artifact
         aattack1.statusAmount = 1;
         aattack1.targetPlayer = false;
         combat.QueueImmediate(aattack1);
-        this.count = 0;
-        this.Pulse();
+        count = 0;
+        Pulse();
     }
 
     public override List<Tooltip>? GetExtraTooltips()

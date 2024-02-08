@@ -1,8 +1,26 @@
-﻿namespace Sorwest.CorrosiveCobra.Cards;
+﻿using Nanoray.PluginManager;
+using Nickel;
+using System.Collections.Generic;
+using System.Reflection;
 
-[CardMeta(rarity = Rarity.rare, upgradesTo = new Upgrade[] { Upgrade.A, Upgrade.B })]
-public class CobraCardCorrosionIgnition﻿ : Card
+namespace Sorwest.CorrosiveCobra.Cards;
+
+public class CobraCardCorrosionIgnition﻿ : Card, IModdedCard
 {
+    public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
+    {
+        helper.Content.Cards.RegisterCard("CorrosionIgnition", new()
+        {
+            CardType = MethodBase.GetCurrentMethod()!.DeclaringType!,
+            Meta = new()
+            {
+                deck = ModEntry.Instance.SlimeDeck.Deck,
+                rarity = Rarity.rare,
+                upgradesTo = [Upgrade.A, Upgrade.B]
+            },
+            Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "CorrosionIgnition", "name"]).Localize
+        });
+    }
     public override string Name() => "Corrosion Ignition﻿";
     private int GetHeatAmt(State s)
     {
@@ -20,89 +38,46 @@ public class CobraCardCorrosionIgnition﻿ : Card
     }
     public override CardData GetData(State state)
     {
-        CardData result = new CardData();
-        switch (upgrade)
+        return new()
         {
-            case Upgrade.None:
-                {
-                    result.cost = 3;
-                    break;
-                }
-            case Upgrade.A:
-                {
-                    result.cost = 0;
-                    break;
-                }
-            case Upgrade.B:
-                {
-                    result.cost = 0;
-                    break;
-                }
-        }
-        result.art = new Spr?((Spr)Manifest.CorrosiveCobra_CorrosionIgnition﻿Sprite!.Id!);
-        return result;
+            cost = upgrade == Upgrade.None ? 1 : 0,
+            art = ModEntry.Instance.Sprites["CorrosionIgnitionSprite"].Sprite
+        };
     }
     public override List<CardAction> GetActions(State s, Combat c)
     {
-        var result = new List<CardAction>();
+        int num = 0;
         switch (upgrade)
         {
             case Upgrade.None:
-                List<CardAction> cardActionList1 = new List<CardAction>();
-                cardActionList1.Add(new AVariableHint()
-                {
-                    status = Status.heat,
-                    secondStatus = Status.corrode,
-                });
-                AAttack aattack1 = new AAttack();
-                aattack1.damage = GetDmg(s, GetHeatAmt(s) + GetCorrodeAmt(s));
-                aattack1.xHint = new int?(1);
-                cardActionList1.Add(aattack1);
-                AStatus astatus1 = new AStatus();
-                astatus1.status = Status.corrode;
-                astatus1.statusAmount = 0;
-                astatus1.mode = AStatusMode.Set;
-                astatus1.targetPlayer = true;
-                cardActionList1.Add(astatus1);
-                result = cardActionList1;
+                num = GetHeatAmt(s) + GetCorrodeAmt(s);
                 break;
             case Upgrade.A:
-                List<CardAction> cardActionList2 = new List<CardAction>();
-                cardActionList2.Add(new AVariableHint()
-                {
-                    status = Status.heat,
-                });
-                AAttack aattack2 = new AAttack();
-                aattack2.damage = GetDmg(s, GetHeatAmt(s));
-                aattack2.xHint = new int?(1);
-                cardActionList2.Add(aattack2);
-                AStatus astatus2 = new AStatus();
-                astatus2.status = Status.heat;
-                astatus2.statusAmount = 0;
-                astatus2.mode = AStatusMode.Set;
-                astatus2.targetPlayer = true;
-                cardActionList2.Add(astatus2);
-                result = cardActionList2;
+                num = GetHeatAmt(s);
                 break;
             case Upgrade.B:
-                List<CardAction> cardActionList3 = new List<CardAction>();
-                cardActionList3.Add(new AVariableHint()
-                {
-                    status = Status.corrode,
-                });
-                AAttack aattack3 = new AAttack();
-                aattack3.damage = GetDmg(s, 3 * GetCorrodeAmt(s));
-                aattack3.xHint = new int?(3);
-                cardActionList3.Add(aattack3);
-                AStatus astatus3 = new AStatus();
-                astatus3.status = Status.corrode;
-                astatus3.statusAmount = 3;
-                astatus3.mode = AStatusMode.Set;
-                astatus3.targetPlayer = true;
-                cardActionList3.Add(astatus3);
-                result = cardActionList3;
+                num = 3 * GetCorrodeAmt(s);
                 break;
-        }
-        return result;
+        };
+        return new()
+        {
+            new AVariableHint()
+            {
+                status = upgrade == Upgrade.B ? Status.corrode : Status.heat,
+                secondStatus = upgrade == Upgrade.None ? Status.corrode : null
+            },
+            new AAttack()
+            {
+                damage = GetDmg(s, num),
+                xHint = upgrade == Upgrade.B ? 3 : 1
+            },
+            new AStatus()
+            {
+                status = upgrade == Upgrade.A ? Status.heat : Status.corrode,
+                statusAmount = upgrade == Upgrade.B ? 3 : 0,
+                mode = AStatusMode.Set,
+                targetPlayer = true
+            }
+        };
     }
 }

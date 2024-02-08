@@ -1,0 +1,671 @@
+{
+	"Sorwest.CorrosiveCobra::Slime.CrabFacts1_Multi_0": {
+		"1": "Did you know? In my timeline, we also had crabs!"
+	},
+	"Sorwest.CorrosiveCobra::Slime.CrabFacts2_Multi_0": {
+		"1": "I'm calling the East Crab Company... To check, y'know?"
+	},
+	"Sorwest.CorrosiveCobra::Slime.CrabFactsAreOverNow_Multi_0": {
+		"1": "We appreciate the facts, thank you."
+	},
+	"Sorwest.CorrosiveCobra::Slime.BanditThreats_Multi_0": {
+		"1": "Oh! Tasty!"
+	},
+	"Sorwest.CorrosiveCobra::Slime.BatboyKeepsTalking_Multi_0": {
+		"1": "Nice! I have my own Cherenkov radiation lamp!"
+	},
+	"Sorwest.CorrosiveCobra::Slime.TentacleThreats_Multi_0": {
+		"1": {
+			"1": "Haha. You're funny.",
+			"2": "Ah... aha... Hm... I see!",
+			"3": "To shreds you say?"
+		}
+	},
+	"Sorwest.CorrosiveCobra::Slime.TentacleThreatsOnShellBreak_Multi_0": {
+		"1": {
+			"1": "YES I KNOW RIGHT?!",
+			"2": "No, not really.",
+			"3": "Oh wow. That's... That's so sad."
+		}
+	},
+	"Sorwest.CorrosiveCobra::Slime.ArtifactGeminiCore_Multi_4": {
+		"1": "I'm a green guy."
+	},
+	"Sorwest.CorrosiveCobra::Slime.OneHitPointThisIsFine_Multi_4": {
+		"1": "Not at all!"
+	},
+	"Sorwest.CorrosiveCobra::Slime.SpikeGetsChatty_Multi_0": {
+		"1": "We're ready, yeah."
+	},
+	"Sorwest.CorrosiveCobra::Slime.ArtifactOverclockedGeneratorSeenMaxMemory3_Multi_0": {
+		"1": "Don't let Peri hear it. She's still mad about the core."
+	},
+	"Sorwest.CorrosiveCobra::Slime.CrystallizedFriendEvent": {
+		"1": "Who's that?"
+	},
+	"Sorwest.CorrosiveCobra::Slime.CrystallizedFriendEvent_0": {
+		"1": "... Oh! Hi, guys."
+	},
+	"Sorwest.CorrosiveCobra::Slime.GrandmaShop": {
+		"1": "Nitric acid!"
+	},
+	"Sorwest.CorrosiveCobra::Slime.ChoiceCardRewardOfYourColorChoice_0": {
+		"1": "Hey, thanks, weird entity.",
+		"2": "Energy readings are back to normal."
+	},
+	"Sorwest.CorrosiveCobra::Slime.LoseCharacterCard_0": {
+		"1": "I did the math and our chances of survival have changed by about 20%."
+	},
+	"Sorwest.CorrosiveCobra::Slime.HeatIncrease_Multi_0": {
+		"1": "Oh, my suit is melting. Cool."
+	},
+	"Sorwest.CorrosiveCobra::Slime.WeMissedOopsie_Multi_0": {
+		"1": "Was that calculated?"
+	},
+	"Sorwest.CorrosiveCobra::Slime.WeMissedOopsie_Multi_1": {
+		"1": "Uhh..."
+	},
+	"Sorwest.CorrosiveCobra::Slime.WeMissedOopsie_Multi_2": {
+		"1": "I hate to say it, but we missed."
+	},
+	"Sorwest.CorrosiveCobra::Slime.WeMissedOopsie_Multi_3": {
+		"1": "Hm... Let me get the manual."
+	},
+	"Sorwest.CorrosiveCobra::Slime.WeMissedOopsie_Multi_4": {
+		"1": "Where's the auto-aim?"
+	},
+	"Sorwest.CorrosiveCobra::Slime.WeDontOverlapWithEnemyAtAll_Multi_0": {
+		"1": "Let's uh... tactically retreat."
+	},
+	"Sorwest.CorrosiveCobra::Slime.WeDontOverlapWithEnemyAtAll_Multi_1": {
+		"1": "What's over here?"
+	},
+	"Sorwest.CorrosiveCobra::Slime.WeDontOverlapWithEnemyAtAll_Multi_2": {
+		"1": "Farewell."
+	},
+	"Sorwest.CorrosiveCobra::Slime.WeDontOverlapWithEnemyAtAllButWeDoHaveASeekerToDealWith_Multi_0": {
+		"1": "We gotta deal with that Seeker somehow."
+	},
+	"Sorwest.CorrosiveCobra::Slime.Duo_AboutToDieAndLoop_Multi_0": {
+		"1": "Nearly time to time loop again, huh.",
+		"2": "Nearly time to ti-- Ah... Huh."
+	},
+	"Sorwest.CorrosiveCobra::Slime.Duo_AboutToDieAndLoop_Multi_1": {
+		"1": "Nearly time to time loop again, huh.",
+		"2": "Nearly time to ti-- Ah. Huh. Yeah."
+	},
+	"Sorwest.CorrosiveCobra::Slime.Duo_AboutToDieAndLoop_Multi_11": {
+		"1": "Time loop time?",
+		"2": "Hey, don't give up yet!"
+	},
+	"Sorwest.CorrosiveCobra::Slime.Duo_AboutToDieAndLoop_Multi_12": {
+		"1": "We almost had it.",
+		"2": "Enough crying! Everyone evacuate, I'll take over!"
+	},
+	"Sorwest.CorrosiveCobra::Slime.Duo_AboutToDieAndLoop_Multi_13": {
+		"1": "This was a good try. Will you fight with us next time?",
+		"2": "I hope so."
+	},
+	"Sorwest.CorrosiveCobra::Slime.Duo_AboutToDieAndLoop_Multi_14": {
+		"1": "It's looking... kinda bad.",
+		"2": "For sure!"
+	},
+	"Sorwest.CorrosiveCobra::Slime.Duo_AboutToDieAndLoop_Multi_15": {
+		"1": "GG.",
+		"2": "LMAO."
+	},
+	"Sorwest.CorrosiveCobra::Slime.Duo_AboutToDieAndLoop_Multi_16": {
+		"1": "I can patch the ship. I can!",
+		"2": "Give it up. Just enjoy the view."
+	},
+	"Sorwest.CorrosiveCobra::Slime.Duo_AboutToDieAndLoop_Multi_17": {
+		"1": "We're going down.",
+		"2": "We had fun, though!"
+	},
+	"Sorwest.CorrosiveCobra::Slime.Duo_AboutToDieAndLoop_Multi_18": {
+		"1": "I had a whole new campaign planned out.",
+		"2": "Next loop we gotta run it."
+	},
+	"Sorwest.CorrosiveCobra::Slime.Duo_AboutToDieAndLoop_Multi_19": {
+		"1": "Next time's the charm.",
+		"2": "Well played."
+	},
+	"Sorwest.CorrosiveCobra::Slime.Duo_AboutToDieAndLoop_Multi_20": {
+		"1": "Game over, man.",
+		"2": "Who should I give MVP?"
+	},
+	"Sorwest.CorrosiveCobra::Slime.Duo_AboutToDieAndLoop_Multi_21": {
+		"1": "Is this it?",
+		"2": "We can still do this!"
+	},
+	"Sorwest.CorrosiveCobra::Slime.Duo_AboutToDieAndLoop_Multi_22": {
+		"1": "Hey, what are we gonna do after this?",
+		"2": "Trying to focus here, Books!"
+	},
+	"Sorwest.CorrosiveCobra::Slime.Duo_AboutToDieAndLoop_Multi_23": {
+		"1": "Loop time?",
+		"2": "Loop time."
+	},
+	"Sorwest.CorrosiveCobra::Slime.Duo_AboutToDieAndLoop_Multi_24": {
+		"1": "Reset time.",
+		"2": "Maybe we can still do this!"
+	},
+	"Sorwest.CorrosiveCobra::Slime.Duo_AboutToDieAndLoop_Multi_25": {
+		"1": "I don't see a way out.",
+		"2": "The house of cards comes tumbling down."
+	},
+	"Sorwest.CorrosiveCobra::Slime.Duo_AboutToDieAndLoop_Multi_26": {
+		"1": "We need to find a backdoor soon or we're done for.",
+		"2": "We can do something, surely?"
+	},
+	"Sorwest.CorrosiveCobra::Slime.Duo_AboutToDieAndLoop_Multi_27": {
+		"1": "Oh. Oh, this is not good.",
+		"2": "We're gonna vanish soon, guys."
+	},
+	"Sorwest.CorrosiveCobra::Slime.Duo_AboutToDieAndLoop_Multi_28": {
+		"1": "Guess we're doing Plan Z.",
+		"2": "This one's a wash."
+	},
+	"Sorwest.CorrosiveCobra::Slime.Duo_AboutToDieAndLoop_Multi_29": {
+		"1": "Ship is in critical condition, is everyone alri--",
+		"2": "Please spare me! I'll do anything!"
+	},
+	"Sorwest.CorrosiveCobra::Slime.Duo_AboutToDieAndLoop_Multi_30": {
+		"1": "Do something slime boy! I'm too cute to die!",
+		"2": "..."
+	},
+	"Sorwest.CorrosiveCobra::Slime.Duo_AboutToDieAndLoop_Multi_31": {
+		"1": "We're exploding 80% of the time here.",
+		"2": "Don't give up!"
+	},
+	"Sorwest.CorrosiveCobra::Slime.Duo_AboutToDieAndLoop_Multi_32": {
+		"1": "This gives me a campaign idea for next loop.",
+		"2": "What's that and can I play?"
+	},
+	"Sorwest.CorrosiveCobra::Slime.Duo_AboutToDieAndLoop_Multi_33": {
+		"1": "This gives me a campaign idea for next loop.",
+		"2": "I made a new badass cannoneer, can I play it next time?"
+	},
+	"Sorwest.CorrosiveCobra::Slime.Duo_AboutToDieAndLoop_Multi_34": {
+		"1": "Ripperonni.",
+		"2": "Going down in a blaze."
+	},
+	"Sorwest.CorrosiveCobra::Slime.Duo_AboutToDieAndLoop_Multi_35": {
+		"1": "Ripperonni.",
+		"2": "I don't think this is a good place or time to joke around."
+	},
+	"Sorwest.CorrosiveCobra::Slime.Duo_AboutToDieAndLoop_Multi_36": {
+		"1": "Ripperonni.",
+		"2": "I'm getting one with pineapple first thing next time."
+	},
+	"Sorwest.CorrosiveCobra::Slime.Duo_AboutToDieAndLoop_Multi_37": {
+		"1": "Ripperonni.",
+		"2": "Give a better fight, jelly!"
+	},
+	"Sorwest.CorrosiveCobra::Slime.Duo_AboutToDieAndLoop_Multi_38": {
+		"1": "Ripperonni.",
+		"2": "We can't give in, not yet."
+	},
+	"Sorwest.CorrosiveCobra::Slime.BlockedAnEnemyAttackWithArmor_Multi_0": {
+		"1": "Huh, this armor is great!"
+	},
+	"Sorwest.CorrosiveCobra::Slime.BlockedAnEnemyAttackWithArmor_Multi_1": {
+		"1": "Nice try, buddy. That was armored!"
+	},
+	"Sorwest.CorrosiveCobra::Slime.BlockedAnEnemyAttackWithArmor_Multi_2": {
+		"1": "Maybe we should armor up the kitchen too."
+	},
+	"Sorwest.CorrosiveCobra::Slime.BlockedALotOfAttacksWithArmor_Multi_0": {
+		"1": "Wait, you targeted the armor? Why?"
+	},
+	"Sorwest.CorrosiveCobra::Slime.ThatsALotOfDamageToThem_Multi_0": {
+		"1": "We are just CRUSHING them now!"
+	},
+	"Sorwest.CorrosiveCobra::Slime.ThatsALotOfDamageToUs_Multi_0": {
+		"1": "Ah! Did that hit my room?"
+	},
+	"Sorwest.CorrosiveCobra::Slime.ThatsALotOfDamageToUs_Multi_1": {
+		"1": "That looked like a heavy blow.",
+		"2": "Ah! My hidden boba room!",
+		"3": "You had even more boba?"
+	},
+	"Sorwest.CorrosiveCobra::Slime.ThatsALotOfDamageToUs_Multi_2": {
+		"1": "Dizzy, have you seen Dizzy?!",
+		"2": "Oh man, I haven't, that was a pretty big hit.",
+		"3": "I'm here, I'm here! I'm fine."
+	},
+	"Sorwest.CorrosiveCobra::Slime.ThatsALotOfDamageToUs_Multi_3": {
+		"1": "Heavy hit received. Raising the yellow alert.",
+		"2": "Systems all working stll. Keeping the yellow alert up.",
+		"3": "You're overreacting."
+	},
+	"Sorwest.CorrosiveCobra::Slime.ThatsALotOfDamageToUs_Multi_4": {
+		"1": "Ouch, I stubbed my toe.",
+		"2": "Not good.",
+		"3": "You have toes?"
+	},
+	"Sorwest.CorrosiveCobra::Slime.ThatsALotOfDamageToUs_Multi_5": {
+		"1": "Someone save me, please.",
+		"2": "...",
+		"3": "Toad Of The Year."
+	},
+	"Sorwest.CorrosiveCobra::Slime.CrewWentMissing_Multi_0": {
+		"1": "Huh? Where did I go? I mean, where did the other I go?"
+	},
+	"Sorwest.CorrosiveCobra::Slime.CrewWentMissing_Multi_1": {
+		"1": "Huh? Huh? Peri? PERI?!"
+	},
+	"Sorwest.CorrosiveCobra::Slime.CrewWentMissing_Multi_2": {
+		"1": "Did you take Riggs?! Give her back!"
+	},
+	"Sorwest.CorrosiveCobra::Slime.CrewWentMissing_Multi_3": {
+		"1": "ISAAC!"
+	},
+	"Sorwest.CorrosiveCobra::Slime.CrewWentMissing_Multi_4": {
+		"1": "Drake?! What did you do to Drake?!"
+	},
+	"Sorwest.CorrosiveCobra::Slime.CrewWentMissing_Multi_5": {
+		"1": "Max!"
+	},
+	"Sorwest.CorrosiveCobra::Slime.CrewWentMissing_Multi_6": {
+		"1": "GIVE BOOKS BACK."
+	},
+	"Sorwest.CorrosiveCobra::Slime.CrewWentMissing_Multi_7": {
+		"1": "Cat! Oh no?!"
+	},
+	"Sorwest.CorrosiveCobra::Slime.EmptyHandWithEnergy_Multi_0": {
+		"1": "Can we, like, not restrict ourselves to a metaphorical draw cycle?"
+	},
+	"Sorwest.CorrosiveCobra::Slime.EmptyHandWithEnergy_Multi_1": {
+		"1": "All done a bit early, huh?"
+	},
+	"Sorwest.CorrosiveCobra::Slime.EnemyHasBrittle_Multi_0": {
+		"1": "Let's lock-on to that brittle spot!"
+	},
+	"Sorwest.CorrosiveCobra::Slime.EnemyHasWeakness_Multi_0": {
+		"1": "Is that a weak spot? Nice!"
+	},
+	"Sorwest.CorrosiveCobra::Slime.JustHitGeneric_Multi_0": {
+		"1": "Nice shot."
+	},
+	"Sorwest.CorrosiveCobra::Slime.JustHitGeneric_Multi_1": {
+		"1": "On target."
+	},
+	"Sorwest.CorrosiveCobra::Slime.JustHitGeneric_Multi_2": {
+		"1": "Nicely done."
+	},
+	"Sorwest.CorrosiveCobra::Slime.JustHitGeneric_Multi_3": {
+		"1": "Got them."
+	},
+	"Sorwest.CorrosiveCobra::Slime.JustPlayedADraculaCard_Multi_0": {
+		"1": "Thanks, Dracula!"
+	},
+	"Sorwest.CorrosiveCobra::Slime.LookOutMissile_Multi_0": {
+		"1": "That missile looks nasty."
+	},
+	"Sorwest.CorrosiveCobra::Slime.OverheatDrakeFix_Multi_0": {
+		"1": {
+			"1": "Did you turn on the AC?",
+			"2": "Oh. Nice save, Drake.",
+			"3": "I liked being liquid-er."
+		}
+	},
+	"Sorwest.CorrosiveCobra::Slime.ShopKeepBattleInsult_0": {
+		"1": {
+			"1": "I see...",
+			"2": "Loop time, then."
+		}
+	},
+	"Sorwest.CorrosiveCobra::Slime.VeryManyTurns_Multi_0": {
+		"1": "Why are we still here?"
+	},
+	"Sorwest.CorrosiveCobra::Slime.VeryManyTurns_Multi_1": {
+		"1": "We're really doing 18 hour shifts, huh."
+	},
+	"Sorwest.CorrosiveCobra::Slime.VeryManyTurns_Multi_2": {
+		"1": "Dinner's ready. Pause the loop, son."
+	},
+	"Sorwest.CorrosiveCobra::Slime.WeAreCorroded_Multi_0": {
+		"1": "Oh? We're corroded! Nice."
+	},
+	"Sorwest.CorrosiveCobra::Slime.WeAreCorroded_Multi_1": {
+		"1": "I love poison, but the ship not so much."
+	},
+	"Sorwest.CorrosiveCobra::Slime.WeAreCorroded_Multi_2": {
+		"1": "Oooh! The controls are flashing green, so techy!"
+	},
+	"Sorwest.CorrosiveCobra::Slime.ArtifactGeminiCore_Multi_0": {
+		"1": "Oooh! Nice colors. Where's the green side?"
+	},
+	"Sorwest.CorrosiveCobra::Slime.Inject.ArtifactGeminiCore_Multi_4": {
+		"1": "I'm a green guy."
+	},
+	"Sorwest.CorrosiveCobra::Slime.ArtifactTiderunner_Multi_0": {
+		"1": "The wood grain in the dorms is a really nice touch. What is this, birch?"
+	},
+	"Sorwest.CorrosiveCobra::Slime.ArtifactTiderunner_Multi_1": {
+		"1": "Oh, I love this ship. It bounces around like me!"
+	},
+	"Sorwest.CorrosiveCobra::Slime.ArtifactTridimensionalCockpit_Multi_0": {
+		"1": "So like, what would a tetradimensional Cockpit even LOOK like?"
+	},
+	"Sorwest.CorrosiveCobra::Slime.ManyTurns_Multi_0": {
+		"1": "No rush. I'll order pizza then."
+	},
+	"Sorwest.CorrosiveCobra::Slime.ManyTurns_Multi_1": {
+		"1": "Anyone up for Checkers?"
+	},
+	"Sorwest.CorrosiveCobra::Slime.OneHitPointThisIsFine_Multi_0": {
+		"1": "Hi, yes... Yes... Extra pepperoni, yes."
+	},
+	"Sorwest.CorrosiveCobra::Slime.OneHitPointThisIsFine_Multi_1": {
+		"1": "This is fine."
+	},
+	"Sorwest.CorrosiveCobra::Slime.Inject.OneHitPointThisIsFine_Multi_4": {
+		"1": "Not at all!"
+	},
+	"Sorwest.CorrosiveCobra::Slime.WeDidOverFiveDamage_Multi_0": {
+		"1": "Weak."
+	},
+	"Sorwest.CorrosiveCobra::Slime.WeDidOverFiveDamage_Multi_1": {
+		"1": "Wow! That was insane!",
+		"2": "Do it again!"
+	},
+	"Sorwest.CorrosiveCobra::Slime.WeDidOverFiveDamage_Multi_2": {
+		"1": "Didn't know our cannons could handle that.",
+		"2": "...",
+		"3": "YEAH! Take that, loser!"
+	},
+	"Sorwest.CorrosiveCobra::Slime.WeDidOverFiveDamage_Multi_3": {
+		"1": "Nice shot!",
+		"2": "Yeah!"
+	},
+	"Sorwest.CorrosiveCobra::Slime.WeDidOverFiveDamage_Multi_4": {
+		"1": "...",
+		"2": "Yeah!"
+	},
+	"Sorwest.CorrosiveCobra::Slime.WeDidOverFiveDamage_Multi_5": {
+		"1": "Good job, everyone.",
+		"2": "Rolled a 19."
+	},
+	"Sorwest.CorrosiveCobra::Slime.WeDidOverFiveDamage_Multi_6": {
+		"1": "A serving of humble pie, coming right up!",
+		"2": "Oh, oh! Can you get me a pretzel?!"
+	},
+	"Sorwest.CorrosiveCobra::Slime.WeDidOverFiveDamage_Multi_7": {
+		"1": "Successful attack. Enemy will be finished soon.",
+		"2": "That was huge."
+	},
+	"Sorwest.CorrosiveCobra::Slime.WeDidOverFiveDamage_Multi_8": {
+		"1": "Lady Luck is on our side today!",
+		"2": "Great job."
+	},
+	"Sorwest.CorrosiveCobra::Slime.WeDidOverFiveDamage_Multi_9": {
+		"1": "That's some big damage!",
+		"2": "Wow."
+	},
+	"Sorwest.CorrosiveCobra::Slime.ArtifactRecalibrator_Multi_0": {
+		"1": "Ha! Joke's on you, this was the plan all along!"
+	},
+	"Sorwest.CorrosiveCobra::Slime.ArtifactRecalibrator_Multi_1": {
+		"1": "Missed. Recalibrating."
+	},
+	"Sorwest.CorrosiveCobra::Slime.HandOnlyHasTrashCards_Multi_0": {
+		"1": "Okay, maybe it was a bad idea to turn off the roomba."
+	},
+	"Sorwest.CorrosiveCobra::Slime.HandOnlyHasTrashCards_Multi_1": {
+		"1": "Hi. Room service?"
+	},
+	"Sorwest.CorrosiveCobra::Slime.OverheatGeneric_Multi_0": {
+		"1": "Oh, this might be too toasty."
+	},
+	"Sorwest.CorrosiveCobra::Slime.OverheatGeneric_Multi_1": {
+		"1": "Yes, two cold packs. No, just two."
+	},
+	"Sorwest.CorrosiveCobra::Slime.TheyHaveAutoDodgeLeft_Multi_0": {
+		"1": "Ah. The enemy is primed to dodge."
+	},
+	"Sorwest.CorrosiveCobra::Slime.TheyHaveAutoDodgeRight_Multi_0": {
+		"1": "Ah. The enemy is primed to dodge."
+	},
+	"Sorwest.CorrosiveCobra::Slime.WeGotHurtButNotTooBad_Multi_0": {
+		"1": "That tickled my funny bone."
+	},
+	"Sorwest.CorrosiveCobra::Slime.WeGotHurtButNotTooBad_Multi_1": {
+		"1": "Nothing a band-aid can't fix."
+	},
+	"Sorwest.CorrosiveCobra::Slime.WeGotShotButTookNoDamage_Multi_0": {
+		"1": "Nothing to report. Hah!"
+	},
+	"Sorwest.CorrosiveCobra::Slime.WeGotShotButTookNoDamage_Multi_1": {
+		"1": "Ship shows no damage from that attack."
+	},
+	"Sorwest.CorrosiveCobra::Slime.ArtifactCockpitTargetIsRelevant_Multi_0": {
+		"1": "Cockpit targetting systems, online."
+	},
+	"Sorwest.CorrosiveCobra::Slime.ArtifactCockpitTargetIsRelevant_Multi_1": {
+		"1": "Focus their piloting.",
+		"2": "Roger."
+	},
+	"Sorwest.CorrosiveCobra::Slime.ArtifactJetThrustersNoRiggs_Multi_0": {
+		"1": "These thrusters make me wonder what Riggs is doing right now."
+	},
+	"Sorwest.CorrosiveCobra::Slime.ArtifactJetThrustersNoRiggs_Multi_1": {
+		"1": "These thrusters make me miss Riggs. I wonder where she is."
+	},
+	"Sorwest.CorrosiveCobra::Slime.ArtifactNanofiberHull1_Multi_0": {
+		"1": "That'll get nanofixed right out."
+	},
+	"Sorwest.CorrosiveCobra::Slime.ArtifactNanofiberHull1_Multi_1": {
+		"1": "The bots will deal with that, don't worry."
+	},
+	"Sorwest.CorrosiveCobra::Slime.ArtifactNanofiberHull2_Multi_0": {
+		"1": "Our nanobuddies will heal some of that, at least."
+	},
+	"Sorwest.CorrosiveCobra::Slime.ArtifactEnergyRefund_Multi_0": {
+		"1": "Does an extra large have a discount too?"
+	},
+	"Sorwest.CorrosiveCobra::Slime.ArtifactShieldPrepIsGone_Multi_0": {
+		"1": "We'll be fine without warp prep, right?"
+	},
+	"Sorwest.CorrosiveCobra::Slime.ArtifactWarpMastery_Multi_0": {
+		"1": "Everyone knows Green makes stuff Stronger."
+	},
+	"Sorwest.CorrosiveCobra::Slime.ArtifactArmoredBay_Multi_0": {
+		"1": "In my timeline, we armored the Artemis' cockpit. It was Easy Mode."
+	},
+	"Sorwest.CorrosiveCobra::Slime.ArtifactArmoredBay_Multi_1": {
+		"1": "In my timeline, we armored the Gemini's cannons. It was Easy Mode."
+	},
+	"Sorwest.CorrosiveCobra::Slime.ArtifactArmoredBay_Multi_2": {
+		"1": "In my timeline, we armored the Jupiter's comms. It was Easy Mode."
+	},
+	"Sorwest.CorrosiveCobra::Slime.ArtifactArmoredBay_Multi_3": {
+		"1": "In my timeline, we didn't even armor the Ares' cannons. It was Easy Mode either way."
+	},
+	"Sorwest.CorrosiveCobra::Slime.addedSlimeMutation_Multi_0": {
+		"1": "KAME..."
+	},
+	"Sorwest.CorrosiveCobra::Slime.addedSlimeMutation_Multi_1": {
+		"1": "I'm changing..."
+	},
+	"Sorwest.CorrosiveCobra::Slime.addedSlimeBLAST_Multi_0": {
+		"1": "HAME...",
+		"2": "Ah, I see."
+	},
+	"Sorwest.CorrosiveCobra::Slime.addedSlimeBLAST_Multi_1": {
+		"1": "I'm... stronger..."
+	},
+	"Sorwest.CorrosiveCobra::Slime.playedSlimeBLAST_Multi_0": {
+		"1": "HADOUKEN!!!",
+		"2": "Wow! Now we'll get sued by two IPs simultaneously."
+	},
+	"Sorwest.CorrosiveCobra::Slime.playedSlimeBLAST_Multi_1": {
+		"1": "Oh, nevermind, it was the cannon."
+	},
+	"Sorwest.CorrosiveCobra::Slime.playedSlimeHug_Multi_0": {
+		"1": "I'll take care of the trash now.",
+		"2": "Oh, oh! If you find treasure please tell me!"
+	},
+	"Sorwest.CorrosiveCobra::Slime.playedSlimeHug_Multi_1": {
+		"1": "The trash should be easier to manage now.",
+		"2": "Aprreciated."
+	},
+	"Sorwest.CorrosiveCobra::Slime.playedTankThrow_Multi_0": {
+		"1": "Jumpy!",
+		"2": "W-wo-wo-woah."
+	},
+	"Sorwest.CorrosiveCobra::Slime.playedTankThrow_Multi_1": {
+		"1": "We won't be needing these, anyway.",
+		"2": "Infinite tanks glitch. Genius."
+	},
+	"Sorwest.CorrosiveCobra::Slime.playedTankThrow_Multi_2": {
+		"1": "The best defense is a barrage of poison.",
+		"2": "Agreed."
+	},
+	"Sorwest.CorrosiveCobra::Slime.playedLeakingContainer_Multi_0": {
+		"1": "Zzz...",
+		"2": "Have we always had a hole in the fuel tanks?",
+		"3": "Oh. Don't let Peri go there."
+	},
+	"Sorwest.CorrosiveCobra::Slime.playedLeakingContainer_Multi_1": {
+		"1": "Have we always had a hole in the fuel tanks?",
+		"2": "Ah! I spilled my boba!",
+		"3": "Everyone, focus!"
+	},
+	"Sorwest.CorrosiveCobra::Slime.playedLeakingContainer_Multi_2": {
+		"1": "Have we always had a hole in the fuel tanks?",
+		"2": "WHY ARE WE BREAKING OUR SHIP?"
+	},
+	"Sorwest.CorrosiveCobra::Slime.playedLeakingContainer_Multi_3": {
+		"1": "Have we always had a hole in the fuel tanks?",
+		"2": "OH MY GOD. THE SHIP IS BREAKING!"
+	},
+	"Sorwest.CorrosiveCobra::Slime.playedLeakingContainer_Multi_4": {
+		"1": "Now we relax and wait!",
+		"2": "What?! We're not WAITING! Let's PUNCH 'EM!"
+	},
+	"Sorwest.CorrosiveCobra::Slime.playedLeakingContainer_Multi_5": {
+		"1": "Have we always had a hole in the fuel tanks?",
+		"2": "Work smarter, not harder"
+	},
+	"Sorwest.CorrosiveCobra::Slime.playedLeakingContainer_Multi_6": {
+		"1": "Have we always had a hole in the fuel tanks?",
+		"2": "Oooh!"
+	},
+	"Sorwest.CorrosiveCobra::Slime.playedLeakingContainer_Multi_7": {
+		"1": "Have we always had a hole in the fuel tanks?",
+		"2": "Please stop breaking the ship."
+	},
+	"Sorwest.CorrosiveCobra::Slime.playedLeakingContainer_Multi_8": {
+		"1": "Have we always had a hole in the fuel tanks?",
+		"2": "Is this a low roll?"
+	},
+	"Sorwest.CorrosiveCobra::Slime.playedLeakingContainer_Multi_9": {
+		"1": "Have we always had a hole in the fuel tanks?",
+		"2": "Careful with the ship, Slime. We've only got one."
+	},
+	"Sorwest.CorrosiveCobra::Slime.playedTimestreamLeak_Multi_0": {
+		"1": "Anyone else see that rupture in spacetime right behind the enemy?",
+		"2": {
+			"1": "Yeah. What else is new?",
+			"2": "That sounds scary.",
+			"3": "It looks like it attacked the enemy. Beware.",
+			"4": "That is not good.",
+			"5": "Yeah, and?",
+			"6": "Are we in the Matrix?",
+			"7": "Wow!",
+			"8": "I'll make sure we reach the Cobalt.",
+			"9": "The timer is on.",
+			"10": "..."
+		},
+		"Sorwest.CorrosiveCobra::Slime.hasArtifactOverdriveTanks_Multi_0": {
+			"1": "Oh man. Maybe we should've bought the Megaship Air Cooler 5000. I'm melting here."
+		},
+		"Sorwest.CorrosiveCobra::Slime.hasArtifactUnstableTanks_Multi_0": {
+			"1": "Siri, AC to 0 K, thanks."
+		},
+		"Sorwest.CorrosiveCobra::Slime.hasArtifactFuelWalls_Multi_0": {
+			"1": "Dealing with the heat should be easier now."
+		},
+		"Sorwest.CorrosiveCobra::Slime.hasArtifactCorrodeAttack_Multi_0": {
+			"1": "Let the corrode stacking begin!"
+		},
+		"Sorwest.CorrosiveCobra::Slime.hasArtifactDissolvent_Multi_0": {
+			"1": "Woah! I'm 10% more liquid than a minute ago. Cool!"
+		},
+		"Sorwest.CorrosiveCobra::Slime.hasArtifactPowerAcid_Multi_0": {
+			"1": "Now all we need to do is give the enemy some Corrode."
+		},
+		"Sorwest.CorrosiveCobra::Slime.hasArtifactSlimeHeart_Multi_0": {
+			"1": "Now there's two of me! The roomba me, and me!"
+		},
+		"Sorwest.CorrosiveCobra::Slime.hasArtifactToxicCaviar_Multi_0": {
+			"1": "Oh, my favorite dish!"
+		},
+		"Sorwest.CorrosiveCobra::Slime.Event_WhoAreYou_1": {
+			"1": "Yawn...",
+			"2": "Alright everyone, new loop, new -",
+			"3": "Hi CAT.",
+			"4": "Hi.",
+			"5": "WAIT! WHO EVEN ARE YOU!",
+			"6": "Hm? I'm Dizzy?",
+			"7": {
+				"1": "That makes total sense. You're Dizzy.",
+				"2": "You're not Dizzy, I know Dizzy and he would never wear a spacesuit.",
+				"3": "What is going on. Who is this?",
+				"4": "Have you always looked like that?",
+				"5": "Uh-huh. Now tell us the truth.",
+				"6": "Is that a rare skin?",
+				"7": "Hi!"
+			},
+			"8": "...",
+			"9": "...",
+			"10": "Oh... This isn't good.",
+			"11": "Where am I? Where's Peri and Riggs and Isaac and Max and...",
+			"12": "...",
+			"13": "...",
+			"14": "What happened?",
+			"15": "This is bad. The timestream must be collapsing. We're running out of time. You're from another timeline, Dizzy.",
+			"16": "Oh, okay."
+		},
+		"Sorwest.CorrosiveCobra::Slime.Event_WhoAreYou_2": {
+			"1": "Hi second Dizzy.",
+			"2": "Hi!",
+			"3": "I wonder why the timestream brought you here.",
+			"4": "Maybe you're an evil Dizzy from an evil timeline that has come to destroy our universe.",
+			"5": "Haha, you're funny.",
+			"6": "...",
+			"7": "...",
+			"8": "..."
+		},
+		"Sorwest.CorrosiveCobra::Slime.Event_WhoAreYou_3": {
+			"1": "Is the CAT from your timeline, like, cooler?",
+			"2": "Yeah.",
+			"3": "Oh.",
+			"4": "But I'm great in my own way, right?",
+			"5": "Sure.",
+			"6": "...",
+			"7": "...",
+			"8": "Thanks."
+		},
+		"Sorwest.CorrosiveCobra::Slime.Event_Dizzy_1": {
+			"1": "If you're here, what's happening over in your timeline?",
+			"2": "I don't know.",
+			"3": "Maybe this is all a dream and when we wake up we'll be back to before all this crazy stuff happened? Me in my timeline and you in yours?",
+			"4": "Negative. We are stuck in this time loop.",
+			"5": "Ah."
+		},
+		"Sorwest.CorrosiveCobra::Slime.Event_Dizzy_2": {
+			"1": "Hey, Dizzy.",
+			"2": "Hey.",
+			"3": "Is everyone in this timeline meat-based lifeforms?",
+			"4": "Most of us, yes.",
+			"5": "Cool, cool.",
+			"6": "...",
+			"7": "...",
+			"8": "Why, though?",
+			"9": "..."
+		}
+	}
+}

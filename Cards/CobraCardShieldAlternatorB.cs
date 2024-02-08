@@ -1,36 +1,61 @@
-﻿namespace Sorwest.CorrosiveCobra.Cards;
+﻿using Nanoray.PluginManager;
+using Nickel;
+using System;
+using System.Collections.Generic;
+using System.Reflection;
+
+namespace Sorwest.CorrosiveCobra.Cards;
 
 [CardMeta(dontOffer = true, rarity = Rarity.common)]
-public class CobraCardShieldAlternatorB : Card
+public class CobraCardShieldAlternatorB : Card, IModdedCard
 {
+    public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
+    {
+        helper.Content.Cards.RegisterCard("ShieldAlternatorB", new()
+        {
+            CardType = MethodBase.GetCurrentMethod()!.DeclaringType!,
+            Meta = new()
+            {
+                deck = ModEntry.Instance.SlimeDeck.Deck,
+                rarity = Rarity.common,
+                upgradesTo = [Upgrade.A, Upgrade.B],
+                dontOffer = true,
+            },
+            Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "ShieldAlternatorB", "name"]).Localize
+        });
+    }
     public override string Name() => "Temp Shield Replica";
     public override CardData GetData(State state)
     {
-        CardData result = new CardData();
-        result.cost = 1;
-        result.exhaust = true;
-        result.artTint = "e20fc2";
-        result.description = Loc.GetLocString(Manifest.CobraCardShieldAlternatorB?.DescLocKey ?? throw new Exception("Missing card"));
+        int num = 3;
+        CardData result = new CardData()
+        {
+            cost = 1,
+            exhaust = upgrade == Upgrade.B ? false : true,
+            artTint = "e20fc2",
+            description = ModEntry.Instance.Localizations.Localize(["card", "ShieldAlternatorB", "description", upgrade.ToString()], new { Amount = num })
+        };
         return result;
     }
     public override List<CardAction> GetActions(State s, Combat c)
     {
-        var result = new List<CardAction>();
-        List<CardAction> cardActionList1 = new List<CardAction>();
-        AStatus astatus1 = new AStatus();
-        astatus1.status = Status.tempShield;
-        astatus1.statusAmount = 3;
-        astatus1.targetPlayer = true;
-        cardActionList1.Add(astatus1);
-        AAddCard aaddCard1 = new AAddCard();
-        CobraCardShieldAlternatorA shieldAlternatorA1 = new CobraCardShieldAlternatorA();
-        shieldAlternatorA1.upgrade = Upgrade.None;
-        shieldAlternatorA1.temporaryOverride = new bool?(true);
-        shieldAlternatorA1.singleUseOverride = new bool?(true);
-        aaddCard1.card = (Card)shieldAlternatorA1;
-        aaddCard1.destination = CardDestination.Hand;
-        cardActionList1.Add(aaddCard1);
-        result = cardActionList1;
-        return result;
+        return new()
+        {
+            new AStatus()
+            {
+                status = Status.tempShield,
+                statusAmount = 3,
+                targetPlayer = true
+            },
+            new AAddCard()
+            {
+                card = new CobraCardShieldAlternatorA()
+                {
+                    upgrade = upgrade,
+                    temporaryOverride = true
+                },
+                destination = CardDestination.Hand
+            }
+        };
     }
 }

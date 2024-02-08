@@ -1,66 +1,57 @@
-﻿namespace Sorwest.CorrosiveCobra.Cards;
+﻿using Nanoray.PluginManager;
+using Nickel;
+using System.Collections.Generic;
+using System.Reflection;
 
-[CardMeta(rarity = Rarity.rare, upgradesTo = new Upgrade[] { Upgrade.A, Upgrade.B })]
-public class CobraCardSlimeHug : Card
+namespace Sorwest.CorrosiveCobra.Cards;
+
+public class CobraCardSlimeHug : Card, IModdedCard
 {
+    public static void Register(IPluginPackage<IModManifest> package, IModHelper helper)
+    {
+        helper.Content.Cards.RegisterCard("SlimeHug", new()
+        {
+            CardType = MethodBase.GetCurrentMethod()!.DeclaringType!,
+            Meta = new()
+            {
+                deck = ModEntry.Instance.SlimeDeck.Deck,
+                rarity = Rarity.rare,
+                upgradesTo = [Upgrade.A, Upgrade.B]
+            },
+            Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "SlimeHug", "name"]).Localize
+        });
+    }
     public override string Name() => "Slime Hug";
     public override CardData GetData(State state)
     {
-        CardData result = new CardData();
-        result.exhaust = true;
-        result.art = new Spr?((Spr)Manifest.CorrosiveCobra_EvolveBackgroundSprite!.Id!);
-        switch (upgrade)
+        return new()
         {
-            case Upgrade.None:
-                result.cost = 1;
-                break;
-            case Upgrade.A:
-                result.cost = 0;
-                break;
-            case Upgrade.B:
-                result.cost = 1;
-                break;
-        }
-        return result;
+            cost = upgrade == Upgrade.A ? 0 : 1,
+            exhaust = true,
+            art = ModEntry.Instance.Sprites["EvolveBackgroundSprite"].Sprite,
+        };
     }
     public override List<CardAction> GetActions(State s, Combat c)
     {
-        var result = new List<CardAction>();
-        var evolve_status = (Status)(Manifest.EvolveStatus?.Id ?? throw new Exception("Missing EvolveStatus"));
-
-        switch (upgrade)
+        List<CardAction> result = new()
         {
-            case Upgrade.None:
-                List<CardAction> cardActionList1 = new List<CardAction>();
-                AStatus astatus1 = new AStatus();
-                astatus1.dialogueSelector = ".playedSlimeHug";
-                astatus1.status = evolve_status;
-                astatus1.statusAmount = 1;
-                astatus1.targetPlayer = true;
-                cardActionList1.Add(astatus1);
-                result = cardActionList1;
-                break;
-            case Upgrade.A:
-                List<CardAction> cardActionList2 = new List<CardAction>();
-                AStatus astatus2 = new AStatus();
-                astatus2.dialogueSelector = ".playedSlimeHug";
-                astatus2.status = evolve_status;
-                astatus2.statusAmount = 1;
-                astatus2.targetPlayer = true;
-                cardActionList2.Add(astatus2);
-                result = cardActionList2;
-                break;
-            case Upgrade.B:
-                List<CardAction> cardActionList3 = new List<CardAction>();
-                AStatus astatus3 = new AStatus();
-                astatus3.dialogueSelector = ".playedSlimeHug";
-                astatus3.status = evolve_status;
-                astatus3.statusAmount = 2;
-                astatus3.targetPlayer = true;
-                cardActionList3.Add(astatus3);
-                result = cardActionList3;
-                break;
-        }
+            new AStatus()
+            {
+                status = ModEntry.Instance.EvolveStatus.Status,
+                statusAmount = upgrade == Upgrade.B ? 2 : 1,
+                targetPlayer = true,
+                dialogueSelector = ".SlimeHug"
+            }
+        };
+        if (upgrade == Upgrade.A)
+        {
+            result.Add(new ADrawCard()
+            {
+                count = 1
+            });
+        };
         return result;
     }
 }
+
+
