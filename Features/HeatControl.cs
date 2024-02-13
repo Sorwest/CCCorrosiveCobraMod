@@ -3,13 +3,14 @@ namespace Sorwest.CorrosiveCobra;
 
 internal sealed class HeatControlManager : IStatusLogicHook
 {
+    private static ModEntry Instance => ModEntry.Instance;
     public HeatControlManager()
     {
-        ModEntry.Instance.KokoroApi.RegisterStatusLogicHook(this, 0);
+        Instance.KokoroApi.RegisterStatusLogicHook(this, 0);
     }
     public void OnStatusTurnTrigger(State state, Combat combat, StatusTurnTriggerTiming timing, Ship ship, Status status, int oldAmount, int newAmount)
     {
-        if (status != ModEntry.Instance.HeatControlStatus.Status)
+        if (status != Instance.HeatControlStatus.Status)
             return;
         if (timing != StatusTurnTriggerTiming.TurnEnd)
             return;
@@ -20,11 +21,11 @@ internal sealed class HeatControlManager : IStatusLogicHook
             targetPlayer = ship.isPlayerShip,
             amount = 1
         });
-        ship.PulseStatus(ModEntry.Instance.HeatControlStatus.Status);
+        ship.PulseStatus(Instance.HeatControlStatus.Status);
     }
     public bool HandleStatusTurnAutoStep(State state, Combat combat, StatusTurnTriggerTiming timing, Ship ship, Status status, ref int amount, ref StatusTurnAutoStepSetStrategy setStrategy)
     {
-        if (status != ModEntry.Instance.HeatControlStatus.Status)
+        if (status != Instance.HeatControlStatus.Status)
             return false;
         if (timing != StatusTurnTriggerTiming.TurnEnd)
             return false;

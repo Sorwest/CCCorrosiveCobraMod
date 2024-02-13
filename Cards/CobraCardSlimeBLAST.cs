@@ -27,9 +27,9 @@ public class CobraCardSlimeBLAST : Card, IModdedCard
         int allStatusAmount = 0;
         if (state.route is Combat)
         {
-            foreach (KeyValuePair<Status, int> currentStatus in state.ship.statusEffects)
-                if (currentStatus.Key != Status.shield && currentStatus.Key != Status.tempShield)
-                    allStatusAmount += currentStatus.Value;
+            foreach (KeyValuePair<Status, int> status in state.ship.statusEffects)
+                if (status.Key != Status.shield && status.Key != Status.tempShield)
+                    allStatusAmount += status.Value;
         }
         return allStatusAmount;
     }

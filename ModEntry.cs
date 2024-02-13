@@ -12,7 +12,6 @@ namespace Sorwest.CorrosiveCobra;
 
 /*
  * TO-DO LIST
- * ISogginsApi SogginsDeck
  * Corrosive Cobra overhaul:
  *      Change UnstableTanks
  *      Change OverdriveTanks
@@ -26,13 +25,14 @@ public sealed class ModEntry : SimpleMod
 {
     public static string Name => "Sorwest.CorrosiveCobra";
     internal bool LockedChar = false;
-    internal bool NoExtraCards = false;
+    internal bool NoExtraCards = true;
     internal static ModEntry Instance { get; private set; } = null!;
     internal Harmony Harmony { get; }
     internal IKokoroApi KokoroApi { get; }
     internal IDuoArtifactsApi? DuoArtifactsApi { get; }
     internal ISogginsApi? SogginsApi { get; }
     internal IMoreDifficultiesApi? MoreDifficultiesApi { get; }
+    internal IDraculaApi? DraculaApi { get; }
     internal ILocalizationProvider<IReadOnlyList<string>> AnyLocalizations { get; }
     internal ILocaleBoundNonNullLocalizationProvider<IReadOnlyList<string>> Localizations { get; }
     internal ILocalizationProvider<IReadOnlyList<string>> AnyStoryLoc { get; }
@@ -278,6 +278,7 @@ public sealed class ModEntry : SimpleMod
         DuoArtifactsApi = helper.ModRegistry.GetApi<IDuoArtifactsApi>("Shockah.DuoArtifacts");
         SogginsApi = helper.ModRegistry.GetApi<ISogginsApi>("Shockah.DuoArtifacts");
         MoreDifficultiesApi = helper.ModRegistry.GetApi<IMoreDifficultiesApi>("TheJazMaster.MoreDifficulties");
+        DraculaApi = helper.ModRegistry.GetApi<IDraculaApi>("Shockah.Dracula");
 
         _ = new EvolveManager();
         _ = new HeatControlManager();
@@ -364,7 +365,7 @@ public sealed class ModEntry : SimpleMod
             Definition = new()
             {
                 icon = Sprites["EvolveStatusSprite"].Sprite,
-                color = SlimeColor,
+                color = new Color("8cfffb"),
                 isGood = true
             },
             Name = AnyLocalizations.Bind(["status", "EvolveStatus", "name"]).Localize,
@@ -375,7 +376,7 @@ public sealed class ModEntry : SimpleMod
             Definition = new()
             {
                 icon = Sprites["HeatControlStatusSprite"].Sprite,
-                color = SlimeColor,
+                color = new Color("64fab8"),
                 isGood = true
             },
             Name = AnyLocalizations.Bind(["status", "HeatControlStatus", "name"]).Localize,
@@ -386,8 +387,8 @@ public sealed class ModEntry : SimpleMod
             Definition = new()
             {
                 icon = Sprites["HeatOutbreakStatusSprite"].Sprite,
-                color = SlimeColor,
-                isGood = true
+                color = new Color("ae00f3"),
+                isGood = false
             },
             Name = AnyLocalizations.Bind(["status", "HeatOutbreakStatus", "name"]).Localize,
             Description = AnyLocalizations.Bind(["status", "HeatOutbreakStatus", "description"]).Localize
@@ -397,7 +398,7 @@ public sealed class ModEntry : SimpleMod
             Definition = new()
             {
                 icon = Sprites["CrystalTapStatusSprite"].Sprite,
-                color = SlimeColor,
+                color = new Color("7affcb"),
                 isGood = true
             },
             Name = AnyLocalizations.Bind(["status", "CrystalTapStatus", "name"]).Localize,
@@ -428,7 +429,13 @@ public sealed class ModEntry : SimpleMod
             StartLocked = LockedChar,
             Description = AnyLocalizations.Bind(["character", "slime", "description"]).Localize,
             BorderSprite = Sprites["slime_panel"].Sprite,
-            StarterCardTypes = SlimeStarterCardTypes,
+            Starters = new()
+            {
+                cards = [
+                    new CobraCardHeatedEvade(),
+                    new CobraCardHurriedDefense()
+                ]
+            },
             ExeCardType = typeof(CobraCardColorlessSlimeSummon),
             NeutralAnimation = new()
             {
@@ -687,7 +694,28 @@ public sealed class ModEntry : SimpleMod
             }
         );
 
+        // DRACULA BLOCK
+        DraculaApi?.RegisterBloodTapOptionProvider(EvolveStatus.Status, (_, _, status) => [
+            new AHurt { targetPlayer = true, hurtAmount = 1 },
+            new AStatus { targetPlayer = true, status = status, statusAmount = 1 },
+        ]);
+        DraculaApi?.RegisterBloodTapOptionProvider(HeatControlStatus.Status, (_, _, status) => [
+            new AHurt { targetPlayer = true, hurtAmount = 1 },
+            new AStatus { targetPlayer = true, status = status, statusAmount = 1 },
+        ]);
+        DraculaApi?.RegisterBloodTapOptionProvider(HeatOutbreakStatus.Status, (_, _, status) => [
+            new AHurt { targetPlayer = true, hurtAmount = 1 },
+            new AStatus { targetPlayer = false, status = status, statusAmount = 1 },
+        ]);
+        DraculaApi?.RegisterBloodTapOptionProvider(CrystalTapStatus.Status, (_, _, status) => [
+            new AHurt { targetPlayer = true, hurtAmount = 1 },
+            new AStatus { targetPlayer = true, status = status, statusAmount = 1 },
+        ]);
+
         // DIALOGUE INJECTION BLOCK
         _ = new DialogueManager(helper);
+
+        // SOUND BLOCK
+        _ = new StatusMetaPatchesManager();
     }
 }

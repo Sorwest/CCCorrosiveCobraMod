@@ -16,7 +16,8 @@ public class CobraCardColorlessAbsorbArtifact : Card, IModdedCard
                 deck = Deck.colorless,
                 rarity = Rarity.common,
                 upgradesTo = [Upgrade.A, Upgrade.B],
-                dontOffer = ModEntry.Instance.NoExtraCards
+                dontOffer = ModEntry.Instance.NoExtraCards,
+                unreleased = ModEntry.Instance.NoExtraCards
             },
             Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "AbsorbArtifact", "name"]).Localize
         });

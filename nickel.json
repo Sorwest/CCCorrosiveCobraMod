@@ -4,7 +4,7 @@
   "DisplayName": "Corrosive Cobra: Dizzy?",
   "Description": "A jelly-looking acidic-feeling friend and a ship.",
   "Author": "Sorwest",
-  "RequiredApiVersion": "0.6.0",
+  "RequiredApiVersion": "0.6.1",
   "EntryPointAssembly": "CorrosiveCobra.dll",
   "LoadPhase": "AfterDbInit",
   "Dependencies": [
@@ -25,6 +25,11 @@
     {
       "UniqueName": "TheJazMaster.MoreDifficulties",
       "Version": "1.3.0",
+      "IsRequired": false
+    },
+    {
+      "UniqueName": "Shockah.Dracula",
+      "Version": "0.1.0",
       "IsRequired": false
     }
   ]

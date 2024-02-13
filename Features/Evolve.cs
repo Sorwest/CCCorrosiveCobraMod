@@ -4,10 +4,11 @@ namespace Sorwest.CorrosiveCobra;
 
 internal sealed class EvolveManager : IStatusLogicHook
 {
+    private static ModEntry Instance => ModEntry.Instance;
     public EvolveManager()
     {
-        ModEntry.Instance.KokoroApi.RegisterStatusLogicHook(this, 0);
-        ModEntry.Instance.Harmony.Patch(
+        Instance.KokoroApi.RegisterStatusLogicHook(this, 0);
+        Instance.Harmony.Patch(
             original: AccessTools.DeclaredMethod(typeof(Card), nameof(Card.OnDraw)),
             postfix: new HarmonyMethod(GetType(), nameof(Card_OnDraw_Postfix))
         );
@@ -18,12 +19,12 @@ internal sealed class EvolveManager : IStatusLogicHook
         State s,
         Combat c)
     {
-        if (s.ship.Get(ModEntry.Instance.EvolveStatus.Status) > 0)
+        if (s.ship.Get(Instance.EvolveStatus.Status) > 0)
         {
             var deck = __instance.GetMeta().deck;
             if (deck == Deck.trash || deck == Deck.corrupted)
             {
-                var status = ModEntry.Instance.EvolveStatus.Status;
+                var status = Instance.EvolveStatus.Status;
                 var amount = s.ship.Get(status);
                 s.ship.PulseStatus(status);
                 c.Queue(new ADrawCard()

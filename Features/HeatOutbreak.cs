@@ -3,13 +3,14 @@ namespace Sorwest.CorrosiveCobra;
 
 internal sealed class HeatOutbreakManager : IStatusLogicHook
 {
+    private static ModEntry Instance => ModEntry.Instance;
     public HeatOutbreakManager()
     {
-        ModEntry.Instance.KokoroApi.RegisterStatusLogicHook(this, 0);
+        Instance.KokoroApi.RegisterStatusLogicHook(this, 0);
     }
     public void OnStatusTurnTrigger(State state, Combat combat, StatusTurnTriggerTiming timing, Ship ship, Status status, int oldAmount, int newAmount)
     {
-        if (status != ModEntry.Instance.HeatOutbreakStatus.Status)
+        if (status != Instance.HeatOutbreakStatus.Status)
             return;
         if (timing != StatusTurnTriggerTiming.TurnEnd)
             return;

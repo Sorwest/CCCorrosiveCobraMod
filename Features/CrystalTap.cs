@@ -5,10 +5,11 @@ namespace Sorwest.CorrosiveCobra;
 
 internal sealed class CrystalTapManager : IStatusLogicHook
 {
+    private static ModEntry Instance => ModEntry.Instance;
     public CrystalTapManager()
     {
-        ModEntry.Instance.KokoroApi.RegisterStatusLogicHook(this, 0);
-        ModEntry.Instance.Harmony.Patch(
+        Instance.KokoroApi.RegisterStatusLogicHook(this, 0);
+        Instance.Harmony.Patch(
             original: AccessTools.DeclaredMethod(typeof(Combat), nameof(Combat.TryPlayCard)),
             postfix: new HarmonyMethod(GetType(), nameof(Combat_TryPlayCard_Postfix))
         );
@@ -20,9 +21,9 @@ internal sealed class CrystalTapManager : IStatusLogicHook
         Card card,
         ref bool __result)
     {
-        if (__result && s.ship.Get(ModEntry.Instance.CrystalTapStatus.Status) > 0)
+        if (__result && s.ship.Get(Instance.CrystalTapStatus.Status) > 0)
         {
-            var status = ModEntry.Instance.CrystalTapStatus.Status;
+            var status = Instance.CrystalTapStatus.Status;
             var amount = s.ship.Get(status);
             foreach (CardAction cardAction in card.GetActionsOverridden(s, __instance))
             {

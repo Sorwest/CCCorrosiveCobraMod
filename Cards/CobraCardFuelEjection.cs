@@ -25,7 +25,7 @@ public class CobraCardFuelEjection : Card, IModdedCard
     {
         return new()
         {
-            cost = upgrade == Upgrade.B ? 2 : 1,
+            cost = 1,
             exhaust = upgrade == Upgrade.A ? false : true,
             art = upgrade == Upgrade.A ? ModEntry.Instance.Sprites["HeatSprite"].Sprite : ModEntry.Instance.Sprites["CorrodeSprite"].Sprite
         };
