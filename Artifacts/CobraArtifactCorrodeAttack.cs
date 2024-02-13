@@ -44,7 +44,7 @@ public class CobraArtifactCorrodeAttack : Artifact, IModdedArtifact
             ++count;
             Pulse();
         }
-        if (this.count < TRIGGER_POINT)
+        if (count < TRIGGER_POINT)
             return;
         AAttack aattack1 = new AAttack();
         aattack1.damage = 0;

@@ -223,7 +223,7 @@
       "name": "TOXIC CAVIAR",
       "description": "Lose 1 <c=status>CORRODE</c> each turn. <c=healing>If you do</c>, the enemy gains <c=boldPink>2</c>."
     },
-    "AcidArsenal": {
+    "CorrodeAttack": {
       "name": "ACID ARSENAL",
       "description": "Every 7 <c=6BFFCD>Dizzy?</c> cards played, fire for 1 <c=status>CORRODE</c>."
     },
@@ -288,7 +288,7 @@
   },
   "character": {
     "slime": {
-      "name": "<c=6BFFCD>Dizzy?</c>",
+      "name": "Dizzy?",
       "description": [
         "<c=6BFFCD>DIZZY?</c>",
         "A friend from another timeline. His cards play with <c=keyword>heat and corrode</c>, for better, or <c=hurt>worse</c>.",

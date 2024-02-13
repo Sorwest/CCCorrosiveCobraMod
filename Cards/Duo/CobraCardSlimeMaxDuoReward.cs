@@ -15,7 +15,6 @@ public class CobraCardSlimeMaxDuoReward : Card, IModdedCard
             {
                 rarity = Rarity.common,
                 deck = ModEntry.Instance.DuoArtifactsApi!.DuoArtifactVanillaDeck,
-                unreleased = true,
                 dontOffer = true
             },
             Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "SlimeMaxDuo", "Reward", "name"]).Localize

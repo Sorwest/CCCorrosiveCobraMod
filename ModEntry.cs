@@ -157,8 +157,8 @@ public sealed class ModEntry : SimpleMod
         .Concat(SlimeUncommonCardTypes)
         .Concat(SlimeRareCardTypes);
     internal static IEnumerable<Type> AllSlimeArtifacts
-        => CobraCommonArtifactTypes
-        .Concat(CobraBossArtifactTypes);
+        => SlimeCommonArtifactTypes
+        .Concat(SlimeBossArtifactTypes);
     internal static IEnumerable<Type> AllCobraArtifacts
         => CobraCommonArtifactTypes
         .Concat(CobraBossArtifactTypes);
